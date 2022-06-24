@@ -1,0 +1,66 @@
+@import "/styles/styles.scss";
+
+.perfomance {
+  border: 1px solid $color-black;
+  transition: 0.25s;
+
+  &:hover {
+    background-color: $color-blue;
+  }
+}
+
+.header {
+  padding: 20px 22px 16px 22px;
+  display: flex;
+  justify-content: space-between;
+  background-color: $color-dark-blue;
+  font-family: $font-gravity;
+  font-size: $fs-normal;
+  color: $color-white;
+}
+
+.time {
+  font-weight: $fw-semibold;
+}
+
+.main {
+  min-height: 155px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  text-align: center;
+}
+
+.title {
+  font-size: $fs-large;
+  font-weight: $fw-bold;
+  font-family: $font-oswald;
+}
+
+.content {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-family: $font-gravity;
+  font-size: $fs-normal;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid $color-black;
+}
+
+.button {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  background-color: $color-red;
+  color: $color-white;
+  cursor: pointer;
+}

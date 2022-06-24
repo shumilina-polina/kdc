@@ -1,0 +1,33 @@
+@import "/styles/styles.scss";
+
+.button {
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  background-color: $color-red;
+  font-family: $font-gravity;
+  font-weight: $fw-semibold;
+  color: $color-white;
+  user-select: none;
+  cursor: pointer;
+
+  @include mobile-tablet {
+    width: 100%;
+  }
+}
+
+.link {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: $fs-normal;
+  color: $color-white;
+}

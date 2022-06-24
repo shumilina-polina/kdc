@@ -1,0 +1,30 @@
+// export const pages = [
+//   { id: 1, value: "Главная", url: "/" },
+//   { id: 2, value: "О нас", url: "/about" },
+//   { id: 3, value: "Афиша", url: "/affiche" },
+//   { id: 4, value: "Коллективы", url: "/collectives" },
+//   { id: 5, value: "Пространства", url: "/spaces" },
+//   { id: 6, value: "Контакты", url: "/contacts" },
+//   { id: 7, value: "История", url: "/about/history" },
+//   { id: 8, value: "КДЦ на Варшавской", url: "/about/center" },
+//   { id: 9, value: "Проекты", url: "/about/projects" },
+//   { id: 10, value: "Галерея", url: "/about/gallery" },
+//   { id: 11, value: "Дополнительно", url: "/more" },
+//   { id: 12, value: "FAQ", url: "/faq" },
+// ];
+
+export const routes = {
+  home: "/",
+  about: "/about",
+  affiche: "/affiche",
+  collectives: "/collectives",
+  spaces: "/spaces",
+  contacts: "/contacts",
+  news: "/news",
+  history: "/about/history",
+  center: "/about/center",
+  projects: "/about/projects",
+  gallery: "/about/gallery",
+  more: "/more",
+  faq: "/faq",
+};

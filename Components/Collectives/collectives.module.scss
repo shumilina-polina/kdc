@@ -1,0 +1,129 @@
+@import "/styles/styles.scss";
+
+.section {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.collectives {
+  position: relative;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+
+  @include mobile {
+    flex-direction: column;
+  }
+}
+
+.menu {
+  width: 100%;
+  padding-left: 26px;
+  padding-right: 26px;
+  background-color: $color-dark-blue;
+
+  @include mobile {
+    max-width: 100%;
+    width: auto;
+  }
+}
+
+.list {
+  max-width: 100%;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  list-style: none;
+}
+
+.actions {
+  margin-bottom: 38px;
+  display: flex;
+  gap: 20px;
+
+  @include mobile {
+    flex-direction: column;
+  }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-family: $font-gravity;
+  font-weight: $fw-regular;
+  font-size: $fs-normal;
+  color: $color-white;
+}
+
+.wrapper {
+  position: absolute;
+  right: 0;
+  display: flex;
+
+  @include mobile {
+    position: relative;
+  }
+}
+
+.theatre {
+  @include mobile {
+    width: 100%;
+
+    & > span {
+      width: 100% !important;
+    }
+
+    & img {
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
+
+.harp {
+  position: absolute;
+  left: -240px;
+  top: 132px;
+  z-index: 2;
+
+  @include mobile-tablet {
+    display: none;
+  }
+}
+
+.decorations {
+  position: absolute;
+  left: -300px;
+
+  & img {
+    object-fit: cover;
+  }
+
+  @include mobile-tablet {
+    display: none;
+  }
+}
+
+.button {
+  width: fit-content;
+
+  @include mobile {
+    width: 100%;
+  }
+}
+
+.buttonLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-family: $font-gravity;
+  font-weight: $fw-regular;
+  font-size: $fs-normal;
+  color: $color-white;
+}

@@ -1,0 +1,148 @@
+@import "/styles/styles.scss";
+
+.affiche {
+  margin-bottom: 100px;
+  display: flex;
+
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+  }
+}
+
+.mobileCarusel {
+  display: none;
+
+  @media screen and (max-width: 800px) {
+    display: block;
+  }
+}
+
+.wrapper {
+  margin-bottom: 15px;
+  display: flex;
+}
+
+.info {
+  width: 100%;
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: $color-dark-blue;
+  font-size: $fs-extralarge;
+  color: $color-white;
+}
+
+.actions {
+  display: flex;
+}
+
+.carusel {
+  border: 1px solid $color-dark-blue;
+
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
+}
+
+.perfomances {
+  display: flex;
+
+  @media screen and (max-width: 800px) {
+    width: 100%;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.button {
+  width: 100%;
+}
+
+.mobileButton {
+  display: none;
+
+  @media screen and (max-width: 800px) {
+    margin-top: 20px;
+    display: block;
+  }
+}
+
+.content {
+  padding: 25px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background-color: $color-dark-blue;
+  color: $color-white;
+}
+
+.title {
+  font-family: $font-oswald;
+  font-size: $fs-extralarge;
+}
+
+.titleMobile {
+  margin-bottom: 20px;
+}
+
+.period {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.divider {
+  width: 10px;
+  height: 3px;
+  background-color: $color-white;
+}
+
+.from,
+.to {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.day {
+  font-family: $font-alumni;
+  font-size: $fs-extralarge;
+  font-weight: $fw-bold;
+}
+
+.month {
+  text-transform: uppercase;
+  font-family: $font-alegreya;
+  font-size: $fs-small;
+  font-weight: $fw-bold;
+
+  @media screen and (max-width: 800px) {
+    padding-bottom: 12px;
+    align-self: flex-end;
+  }
+}
+
+.footer {
+  height: 49px;
+  background-color: $color-red;
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  font-family: $font-gravity;
+  font-size: $fs-normal;
+  color: $color-white;
+}

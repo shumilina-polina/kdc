@@ -1,0 +1,54 @@
+@import "/styles/styles.scss";
+
+.container {
+  border-left: 1px solid $color-dark-blue;
+  border-right: 1px solid $color-dark-blue;
+
+  & > span {
+    width: 100% !important;
+  }
+  & img {
+    display: block;
+  }
+
+  @include mobile-tablet {
+    padding: 0;
+    border: none;
+  }
+}
+
+.content {
+  padding-top: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  & h1 {
+    margin-bottom: 25px;
+    font-size: calc(50px + 40 * (100vw / 1116));
+    font-family: $font-oswald;
+    font-weight: $fw-medium;
+    color: $color-red;
+  }
+}
+
+.subtitle {
+  margin-bottom: 16px;
+  text-align: center;
+  font-size: calc(22px + 8 * (100vw / 1116));
+  font-family: $font-oswald;
+  font-weight: $fw-bold;
+}
+
+.secondaryTitle {
+  text-align: center;
+  font-size: $fs-normal;
+  font-family: $font-gravity;
+  font-weight: $fw-regular;
+  color: $color-secondary;
+}
+
+.borderTop {
+  border-top: 1px solid $color-dark-blue;
+}

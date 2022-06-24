@@ -1,0 +1,65 @@
+@import "/styles/styles.scss";
+
+.news {
+  margin-bottom: 75px;
+}
+
+.newBackground {
+  margin-top: 20px;
+  background-color: $color-blue;
+  border-top: 1px solid $color-dark-blue;
+  border-bottom: 1px solid $color-dark-blue;
+
+  @include mobile-tablet {
+    background-color: white;
+    border: none;
+  }
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+
+  @include mobile-tablet {
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+}
+
+.wrapper {
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-left: 1px solid $color-dark-blue;
+  border-right: 1px solid $color-dark-blue;
+
+  @include mobile-tablet {
+    padding: 0;
+    border: none;
+  }
+}
+
+.actions {
+  border-bottom: 1px solid $color-dark-blue;
+
+  @include mobile-tablet {
+    border: none;
+  }
+}
+
+.manage {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tumblers {
+  @include mobile-tablet {
+    display: none;
+  }
+}
+
+.offset {
+  @include mobile-tablet {
+    margin-top: 30px;
+  }
+}

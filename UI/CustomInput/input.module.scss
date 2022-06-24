@@ -1,0 +1,43 @@
+@import "/styles/styles.scss";
+
+.inputContainer {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 20px;
+}
+
+.inputHeader {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-family: $font-oswald;
+  font-weight: $fw-medium;
+}
+
+.errorMessage {
+  font-family: $font-gravity;
+  font-size: $fs-normal;
+  color: $color-red;
+}
+
+.input {
+  width: 100%;
+  border: 2px solid $color-dark-blue;
+}
+
+.icon {
+  color: $color-red;
+}
+
+.input.error {
+  border-color: $color-red;
+  background-color: rgba(255, 242, 242, 1);
+}
+
+.inputBorder {
+  border: none;
+}

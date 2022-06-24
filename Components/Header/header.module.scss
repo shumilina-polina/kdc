@@ -1,0 +1,175 @@
+@import "/styles/styles.scss";
+
+.header {
+  position: relative;
+  width: 100%;
+  height: 70px;
+  background-color: $color-dark-blue;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menuIcon {
+  display: none;
+
+  @include mobile-tablet {
+    display: block;
+    color: $color-white;
+    font-size: $fs-extralarge;
+  }
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+
+  @include mobile-tablet {
+    display: none;
+  }
+}
+
+.item {
+  list-style: none;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  font-size: $fs-normal;
+  text-decoration: none;
+  color: $color-white;
+  font-family: $font-gravity;
+  font-weight: $fw-medium;
+
+  @include mobile-tablet {
+    width: 100%;
+    text-align: left;
+    font-size: $fs-normal;
+    font-weight: $fw-semibold;
+  }
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  @include mobile-tablet {
+    display: none;
+  }
+}
+
+.mobileMenu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background-color: $color-dark-blue;
+  overflow: scroll;
+  transform: translateX(-100%);
+  transition: 0.3s;
+  z-index: 10;
+
+  @include mobile {
+    width: 100%;
+  }
+}
+
+.mobileMenu.show {
+  transform: translateX(0%);
+}
+
+.top {
+  margin-left: 15px;
+  margin-right: 15px;
+  max-width: 100%;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.closeIcon {
+  font-size: $fs-extralarge;
+  color: $color-white;
+}
+
+.mobileList {
+  max-width: 100%;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.details {
+  max-width: 100%;
+  height: 100%;
+  padding-top: 25px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background: rgba(0, 0, 0, 0.2);
+  color: $color-white;
+}
+
+.working {
+  margin-bottom: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: $font-gravity;
+}
+
+.workingMode {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.adress {
+  margin-bottom: 20px;
+  font-family: $font-gravity;
+  font-size: $fs-normal;
+}
+
+.contactInfo {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.contactLink {
+  text-decoration: none;
+  font-family: $font-gravity;
+  font-size: $fs-normal;
+  font-weight: $fw-light;
+  color: $color-white;
+}
+
+.backMenuButton {
+  width: 30px;
+  height: 30px;
+  margin-left: 20px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $color-white;
+  border-radius: 2px;
+  background-color: $color-dark-blue;
+  color: $color-white;
+}
+
+.abilityButton {
+  margin-bottom: 30px;
+}
