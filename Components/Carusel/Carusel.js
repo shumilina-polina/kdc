@@ -92,7 +92,7 @@ const Carusel = (props) => {
                 key={slide.id}
               ></span>
             ) : (
-              <span className={s.breadcrumb} key={slide.id}></span>
+              <span className={s.breadcrumb} key={slide.id} onClick={() => setSlideNumber(index)} />
             )
           )}
         </div>
