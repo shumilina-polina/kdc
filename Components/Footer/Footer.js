@@ -76,7 +76,7 @@ const Footer = () => {
               <Link href={`tel:${phone}`}>
                 <a className={s.link}>{phone}</a>
               </Link>
-              <Link href={`mail:${email}`}>
+              <Link href={`mailto:${email}`}>
                 <a className={s.link}>{email}</a>
               </Link>
             </div>
