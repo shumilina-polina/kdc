@@ -1,6 +1,6 @@
-import { ContactConst } from "./ContactConst";
+import { ContactConst } from "../ContactConst";
 
-export const IndexConst = {
+export const IndexData = {
   head: {
     title: "Главная страница",
   },
