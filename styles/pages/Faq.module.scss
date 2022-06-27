@@ -1,0 +1,75 @@
+@import "/styles/styles.scss";
+
+.title {
+  margin-top: 40px;
+  margin-bottom: 30px;
+  font-size: 30px;
+  font-family: $font-oswald;
+  font-weight: $fw-semibold;
+}
+
+.questions {
+  margin-bottom: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 80px;
+}
+
+.decorations {
+  position: relative;
+  top: 3px;
+
+  & > span {
+    width: 100% !important;
+
+    @include mobile-tablet {
+      display: none !important;
+    }
+  }
+  & img {
+    display: block;
+    object-fit: cover;
+  }
+
+  @include mobile-tablet {
+    padding: 0;
+  }
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @include mobile-tablet {
+    position: relative;
+    margin-bottom: 50px;
+  }
+}
+
+.cTitle {
+  margin-bottom: 6px;
+  padding: 10px;
+  text-align: center;
+  font-family: $font-oswald;
+  font-size: $fs-extralarge;
+  font-weight: $fw-medium;
+}
+
+.cSubtitle {
+  margin-bottom: 20px;
+  padding: 10px;
+  text-align: center;
+  font-family: $font-gravity;
+  font-weight: $fw-semibold;
+}
+
+.button {
+  padding: 0 30px;
+}
