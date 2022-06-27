@@ -80,7 +80,7 @@ const Contacts = (props) => {
           <Image src="/assets/images/phone.svg" width={345} height={236} />
         </div>
         <Container className={s.titleMobile}>
-          <Title>{title}</Title>
+          <Title>{adressTitle}</Title>
         </Container>
         <div className={s.mapContainer}>
           <iframe
