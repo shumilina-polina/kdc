@@ -2,6 +2,7 @@ import CustomInput from "UI/CustomInput/CustomInput";
 import CustomTabs from "UI/CustomTabs/CustomTabs";
 
 import s from "styles/pages/Components.module.scss";
+import Acordion from "UI/Acordion/Acordion";
 
 const Components = () => {
   return (
@@ -21,6 +22,15 @@ const Components = () => {
               "CusomBlock 3",
               "CusomBlock 4",
             ]}
+          />
+        </div>
+        <div>
+          <h2>Custom Acordion</h2>
+          <Acordion
+            title="Где купить билеты на мероприятия?"
+            content="Билеты вы можете приобрести в кассе Культурно-Досугового Центра или на нашем сайте.
+            Телефон кассы: +7 (932) 343-32-32.
+            График работы кассы: ВТ-ПТ: 12.00 - 19.00 СБ: 12.00 - 16.00"
           />
         </div>
       </div>
