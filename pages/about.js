@@ -11,10 +11,8 @@ import s from "styles/pages/About.module.scss";
 
 export default function Home() {
   const {
-    tabs: {
-      titles
-    }
-  } = AboutData
+    tabs: { titles },
+  } = AboutData;
 
   return (
     <>
@@ -34,15 +32,10 @@ export default function Home() {
         </div>
 
         <div className={s.tabsContainer}>
-          <CustomTabs
-            titles={titles}
-            components={[
-              1,2,3,4
-            ]}
-          />
+          <CustomTabs titles={titles} components={[1, 2, 3, 4]} />
         </div>
       </Container>
-        
+
       <Footer />
     </>
   );

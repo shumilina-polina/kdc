@@ -1,25 +1,24 @@
 @import "/styles/styles.scss";
 
-
 .main {
-    @include mobile-tablet {
-        display: none;
-    }
+  @include mobile-tablet {
+    display: none;
+  }
 }
 
 .nav {
-    background-color: rgba($color-red, 0);
+  background-color: rgba($color-red, 0);
 }
 
 .root {
-    text-transform: capitalize;
-    flex: auto;
-    border: 1px solid $color-black;
+  text-transform: capitalize;
+  flex: auto;
+  border: 1px solid $color-black;
 }
 
 .selected {
-    display: flex;
-    transition: .4s;
-    background-color: rgba($color-red, 1);
-    color: $color-white !important;
+  display: flex;
+  transition: 0.4s;
+  background-color: rgba($color-red, 1);
+  color: $color-white !important;
 }

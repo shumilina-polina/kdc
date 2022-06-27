@@ -1,28 +1,27 @@
 @import "/styles/styles.scss";
 
-
 .container {
-    @include mobile-tablet {
-        padding: 0;
-    }
+  @include mobile-tablet {
+    padding: 0;
+  }
 }
 
 .decorations {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 
-    & > span {
-        width: 100% !important;
-    }
+  & > span {
+    width: 100% !important;
+  }
 
-    & img {
-        object-fit: cover;
-    }
+  & img {
+    object-fit: cover;
+  }
 }
 
 .tabsContainer {
-    width: 100%;
+  width: 100%;
 }
 
 .tabs {
-    width: 100%;
+  width: 100%;
 }

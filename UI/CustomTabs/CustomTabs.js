@@ -45,11 +45,7 @@ const CustomTabs = (props) => {
   return (
     <Box className={s.main}>
       <Box className={s.nav}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="none"
-        >
+        <Tabs value={value} onChange={handleChange} indicatorColor="none">
           {titles.map((title, index) => (
             <Tab
               label={title}

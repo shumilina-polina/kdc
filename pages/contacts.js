@@ -7,9 +7,7 @@ import { ContactsData } from "shared/constants/pages/ContactsData";
 import s from "styles/pages/Contacts.module.scss";
 
 export default function ContactPage() {
-  const {
-    contacts
-  } = ContactsData
+  const { contacts } = ContactsData;
 
   return (
     <>

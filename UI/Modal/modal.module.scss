@@ -119,6 +119,7 @@ $containerWidth: 625px;
   font-size: $fs-normal;
 
   @include mobile-tablet {
+    align-items: flex-start;
     border: none;
   }
 }
