@@ -1,0 +1,17 @@
+@import "/styles/styles.scss";
+
+.main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  font-family: $font-gravity;
+
+  & h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 2em;
+  }
+}
