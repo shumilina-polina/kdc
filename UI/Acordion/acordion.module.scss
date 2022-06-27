@@ -1,0 +1,48 @@
+@import "/styles/styles.scss";
+
+.acordion {
+    width: 500px;
+    border: 1px solid $color-black;
+    box-shadow: none;
+}
+
+.header {
+    padding-right: 0;
+}
+
+.title {
+    font-family: $font-oswald;
+    font-weight: $fw-bold;
+}
+
+.button {
+    width: 40px;
+    min-height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-red;
+    color: $color-white;
+}
+
+.body {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid $color-black;
+    display: flex;
+    font-family: $font-gravity;
+}
+
+.answer {
+    padding: 10px;
+    writing-mode:vertical-lr;
+    font-family: $font-oswald;
+    font-weight: $fw-bold;
+}
+
+.content {
+    padding: 10px;
+    border-left: 1px solid $color-black;
+    font-size: $fs-normal;
+}
