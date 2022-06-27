@@ -1,12 +1,18 @@
 @import "/styles/styles.scss";
 
+.main {
+  @include mobile-tablet {
+    display: none;
+  }
+}
+
 .nav {
   background-color: rgba($color-red, 0);
 }
 
 .root {
   text-transform: capitalize;
-
+  flex: auto;
   border: 1px solid $color-black;
 }
 

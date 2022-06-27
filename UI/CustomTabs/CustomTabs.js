@@ -43,7 +43,7 @@ const CustomTabs = (props) => {
   };
 
   return (
-    <Box>
+    <Box className={s.main}>
       <Box className={s.nav}>
         <Tabs value={value} onChange={handleChange} indicatorColor="none">
           {titles.map((title, index) => (
