@@ -8,6 +8,7 @@ import Title from "UI/Title/Title";
 
 import s from "./collectives.module.scss";
 import ModalWindow from "UI/Modal/ModalWindow";
+import JoinCollectiveWindow from "Components/JoinCollectiveWindow/JoinCollectiveWindow";
 
 const collectives = [
   {
@@ -81,7 +82,7 @@ const Collectives = (props) => {
               buttonText="Записаться"
               copyright
             >
-              ...Content...
+              <JoinCollectiveWindow />
             </ModalWindow>
           </div>
         </div>
