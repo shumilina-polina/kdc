@@ -4,14 +4,15 @@ import Container from "UI/Container/Container";
 import Acordion from "UI/Acordion/Acordion";
 import { FaqData } from "shared/constants/pages/FaqData";
 
-import s from "styles/pages/Faq.module.scss";
 import React, { useState } from "react";
 import Image from "next/image";
 import Button from "UI/Button/Button";
 import ModalWindow from "UI/Modal/ModalWindow";
 import QuestionWindow from "Components/QuestionWindow/QuestionWindow";
 
-const faq = () => {
+import s from "styles/pages/Faq.module.scss";
+
+const FaqPage = () => {
   const { title, questions, footerTitle, footerSubTitle, buttonText } = FaqData;
 
   const [isOpen, setOpen] = useState(false);
@@ -63,4 +64,4 @@ const faq = () => {
   );
 };
 
-export default faq;
+export default FaqPage;
