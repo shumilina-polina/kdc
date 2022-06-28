@@ -9,6 +9,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Button from "UI/Button/Button";
 import ModalWindow from "UI/Modal/ModalWindow";
+import QuestionWindow from "Components/QuestionWindow/QuestionWindow";
 
 const faq = () => {
   const { title, questions, footerTitle, footerSubTitle, buttonText } = FaqData;
@@ -54,7 +55,7 @@ const faq = () => {
         buttonText={buttonText}
         copyright
       >
-        Наверное лучше создать компанент
+        <QuestionWindow />
       </ModalWindow>
 
       <Footer />

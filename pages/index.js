@@ -45,6 +45,7 @@ export default function HomePage() {
 
         <Contacts data={contacts} />
       </main>
+
       <Footer />
     </>
   );

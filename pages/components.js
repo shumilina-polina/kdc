@@ -12,6 +12,17 @@ const Components = () => {
           <h2>Input</h2>
           <CustomInput label="Как к вам обращаться?" />
         </div>
+
+        <div>
+          <h2>Textarea</h2>
+          <CustomInput
+            label="Как к вам обращаться?"
+            multiline
+            cols={30}
+            rows={10}
+          />
+        </div>
+
         <div>
           <h2>Cusom Tabs</h2>
           <CustomTabs
@@ -24,6 +35,7 @@ const Components = () => {
             ]}
           />
         </div>
+
         <div>
           <h2>Custom Acordion</h2>
           <Acordion
