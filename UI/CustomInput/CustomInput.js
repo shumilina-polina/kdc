@@ -1,4 +1,4 @@
-import { useState } from "react";
+import cn from "classnames";
 
 import OutlinedInput from "@mui/material/OutlinedInput";
 import ErrorIcon from "@mui/icons-material/Error";
@@ -6,10 +6,18 @@ import ErrorIcon from "@mui/icons-material/Error";
 import s from "./input.module.scss";
 
 const CustomInput = (props) => {
-  const { label, onChange, error = false } = props;
+  const {
+    label,
+    onChange,
+    error = false,
+    className,
+    multiline = false,
+    cols,
+    rows,
+  } = props;
 
   return (
-    <div className={s.inputContainer}>
+    <div className={cn(s.inputContainer, className)}>
       <div className={s.inputHeader}>
         <span className={s.title}>{label}</span>
         {error ? (
@@ -20,6 +28,9 @@ const CustomInput = (props) => {
         variant="outlined"
         endAdornment={error ? <ErrorIcon className={s.icon} /> : null}
         onChange={onChange}
+        multiline
+        cols={cols}
+        rows={rows}
         classes={{
           root: s.input,
           notchedOutline: s.inputBorder,

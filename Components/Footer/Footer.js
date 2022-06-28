@@ -1,9 +1,12 @@
+import QuestionWindow from "Components/QuestionWindow/QuestionWindow";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 import { FooterConst } from "shared/constants/FooterConst";
 import Button from "UI/Button/Button";
 import Container from "UI/Container/Container";
+import ModalWindow from "UI/Modal/ModalWindow";
 
 import s from "./footer.module.scss";
 
@@ -30,6 +33,8 @@ const Footer = () => {
   } = FooterConst;
 
   const array = sliceIntoChunks(list, 3);
+
+  const [isOpen, setOpen] = useState(false);
 
   return (
     <footer className={s.footerTag}>
@@ -81,7 +86,18 @@ const Footer = () => {
               </Link>
             </div>
             <div className={s.actions}>
-              <Button>{askButtonText}</Button>
+              <Button onClick={() => setOpen(true)}>{askButtonText}</Button>
+
+              <ModalWindow
+                title={askButtonText}
+                isOpen={isOpen}
+                onClose={() => setOpen(false)}
+                buttonText={"Оставить заявку"}
+                copyright
+              >
+                <QuestionWindow />
+              </ModalWindow>
+
               <Button className={s.abilityButton}>
                 <Image src="/assets/icons/eye.svg" width={22} height={15} />
                 {abilityButtonText}
