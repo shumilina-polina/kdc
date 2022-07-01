@@ -4,9 +4,10 @@ import { useEffect, useState } from "react";
 import Modal from "@mui/material/Modal";
 import CloseIcon from "@mui/icons-material/Close";
 
-import s from "./modal.module.scss";
 import Title from "UI/Title/Title";
 import Button from "UI/Button/Button";
+
+import s from "./modal.module.scss";
 
 const ModalWindow = (props) => {
   const {
@@ -59,9 +60,10 @@ const ModalWindow = (props) => {
                 <div className={s.footerBotContainer} />
               </div>
 
-              <div className={s.mobileBtnWrapper}>
-                <Button className={s.mobileBtn}>{buttonText}</Button>
-              </div>
+              { buttonText ?
+                <div className={s.mobileBtnWrapper}>
+                  <Button className={s.mobileBtn}>{buttonText}</Button>
+                </div> : null }
             </div>
           </div>
         </Modal>,
