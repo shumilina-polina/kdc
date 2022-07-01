@@ -67,7 +67,9 @@ const Header = () => {
             <a className={s.link}>{phone}</a>
           </Link>
         </div>
-        <MenuIcon className={s.menuIcon} onClick={() => setOpen(true)} />
+        <div className={s.menuIcon}>
+          <MenuIcon onClick={() => setOpen(true)} />
+        </div>
       </Container>
 
       <div className={cn(s.mobileMenu, open ? s.show : null)}>
