@@ -1,9 +1,7 @@
-import Header from "Components/Header/Header"
+import Header from "Components/Header/Header";
 
 const HistoryPage = () => {
-    return(
-        <Header />
-    )
-}
+  return <Header />;
+};
 
-export default HistoryPage
+export default HistoryPage;

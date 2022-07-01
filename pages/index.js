@@ -32,14 +32,11 @@ export default function HomePage() {
       <Header />
 
       <main className={s.main}>
-        <Container noPaddingMobile>
-          <Carusel data={carusel} />
-          <Collectives data={collectives} />
-        </Container>
+        <Carusel data={carusel} />
 
-        <Container>
-          <Affiche data={affiche} />
-        </Container>
+        <Collectives data={collectives} />
+
+        <Affiche data={affiche} />
 
         <News data={news} />
 

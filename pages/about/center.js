@@ -1,9 +1,7 @@
-import Header from "Components/Header/Header"
+import Header from "Components/Header/Header";
 
 const CenterPage = () => {
-    return(
-        <Header />
-    )
-}
+  return <Header />;
+};
 
-export default CenterPage
+export default CenterPage;

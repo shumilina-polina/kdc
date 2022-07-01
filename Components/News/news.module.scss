@@ -1,11 +1,16 @@
 @import "/styles/styles.scss";
 
-.news {
-  margin-bottom: 75px;
+.titleContainer {
+  padding: 60px 0 20px;
+  border-left: 1px solid $color-black;
+  border-right: 1px solid $color-black;
+
+  @include mobile-tablet {
+    border: none;
+  }
 }
 
 .newBackground {
-  margin-top: 20px;
   background-color: $color-blue;
   border-top: 1px solid $color-dark-blue;
   border-bottom: 1px solid $color-dark-blue;

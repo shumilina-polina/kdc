@@ -1,9 +1,7 @@
-import Header from "Components/Header/Header"
+import Header from "Components/Header/Header";
 
 const ProjectPage = () => {
-    return (
-        <Header />
-    )
-}
+  return <Header />;
+};
 
-export default ProjectPage
+export default ProjectPage;

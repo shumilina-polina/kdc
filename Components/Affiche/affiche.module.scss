@@ -1,11 +1,17 @@
 @import "/styles/styles.scss";
 
-.affiche {
-  margin-bottom: 100px;
+.assicheContainer {
+  padding: 60px 0 0;
   display: flex;
+  border-left: 1px solid $color-black;
+  border-right: 1px solid $color-black;
 
   @media screen and (max-width: 800px) {
     flex-direction: column;
+  }
+
+  @include mobile-tablet {
+    border: none;
   }
 }
 

@@ -1,134 +1,135 @@
 @import "/styles/styles.scss";
 
 .wrapper {
-    display: grid;
-    grid-template-columns: 2fr 4fr;
-    grid-template-rows: 1fr 3fr;
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+  grid-template-rows: 1fr 3fr;
 
-    @include mobile {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr;
-    }
+  @include mobile {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
 }
 
 .datetime {
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: $color-dark-blue;
-    font-family: $font-oswald;
-    color: $color-white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $color-dark-blue;
+  font-family: $font-oswald;
+  color: $color-white;
 
-    .date, .time {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        gap: 20px;
-    }
-    
-    .date > span:first-child {
-        font-size: $fs-extralarge;
-    }
-    
-    .time > span:first-child {
-        font-family: $font-gravity;
-    }
-    
-    .time > span:last-child {
-        font-size: $fs-normal;
-    }
+  .date,
+  .time {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .date > span:first-child {
+    font-size: $fs-extralarge;
+  }
+
+  .time > span:first-child {
+    font-family: $font-gravity;
+  }
+
+  .time > span:last-child {
+    font-size: $fs-normal;
+  }
 }
 
 .header {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 15px;
-    border-bottom: 1px solid $color-black;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 15px;
+  border-bottom: 1px solid $color-black;
 
-    & > span:first-child {
-        font-family: $font-gravity;
-    }
+  & > span:first-child {
+    font-family: $font-gravity;
+  }
 
-    & > span:last-child {
-        font-family: $font-oswald;
-        font-size: $fs-large;
-    }
+  & > span:last-child {
+    font-family: $font-oswald;
+    font-size: $fs-large;
+  }
 }
 
 .details {
+  display: flex;
+  flex-direction: column;
+  font-family: $font-oswald;
+
+  .limits {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    border-bottom: 1px solid $color-black;
+  }
+
+  .limits > span {
+    padding: 15px;
+    border-right: 1px solid $color-black;
+  }
+
+  .price {
+    @include mobile {
+      border-left: 1px solid $color-black;
+    }
+  }
+
+  .place {
+    padding: 15px;
     display: flex;
     flex-direction: column;
-    font-family: $font-oswald;
+    gap: 10px;
+    border-right: 1px solid $color-black;
 
-    .limits {
-        display: grid;
-        grid-template-columns: 3fr 1fr;
-        border-bottom: 1px solid $color-black;
+    @include mobile {
+      border-left: 1px solid $color-black;
     }
+  }
 
-    .limits > span {
-        padding: 15px;
-        border-right: 1px solid $color-black;
-    }
+  .place > span:last-child {
+    font-family: $font-gravity;
+  }
 
-    .price {
-        @include mobile {
-            border-left: 1px solid $color-black;
-        }
-    }
-
-    .place {
-        padding: 15px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        border-right: 1px solid $color-black;
-
-        @include mobile {
-            border-left: 1px solid $color-black;
-        }
-    }
-
-    .place > span:last-child {
-        font-family: $font-gravity;
-    }
-
-    .thumbnail {
-        display: block;
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-    }
+  .thumbnail {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .description {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .content {
-    padding: 20px;
-    font-family: $font-gravity;
-    line-height: 20px;
+  padding: 20px;
+  font-family: $font-gravity;
+  line-height: 20px;
 
-    @include mobile {
-        padding: 20px 0;
-    }
+  @include mobile {
+    padding: 20px 0;
+  }
 }
 
 .footer {
-    display: flex;
-    justify-content: flex-end;
-    border: 1px solid $color-black;
+  display: flex;
+  justify-content: flex-end;
+  border: 1px solid $color-black;
 }
 
 .button {
-    border-left: 1px solid $color-black;
+  border-left: 1px solid $color-black;
 }

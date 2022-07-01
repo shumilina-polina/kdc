@@ -60,10 +60,11 @@ const ModalWindow = (props) => {
                 <div className={s.footerBotContainer} />
               </div>
 
-              { buttonText ?
+              {buttonText ? (
                 <div className={s.mobileBtnWrapper}>
                   <Button className={s.mobileBtn}>{buttonText}</Button>
-                </div> : null }
+                </div>
+              ) : null}
             </div>
           </div>
         </Modal>,

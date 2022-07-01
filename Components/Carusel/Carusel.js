@@ -4,10 +4,11 @@ import cn from "classnames";
 import ButtonArrow from "UI/ButtonArrow/ButtonArrow";
 import Button from "UI/Button/Button";
 
-import s from "./carusel.module.scss";
 import ModalWindow from "UI/Modal/ModalWindow";
-import Image from "next/image";
 import BuyTicketsWindow from "Components/BuyTicketsWindow/BuyTicketsWindow";
+
+import s from "./carusel.module.scss";
+import Container from "UI/Container/Container";
 
 const slides = [
   {
@@ -33,7 +34,7 @@ const slides = [
 
 const Carusel = (props) => {
   const [slideNumber, setSlideNumber] = useState(0);
-  const [isOpen, setOpen] = useState(false)
+  const [isOpen, setOpen] = useState(false);
 
   const {
     data: { getTicketButtonText },
@@ -53,63 +54,70 @@ const Carusel = (props) => {
 
   return (
     <div className={s.carusel}>
-      <div className={s.content}>
-        {slides.map((slide) => (
-          <div
-            className={s.slide}
-            style={{
-              transform: `translateX(-${slideNumber * 100}%)`,
-            }}
-            key={`slide_${slide.id}`}
-          >
-            <div className={s.slideContent}>
-              <div className={s.wrapper}>
-                <div className={s.concertActions}>
-                  <span className={s.slideTitle}>{slide.title}</span>
+      <Container noPaddingMobile>
+        <div className={s.content}>
+          {slides.map((slide) => (
+            <div
+              className={s.slide}
+              style={{
+                transform: `translateX(-${slideNumber * 100}%)`,
+              }}
+              key={`slide_${slide.id}`}
+            >
+              <div className={s.slideContent}>
+                <div className={s.wrapper}>
+                  <div className={s.concertActions}>
+                    <span className={s.slideTitle}>{slide.title}</span>
+                  </div>
+                  <div className={s.concertDate}>
+                    <span>{slide.date}</span>
+                  </div>
                 </div>
-                <div className={s.concertDate}>
-                  <span>{slide.date}</span>
+                <div className={s.container}>
+                  <Button
+                    className={s.slideButton}
+                    onClick={() => setOpen(true)}
+                  >
+                    {getTicketButtonText}
+                  </Button>
                 </div>
               </div>
-              <div className={s.container}>
-                <Button
-                  className={s.slideButton}
-                  onClick={() => setOpen(true)}
-                >
-                  {getTicketButtonText}
-                </Button>
-              </div>
+              <img src={slide.image} className={s.poster} />
             </div>
-            <img src={slide.image} className={s.poster} />
-          </div>
-        ))}
-        <ModalWindow
-          isOpen={isOpen}
-          onClose={() => setOpen(false)}
-          title={getTicketButtonText}
-        >
-          <BuyTicketsWindow />
-        </ModalWindow>
-      </div>
-      <div className={s.actions}>
-        <ButtonArrow onClick={prevSlide} direction="back" color="red" />
-        <div className={s.breadcrumbs}>
-          {slides.map((slide, index) =>
-            index === slideNumber ? (
-              <span
-                className={cn(s.breadcrumb, s.active)}
-                key={slide.id}
-              ></span>
-            ) : (
-              <span
-                className={s.breadcrumb}
-                key={slide.id}
-                onClick={() => setSlideNumber(index)}
-              />
-            )
-          )}
+          ))}
+          <ModalWindow
+            isOpen={isOpen}
+            onClose={() => setOpen(false)}
+            title={getTicketButtonText}
+          >
+            <BuyTicketsWindow />
+          </ModalWindow>
         </div>
-        <ButtonArrow onClick={nextSlide} direction="forward" color="red" />
+      </Container>
+
+      <div className={s.grid}>
+        <div className={s.leftDecoration} />
+        <Container className={s.actions} noPaddingMobile>
+          <ButtonArrow onClick={prevSlide} direction="back" color="red" />
+          <div className={s.breadcrumbs}>
+            {slides.map((slide, index) =>
+              index === slideNumber ? (
+                <span
+                  className={cn(s.breadcrumb, s.active)}
+                  key={slide.id}
+                ></span>
+              ) : (
+                <span
+                  className={s.breadcrumb}
+                  key={slide.id}
+                  onClick={() => setSlideNumber(index)}
+                />
+              )
+            )}
+          </div>
+          <ButtonArrow onClick={nextSlide} direction="forward" color="red" />
+        </Container>
+        <div className={s.rightDecoration} />
       </div>
     </div>
   );

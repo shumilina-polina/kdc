@@ -51,7 +51,7 @@ const News = (props) => {
 
   return (
     <div className={s.news}>
-      <Container>
+      <Container className={s.titleContainer}>
         <Title className>{title}</Title>
       </Container>
       <div className={s.newBackground}>
