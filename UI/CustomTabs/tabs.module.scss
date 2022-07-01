@@ -13,7 +13,7 @@
 .root {
   text-transform: capitalize;
   flex: auto;
-  border: 1px solid $color-black;
+  border: 1px solid $color-black !important;
 }
 
 .selected {
