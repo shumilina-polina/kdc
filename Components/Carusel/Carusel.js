@@ -5,6 +5,9 @@ import ButtonArrow from "UI/ButtonArrow/ButtonArrow";
 import Button from "UI/Button/Button";
 
 import s from "./carusel.module.scss";
+import ModalWindow from "UI/Modal/ModalWindow";
+import Image from "next/image";
+import BuyTicketsWindow from "Components/BuyTicketsWindow/BuyTicketsWindow";
 
 const slides = [
   {
@@ -30,6 +33,7 @@ const slides = [
 
 const Carusel = (props) => {
   const [slideNumber, setSlideNumber] = useState(0);
+  const [isOpen, setOpen] = useState(false)
 
   const {
     data: { getTicketButtonText },
@@ -46,8 +50,6 @@ const Carusel = (props) => {
       setSlideNumber((prev) => prev + 1);
     }
   };
-
-  const handleClick = (e) => {};
 
   return (
     <div className={s.carusel}>
@@ -72,7 +74,7 @@ const Carusel = (props) => {
               <div className={s.container}>
                 <Button
                   className={s.slideButton}
-                  onClick={(e) => handleClick(e)}
+                  onClick={() => setOpen(true)}
                 >
                   {getTicketButtonText}
                 </Button>
@@ -81,6 +83,13 @@ const Carusel = (props) => {
             <img src={slide.image} className={s.poster} />
           </div>
         ))}
+        <ModalWindow
+          isOpen={isOpen}
+          onClose={() => setOpen(false)}
+          title={getTicketButtonText}
+        >
+          <BuyTicketsWindow />
+        </ModalWindow>
       </div>
       <div className={s.actions}>
         <ButtonArrow onClick={prevSlide} direction="back" color="red" />
