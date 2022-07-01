@@ -7,7 +7,9 @@
 }
 
 .decorations {
-  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-left: 1px solid $color-black;
+  border-right: 1px solid $color-black;
 
   & > span {
     width: 100% !important;

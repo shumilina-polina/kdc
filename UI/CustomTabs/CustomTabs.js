@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Typography } from "@mui/material";
 
 import s from "./tabs.module.scss";
+import Container from "UI/Container/Container";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -44,26 +45,33 @@ const CustomTabs = (props) => {
 
   return (
     <Box className={s.main}>
-      <Box className={s.nav}>
-        <Tabs value={value} onChange={handleChange} indicatorColor="none">
-          {titles.map((title, index) => (
-            <Tab
-              label={title}
-              {...a11yProps(index)}
-              disableFocusRipple={false}
-              classes={{
-                root: s.root,
-                selected: s.selected,
-              }}
-            />
-          ))}
-        </Tabs>
-      </Box>
-      {components.map((component, index) => (
-        <TabPanel value={value} index={index}>
-          {component}
-        </TabPanel>
-      ))}
+      <div className={s.wrapper}>
+        <div className={s.divider} />
+        <Container>
+          <Tabs value={value} onChange={handleChange} indicatorColor="none">
+            {titles.map((title, index) => (
+              <Tab
+                label={title}
+                {...a11yProps(index)}
+                disableFocusRipple={false}
+                classes={{
+                  root: s.root,
+                  selected: s.selected,
+                }}
+              />
+            ))}
+          </Tabs>
+        </Container>
+      </div>
+      
+      <Container>
+        {components.map((component, index) => (
+          <TabPanel value={value} index={index}>
+            {component}
+          </TabPanel>
+        ))}
+      </Container>
+      
     </Box>
   );
 };

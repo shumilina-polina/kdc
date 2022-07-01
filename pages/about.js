@@ -30,11 +30,11 @@ export default function Home() {
             height={350}
           />
         </div>
+      </Container>
 
         <div className={s.tabsContainer}>
           <CustomTabs titles={titles} components={[1, 2, 3, 4]} />
         </div>
-      </Container>
 
       <Footer />
     </>
