@@ -19,6 +19,6 @@
 .selected {
   display: flex;
   transition: 0.4s;
-  background-color: rgba($color-red, 1);
+  background-color: rgba($color-red, 1) !important;
   color: $color-white !important;
 }
