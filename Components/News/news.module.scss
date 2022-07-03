@@ -1,5 +1,11 @@
 @import "/styles/styles.scss";
 
+.news {
+  @include mobile-tablet {
+    margin-bottom: 60px;
+  }
+}
+
 .titleContainer {
   padding: 60px 0 20px;
   border-left: 1px solid $color-black;
