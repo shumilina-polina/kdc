@@ -35,3 +35,7 @@
   background-color: rgba($color-red, 1) !important;
   color: $color-white !important;
 }
+
+.tabpanel > div {
+  padding: 0 !important;
+}

@@ -5,6 +5,7 @@ import Footer from "Components/Footer/Footer";
 import Header from "Components/Header/Header";
 import Container from "UI/Container/Container";
 import CustomTabs from "UI/CustomTabs/CustomTabs";
+import HistoryBlock from "Components/HistoryBlock/HistoryBlock";
 import { AboutData } from "shared/constants/pages/AboutData";
 
 import s from "styles/pages/About.module.scss";
@@ -33,7 +34,10 @@ export default function Home() {
       </Container>
 
         <div className={s.tabsContainer}>
-          <CustomTabs titles={titles} components={[1, 2, 3, 4]} />
+          <CustomTabs titles={titles} components={[
+            <HistoryBlock />,
+            2, 3, 4
+          ]} />
         </div>
 
       <Footer />
