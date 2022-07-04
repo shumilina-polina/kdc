@@ -1,5 +1,4 @@
 import cn from "classnames";
-import Image from "next/image";
 
 import Container from "UI/Container/Container";
 

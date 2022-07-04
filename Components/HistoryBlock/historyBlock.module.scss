@@ -1,8 +1,5 @@
 @import "/styles/styles.scss";
 
-.main {
-}
-
 .container {
   padding: 0;
 }
@@ -18,10 +15,19 @@
 
 .space {
   height: 40px;
+
+  @include mobile {
+    display: none;
+  }
 }
 
 .padding {
   padding: 30px 15px;
+  font-family: $font-gravity;
+
+  @include mobile {
+    padding: 10px 15px;
+  }
 }
 
 .bold {
@@ -34,12 +40,20 @@
 
 .borderBottom {
   border-bottom: 1px solid $color-black;
+
+  @include mobile {
+    border: none;
+  }
 }
 
 .borderLeftRight {
   height: 100%;
   border-left: 1px solid $color-black;
   border-right: 1px solid $color-black;
+
+  @include mobile {
+    border: none;
+  }
 }
 
 .title {
@@ -48,12 +62,23 @@
   border-right: 1px solid $color-black;
   font-family: $font-oswald;
   font-size: $fs-large;
+
+  @include mobile {
+    border: none;
+    text-align: center;
+  }
 }
 
 .bio {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   border: 1px solid $color-black;
+
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+    border: none;
+  }
 }
 
 .poster {
@@ -78,10 +103,19 @@
 
 .bio > div > p:first-child {
   border-bottom: 1px solid;
+
+  @include mobile {
+    border: none;
+  }
 }
 
 .house {
   display: flex;
+
+  @include mobile {
+    padding: 20px 0;
+    flex-direction: column;
+  }
 }
 
 .house > div {
@@ -102,6 +136,10 @@
 
 .famous > span:first-child {
   border-right: 1px solid $color-black;
+
+  @include mobile {
+    border: none;
+  }
 }
 
 .famousPosters {
