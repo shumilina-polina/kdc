@@ -1,19 +1,20 @@
 import { useState } from 'react';
-import cn from "classnames";
+import Link from 'next/link';
 
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-import s from "./projectCard.module.scss";
-import Link from 'next/link';
+import cn from "classnames";
 import { routes } from 'shared/enums/pages';
+
+import s from "./projectCard.module.scss";
 
 const ProjectCard = (props) => {
   const {
     variant = 1,
     project: {
-      title="",
-      category="",
-      description=""
+      title,
+      category,
+      description
     }
  } = props;
 
@@ -31,7 +32,7 @@ const ProjectCard = (props) => {
         </Link>
       </div>
       <div className={s.content}>
-        <span className={s.title}>{ title }</span>
+        <span className={s.title}>{ 'title' }</span>
         <span className={s.category}>{ category }</span>
       </div>
       <img

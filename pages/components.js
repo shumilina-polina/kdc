@@ -1,9 +1,10 @@
 import CustomInput from "UI/CustomInput/CustomInput";
 import CustomTabs from "UI/CustomTabs/CustomTabs";
 
-import s from "styles/pages/Components.module.scss";
 import Acordion from "UI/Acordion/Acordion";
 import ProjectCard from "Components/ProjectCard/ProjectCard";
+
+import s from "styles/pages/Components.module.scss";
 
 const Components = () => {
   return (
