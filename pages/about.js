@@ -42,7 +42,7 @@ export default function Home() {
             <HistoryBlock key={`historyBlock`} />,
             2,
             <ProjectsBlock key={`projectsBlock`} />,
-            <GalleryCard />,
+            <GalleryCard key={`galleryBlock`} />,
           ]}
         />
       </div>
