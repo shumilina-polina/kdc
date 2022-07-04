@@ -10,6 +10,7 @@ import { AboutData } from "shared/constants/pages/AboutData";
 import ProjectsBlock from "Components/ProjectsBlock/ProjectsBlock";
 
 import s from "styles/pages/About.module.scss";
+import GalleryCard from "Components/GalleryCard/GalleryCard";
 
 export default function Home() {
   const {
@@ -38,10 +39,11 @@ export default function Home() {
         <CustomTabs
           titles={titles}
           components={[
-          <HistoryBlock key={`historyBlock`} />,
-          2,
-          <ProjectsBlock key={`projectsBlock`} />
-          , 4]}
+            <HistoryBlock key={`historyBlock`} />,
+            2,
+            <ProjectsBlock key={`projectsBlock`} />,
+            <GalleryCard key={`galleryBlock`} />,
+          ]}
         />
       </div>
 
