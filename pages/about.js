@@ -7,9 +7,9 @@ import Container from "UI/Container/Container";
 import CustomTabs from "UI/CustomTabs/CustomTabs";
 import HistoryBlock from "Components/HistoryBlock/HistoryBlock";
 import { AboutData } from "shared/constants/pages/AboutData";
+import ProjectsBlock from "Components/ProjectsBlock/ProjectsBlock";
 
 import s from "styles/pages/About.module.scss";
-import ProjectsBlock from "Components/ProjectsBlock/ProjectsBlock";
 
 export default function Home() {
   const {

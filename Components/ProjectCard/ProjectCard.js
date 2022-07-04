@@ -11,9 +11,9 @@ const ProjectCard = (props) => {
   const {
     variant = 1,
     project: {
-      title,
-      category,
-      description
+      title="",
+      category="",
+      description=""
     }
  } = props;
 
