@@ -1,0 +1,58 @@
+@import "/styles/styles.scss";
+
+$padding: 0 20px;
+
+.poster {
+  position: relative;
+}
+
+.label {
+  position: absolute;
+  padding: 10px;
+  background-color: $color-red;
+  font-size: $fs-normal;
+  color: $color-white;
+}
+
+.thumbnail {
+  display: block;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $color-dark-blue;
+  color: $color-white;
+}
+
+.title {
+  padding: $padding;
+  font-family: $font-oswald;
+}
+
+.content {
+  padding: $padding;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-left: 1px solid $color-black;
+  border-right: 1px solid $color-black;
+}
+
+.text {
+  font-family: $font-gravity;
+}
+
+.price {
+  font-family: $font-oswald;
+}
+
+.footer {
+}
+
+.button {
+  width: 100%;
+}
