@@ -9,6 +9,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import s from "./centerBlock.module.scss";
 import Link from "next/link";
 import Image from "next/image";
+import CollectiveCard from "Components/CollectiveCard/CollectiveCard";
 
 const CenterBlock = () => {
     return(
@@ -16,7 +17,7 @@ const CenterBlock = () => {
             <div className={s.borderBottom}>
                 <div className={s.wrapper}>
                     <Container className={cn(s.container, s.borderLeftRight, s.header)}>
-                        <span className={cn(s.title, s.oswald, s.padding)}>Вторая площадка "КДЦ "МОСКОВСКИЙ"</span>
+                        <span className={cn(s.oswald, s.padding)}>Вторая площадка "КДЦ "МОСКОВСКИЙ"</span>
                     </Container>
                 </div>
             </div>
@@ -46,7 +47,7 @@ const CenterBlock = () => {
             <div className={s.borderBottom}>
                 <div className={s.wrapper}>
                     <Container className={cn(s.container, s.borderLeftRight, s.subtitle)}>
-                        <span className={cn(s.padding, s.oswald)}>Ждут на занятия новых участников кружки художественной 
+                        <span className={cn(s.padding, s.oswald, s.title)}>Ждут на занятия новых участников кружки художественной 
                         самодеятельности:</span>
                     </Container>
                 </div>
@@ -54,8 +55,11 @@ const CenterBlock = () => {
 
             <div className={s.borderBottom}>
                 <div className={s.wrapper}>
-                    <Container className={cn(s.container, s.borderLeftRight)}>
-                        Тут идут карточки
+                    <Container className={cn(s.container, s.borderLeftRight, s.collectivesCards)}>
+                        <CollectiveCard />
+                        <CollectiveCard />
+                        <CollectiveCard />
+                        <CollectiveCard />
                     </Container>
                 </div>
             </div>

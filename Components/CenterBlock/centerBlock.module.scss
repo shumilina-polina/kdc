@@ -6,6 +6,10 @@
 
 .padding {
     padding: 30px 15px;
+
+    @include mobile {
+        padding: 15px !important;
+    }
 }
 
 .container {
@@ -39,20 +43,45 @@
 
 .borderBottom {
     border-bottom: 1px solid $color-black;
+
+    @include mobile {
+        border: none;
+    }
 }
 
 .borderLeftRight {
     height: 100%;
     border-left: 1px solid $color-black;
     border-right: 1px solid $color-black;
+
+    @include mobile {
+        border: none;
+    }
 }
 
 .borderRight {
     border-right: 1px solid $color-black;
+
+    @include mobile {
+        border: none;
+    }
 }
 
 .header {
     padding: 30px 0;
+
+    @include mobile {
+        padding: 0;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.header > span {
+    font-size: $fs-large;
+    @include mobile {
+        text-align: center;
+    }
 }
 
 .title {
@@ -63,6 +92,10 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
+
+    @include mobile {
+        grid-template-columns: 1fr;
+    }
 }
 
 .description > p:first-child {
@@ -78,7 +111,20 @@
 .subtitle {
     padding-top: 30px;
     padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
     font-size: $fs-large;
+}
+
+.subtitle > span {
+    text-align: center;
+}
+
+.collectivesCards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px 13px;
 }
 
 .seeAll {
@@ -99,12 +145,20 @@
 .footer {
     display: grid;
     grid-template-columns: 1fr 4fr;
+
+    @include mobile {
+        grid-template-columns: 1fr;
+    }
 }
 
 .contacts {
     margin-top: 30px;
     display: flex;
     gap: 30px;
+
+    @include mobile {
+        flex-direction: column;
+    }
 }
 
 .contacts > div {
@@ -116,4 +170,5 @@
 .link {
     text-decoration: none;
     color: inherit;
+    font-size: $fs-normal;
 }
