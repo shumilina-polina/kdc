@@ -6,12 +6,12 @@ import Header from "Components/Header/Header";
 import Container from "UI/Container/Container";
 import CustomTabs from "UI/CustomTabs/CustomTabs";
 import HistoryBlock from "Components/HistoryBlock/HistoryBlock";
-import { AboutData } from "shared/constants/pages/AboutData";
 import ProjectsBlock from "Components/ProjectsBlock/ProjectsBlock";
+import CenterBlock from "Components/CenterBlock/CenterBlock";
+import GalleryBlock from "Components/GalleryBlock/GalleryBlock";
+import { AboutData } from "shared/constants/pages/AboutData";
 
 import s from "styles/pages/About.module.scss";
-import GalleryCard from "Components/GalleryCard/GalleryCard";
-import GalleryBlock from "Components/GalleryBlock/GalleryBlock";
 
 export default function Home() {
   const {
@@ -41,7 +41,7 @@ export default function Home() {
           titles={titles}
           components={[
             <HistoryBlock key={`historyBlock`} />,
-            2,
+            <CenterBlock key={`centerBlock`} />,
             <ProjectsBlock key={`projectsBlock`} />,
             <GalleryBlock key={`galleryBlock`} />,
           ]}
