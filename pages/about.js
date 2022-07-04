@@ -9,6 +9,7 @@ import HistoryBlock from "Components/HistoryBlock/HistoryBlock";
 import { AboutData } from "shared/constants/pages/AboutData";
 
 import s from "styles/pages/About.module.scss";
+import ProjectsBlock from "Components/ProjectsBlock/ProjectsBlock";
 
 export default function Home() {
   const {
@@ -36,7 +37,11 @@ export default function Home() {
       <div className={s.tabsContainer}>
         <CustomTabs
           titles={titles}
-          components={[<HistoryBlock key={`historyBlock`} />, 2, 3, 4]}
+          components={[
+          <HistoryBlock key={`historyBlock`} />,
+          2,
+          <ProjectsBlock />
+          , 4]}
         />
       </div>
 
