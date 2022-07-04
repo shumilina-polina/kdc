@@ -1,118 +1,117 @@
 @import "/styles/styles.scss";
 
 .main {
-    
 }
 
 .container {
-    padding: 0;
+  padding: 0;
 }
 
 .wrapper {
-    padding: 0 20px;
-    height: 100%;
+  padding: 0 20px;
+  height: 100%;
 
-    @include mobile-tablet {
-        padding: 0;
-    }
+  @include mobile-tablet {
+    padding: 0;
+  }
 }
 
 .space {
-    height: 40px;
+  height: 40px;
 }
 
 .padding {
-    padding: 30px 15px;
+  padding: 30px 15px;
 }
 
 .bold {
-    font-weight: $fw-bold;
+  font-weight: $fw-bold;
 }
 
 .oswald {
-    font-family: $font-oswald;
+  font-family: $font-oswald;
 }
 
 .borderBottom {
-    border-bottom: 1px solid $color-black;
+  border-bottom: 1px solid $color-black;
 }
 
 .borderLeftRight {
-    height: 100%;
-    border-left: 1px solid $color-black;
-    border-right: 1px solid $color-black;
+  height: 100%;
+  border-left: 1px solid $color-black;
+  border-right: 1px solid $color-black;
 }
 
 .title {
-    padding: 20px 0;
-    border-left: 1px solid $color-black;
-    border-right: 1px solid $color-black;
-    font-family: $font-oswald;
-    font-size: $fs-large;
+  padding: 20px 0;
+  border-left: 1px solid $color-black;
+  border-right: 1px solid $color-black;
+  font-family: $font-oswald;
+  font-size: $fs-large;
 }
 
 .bio {
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    border: 1px solid $color-black;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border: 1px solid $color-black;
 }
 
 .poster {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .bio > div {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .bio > div > p {
-    padding-right: 15%;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    font-family: $font-gravity;
-    font-weight: $fw-medium;
+  padding-right: 15%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  font-family: $font-gravity;
+  font-weight: $fw-medium;
 }
 
 .bio > div > p:first-child {
-    border-bottom: 1px solid;
+  border-bottom: 1px solid;
 }
 
 .house {
-    display: flex
+  display: flex;
 }
 
 .house > div {
-    flex: 1;
+  flex: 1;
 }
 
 .thumbnail {
-    flex: 2;
-    display: block;
-    width: 100%;
-    height: 100%;
+  flex: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .famous {
-    display: grid;
-    grid-template-columns: 1fr 4fr;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
 }
 
 .famous > span:first-child {
-    border-right: 1px solid $color-black;
+  border-right: 1px solid $color-black;
 }
 
 .famousPosters {
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .famousPoster {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

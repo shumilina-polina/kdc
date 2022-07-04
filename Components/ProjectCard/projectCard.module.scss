@@ -1,0 +1,45 @@
+@import "/styles/styles.scss";
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $color-black;
+}
+
+.content {
+  position: absolute;
+  padding: 0 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.title {
+  max-width: 80%;
+  text-shadow: 1px 1px 50px rgba(0, 0, 0, 0.15);
+  font-family: $font-oswald;
+  font-size: $fs-large;
+
+  @include mobile {
+    font-size: 1.1em;
+  }
+}
+
+.category {
+  text-shadow: 1px 1px 50px rgba(0, 0, 0, 0.15);
+  font-family: $font-gravity;
+  font-size: $fs-normal;
+  text-transform: uppercase;
+
+  @include mobile {
+    font-size: $fs-small;
+  }
+}
+
+.thumbnail {
+  width: 100%;
+  display: block;
+}
