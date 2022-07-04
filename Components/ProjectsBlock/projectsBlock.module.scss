@@ -1,0 +1,16 @@
+@import "/styles/styles.scss";
+
+.wrapper {
+    padding-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    border-left: 1px solid $color-black;
+    border-right: 1px solid $color-black;
+
+    @include mobile-tablet {
+        padding: 0px 20px;
+        justify-content: center;
+    }
+}
