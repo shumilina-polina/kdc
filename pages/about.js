@@ -40,7 +40,7 @@ export default function Home() {
           components={[
           <HistoryBlock key={`historyBlock`} />,
           2,
-          <ProjectsBlock />
+          <ProjectsBlock key={`projectsBlock`} />
           , 4]}
         />
       </div>
