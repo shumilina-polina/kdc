@@ -67,12 +67,12 @@ const CustomTabs = (props) => {
       </Box>
 
       {components.map((component, index) => (
-      <TabPanel className={s.tabpanel} value={value} index={index}>
-        {component}
-      </TabPanel>
+        <TabPanel className={s.tabpanel} value={value} index={index}>
+          {component}
+        </TabPanel>
       ))}
     </>
-  )
-}
+  );
+};
 
 export default CustomTabs;

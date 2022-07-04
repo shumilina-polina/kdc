@@ -33,12 +33,12 @@ export default function Home() {
         </div>
       </Container>
 
-        <div className={s.tabsContainer}>
-          <CustomTabs titles={titles} components={[
-            <HistoryBlock key={`historyBlock`} />,
-            2, 3, 4
-          ]} />
-        </div>
+      <div className={s.tabsContainer}>
+        <CustomTabs
+          titles={titles}
+          components={[<HistoryBlock key={`historyBlock`} />, 2, 3, 4]}
+        />
+      </div>
 
       <Footer />
     </>
