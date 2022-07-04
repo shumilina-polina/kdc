@@ -47,14 +47,6 @@ const Components = () => {
             График работы кассы: ВТ-ПТ: 12.00 - 19.00 СБ: 12.00 - 16.00"
           />
         </div>
-
-        <div>
-          <h2>Cards</h2>
-          <ProjectCard variant={1} />
-          <ProjectCard variant={2} />
-          <ProjectCard variant={3} />
-          <ProjectCard variant={4} />
-        </div>
       </div>
     </>
   );

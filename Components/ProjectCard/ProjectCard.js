@@ -32,7 +32,7 @@ const ProjectCard = (props) => {
         </Link>
       </div>
       <div className={s.content}>
-        <span className={s.title}>{ 'title' }</span>
+        <span className={s.title}>{ title }</span>
         <span className={s.category}>{ category }</span>
       </div>
       <img
