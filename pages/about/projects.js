@@ -3,7 +3,7 @@ import Header from "Components/Header/Header";
 import ProjectsBlock from "Components/ProjectsBlock/ProjectsBlock";
 
 const ProjectPage = () => {
-  return(
+  return (
     <>
       <Header />
 
@@ -11,7 +11,7 @@ const ProjectPage = () => {
 
       <Footer />
     </>
-  )
+  );
 };
 
 export default ProjectPage;

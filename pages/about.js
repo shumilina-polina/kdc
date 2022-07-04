@@ -39,11 +39,11 @@ export default function Home() {
         <CustomTabs
           titles={titles}
           components={[
-          <HistoryBlock key={`historyBlock`} />,
-          2,
-          <ProjectsBlock key={`projectsBlock`} />,
-          <GalleryCard />
-        ]}
+            <HistoryBlock key={`historyBlock`} />,
+            2,
+            <ProjectsBlock key={`projectsBlock`} />,
+            <GalleryCard />,
+          ]}
         />
       </div>
 

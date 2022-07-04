@@ -49,38 +49,38 @@
 }
 
 .hidden {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(29, 31, 49, 0);
-    font-family: $font-gravity;
-    line-height: 20px;
-    color: $color-white;
-    visibility: hidden;
-    transition: .3s;
-    z-index: 2;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(29, 31, 49, 0);
+  font-family: $font-gravity;
+  line-height: 20px;
+  color: $color-white;
+  visibility: hidden;
+  transition: 0.3s;
+  z-index: 2;
 
-    &.show {
-        visibility: visible;
-        background-color: rgba(29, 31, 49, .9);
-    }
+  &.show {
+    visibility: visible;
+    background-color: rgba(29, 31, 49, 0.9);
+  }
 
-    @include mobile {
-        font-size: $fs-normal;
-    }
+  @include mobile {
+    font-size: $fs-normal;
+  }
 }
 
 .description {
-    padding: 20px;
+  padding: 20px;
 }
 
 .read {
-    position: absolute;
-    right: 10px;
-    bottom: 5px;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    font-size: $fs-normal;
-    color: inherit;
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: $fs-normal;
+  color: inherit;
 }

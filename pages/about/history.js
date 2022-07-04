@@ -3,7 +3,7 @@ import Header from "Components/Header/Header";
 import HistoryBlock from "Components/HistoryBlock/HistoryBlock";
 
 const HistoryPage = () => {
-  return(
+  return (
     <>
       <Header />
 
@@ -11,7 +11,7 @@ const HistoryPage = () => {
 
       <Footer />
     </>
-  )
+  );
 };
 
 export default HistoryPage;
