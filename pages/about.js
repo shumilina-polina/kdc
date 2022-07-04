@@ -7,9 +7,11 @@ import Container from "UI/Container/Container";
 import CustomTabs from "UI/CustomTabs/CustomTabs";
 import HistoryBlock from "Components/HistoryBlock/HistoryBlock";
 import { AboutData } from "shared/constants/pages/AboutData";
+import ProjectsBlock from "Components/ProjectsBlock/ProjectsBlock";
+import CenterBlock from "Components/CenterBlock/CenterBlock";
+import GalleryCard from "Components/GalleryCard/GalleryCard";
 
 import s from "styles/pages/About.module.scss";
-import CenterBlock from "Components/CenterBlock/CenterBlock";
 
 export default function Home() {
   const {
@@ -34,13 +36,17 @@ export default function Home() {
         </div>
       </Container>
 
-        <div className={s.tabsContainer}>
-          <CustomTabs titles={titles} components={[
+      <div className={s.tabsContainer}>
+        <CustomTabs
+          titles={titles}
+          components={[
             <HistoryBlock key={`historyBlock`} />,
             <CenterBlock key={`centerBlock`} />,
-            3, 4
-          ]} />
-        </div>
+            <ProjectsBlock key={`projectsBlock`} />,
+            <GalleryCard key={`galleryBlock`} />,
+          ]}
+        />
+      </div>
 
       <Footer />
     </>
