@@ -18,6 +18,11 @@
   & img {
     object-fit: cover;
   }
+
+  @include mobile {
+    padding-bottom: 0;
+    border: none;
+  }
 }
 
 .tabsContainer {
