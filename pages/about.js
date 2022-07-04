@@ -11,6 +11,7 @@ import ProjectsBlock from "Components/ProjectsBlock/ProjectsBlock";
 
 import s from "styles/pages/About.module.scss";
 import GalleryCard from "Components/GalleryCard/GalleryCard";
+import GalleryBlock from "Components/GalleryBlock/GalleryBlock";
 
 export default function Home() {
   const {
@@ -42,7 +43,7 @@ export default function Home() {
             <HistoryBlock key={`historyBlock`} />,
             2,
             <ProjectsBlock key={`projectsBlock`} />,
-            <GalleryCard key={`galleryBlock`} />,
+            <GalleryBlock key={`galleryBlock`} />,
           ]}
         />
       </div>
