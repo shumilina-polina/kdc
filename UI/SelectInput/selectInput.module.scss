@@ -10,8 +10,7 @@
 }
 
 .select > * {
-  border: 1px solid $color-black !important;
-  border-radius: 0;
+  border: none !important;
 }
 
 .item {
@@ -27,6 +26,6 @@
   height: 100%;
   padding: 0 10px;
   border: none !important;
-  background-color: $color-red;
+  background-color: $color-dark-blue;
   color: $color-white;
 }

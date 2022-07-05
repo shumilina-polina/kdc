@@ -6,10 +6,11 @@ import { routes } from "shared/enums/pages";
 import Button from "UI/Button/Button";
 import Title from "UI/Title/Title";
 
-import s from "./collectives.module.scss";
 import ModalWindow from "UI/Modal/ModalWindow";
 import JoinCollectiveWindow from "Components/JoinCollectiveWindow/JoinCollectiveWindow";
 import Container from "UI/Container/Container";
+
+import s from "./collectives.module.scss";
 
 const collectives = [
   {

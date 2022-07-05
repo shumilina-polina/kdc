@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import cn from "classnames";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -25,7 +26,7 @@ const MenuProps = {
 };
 
 const SelectInput = (props) => {
-  const { label, variants } = props;
+  const { label, variants, className } = props;
 
   const [personName, setPersonName] = useState([]);
 
@@ -38,7 +39,7 @@ const SelectInput = (props) => {
 
   return (
     <div>
-      <FormControl className={s.form}>
+      <FormControl className={cn(s.form, className)}>
         {personName.length < 1 ? (
           <InputLabel classes={{ root: s.root }} shrink={false}>
             {label}

@@ -94,7 +94,6 @@ const Affiche = (props) => {
           </Button>
         </Container>
       </div>
-      
     </div>
   );
 };
