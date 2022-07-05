@@ -92,3 +92,20 @@
     width: 100%;
   }
 }
+
+.loadWrapper {
+    padding: 20px 40px;
+}
+
+.loadmore {
+    padding: 10px 50px;
+    margin: 0 auto;
+    background-color: $color-white;
+    border: 1px solid $color-black;
+    font-family: $font-gravity;
+    color: $color-black;
+
+    @include mobile-tablet {
+        width: 100%;
+    }
+}
