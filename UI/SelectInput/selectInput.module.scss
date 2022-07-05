@@ -1,0 +1,32 @@
+@import "/styles/styles.scss";
+
+.root {
+  color: $color-black !important;
+  font-family: $font-oswald;
+}
+
+.form {
+  width: 300px;
+}
+
+.select > * {
+  border: 1px solid $color-black !important;
+  border-radius: 0;
+}
+
+.item {
+  margin: 10px;
+  border: 1px solid;
+  font-family: $font-gravity;
+  font-size: $fs-normal;
+}
+
+.icon {
+  top: 0;
+  right: 0;
+  height: 100%;
+  padding: 0 10px;
+  border: none !important;
+  background-color: $color-red;
+  color: $color-white;
+}

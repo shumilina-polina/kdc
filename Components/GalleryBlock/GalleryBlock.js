@@ -3,22 +3,18 @@ import Container from "UI/Container/Container";
 
 import s from "./galleryBlock.module.scss";
 
-
-
 const GalleryBlock = () => {
-    return(
-        <Container>
-            <div className={s.wrapper}>
-                <GalleryCard />
-                <GalleryCard />
-                <GalleryCard />
-                <GalleryCard />
-                <GalleryCard />
-            </div>
+  return (
+    <Container>
+      <div className={s.wrapper}>
+        <GalleryCard />
+        <GalleryCard />
+        <GalleryCard />
+        <GalleryCard />
+        <GalleryCard />
+      </div>
+    </Container>
+  );
+};
 
-            
-        </Container>
-    )
-}
-
-export default GalleryBlock
+export default GalleryBlock;

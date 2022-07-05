@@ -1,13 +1,13 @@
 @import "/styles/styles.scss";
 
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    border-left: 1px solid $color-black;
-    border-right: 1px solid $color-black;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-left: 1px solid $color-black;
+  border-right: 1px solid $color-black;
 
-    @include mobile-tablet {
-        border: none;
-    }
+  @include mobile-tablet {
+    border: none;
+  }
 }

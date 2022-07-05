@@ -3,15 +3,15 @@ import Footer from "Components/Footer/Footer";
 import Header from "Components/Header/Header";
 
 const CenterPage = () => {
-  return(
+  return (
     <>
       <Header />
-      
+
       <CenterBlock />
 
       <Footer />
     </>
-  )
+  );
 };
 
 export default CenterPage;
