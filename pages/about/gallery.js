@@ -3,15 +3,15 @@ import GalleryBlock from "Components/GalleryBlock/GalleryBlock";
 import Header from "Components/Header/Header";
 
 const GalleryPage = () => {
-  return(
+  return (
     <>
       <Header />
 
       <GalleryBlock />
 
       <Footer />
-    </>   
-  )
+    </>
+  );
 };
 
 export default GalleryPage;

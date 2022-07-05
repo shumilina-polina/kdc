@@ -1,8 +1,7 @@
 import CustomInput from "UI/CustomInput/CustomInput";
 import CustomTabs from "UI/CustomTabs/CustomTabs";
-
 import Acordion from "UI/Acordion/Acordion";
-import ProjectCard from "Components/ProjectCard/ProjectCard";
+import SelectInput from "UI/SelectInput/SelectInput";
 
 import s from "styles/pages/Components.module.scss";
 
@@ -22,6 +21,22 @@ const Components = () => {
             multiline
             cols={30}
             rows={10}
+          />
+        </div>
+
+        <div>
+          <h2>Custom Select</h2>
+          <SelectInput
+            label="Категории"
+            variants={[
+              "Все",
+              "Вокальные",
+              "Хореографические",
+              "Хоровые",
+              "Оркестровые",
+              "Театральные",
+              "Оригинального жанра",
+            ]}
           />
         </div>
 

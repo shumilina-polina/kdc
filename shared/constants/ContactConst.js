@@ -4,5 +4,5 @@ export const ContactConst = {
   phone: "+7 (932) 343-32-32",
   email: "moscowskykdc.spb.com",
   working: "с 11:00 до 22:00",
-  vk: "http://vk.com/kdc98"
+  vk: "http://vk.com/kdc98",
 };
