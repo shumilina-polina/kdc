@@ -125,7 +125,7 @@ export default function Home() {
         <Container className={s.container}>
           <div className={s.collectives}>
             {collectives.map((collective) => (
-              <CollectiveCard className={s.card} />
+              <CollectiveCard key={`list_collective${collective.id}`} className={s.card} />
             ))}
           </div>
         </Container>
