@@ -1,7 +1,34 @@
 @import "/styles/styles.scss";
 
+.affiche {
+  border-bottom: 1px solid $color-black;
+
+  @include mobile-tablet {
+    border: none;
+  }
+}
+
+.borderWrapper {
+  border-top: 1px solid $color-black;
+
+  @include mobile-tablet {
+    border: none;
+  }
+}
+
+.space {
+  padding: 0;
+  height: 60px;
+  border-left: 1px solid $color-black;
+  border-right: 1px solid $color-black;
+
+  @include mobile-tablet {
+    border: none;
+  }
+}
+
 .assicheContainer {
-  padding: 60px 0 0;
+  padding: 0;
   display: flex;
   border-left: 1px solid $color-black;
   border-right: 1px solid $color-black;

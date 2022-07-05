@@ -23,7 +23,7 @@ const ProjectCard = (props) => {
       onMouseOut={() => setShow(false)}
     >
       <div className={cn(s.hidden, isShow ? s.show : null)}>
-        <p className={s.description}>{`${description.substr(0, 170)}...`}</p>
+        <p className={s.description}>{`${description.substr(0, 300)}...`}</p>
         <Link href={routes.projects}>
           <a className={s.read}>
             Продолжить чтение

@@ -13,7 +13,7 @@ const QuestionWindow = () => {
       </div>
       <div className={s.textareaGroup}>
         <CustomInput label={"Номер телефона"} cols={1} rows={5.5} multiline />
-        <Button className={s.button}>Остаить заявку</Button>
+        <Button className={s.button}>Оставить заявку</Button>
       </div>
     </div>
   );
