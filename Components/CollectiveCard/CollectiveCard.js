@@ -1,3 +1,4 @@
+import cn from "classnames";
 import { routes } from "shared/enums/pages";
 import Button from "UI/Button/Button";
 
@@ -5,9 +6,11 @@ import ButtonArrow from "UI/ButtonArrow/ButtonArrow";
 
 import s from "./collectivesCard.module.scss";
 
-const CollectiveCard = () => {
+const CollectiveCard = (props) => {
+  const { className } = props;
+
   return (
-    <div className={s.card}>
+    <div className={cn(s.card, className)}>
       <div className={s.poster}>
         <div className={s.label}>Открыт набор</div>
         <img

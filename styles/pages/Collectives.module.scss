@@ -1,0 +1,94 @@
+@import "/styles/styles.scss";
+
+.borderBottom {
+  border-bottom: 1px solid $color-black;
+
+  @include mobile-tablet {
+    border: none;
+  }
+}
+
+.wrapper {
+  padding: 0 20px;
+}
+
+.container {
+  padding: 0;
+  border-left: 1px solid $color-black;
+  border-right: 1px solid $color-black;
+
+  @include mobile-tablet {
+    border: none;
+  }
+}
+
+.title {
+  padding: 20px;
+}
+
+.text {
+  padding-right: 10px;
+  font-family: $font-oswald;
+  font-size: $fs-extralarge;
+}
+
+.number {
+  font-family: $font-oswald;
+  font-size: $fs-extralarge;
+  color: $color-red;
+}
+
+.filters {
+  height: 100%;
+  display: flex;
+  border: 1px solid $color-black;
+
+  @include mobile-tablet {
+    flex-direction: column;
+  }
+}
+
+.select {
+  width: 280px;
+
+  @include mobile-tablet {
+    width: 100%;
+  }
+}
+
+.button {
+  width: 100%;
+  height: auto;
+
+  @include mobile-tablet {
+    height: 40px;
+  }
+}
+
+.collectives {
+  padding-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 20px;
+
+  @include mobile-tablet {
+    padding-bottom: 40px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 500px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.card {
+  max-width: 100%;
+
+  & img {
+    width: 100%;
+  }
+}
