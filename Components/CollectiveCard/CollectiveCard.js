@@ -6,32 +6,42 @@ import ButtonArrow from "UI/ButtonArrow/ButtonArrow";
 
 import s from "./collectivesCard.module.scss";
 
+function htmlDecode(input) {
+  const doc = new DOMParser().parseFromString(input, "text/html");
+  return doc.documentElement.textContent;
+}
+
 const CollectiveCard = (props) => {
-  const { className } = props;
+  const {
+    collective: {
+      id,
+      title,
+      acf: { trend, price, kit },
+      x_featured_media: media,
+    },
+    className,
+  } = props;
 
   return (
     <div className={cn(s.card, className)}>
       <div className={s.poster}>
-        <div className={s.label}>Открыт набор</div>
-        <img
-          src="/assets/images/collectiveCard.jpg"
-          className={s.thumbnail}
-          width={300}
-          height={190}
-        />
+        {kit ? <div className={s.label}>Открыт набор</div> : null}
+        <img src={media} className={s.thumbnail} width={300} height={190} />
       </div>
       <div className={s.header}>
-        <span className={s.title}>Фейерверк</span>
+        <span className={s.title}>{htmlDecode(title.rendered)}</span>
         <ButtonArrow
           hasLink
-          href={routes.collectives}
+          href={`${routes.collective}/${id}`}
           direction="forward"
           color="red"
         />
       </div>
       <div className={s.content}>
-        <span className={s.text}>Детская цирковая студия</span>
-        <span className={s.price}>200 р/мес</span>
+        <span className={s.text}>{trend}</span>
+        <span className={s.price}>
+          {price < 1 ? "Бесплатно" : `${price} р/мес`}
+        </span>
       </div>
       <div className={s.footer}>
         <Button hasLink href={routes.collectives} className={s.button}>

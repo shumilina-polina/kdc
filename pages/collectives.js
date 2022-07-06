@@ -1,76 +1,37 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Head from "next/head";
 
 import cn from "classnames";
+import { CollectivesActionTypes } from "store/actionTypes/CollectivesActionTypes";
+import ApiService from "services/apiService";
+import Skeleton from 'react-loading-skeleton'
+
 import CollectiveCard from "Components/CollectiveCard/CollectiveCard";
 import Footer from "Components/Footer/Footer";
 import Header from "Components/Header/Header";
 import Container from "UI/Container/Container";
-
 import SelectInput from "UI/SelectInput/SelectInput";
 import Button from "UI/Button/Button";
 
+import 'react-loading-skeleton/dist/skeleton.css'
 import s from "styles/pages/Collectives.module.scss";
-
-const collectives = [
-  {
-    id: 1,
-    title: "Фейверк",
-    category: "Детская цирковая студия",
-    price: 200,
-    adress: "Московский пр,152",
-  },
-  {
-    id: 2,
-    title: "Фейверк",
-    category: "Детская цирковая студия",
-    price: 200,
-    adress: "Московский пр,152",
-  },
-  {
-    id: 3,
-    title: "Фейверк",
-    category: "Детская цирковая студия",
-    price: 200,
-    adress: "Московский пр,152",
-  },
-  {
-    id: 4,
-    title: "Фейверк",
-    category: "Детская цирковая студия",
-    price: 200,
-    adress: "Московский пр,152",
-  },
-  {
-    id: 5,
-    title: "Фейверк",
-    category: "Детская цирковая студия",
-    price: 200,
-    adress: "Московский пр,152",
-  },
-  {
-    id: 6,
-    title: "Фейверк",
-    category: "Детская цирковая студия",
-    price: 200,
-    adress: "Московский пр,152",
-  },
-  {
-    id: 7,
-    title: "Фейверк",
-    category: "Детская цирковая студия",
-    price: 200,
-    adress: "Московский пр,152",
-  },
-  {
-    id: 8,
-    title: "Фейверк",
-    category: "Детская цирковая студия",
-    price: 200,
-    adress: "Московский пр,152",
-  },
-];
+import CollectivesFilters from "Components/CollectivesFilters/CollectivesFilters";
 
 export default function Home() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    ApiService.getCollectives().then((res) =>
+      dispatch({
+        type: CollectivesActionTypes.FETCH_COLLECTIVES_SUCCESS,
+        payload: res,
+      })
+    );
+  }, []);
+
+  const { loading, collectives } = useSelector((state) => state.collectives);
+
   return (
     <>
       <Head>
@@ -92,48 +53,25 @@ export default function Home() {
       </div>
 
       <div className={s.borderBottom}>
-        <div className={s.wrapper}>
-          <Container className={cn(s.container, s.filters)}>
-            <SelectInput
-              label="Категории"
-              variants={[
-                "Вокальные",
-                "Хореографические",
-                "Хоровые",
-                "Оркестровые",
-                "Театральные",
-                "Оригинального жанра",
-              ]}
-              className={s.select}
-            />
-            <SelectInput
-              label="Стоимость"
-              variants={["Платные", "Бесплатные"]}
-              className={s.select}
-            />
-            <SelectInput
-              label="Адрес"
-              variants={["Московский пр,152", "Ул. Варшавская, 98"]}
-              className={s.select}
-            />
-            <Button className={s.button}>Сбросить выбор</Button>
-          </Container>
-        </div>
+        <CollectivesFilters />
       </div>
 
       <div className={s.wrapper}>
         <Container className={s.container}>
           <div className={s.collectives}>
-            {collectives.map((collective) => (
-              <CollectiveCard key={`list_collective${collective.id}`} className={s.card} />
-            ))}
+            {collectives.map((collective) => loading ? <Skeleton count={15} /> :
+              <CollectiveCard
+                key={`list_collective${collective.id}`}
+                collective={collective}
+                className={s.card}
+              />
+          )}
           </div>
           <div>
             <div className={s.loadWrapper}>
               <Button className={s.loadmore}>Показать еще</Button>
             </div>
           </div>
-          
         </Container>
       </div>
 
