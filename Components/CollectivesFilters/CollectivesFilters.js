@@ -1,7 +1,6 @@
 import cn from "classnames";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import apiService from "services/ApiService";
+import { useDispatch } from "react-redux";
 import { CollectivesActionTypes } from "store/actionTypes/CollectivesActionTypes";
 
 import Button from "UI/Button/Button";
@@ -23,10 +22,10 @@ const CollectivesFilters = () => {
   );
 
   const updateCollectives = () => {
-    const priceFiltersNumbered = []
+    const priceFiltersNumbered = [];
 
-    if ( priceFilter.includes("Бесплатные") ) priceFiltersNumbered.push(0);
-    if ( priceFilter.includes("Платные") ) priceFiltersNumbered.push(99999);
+    if (priceFilter.includes("Бесплатные")) priceFiltersNumbered.push(0);
+    if (priceFilter.includes("Платные")) priceFiltersNumbered.push(99999);
 
     dispatch({
       type: CollectivesActionTypes.UPDATE_FILTERS,

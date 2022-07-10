@@ -6,7 +6,7 @@ import cn from "classnames";
 import { routes } from "shared/enums/pages";
 import { ContactConst } from "shared/constants/ContactConst";
 
-import apiService from "services/ApiService";
+import ApiService from "services/ApiService";
 import Skeleton from "react-loading-skeleton";
 import Container from "UI/Container/Container";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
