@@ -4,7 +4,6 @@ import Head from "next/head";
 
 import { CollectivesActionTypes } from "store/actionTypes/CollectivesActionTypes";
 import { COLLECTIVES_PER_PAGE } from "services/config";
-import ApiService from "services/ApiService";
 import Skeleton from "react-loading-skeleton";
 
 import CollectivesFilters from "Components/CollectivesFilters/CollectivesFilters";
@@ -16,6 +15,7 @@ import Button from "UI/Button/Button";
 
 import "react-loading-skeleton/dist/skeleton.css";
 import s from "styles/pages/Collectives.module.scss";
+import ApiService from "services/ApiService";
 
 export default function Home() {
   const dispatch = useDispatch();
