@@ -60,7 +60,7 @@ const Collectives = (props) => {
           <div className={s.menu}>
             <ul className={s.list}>
               {collectives.map(({ id, value, url }) => (
-                <li className={s.item} key={`collective${id}`}>
+                <li className={s.item} key={`collectiveAbout${id}`}>
                   <Link href={url}>
                     <a className={s.link}>
                       <Image

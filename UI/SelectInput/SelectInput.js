@@ -26,21 +26,24 @@ const MenuProps = {
 };
 
 const SelectInput = (props) => {
-  const { label, variants, className } = props;
+  const { label, variants, className, onSelect } = props;
 
-  const [personName, setPersonName] = useState([]);
+  const [data, setData] = useState([]);
 
   const handleChange = (event) => {
     const {
       target: { value },
     } = event;
-    setPersonName(typeof value === "string" ? value.split(",") : value);
+
+    setData(typeof value === "string" ? value.split(",") : value);
+
+    onSelect(value);
   };
 
   return (
     <div>
       <FormControl className={cn(s.form, className)}>
-        {personName.length < 1 ? (
+        {data.length < 1 ? (
           <InputLabel classes={{ root: s.root }} shrink={false}>
             {label}
           </InputLabel>
@@ -49,7 +52,7 @@ const SelectInput = (props) => {
           labelId="demo-multiple-checkbox-label"
           id="demo-multiple-checkbox"
           multiple
-          value={personName}
+          value={data}
           onChange={handleChange}
           input={<OutlinedInput />}
           renderValue={(selected) => selected.join(", ")}
@@ -60,7 +63,7 @@ const SelectInput = (props) => {
           {variants.map((name) => (
             <MenuItem key={name} value={name} className={s.item}>
               <Checkbox
-                checked={personName.indexOf(name) > -1}
+                checked={data.indexOf(name) > -1}
                 checkedIcon={<img src="/assets/icons/checked.svg" />}
               />
               <ListItemText primary={name} />

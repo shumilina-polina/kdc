@@ -1,194 +1,191 @@
 @import "/styles/styles.scss";
 
 .container {
-    padding: 0;
+  padding: 0;
 }
 
 .space {
-    height: 60px;
-    padding: 0;
+  height: 60px;
+  padding: 0;
 }
 
 .wrapper {
-    padding: 0 20px;
+  padding: 0 20px;
 }
 
 .borderBottom {
-    border-bottom: 1px solid $color-black;
+  border-bottom: 1px solid $color-black;
 
-    @include mobile-tablet {
-        border: none;
-    }
+  @include mobile-tablet {
+    border: none;
+  }
 }
 
 .borderLeftRight {
-    border-left: 1px solid $color-black;
-    border-right: 1px solid $color-black;
+  border-left: 1px solid $color-black;
+  border-right: 1px solid $color-black;
 
-    @include mobile-tablet {
-        border: none;
-    }
+  @include mobile-tablet {
+    border: none;
+  }
 }
 
-.header { 
-    display: flex;
-    align-items: center;
-    border: 1px solid $color-black;
-    border-top: none;
+.header {
+  display: flex;
+  align-items: center;
+  border: 1px solid $color-black;
+  border-top: none;
 
-    & > span {
-        padding: 0 20px;
-        font-family: $font-oswald;
-        font-size: $fs-large;
-    }
+  & > span {
+    padding: 0 20px;
+    font-family: $font-oswald;
+    font-size: $fs-large;
+  }
 
-    @include mobile-tablet {
-        border: none;
-    }
+  @include mobile-tablet {
+    border: none;
+  }
 }
 
 .content {
-    display: grid;
-    grid-template-columns: 2fr 5fr;
-    border: 1px solid $color-black;
-    border-top: none;
-    border-bottom: none;
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  border: 1px solid $color-black;
+  border-top: none;
+  border-bottom: none;
 
-    @include mobile-tablet {
-        border: none;
-    }
+  @include mobile-tablet {
+    border: none;
+  }
 
-    @include mobile {
-        display: block;
-    }
+  @include mobile {
+    display: block;
+  }
 }
 
 .gallery {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .thumbnail {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 
-    &:first-child {
-        grid-column-start: 1;
-        grid-column-end: 3;
-    }
+  &:first-child {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
 }
 
-
-
 .info {
-    font-family: $font-gravity;
+  font-family: $font-gravity;
 }
 
 .title {
-    padding: 10px 20px;
-    border: 1px solid $color-black;
-    border-bottom: 0;
-    font-size: $fs-large;
-    font-family: $font-oswald;
-    
-    @include mobile-tablet {
-        text-align: center;
-    }
+  padding: 10px 20px;
+  border: 1px solid $color-black;
+  border-bottom: 0;
+  font-size: $fs-large;
+  font-family: $font-oswald;
+
+  @include mobile-tablet {
+    text-align: center;
+  }
 }
 
-
 .table {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    align-items: center;
-    font-family: $font-gravity;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  font-family: $font-gravity;
 
-    @include mobile-tablet {
-        display: block;
-    }
+  @include mobile-tablet {
+    display: block;
+  }
 }
 
 .table > div {
-    padding: 10px;
-    height: fill-available;
-    display: flex;
-    align-items: center;
-    gap: 5px 10px;
-    border: 1px solid $color-black;
+  padding: 10px;
+  height: fill-available;
+  display: flex;
+  align-items: center;
+  gap: 5px 10px;
+  border: 1px solid $color-black;
 
-    @include mobile-tablet {
-        justify-content: center;
-    }
+  @include mobile-tablet {
+    justify-content: center;
+  }
 }
 
 .secondary {
-    color: $color-gray;
+  color: $color-gray;
 }
 
 .bold {
-    font-family: $font-oswald;
+  font-family: $font-oswald;
 }
 
 .column {
-    flex-direction: column;
-    align-items: flex-start !important;
+  flex-direction: column;
+  align-items: flex-start !important;
 
-    @include mobile-tablet {
-        align-items: center !important;
-    }
+  @include mobile-tablet {
+    align-items: center !important;
+  }
 }
 
 .button {
-    padding: 0 !important;
+  padding: 0 !important;
 
-    & > button {
-        width: 100%;
-    }
+  & > button {
+    width: 100%;
+  }
 }
 
 .location {
-    grid-column-start: 2;
-    grid-column-end: 4;
-    justify-content: space-between;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  justify-content: space-between;
 }
 
 .descTitle {
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    
-    & > span:first-child {
-        font-size: $fs-large;
-    }
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    @include mobile {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
+  & > span:first-child {
+    font-size: $fs-large;
+  }
+
+  @include mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
 }
 
 .text > p {
-    padding: 20px;
-    font-size: $fs-normal;
-    line-height: 20px;
+  padding: 20px;
+  font-size: $fs-normal;
+  line-height: 20px;
 }
 
 .list {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    text-transform: uppercase;
-    font-size: $fs-small;
-    font-weight: $fw-bold;
-    list-style: none;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-transform: uppercase;
+  font-size: $fs-small;
+  font-weight: $fw-bold;
+  list-style: none;
 }
 
 .item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }

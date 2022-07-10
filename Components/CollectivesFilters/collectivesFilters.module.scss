@@ -1,0 +1,42 @@
+@import "/styles/styles.scss";
+
+.wrapper {
+  padding: 0 20px;
+}
+
+.container {
+  padding: 0;
+  border-left: 1px solid $color-black;
+  border-right: 1px solid $color-black;
+
+  @include mobile-tablet {
+    border: none;
+  }
+}
+
+.filters {
+  height: 100%;
+  display: flex;
+
+  @include mobile-tablet {
+    border: 1px solid $color-black;
+    flex-direction: column;
+  }
+}
+
+.select {
+  width: 280px;
+
+  @include mobile-tablet {
+    width: 100%;
+  }
+}
+
+.button {
+  width: 100%;
+  height: auto;
+
+  @include mobile-tablet {
+    height: 40px;
+  }
+}

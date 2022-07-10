@@ -4,6 +4,8 @@ $padding: 0 20px;
 
 .card {
   max-width: 300px;
+  display: grid;
+  grid-template-rows: 3fr 1fr;
 }
 
 .poster {
@@ -14,12 +16,15 @@ $padding: 0 20px;
   position: absolute;
   padding: 10px;
   background-color: $color-red;
+  font-family: $font-oswald;
   font-size: $fs-normal;
   color: $color-white;
 }
 
 .thumbnail {
   display: block;
+  height: 100%;
+  max-height: 250px;
 }
 
 .header {
@@ -52,9 +57,6 @@ $padding: 0 20px;
 
 .price {
   font-family: $font-oswald;
-}
-
-.footer {
 }
 
 .button {

@@ -1,76 +1,61 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Head from "next/head";
 
-import cn from "classnames";
+import { CollectivesActionTypes } from "store/actionTypes/CollectivesActionTypes";
+import { COLLECTIVES_PER_PAGE } from "services/config";
+import Skeleton from "react-loading-skeleton";
+
+import CollectivesFilters from "Components/CollectivesFilters/CollectivesFilters";
 import CollectiveCard from "Components/CollectiveCard/CollectiveCard";
 import Footer from "Components/Footer/Footer";
 import Header from "Components/Header/Header";
 import Container from "UI/Container/Container";
-
-import SelectInput from "UI/SelectInput/SelectInput";
 import Button from "UI/Button/Button";
 
+import "react-loading-skeleton/dist/skeleton.css";
 import s from "styles/pages/Collectives.module.scss";
-
-const collectives = [
-  {
-    id: 1,
-    title: "Фейверк",
-    category: "Детская цирковая студия",
-    price: 200,
-    adress: "Московский пр,152",
-  },
-  {
-    id: 2,
-    title: "Фейверк",
-    category: "Детская цирковая студия",
-    price: 200,
-    adress: "Московский пр,152",
-  },
-  {
-    id: 3,
-    title: "Фейверк",
-    category: "Детская цирковая студия",
-    price: 200,
-    adress: "Московский пр,152",
-  },
-  {
-    id: 4,
-    title: "Фейверк",
-    category: "Детская цирковая студия",
-    price: 200,
-    adress: "Московский пр,152",
-  },
-  {
-    id: 5,
-    title: "Фейверк",
-    category: "Детская цирковая студия",
-    price: 200,
-    adress: "Московский пр,152",
-  },
-  {
-    id: 6,
-    title: "Фейверк",
-    category: "Детская цирковая студия",
-    price: 200,
-    adress: "Московский пр,152",
-  },
-  {
-    id: 7,
-    title: "Фейверк",
-    category: "Детская цирковая студия",
-    price: 200,
-    adress: "Московский пр,152",
-  },
-  {
-    id: 8,
-    title: "Фейверк",
-    category: "Детская цирковая студия",
-    price: 200,
-    adress: "Московский пр,152",
-  },
-];
+import ApiService from "../services/ApiService";
 
 export default function Home() {
+  const dispatch = useDispatch();
+
+  const {
+    total,
+    loading,
+    collectives,
+    offset,
+    filters: { trend, price, location },
+  } = useSelector((state) => state.collectives);
+
+  useEffect(() => {
+    if (loading) {
+      ApiService.getCollectives(offset, trend, price, location).then((res) => {
+        dispatch({
+          type: CollectivesActionTypes.UPDATE_COLLECTIVES,
+          payload: res,
+        });
+      });
+    }
+  }, [loading]);
+
+  const loadMoreCollectives = () => {
+    if (Number(total) > offset + COLLECTIVES_PER_PAGE) {
+      dispatch({
+        type: CollectivesActionTypes.FETCHING_COLLECTIVES,
+      });
+      ApiService.getCollectives(offset, trend, price, location).then((res) => {
+        dispatch({
+          type: CollectivesActionTypes.UPDATE_COLLECTIVES,
+          payload: {
+            total: res.total,
+            collectives: [...collectives, ...res.collectives],
+          },
+        });
+      });
+    }
+  };
+
   return (
     <>
       <Head>
@@ -85,55 +70,53 @@ export default function Home() {
           <Container className={s.container}>
             <div className={s.title}>
               <span className={s.text}>Коллективы</span>
-              <span className={s.number}>28</span>
+              {loading ? (
+                <Skeleton count={3} />
+              ) : (
+                <span className={s.number}>{total}</span>
+              )}
             </div>
           </Container>
         </div>
       </div>
 
       <div className={s.borderBottom}>
-        <div className={s.wrapper}>
-          <Container className={cn(s.container, s.filters)}>
-            <SelectInput
-              label="Категории"
-              variants={[
-                "Вокальные",
-                "Хореографические",
-                "Хоровые",
-                "Оркестровые",
-                "Театральные",
-                "Оригинального жанра",
-              ]}
-              className={s.select}
-            />
-            <SelectInput
-              label="Стоимость"
-              variants={["Платные", "Бесплатные"]}
-              className={s.select}
-            />
-            <SelectInput
-              label="Адрес"
-              variants={["Московский пр,152", "Ул. Варшавская, 98"]}
-              className={s.select}
-            />
-            <Button className={s.button}>Сбросить выбор</Button>
-          </Container>
-        </div>
+        <CollectivesFilters />
       </div>
 
       <div className={s.wrapper}>
         <Container className={s.container}>
           <div className={s.collectives}>
-            {collectives.map((collective) => (
-              <CollectiveCard key={`list_collective${collective.id}`} className={s.card} />
-            ))}
+            {loading
+              ? [...Array(collectives.length + COLLECTIVES_PER_PAGE)].map(
+                  (e, index) => (
+                    <Skeleton
+                      key={`collectiveCardSkeleton${index}`}
+                      count={15}
+                    />
+                  )
+                )
+              : collectives
+              ? collectives.map((collective) => (
+                  <CollectiveCard
+                    key={`list_collective_${collective.id}`}
+                    collective={collective}
+                    className={s.card}
+                  />
+                ))
+              : "Записей не найдено"}
           </div>
           <div>
             <div className={s.loadWrapper}>
-              <Button className={s.loadmore}>Показать еще</Button>
+              <Button
+                className={s.loadmore}
+                onClick={() => loadMoreCollectives()}
+                disable={loading}
+              >
+                Показать еще
+              </Button>
             </div>
           </div>
-          
         </Container>
       </div>
 

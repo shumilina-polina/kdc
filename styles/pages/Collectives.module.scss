@@ -24,6 +24,13 @@
 
 .title {
   padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  & > span:last-child {
+    min-width: 50px;
+  }
 }
 
 .text {
@@ -36,33 +43,6 @@
   font-family: $font-oswald;
   font-size: $fs-extralarge;
   color: $color-red;
-}
-
-.filters {
-  height: 100%;
-  display: flex;
-  border: 1px solid $color-black;
-
-  @include mobile-tablet {
-    flex-direction: column;
-  }
-}
-
-.select {
-  width: 280px;
-
-  @include mobile-tablet {
-    width: 100%;
-  }
-}
-
-.button {
-  width: 100%;
-  height: auto;
-
-  @include mobile-tablet {
-    height: 40px;
-  }
 }
 
 .collectives {
@@ -94,18 +74,18 @@
 }
 
 .loadWrapper {
-    padding: 20px 40px;
+  padding: 20px 40px;
 }
 
 .loadmore {
-    padding: 10px 50px;
-    margin: 0 auto;
-    background-color: $color-white;
-    border: 1px solid $color-black;
-    font-family: $font-gravity;
-    color: $color-black;
+  padding: 10px 50px;
+  margin: 0 auto;
+  background-color: $color-white;
+  border: 1px solid $color-black;
+  font-family: $font-gravity;
+  color: $color-black;
 
-    @include mobile-tablet {
-        width: 100%;
-    }
+  @include mobile-tablet {
+    width: 100%;
+  }
 }
