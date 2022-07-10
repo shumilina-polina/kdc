@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Head from "next/head";
 
+import ApiService from "services/apiService";
 import { CollectivesActionTypes } from "store/actionTypes/CollectivesActionTypes";
 import { COLLECTIVES_PER_PAGE } from "services/config";
 import Skeleton from "react-loading-skeleton";
@@ -15,7 +16,6 @@ import Button from "UI/Button/Button";
 
 import "react-loading-skeleton/dist/skeleton.css";
 import s from "styles/pages/Collectives.module.scss";
-import ApiService from "../services/ApiService";
 
 export default function Home() {
   const dispatch = useDispatch();
