@@ -15,7 +15,7 @@ import Button from "UI/Button/Button";
 
 import "react-loading-skeleton/dist/skeleton.css";
 import s from "styles/pages/Collectives.module.scss";
-import ApiService from "services/ApiService";
+import ApiService from "../services/ApiService";
 
 export default function Home() {
   const dispatch = useDispatch();
