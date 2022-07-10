@@ -1,17 +1,31 @@
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import cn from "classnames";
 
 import { routes } from "shared/enums/pages";
 import { ContactConst } from "shared/constants/ContactConst";
 
+import apiService from "services/ApiService";
+import Skeleton from "react-loading-skeleton";
 import Container from "UI/Container/Container";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-
-import s from "./centerBlock.module.scss";
-import Link from "next/link";
-import Image from "next/image";
 import CollectiveCard from "Components/CollectiveCard/CollectiveCard";
 
+import "react-loading-skeleton/dist/skeleton.css";
+import s from "./centerBlock.module.scss";
+
 const CenterBlock = () => {
+  const [loading, setLoading] = useState(true);
+  const [collectives, setCollectives] = useState([]);
+
+  useEffect(() => {
+    apiService
+      .getCollectives()
+      .then((res) => setCollectives(res.data))
+      .finally(() => setLoading(false));
+  }, []);
+
   return (
     <div className={s.main}>
       <div className={s.borderBottom}>
@@ -68,10 +82,13 @@ const CenterBlock = () => {
           <Container
             className={cn(s.container, s.borderLeftRight, s.collectivesCards)}
           >
-            <CollectiveCard />
-            <CollectiveCard />
-            <CollectiveCard />
-            <CollectiveCard />
+            {loading ? (
+              <Skeleton count={15} />
+            ) : (
+              collectives.map((collective) => (
+                <CollectiveCard collective={collective} />
+              ))
+            )}
           </Container>
         </div>
       </div>

@@ -13,12 +13,7 @@ function htmlDecode(input) {
 
 const CollectiveCard = (props) => {
   const {
-    collective: {
-      id,
-      title,
-      acf: { trend, price, kit },
-      x_featured_media: media,
-    },
+    collective: { id, title, trend, price, kit, thumbnail },
     className,
   } = props;
 
@@ -26,10 +21,10 @@ const CollectiveCard = (props) => {
     <div className={cn(s.card, className)}>
       <div className={s.poster}>
         {kit ? <div className={s.label}>Открыт набор</div> : null}
-        <img src={media} className={s.thumbnail} width={300} height={190} />
+        <img src={thumbnail} className={s.thumbnail} width={300} height={190} />
       </div>
       <div className={s.header}>
-        <span className={s.title}>{htmlDecode(title.rendered)}</span>
+        <span className={s.title}>{htmlDecode(title)}</span>
         <ButtonArrow
           hasLink
           href={`${routes.collective}/${id}`}

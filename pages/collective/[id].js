@@ -2,10 +2,11 @@ import cn from "classnames";
 import Header from "Components/Header/Header";
 import Footer from "Components/Footer/Footer";
 
-import s from "styles/pages/SingleCollective.module.scss";
 import Container from "UI/Container/Container";
 import ButtonArrow from "UI/ButtonArrow/ButtonArrow";
 import Button from "UI/Button/Button";
+
+import s from "styles/pages/SingleCollective.module.scss";
 
 const SingleColectivePage = () => {
   return (
