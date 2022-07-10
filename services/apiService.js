@@ -2,8 +2,8 @@ import axios from "axios";
 
 import { COLLECTIVES_PER_PAGE } from "./config";
 
-const ApiService = () => {
-  const baseUrl = "https://moscenterspb.space/wp-json/project/v2";
+class ApiService {
+  baseUrl = "https://moscenterspb.space/wp-json/project/v2";
 
   getCollectives = async (
     offset = 0,
@@ -12,13 +12,13 @@ const ApiService = () => {
     location = []
   ) => {
     const url = `${
-      baseUrl
+      this.baseUrl
     }/collectives?per_page=${COLLECTIVES_PER_PAGE}&offset=${offset}${
       trend.length ? `&trend=${[...trend]}` : ""
     }${price.length ? `&price=${[...price]}` : ""}${
       location.length ? `&location=${[...location]}` : ""
     }`;
-    
+
     return await axios
       .get(url)
       .then((res) => res.data)
@@ -26,4 +26,4 @@ const ApiService = () => {
   };
 }
 
-export default ApiService;
+export default new ApiService();
