@@ -31,6 +31,8 @@ export const CollectivesReducer = (state = initialState, action) => {
         offset: state.offset,
         filters: state.filters,
       };
+
+      
     case CollectivesActionTypes.UPDATE_FILTERS:
       return {
         total: state.total,
