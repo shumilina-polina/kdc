@@ -33,7 +33,10 @@ export default function Home() {
       ApiService.getCollectives(offset, trend, price, location).then((res) => {
         dispatch({
           type: CollectivesActionTypes.UPDATE_COLLECTIVES,
-          payload: res,
+          payload: {
+            total: res.total,
+            collectives: [...collectives, ...res.collectives],
+          },
         });
       });
     }
@@ -43,15 +46,6 @@ export default function Home() {
     if (Number(total) > offset + COLLECTIVES_PER_PAGE) {
       dispatch({
         type: CollectivesActionTypes.FETCHING_COLLECTIVES,
-      });
-      ApiService.getCollectives(offset, trend, price, location).then((res) => {
-        dispatch({
-          type: CollectivesActionTypes.UPDATE_COLLECTIVES,
-          payload: {
-            total: res.total,
-            collectives: [...collectives, ...res.collectives],
-          },
-        });
       });
     }
   };
