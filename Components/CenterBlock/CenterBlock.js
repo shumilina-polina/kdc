@@ -23,7 +23,7 @@ const CenterBlock = () => {
     apiService
       .getCollectives()
       .then((res) => setCollectives(res.collectives))
-      // .finally(setLoading(false))
+      .finally(setLoading(false))
   }, []);
 
   return (
