@@ -17,7 +17,7 @@ import Button from "UI/Button/Button";
 import "react-loading-skeleton/dist/skeleton.css";
 import s from "styles/pages/Collectives.module.scss";
 
-export default function CollectivesPage() {
+export default function CollectivesVocalPage() {
   const dispatch = useDispatch();
 
   const {
@@ -75,7 +75,7 @@ export default function CollectivesPage() {
       </div>
 
       <div className={s.borderBottom}>
-        <CollectivesFilters />
+        <CollectivesFilters defaultTrend={["Оригинального жанра"]} />
       </div>
 
       <div className={s.wrapper}>

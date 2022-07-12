@@ -23,7 +23,7 @@ const CenterBlock = () => {
     apiService
       .getCollectives()
       .then((res) => setCollectives(res.collectives))
-      .finally(setLoading(false))
+      .finally(setLoading(false));
   }, []);
 
   return (
@@ -82,13 +82,13 @@ const CenterBlock = () => {
           <Container
             className={cn(s.container, s.borderLeftRight, s.collectivesCards)}
           >
-            {loading ? (
-              [...Array(collectives.length)].map((s,i) => <Skeleton key={`skeleton${{i}}`} />)
-            ) : (
-              collectives.map((collective) => (
-                <CollectiveCard collective={collective} />
-              ))
-            )}
+            {loading
+              ? [...Array(collectives.length)].map((s, i) => (
+                  <Skeleton key={`skeleton${{ i }}`} />
+                ))
+              : collectives.map((collective) => (
+                  <CollectiveCard collective={collective} />
+                ))}
           </Container>
         </div>
       </div>

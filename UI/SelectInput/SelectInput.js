@@ -26,7 +26,7 @@ const MenuProps = {
 };
 
 const SelectInput = (props) => {
-  const { label, variants, className, data=[], setData } = props;
+  const { label, variants, className, data = [], setData } = props;
 
   const handleChange = (event) => {
     const {

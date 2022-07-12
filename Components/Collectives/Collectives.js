@@ -21,12 +21,12 @@ const collectives = [
   {
     id: 2,
     value: "Хореографические",
-    url: "/collectives/",
+    url: "/collectives/choreographic",
   },
   {
     id: 3,
     value: "Оркестровые",
-    url: "/collectives/choreographic",
+    url: "/collectives/orchestral",
   },
   {
     id: 4,
