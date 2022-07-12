@@ -66,6 +66,20 @@
 .gallery {
   display: grid;
   grid-template-columns: 1fr 1fr;
+
+  &.loading {
+    grid-column-gap: 20px;
+  }
+}
+
+.imageSkeleton {
+  width: 100%;
+  height: 100%;
+
+  &:first-child {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
 }
 
 .thumbnail {
@@ -119,6 +133,14 @@
   }
 }
 
+.main div > span:last-child {
+  width: 100%;
+}
+
+.skeleton {
+  width: 100%;
+}
+
 .secondary {
   color: $color-gray;
 }
@@ -148,13 +170,22 @@
   grid-column-start: 2;
   grid-column-end: 4;
   justify-content: space-between;
+
+  & > span:first-child {
+    width: 100%;
+  }
+
+  & > span:last-child {
+    width: auto !important;
+  }
 }
 
 .descTitle {
   padding: 20px;
   display: flex;
+  align-items: end;
   justify-content: space-between;
-  align-items: center;
+  gap: 20px;
 
   & > span:first-child {
     font-size: $fs-large;
@@ -167,8 +198,16 @@
   }
 }
 
-.text > p {
+.text {
   padding: 20px;
+  border-left: 1px solid $color-black;
+
+  @include mobile-tablet {
+    border: none;
+  }
+}
+
+.text > p {
   font-size: $fs-normal;
   line-height: 20px;
 }
@@ -178,10 +217,15 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  border-left: 1px solid $color-black;
   text-transform: uppercase;
   font-size: $fs-small;
   font-weight: $fw-bold;
   list-style: none;
+
+  @include mobile-tablet {
+    border: none;
+  }
 }
 
 .item {

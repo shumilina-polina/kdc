@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import cn from "classnames";
 import Header from "Components/Header/Header";
 import Footer from "Components/Footer/Footer";
@@ -6,9 +7,40 @@ import Container from "UI/Container/Container";
 import ButtonArrow from "UI/ButtonArrow/ButtonArrow";
 import Button from "UI/Button/Button";
 
-import s from "styles/pages/SingleCollective.module.scss";
+import { useEffect, useState } from "react";
+import apiService from "services/apiService";
+import Skeleton from "react-loading-skeleton";
+import { Skeleton as ImageSkeleton } from "@mui/material";
 
-const SingleColectivePage = () => {
+import "react-loading-skeleton/dist/skeleton.css";
+import s from "styles/pages/SingleCollective.module.scss";
+import { routes } from "shared/enums/pages";
+import ModalWindow from "UI/Modal/ModalWindow";
+import JoinCollectiveWindow from "Components/JoinCollectiveWindow/JoinCollectiveWindow";
+
+function htmlDecode(input) {
+  const doc = new DOMParser().parseFromString(input, "text/html");
+  return doc.documentElement.textContent;
+}
+
+const SingleColectivePage = (props) => {
+  const {
+    isReady,
+    query: { id },
+  } = useRouter();
+  const [loading, setLoading] = useState(true);
+  const [collective, setCollective] = useState(null);
+  const [isOpne, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (isReady) {
+      apiService.getCollectiveByID(id).then((res) => {
+        setLoading(false);
+        setCollective(res);
+      });
+    }
+  }, [isReady]);
+
   return (
     <>
       <Header />
@@ -22,66 +54,108 @@ const SingleColectivePage = () => {
       <div className={s.main}>
         <Container>
           <div className={s.header}>
-            <ButtonArrow direction="back" color="red" />
+            <ButtonArrow
+              direction="back"
+              color="red"
+              href={routes.collectives}
+              hasLink
+            />
             <span>Все коллективы</span>
           </div>
           <div className={s.content}>
-            <div className={s.gallery}>
-              <img
-                className={s.thumbnail}
-                src="/assets/images/singlecollective1.jpg"
-              />
-              <img
-                className={s.thumbnail}
-                src="/assets/images/singlecollective2.jpg"
-              />
-              <img
-                className={s.thumbnail}
-                src="/assets/images/singlecollective3.jpg"
-              />
-              <img
-                className={s.thumbnail}
-                src="/assets/images/singlecollective4.jpg"
-              />
-              <img
-                className={s.thumbnail}
-                src="/assets/images/singlecollective2.jpg"
-              />
+            <div className={cn(s.gallery, loading ? s.loading : null)}>
+              {loading ? (
+                <ImageSkeleton className={s.imageSkeleton} />
+              ) : (
+                <img className={s.thumbnail} src={collective.thumbnail} />
+              )}
+              {loading ? (
+                <ImageSkeleton className={s.skeleton} />
+              ) : (
+                <img className={s.thumbnail} src={collective.snap1} />
+              )}
+              {loading ? (
+                <ImageSkeleton className={s.skeleton} />
+              ) : (
+                <img className={s.thumbnail} src={collective.snap2} />
+              )}
+              {loading ? (
+                <ImageSkeleton className={s.skeleton} />
+              ) : (
+                <img className={s.thumbnail} src={collective.snap3} />
+              )}
+              {loading ? (
+                <ImageSkeleton className={s.skeleton} />
+              ) : (
+                <img className={s.thumbnail} src={collective.snap4} />
+              )}
             </div>
             <div className={s.info}>
               <div className={cn(s.title, s.borderBottom)}>
-                <h2>Ясные ночи</h2>
+                {loading ? (
+                  <Skeleton />
+                ) : (
+                  <h2>{htmlDecode(collective.title)}</h2>
+                )}
               </div>
               <div className={s.table}>
                 <div className={s.column}>
                   <span className={s.secondary}>Направление:</span>
-                  <span className={s.bold}>Вокальные</span>
+                  {loading ? (
+                    <Skeleton />
+                  ) : (
+                    <span className={s.bold}>{collective.trend}</span>
+                  )}
                 </div>
                 <div className={s.column}>
                   <span className={s.secondary}>Стоимость:</span>
-                  <span className={s.bold}>Бесплатно</span>
+                  {loading ? (
+                    <Skeleton />
+                  ) : (
+                    <span className={s.bold}>
+                      {collective.price == 0
+                        ? "Бесплатно"
+                        : `${collective.price} руб.`}
+                    </span>
+                  )}
                 </div>
                 <div className={s.column}>
                   <span className={s.secondary}>Групповые занятия:</span>
-                  <span className={s.bold}>11.00- 14.00 (вт, ср, пт)</span>
+                  {loading ? (
+                    <Skeleton />
+                  ) : (
+                    <span className={s.bold}>{collective.timetable}</span>
+                  )}
                 </div>
                 <div>
                   <span className={s.secondary}>Контакты:</span>
-                  <span className={s.bold}>241-54-81</span>
+                  {loading ? (
+                    <Skeleton />
+                  ) : (
+                    <span className={s.bold}>{collective.phone}</span>
+                  )}
                 </div>
                 <div>
                   <span className={s.secondary}>Категория:</span>
-                  <span className={s.bold}>16 – 35 лет</span>
+                  {loading ? (
+                    <Skeleton />
+                  ) : (
+                    <span className={s.bold}>{collective.limits}</span>
+                  )}
                 </div>
                 <div className={s.button}>
-                  <Button>Записаться</Button>
+                  <Button onClick={() => setOpen(true)}>Записаться</Button>
                 </div>
                 <div>
                   <span className={s.secondary}>Адрес:</span>
-                  <span className={s.bold}>Московский пр. 152 </span>
+                  {loading ? (
+                    <Skeleton />
+                  ) : (
+                    <span className={s.bold}>{collective.location}</span>
+                  )}
                 </div>
                 <div className={s.location}>
-                  <span>25 кл., Малый зал, Большой зал, Арт-пространство</span>
+                  {loading ? <Skeleton /> : <span>{collective.classroom}</span>}
                   <span className={s.icon}>
                     <img src="/assets/icons/location.svg" />
                   </span>
@@ -92,21 +166,22 @@ const SingleColectivePage = () => {
                   className={cn(s.descTitle, s.borderBottom, s.borderLeftRight)}
                 >
                   <span className={s.bold}>Описание</span>
-                  <span className={s.secondary}>
-                    Народный коллектив театр песни
-                  </span>
+                  {loading ? (
+                    <Skeleton />
+                  ) : (
+                    <span className={s.secondary}>
+                      {htmlDecode(collective.title)}
+                    </span>
+                  )}
                 </div>
                 <div className={s.text}>
-                  <p className={s.padding}>
-                    Ясные ночи — это яркий сплочённый коллектив молодых
-                    современных людей, создающих незабываемое, доброе и умное
-                    шоу. Авторские песни и оригинальные каверы, складываются в
-                    единую сюжетную линию. Сохраняя общую тенденцию ансамбля,
-                    коллектив постоянно расширяет свой репертуар, ищет новые
-                    сценические формы, объединяя в своих выступлениях вокальное,
-                    хореографическое и театральное искусство. Театр песни «Ясные
-                    ночи» постоянный участник различных городских мероприятий.
-                  </p>
+                  {loading ? (
+                    <Skeleton count={10} />
+                  ) : (
+                    <p className={s.padding}>
+                      {htmlDecode(collective.content)}
+                    </p>
+                  )}
                 </div>
               </div>
               <div className={s.timetable}>
@@ -144,6 +219,14 @@ const SingleColectivePage = () => {
           </div>
         </Container>
       </div>
+
+      <ModalWindow
+        title="Запись в коллектив"
+        isOpen={isOpne}
+        onClose={() => setOpen(false)}
+      >
+        <JoinCollectiveWindow collective={collective} />
+      </ModalWindow>
 
       <Footer />
     </>
