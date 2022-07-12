@@ -13,6 +13,7 @@ import CollectiveCard from "Components/CollectiveCard/CollectiveCard";
 
 import "react-loading-skeleton/dist/skeleton.css";
 import s from "./centerBlock.module.scss";
+import apiService from "services/apiService";
 
 const CenterBlock = () => {
   const [loading, setLoading] = useState(true);
@@ -21,8 +22,8 @@ const CenterBlock = () => {
   useEffect(() => {
     apiService
       .getCollectives()
-      .then((res) => setCollectives(res.data))
-      .finally(() => setLoading(false));
+      .then((res) => setCollectives(res.collectives))
+      .finally(setLoading(false))
   }, []);
 
   return (
@@ -82,7 +83,7 @@ const CenterBlock = () => {
             className={cn(s.container, s.borderLeftRight, s.collectivesCards)}
           >
             {loading ? (
-              <Skeleton count={15} />
+              [...Array(collectives.length)].map((s,i) => <Skeleton key={`skeleton${{i}}`} />)
             ) : (
               collectives.map((collective) => (
                 <CollectiveCard collective={collective} />
