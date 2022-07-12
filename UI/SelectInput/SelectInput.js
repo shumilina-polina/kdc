@@ -26,9 +26,7 @@ const MenuProps = {
 };
 
 const SelectInput = (props) => {
-  const { label, variants, className, onSelect } = props;
-
-  const [data, setData] = useState([]);
+  const { label, variants, className, data=[], setData } = props;
 
   const handleChange = (event) => {
     const {
@@ -36,8 +34,6 @@ const SelectInput = (props) => {
     } = event;
 
     setData(typeof value === "string" ? value.split(",") : value);
-
-    onSelect(value);
   };
 
   return (
@@ -59,6 +55,7 @@ const SelectInput = (props) => {
           MenuProps={MenuProps}
           className={s.select}
           classes={{ icon: s.icon }}
+          z
         >
           {variants.map((name) => (
             <MenuItem key={name} value={name} className={s.item}>

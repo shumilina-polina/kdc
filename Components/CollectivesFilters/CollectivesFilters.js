@@ -37,6 +37,20 @@ const CollectivesFilters = () => {
     });
   };
 
+  const resetFilters = () => {
+    dispatch({
+      type: CollectivesActionTypes.UPDATE_FILTERS,
+      payload: {
+        trend: [],
+        price: [],
+        location: [],
+      },
+    });
+    setTrendFilter([]);
+    setPriceFilter([]);
+    setLocationFilter([]);
+  };
+
   return (
     <div className={s.wrapper}>
       <Container className={cn(s.container, s.filters)}>
@@ -51,21 +65,25 @@ const CollectivesFilters = () => {
             "Оригинального жанра",
           ]}
           className={s.select}
-          onSelect={setTrendFilter}
+          data={trendFilter}
+          setData={setTrendFilter}
         />
         <SelectInput
           label="Стоимость"
           variants={["Платные", "Бесплатные"]}
           className={s.select}
-          onSelect={setPriceFilter}
+          data={priceFilter}
+          setData={setPriceFilter}
         />
         <SelectInput
           label="Адрес"
           variants={["Московский пр. 152", "Ул. Варшавская, 98"]}
-          className={s.select}
-          onSelect={setLocationFilter}
+          data={locationFilter}
+          setData={setLocationFilter}
         />
-        <Button className={s.button}>Сбросить выбор</Button>
+        <Button className={s.button} onClick={resetFilters}>
+          Сбросить выбор
+        </Button>
       </Container>
     </div>
   );
