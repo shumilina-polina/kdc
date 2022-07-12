@@ -9,8 +9,10 @@ import SelectInput from "UI/SelectInput/SelectInput";
 
 import s from "./collectivesFilters.module.scss";
 
-const CollectivesFilters = () => {
-  const [trendFilter, setTrendFilter] = useState([]);
+const CollectivesFilters = (props) => {
+  const { defaultTrend = [] } = props;
+
+  const [trendFilter, setTrendFilter] = useState(defaultTrend);
   const [priceFilter, setPriceFilter] = useState([]);
   const [locationFilter, setLocationFilter] = useState([]);
 
