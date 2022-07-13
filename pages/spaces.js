@@ -7,12 +7,13 @@ import cn from "classnames";
 import Container from "UI/Container/Container";
 import SpaceCard from "Components/SpaceCard/SpaceCard";
 
-import s from "styles/pages/Spaces.module.scss";
 import { useEffect, useState } from "react";
 import apiService from "services/apiService";
 import { Skeleton } from "@mui/material";
 import Button from "UI/Button/Button";
 import { SPACES_PER_PAGE } from "services/config";
+
+import s from "styles/pages/Spaces.module.scss";
 
 export default function Home() {
   const [spaces, setSpaces] = useState([]);
@@ -32,6 +33,7 @@ export default function Home() {
       apiService
         .getSpaces(offset)
         .then((res) => {
+          console.log(res)
           setTotalSpaces(Number(res.total));
           setSpaces([...spaces, ...res.spaces]);
         })
