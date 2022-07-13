@@ -3,11 +3,12 @@
 $table-padding: 15px;
 
 .container {
-  display: flex;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
 
   @include mobile {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 }
 
@@ -100,14 +101,22 @@ $table-padding: 15px;
 .fields {
   margin-top: 20px;
   margin-bottom: 20px;
-  margin-right: 20px;
+  padding-right: 20px;
+
+  @include mobile-tablet {
+    margin-top: 0;
+  }
+}
+
+.fieldsWrapper {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 15px;
+  padding-right: 20px;
 
   @include mobile-tablet {
-    margin-top: 0;
+    padding-right: 0;
   }
 }
 
