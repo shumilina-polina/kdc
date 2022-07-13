@@ -79,7 +79,7 @@ export default function Home() {
               {loading ? (
                 <Skeleton />
               ) : (
-                <span className={cn(s.oswald, s.counter)}>{totalSpaces}</span>
+                <span className={cn(s.oswald, s.counter)}>{Number(totalSpaces)}</span>
               )}
             </Container>
           </div>
