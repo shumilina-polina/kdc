@@ -21,25 +21,38 @@ export default function Home() {
 
       <main>
         <div className={s.borderBottom}>
-          <Container className={cn(s.container, s.borderLeftRight, s.title)}>
-            <span className={cn(s.oswald)}>Карта КДЦ “Московский”</span>
-          </Container>
-        </div>
-        
-        <div className={s.borderBottom}>
-          <Container className={cn(s.container, s.borderLeftRight, s.map)}>
-
-          </Container>
-        </div>
-        
-        <div className={s.borderBottom}>
-          <Container className={cn(s.container, s.borderLeftRight, s.title, s.spacesTitle)}>
-            <span className={cn(s.oswald)}>Пространства</span>
-            <span className={cn(s.oswald, s.counter)}>7</span>
-          </Container>
+          <div className={s.padding}>
+            <Container className={cn(s.container, s.borderLeftRight, s.title)}>
+              <span className={cn(s.oswald)}>Карта КДЦ “Московский”</span>
+            </Container>
+          </div>
         </div>
 
-        <div>
+        <div className={s.borderBottom}>
+          <div className={s.padding}>
+            <Container
+              className={cn(s.container, s.borderLeftRight, s.map)}
+            ></Container>
+          </div>
+        </div>
+
+        <div className={s.borderBottom}>
+          <div className={s.padding}>
+            <Container
+              className={cn(
+                s.container,
+                s.borderLeftRight,
+                s.title,
+                s.spacesTitle
+              )}
+            >
+              <span className={cn(s.oswald)}>Пространства</span>
+              <span className={cn(s.oswald, s.counter)}>7</span>
+            </Container>
+          </div>
+        </div>
+
+        <Container>
           <Container className={cn(s.container, s.borderLeftRight, s.cards)}>
             <SpaceCard />
             <SpaceCard />
@@ -47,8 +60,7 @@ export default function Home() {
             <SpaceCard />
             <SpaceCard />
           </Container>
-        </div>
-        
+        </Container>
       </main>
 
       <Footer />
