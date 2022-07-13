@@ -1,7 +1,7 @@
 import axios from "axios";
 
 class ApiService {
-  baseUrl = "https://moscenterspb.space/wp-json/project/v2";
+  baseUrl = "http://localhost/dashboard/wp-json/project/v2";
   //global "https://moscenterspb.space/wp-json/project/v2"
   //local "http://localhost/dashboard/wp-json/project/v2"
 
@@ -31,7 +31,7 @@ class ApiService {
     return axios
       .get(url)
       .then((res) => ({
-        total: res.data.headers[9].replace("X-WP-Total: ", ""),
+        total: res.data.total,
         spaces: res.data.spaces,
       }))
       .catch((error) => error);
