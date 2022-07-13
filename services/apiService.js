@@ -1,7 +1,7 @@
 import axios from "axios";
 
 class ApiService {
-  baseUrl = "http://localhost/dashboard/wp-json/project/v2";
+  baseUrl = "https://moscenterspb.space/wp-json/project/v2";
   //global "https://moscenterspb.space/wp-json/project/v2"
   //local "http://localhost/dashboard/wp-json/project/v2"
 
