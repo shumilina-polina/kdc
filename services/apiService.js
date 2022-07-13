@@ -2,6 +2,8 @@ import axios from "axios";
 
 class ApiService {
   baseUrl = "https://moscenterspb.space/wp-json/project/v2";
+  //global "https://moscenterspb.space/wp-json/project/v2"
+  //local "http://localhost/dashboard/wp-json/project/v2"
 
   getCollectives = (offset = 0, trend = [], price = [], location = []) => {
     const url = `${this.baseUrl}/collectives?offset=${offset}${
@@ -9,8 +11,6 @@ class ApiService {
     }${price.length ? `&price=${[...price]}` : ""}${
       location.length ? `&location=${[...location]}` : ""
     }`;
-    console.log(url);
-
     return axios
       .get(url)
       .then((res) => res.data)
@@ -19,11 +19,21 @@ class ApiService {
 
   getCollectiveByID = (id) => {
     const url = `${this.baseUrl}/collectives?id=${id}`;
-    console.log(url);
-
     return axios
       .get(url)
       .then((res) => res.data)
+      .catch((error) => error);
+  };
+
+  getSpaces = (offset = 0) => {
+    const url = `${this.baseUrl}/spaces?offset=${offset}`;
+    console.log(url);
+    return axios
+      .get(url)
+      .then((res) => ({
+        total: res.data.headers[9].replace("X-WP-Total: ", ""),
+        spaces: res.data.spaces,
+      }))
       .catch((error) => error);
   };
 }

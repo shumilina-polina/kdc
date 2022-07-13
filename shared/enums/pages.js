@@ -5,6 +5,7 @@ export const routes = {
   collectives: "/collectives",
   collective: "/collective",
   spaces: "/spaces",
+  space: "/space",
   contacts: "/contacts",
   news: "/news",
   history: "/about/history",

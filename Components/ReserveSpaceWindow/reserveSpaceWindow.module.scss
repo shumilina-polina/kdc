@@ -1,0 +1,125 @@
+@import "/styles/styles.scss";
+
+$table-padding: 15px;
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.poster {
+  width: 320px;
+  height: 160px;
+  display: block;
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.mobilePoster {
+  @include mobile {
+    display: block;
+    object-fit: cover;
+    max-width: 100%;
+    height: 100%;
+  }
+}
+
+.table {
+  border: 1px solid $color-black;
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.tableMobile {
+  display: none;
+  border: 1px solid $color-black;
+
+  @include mobile {
+    display: block;
+  }
+}
+
+.title {
+  padding: $table-padding;
+  border-bottom: 1px solid $color-black;
+}
+
+.titleMobile {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid $color-black;
+}
+
+.category {
+  padding: $table-padding;
+  border-bottom: 1px solid $color-black;
+}
+
+.mobileContain {
+  padding: $table-padding;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.role {
+  padding: $table-padding;
+  border-right: 1px solid $color-black;
+}
+
+.price {
+  padding: $table-padding;
+}
+
+.bold {
+  font-weight: $fw-semibold;
+  font-family: $font-oswald;
+}
+
+.secondary {
+  padding-bottom: 10px;
+  font-family: $font-gravity;
+  font-size: $fs-normal;
+  color: $color-gray;
+}
+
+.fields {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-right: 20px;
+
+  @include mobile-tablet {
+    margin-top: 0;
+  }
+}
+
+.fieldsWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-right: 20px;
+
+  @include mobile-tablet {
+    padding-right: 0;
+  }
+}
+
+.input {
+  max-width: 700px;
+}
