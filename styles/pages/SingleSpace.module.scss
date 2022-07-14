@@ -1,0 +1,190 @@
+@import "/styles/styles.scss";
+
+.container {
+  padding: 0;
+}
+
+.space {
+  height: 60px;
+  padding: 0;
+}
+
+.wrapper {
+  padding: 0 20px;
+}
+
+.borderBottom {
+  border-bottom: 1px solid $color-black;
+}
+
+.borderLeftRight {
+  border-left: 1px solid $color-black;
+  border-right: 1px solid $color-black;
+}
+
+.secondary {
+  font-family: $font-gravity;
+  font-size: $fs-normal;
+  color: $color-gray;
+}
+
+.bold {
+  font-family: $font-oswald;
+}
+
+.oswald {
+  font-family: $font-oswald;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.headerText {
+  font-family: $font-oswald;
+  font-size: $fs-large;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+
+  @include mobile-tablet {
+    margin-bottom: 40px;
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.thumbnail {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.padding {
+  padding: 0 20px;
+}
+
+.info {
+  border-left: 1px solid $color-black;
+
+  @include mobile-tablet {
+    border: none;
+  }
+}
+
+.cardHeader {
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardTitle {
+  font-family: $font-oswald;
+  font-size: $fs-large;
+}
+
+.other {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  font-family: $font-gravity;
+}
+
+.block {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-left: 1px solid $color-black;
+
+  &:first-child {
+    border: none;
+  }
+}
+
+.skeleton {
+  width: 100%;
+  height: 100%;
+
+  &.loadingImg {
+    min-height: 200px;
+  }
+}
+
+.adress {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-right: 1px solid $color-black;
+
+  @include mobile {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.location {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+}
+
+.coordsIcon {
+  justify-self: end;
+  align-self: center;
+
+  & > img {
+    display: block;
+  }
+
+  @include mobile {
+    align-self: center;
+  }
+}
+
+.button {
+  @include mobile-tablet {
+    width: auto;
+  }
+}
+
+.facility {
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-family: $font-gravity;
+  font-size: $fs-normal;
+  color: inherit;
+}
+
+.icon {
+  padding-left: 5px;
+}
+
+.snaps {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  &.loading {
+    padding: 0 10px;
+    gap: 10px;
+  }
+
+  & > img {
+    width: 100%;
+    height: 100%;
+  }
+}

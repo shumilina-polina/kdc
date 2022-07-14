@@ -33,7 +33,7 @@ export default function Home() {
       apiService
         .getSpaces(offset)
         .then((res) => {
-          console.log(res)
+          console.log(res);
           setTotalSpaces(Number(res.total));
           setSpaces([...spaces, ...res.spaces]);
         })
@@ -81,7 +81,9 @@ export default function Home() {
               {loading ? (
                 <Skeleton />
               ) : (
-                <span className={cn(s.oswald, s.counter)}>{Number(totalSpaces)}</span>
+                <span className={cn(s.oswald, s.counter)}>
+                  {Number(totalSpaces)}
+                </span>
               )}
             </Container>
           </div>

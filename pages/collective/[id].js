@@ -23,7 +23,7 @@ function htmlDecode(input) {
   return doc.documentElement.textContent;
 }
 
-const SingleColectivePage = (props) => {
+const SingleColectivePage = () => {
   const {
     isReady,
     query: { id },
