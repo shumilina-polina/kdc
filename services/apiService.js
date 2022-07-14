@@ -36,6 +36,14 @@ class ApiService {
       }))
       .catch((error) => error);
   };
+
+  getSpaceByID = (id) => {
+    const url = `${this.baseUrl}/spaces?id=${id}`;
+    return axios
+      .get(url)
+      .then((res) => res.data)
+      .catch((error) => error);
+  };
 }
 
 export default new ApiService();

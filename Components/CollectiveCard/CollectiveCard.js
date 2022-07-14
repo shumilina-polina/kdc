@@ -25,10 +25,7 @@ const CollectiveCard = (props) => {
       <div className={cn(s.card, className)}>
         <div className={s.poster}>
           {kit ? <div className={s.label}>Открыт набор</div> : null}
-          <img
-            src={thumbnail}
-            className={s.thumbnail}
-          />
+          <img src={thumbnail} className={s.thumbnail} />
         </div>
         <div className={s.header}>
           <span className={s.title}>{htmlDecode(title)}</span>
