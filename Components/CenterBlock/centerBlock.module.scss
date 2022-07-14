@@ -121,9 +121,33 @@
 }
 
 .collectivesCards {
+  margin-bottom: 40px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
   grid-gap: 20px;
+
+  @media screen and (max-width: 1200px) {
+    padding: 0 20px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 40px;
+
+    & > div:last-child {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 860px) {
+    grid-template-columns: repeat(2, 1fr);
+
+    & > div:last-child {
+      display: grid;
+    }
+  }
+
+  @media screen and (max-width: 575px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .collectivesCards > span {

@@ -81,6 +81,7 @@ const CollectivesFilters = (props) => {
           label="Адрес"
           variants={["Московский пр. 152", "Ул. Варшавская, 98"]}
           data={locationFilter}
+          className={s.select}
           setData={setLocationFilter}
         />
         <Button className={s.button} onClick={resetFilters}>
