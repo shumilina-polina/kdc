@@ -28,8 +28,6 @@ const CollectiveCard = (props) => {
           <img
             src={thumbnail}
             className={s.thumbnail}
-            width={300}
-            height={190}
           />
         </div>
         <div className={s.header}>
