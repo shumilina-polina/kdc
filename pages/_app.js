@@ -2,6 +2,7 @@ import { Provider } from "react-redux";
 import { store } from "store";
 
 import "styles/reset.min.scss";
+import "styles/global.scss";
 
 function MyApp({ Component, pageProps }) {
   return (

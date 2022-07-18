@@ -1,0 +1,110 @@
+@import "/styles/styles.scss";
+
+.container {
+  padding: 0;
+}
+
+.wrapper {
+  padding: 0 20px;
+  height: 100%;
+
+  @include mobile-tablet {
+    padding: 0;
+  }
+}
+
+.space {
+  height: 40px;
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.padding {
+  padding: 30px 15px;
+  font-family: $font-gravity;
+
+  @include mobile {
+    padding: 10px 15px;
+  }
+}
+
+.bold {
+  font-weight: $fw-bold;
+}
+
+.oswald {
+  font-family: $font-oswald;
+}
+
+.borderBottom {
+  border-bottom: 1px solid $color-black;
+
+  @include mobile {
+    border: none;
+  }
+}
+
+.secondary {
+  color: $color-gray;
+  font-family: $font-gravity;
+  font-size: $fs-normal;
+}
+
+.borderLeftRight {
+  height: 100%;
+  border-left: 1px solid $color-black;
+  border-right: 1px solid $color-black;
+
+  @include mobile {
+    border: none;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: $fs-large;
+}
+
+.monthSlider {
+  @include mobile-tablet {
+    display: none;
+  }
+}
+
+.monthContainer {
+  padding: 0px 15px !important;
+}
+
+.monthClicker {
+  margin-left: -15px;
+  width: calc(100% + 30px);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  justify-items: center;
+  align-items: center;
+}
+
+.month {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid;
+  font-family: $font-oswald;
+  font-weight: $fw-medium;
+  cursor: pointer;
+
+  &.active {
+    background-color: $color-red;
+    color: $color-white;
+  }
+
+  &:last-child {
+    border: none;
+  }
+}
