@@ -55,6 +55,7 @@ export default function AffichePage() {
             <div className={s.monthClicker}>
               {[...Array(12)].map((m, index) => (
                 <span
+                  key={`monthSlider_${index}`}
                   className={cn(
                     s.month,
                     month === moment().add(index, "M").format("MMMM")
