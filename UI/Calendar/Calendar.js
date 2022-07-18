@@ -5,7 +5,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { CalendarPicker } from "@mui/x-date-pickers/CalendarPicker";
 
-import s from "styles/pages/Affiche.module.scss";
+import s from "./calendar.module.scss";
 
 //Picker background style locates in globals.scss
 

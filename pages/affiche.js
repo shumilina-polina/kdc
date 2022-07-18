@@ -10,6 +10,7 @@ import Container from "UI/Container/Container";
 import s from "styles/pages/Affiche.module.scss";
 import moment from "moment";
 import "moment/locale/ru";
+import AfficheCard from "Components/AfficheCard/AfficheCard";
 
 export default function AffichePage() {
   moment.locale("ru");
@@ -17,6 +18,7 @@ export default function AffichePage() {
   const [date, setDate] = useState(new Date());
   const [month, setMonth] = useState(moment().format("MMMM"));
   console.log(month);
+  
 
   return (
     <>
@@ -29,10 +31,8 @@ export default function AffichePage() {
 
       <div className={s.borderBottom}>
         <div className={s.wrapper}>
-          <Container
-            className={cn(s.container, s.borderLeftRight, s.padding, s.wrapper)}
-          >
-            <div className={cn(s.header)}>
+          <Container className={cn(s.container, s.borderLeftRight)}>
+            <div className={cn(s.header, s.padding)}>
               <span className={s.oswald}>2022</span>
               <span className={s.oswald}>Афиша</span>
               <span className={s.oswald}>2023</span>
@@ -41,18 +41,10 @@ export default function AffichePage() {
         </div>
       </div>
 
-      <div className={cn(s.borderBottom, s.monthSlider)}>
-        <div>
-          <Container
-            className={cn(
-              s.container,
-              s.borderLeftRight,
-              s.padding,
-              s.wrapper,
-              s.monthContainer
-            )}
-          >
-            <div className={s.monthClicker}>
+      <div className={s.borderBottom}>
+        <div className={s.wrapper}>
+          <Container className={cn(s.container, s.borderLeftRight, s.monthContainer)}>
+          <div className={s.monthClicker}>
               {[...Array(12)].map((m, index) => (
                 <span
                   key={`monthSlider_${index}`}
@@ -72,6 +64,20 @@ export default function AffichePage() {
                   {moment().add(index, "M").format("MMMM")}
                 </span>
               ))}
+            </div>
+          </Container>
+        </div>
+      </div>
+
+      <div className={s.borderBottom}>
+        <div className={s.wrapper}>
+          <Container className={cn(s.container, s.borderLeftRight)}>
+            <div className={cn(s.cards)}>
+              <AfficheCard />
+              <AfficheCard />
+              <AfficheCard />
+              <AfficheCard />
+              <AfficheCard />
             </div>
           </Container>
         </div>
