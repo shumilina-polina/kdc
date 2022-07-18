@@ -1,16 +1,22 @@
 import { useState } from "react";
 import Header from "Components/Header/Header";
+import Footer from "Components/Footer/Footer";
 import Head from "next/head";
 
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { CalendarPicker } from "@mui/x-date-pickers/CalendarPicker";
+import cn from "classnames";
+import Calendar from "UI/Calendar/Calendar";
+import Container from "UI/Container/Container";
 
-const minDate = new Date("2020-01-01T00:00:00.000");
-const maxDate = new Date("2034-01-01T00:00:00.000");
+import s from "styles/pages/Affiche.module.scss";
+import moment from "moment";
+import "moment/locale/ru";
 
-export default function Home() {
+export default function AffichePage() {
+  moment.locale("ru");
+
   const [date, setDate] = useState(new Date());
+  const [month, setMonth] = useState(moment().format("MMMM"));
+  console.log(month);
 
   return (
     <>
@@ -21,10 +27,59 @@ export default function Home() {
 
       <Header />
 
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <CalendarPicker date={date} onChange={(newDate) => setDate(newDate)} />
-        {console.log(date)}
-      </LocalizationProvider>
+      <div className={s.borderBottom}>
+        <div className={s.wrapper}>
+          <Container
+            className={cn(s.container, s.borderLeftRight, s.padding, s.wrapper)}
+          >
+            <div className={cn(s.header)}>
+              <span className={s.oswald}>2022</span>
+              <span className={s.oswald}>Афиша</span>
+              <span className={s.oswald}>2023</span>
+            </div>
+          </Container>
+        </div>
+      </div>
+
+      <div className={cn(s.borderBottom, s.monthSlider)}>
+        <div>
+          <Container
+            className={cn(
+              s.container,
+              s.borderLeftRight,
+              s.padding,
+              s.wrapper,
+              s.monthContainer
+            )}
+          >
+            <div className={s.monthClicker}>
+              {[...Array(12)].map((m, index) => (
+                <span
+                  key={`monthSlider_${index}`}
+                  className={cn(
+                    s.month,
+                    month === moment().add(index, "M").format("MMMM")
+                      ? s.active
+                      : null
+                  )}
+                  onClick={() =>
+                    setMonth(moment().add(index, "M").format("MMMM"))
+                  }
+                >
+                  {console.log(
+                    month === moment().add(index, "M").format("MMMM")
+                  )}
+                  {moment().add(index, "M").format("MMMM")}
+                </span>
+              ))}
+            </div>
+          </Container>
+        </div>
+      </div>
+
+      <Calendar date={date} setDate={setDate} />
+
+      <Footer />
     </>
   );
 }

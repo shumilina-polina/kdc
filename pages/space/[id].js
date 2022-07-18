@@ -57,7 +57,12 @@ const SingleColectivePage = (props) => {
       <div className={cn(s.borderBottom)}>
         <div className={s.padding}>
           <Container className={cn(s.borderLeftRight, s.container, s.header)}>
-            <ButtonArrow direction="back" color="red" hasLink href={routes.spaces} />
+            <ButtonArrow
+              direction="back"
+              color="red"
+              hasLink
+              href={routes.spaces}
+            />
             <span className={s.headerText}>Все пространства</span>
           </Container>
         </div>
