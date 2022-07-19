@@ -1,0 +1,134 @@
+@import "/styles/styles.scss";
+
+.card {
+  max-width: 800px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 4fr 2fr;
+  align-items: center;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    border-left: 1px solid $color-black;
+    border-right: 1px solid $color-black;
+  }
+}
+
+.date {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background-color: $color-dark-blue;
+  border: 1px solid $color-black;
+  color: $color-white;
+
+  @include mobile {
+    border: none;
+  }
+}
+
+.number {
+  font-family: $font-oswald;
+  font-size: $fs-extralarge;
+}
+
+.month {
+  font-family: $font-gravity;
+  font-size: $fs-normal;
+}
+
+.time {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid $color-black;
+  border-bottom: 0;
+  border-right: 0;
+  font-family: $font-oswald;
+  font-size: $fs-normal;
+
+  & > span {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include mobile {
+      padding: 10px 0;
+    }
+  }
+
+  @include mobile {
+    border: none;
+  }
+}
+
+.price {
+  width: 100%;
+  background-color: $color-red;
+  font-family: $font-oswald;
+  color: $color-white;
+}
+
+.about {
+  padding: 10px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  border: 1px solid $color-black;
+
+  @include mobile {
+    border: none;
+  }
+}
+
+.limits {
+  font-size: $fs-small;
+  font-family: $font-gravity;
+}
+
+.description {
+  font-family: $font-gravity;
+  font-size: $fs-normal;
+}
+
+.more {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  justify-items: center;
+  border-top: 1px solid $color-black;
+  border-right: 1px solid $color-black;
+
+  @include mobile {
+    border: none;
+  }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-family: $font-gravity;
+  font-size: $fs-normal;
+  color: $color-black;
+
+  @include mobile {
+    padding: 10px 0;
+  }
+}
+
+.button {
+  width: 100%;
+  height: 100%;
+  height: auto;
+
+  @include mobile {
+    padding: 10px 0;
+  }
+}

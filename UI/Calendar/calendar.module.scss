@@ -1,3 +1,10 @@
-.active {
-    background-color: red;
+@import "/styles/styles.scss";
+
+.calendar {
+  margin: 20px auto !important;
+  height: 300px !important;
+}
+
+.calendar > div:nth-child(2) {
+  overflow: hidden !important;
 }
