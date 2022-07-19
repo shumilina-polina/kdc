@@ -9,15 +9,16 @@ import s from "./calendar.module.scss";
 
 //Picker background style locates in globals.scss
 
-const minDate = new Date("2020-01-01T00:00:00.000");
-const maxDate = new Date("2034-01-01T00:00:00.000");
-
 const Calendar = (props) => {
   const { date, setDate } = props;
 
   return (
     <LocalizationProvider locale={ru} dateAdapter={AdapterDateFns}>
-      <CalendarPicker date={date} onChange={(newDate) => setDate(newDate)} />
+      <CalendarPicker
+        date={date}
+        classes={{ root: s.calendar }}
+        onChange={(newDate) => setDate(newDate)}
+      />
     </LocalizationProvider>
   );
 };
