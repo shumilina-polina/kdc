@@ -1,50 +1,62 @@
+import moment from "moment";
+
 import Button from "UI/Button/Button";
 import s from "./buyTicketsWindow.module.scss";
 
-const BuyTicketsWindow = () => {
+function htmlDecode(input) {
+  const doc = new DOMParser().parseFromString(input, "text/html");
+  return doc.documentElement.textContent;
+}
+
+const BuyTicketsWindow = (props) => {
+  const {
+    adress,
+    content,
+    date,
+    id,
+    limits,
+    price,
+    thumbnail,
+    title,
+    subtitle=''
+  } = props.affiche
+
+  const dataDate = new Date(date);
+
   return (
     <div className={s.wrapper}>
       <div className={s.datetime}>
         <div className={s.date}>
-          <span>18</span>
-          <span>Апреля</span>
+          <span>{dataDate.getDate()}</span>
+          <span>{moment(dataDate.getMonth(), 'M').add(1, 'M').format('MMMM')}</span>
         </div>
         <div className={s.time}>
-          <span>чт</span>
-          <span>18:00</span>
+          <span>{moment(dataDate.getDate(), 'D').format('dd')}</span>
+          <span>{`${dataDate.getHours()}:${dataDate.getMinutes()}`}</span>
         </div>
       </div>
       <div className={s.header}>
-        <span className={s.subtitle}>Лекция по истории Санкт-Петербурга </span>
+        <span className={s.subtitle}>{htmlDecode(subtitle)} </span>
         <span className={s.title}>
-          "Прекрасная Франция и Туманный Альбион"{" "}
+          {`${title} `}
         </span>
       </div>
       <div className={s.details}>
         <div className={s.limits}>
-          <span className={s.price}>Бесплатно</span>
-          <span className={s.age}>12+</span>
+          <span className={s.price}>{price == 0 ? "Бесплатно" : `${price} руб.`}</span>
+          <span className={s.age}>{`${limits}+`}</span>
         </div>
         <div className={s.place}>
           <span>Место проведения:</span>
-          <span>Московский пр.152</span>
+          <span>{adress}</span>
         </div>
         <img
           className={s.thumbnail}
-          src="/assets/images/buyTicketPosterExample.jpg"
+          src={thumbnail}
         />
       </div>
       <div className={s.description}>
-        <p className={s.content}>
-          В рамках проекта ведущая Оксана Анатольевна Гут - руководитель
-          Образцового коллектива детского ансамбля народной песни "Млада" КДЦ
-          «Московский» - знакомит зрителей с песнями, составляющими основу
-          репертуара коллектива, рассказывает о жанрах, истории и областях
-          России, в которых эти песни были В рамках проекта ведущая Оксана
-          Анатольевна Гут - руководитель Образцового коллектива детского
-          ансамбля народной песни "Млада" КДЦ «Московский» - знакомит зрителей с
-          песнями.
-        </p>
+        <p className={s.content}>{htmlDecode(content)}</p>
         <div className={s.footer}>
           <Button className={s.button}>Приобрести билет</Button>
         </div>

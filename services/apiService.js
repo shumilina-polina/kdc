@@ -27,7 +27,6 @@ class ApiService {
 
   getSpaces = (offset = 0) => {
     const url = `${this.baseUrl}/spaces?offset=${offset}`;
-    console.log(url);
     return axios
       .get(url)
       .then((res) => ({
@@ -44,6 +43,14 @@ class ApiService {
       .then((res) => res.data)
       .catch((error) => error);
   };
+
+  getAffichesByMonth = (month) => {
+    const url = `${this.baseUrl}/affiche?month=${ month }`;
+    return axios
+      .get(url)
+      .then((res) => res.data)
+      .catch((error) => error);
+  }
 }
 
 export default new ApiService();
