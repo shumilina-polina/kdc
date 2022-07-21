@@ -45,12 +45,12 @@ class ApiService {
   };
 
   getAffichesByMonth = (month) => {
-    const url = `${this.baseUrl}/affiche?month=${ month }`;
+    const url = `${this.baseUrl}/affiche?month=${month}`;
     return axios
       .get(url)
       .then((res) => res.data)
       .catch((error) => error);
-  }
+  };
 }
 
 export default new ApiService();
