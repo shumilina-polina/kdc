@@ -1,32 +1,55 @@
 import Link from "next/link";
+
+import moment from "moment";
+
 import s from "./afficheCard.module.scss";
+import { useState } from "react";
+import ModalWindow from "UI/Modal/ModalWindow";
+import BuyTicketsWindow from "Components/BuyTicketsWindow/BuyTicketsWindow";
+
+function htmlDecode(input) {
+  const doc = new DOMParser().parseFromString(input, "text/html");
+  return doc.documentElement.textContent;
+}
 
 const AfficheCard = (props) => {
-  // const {
-  //     thumbanil,
-  //     date,
-  //     title
-  // } = props.affiche;
+  moment.locale("ru")
+
+  const [isOpen, setOpen] = useState(false)
+
+  const {
+    affiche
+  } = props;
+
+  const {
+    title,
+    thumbnail,
+    date,
+  } = affiche;
+
+  const dataDate = new Date(date);
+  const day = dataDate.getDate()
 
   return (
-    <Link href={"#"}>
-      <a className={s.card}>
-        <div className={s.card}>
-          <img
-            src="/assets/images/singlecollective1.jpg"
-            className={s.thumbnail}
-          />
-          <div className={s.date}>
-            <span className={s.number}>18</span>
-            <span className={s.dtaeMonth}>Октября</span>
-            <span className={s.narrow}>Сегодня</span>
-          </div>
-          <div className={s.title}>
-            <span>Спектакль “Мойдодыр”</span>
-          </div>
+      <>
+      <div className={s.card} onClick={() => setOpen(true)}>
+        <img
+          src={thumbnail}
+          className={s.thumbnail}
+        />
+        <div className={s.date}>
+          <span className={s.number}>{ dataDate.getDate() }</span>
+          <span className={s.dtaeMonth}>{ moment(dataDate.getMonth(), 'M').add(1, 'M').format('MMMM') }</span>
+          <span className={s.narrow}>{moment(dataDate.getDate(), 'D').format('dddd') }</span>
         </div>
-      </a>
-    </Link>
+        <div className={s.title}>
+          <span>{htmlDecode(title)}</span>
+        </div>
+      </div>
+      <ModalWindow isOpen={isOpen} onClose={() => setOpen(false)}>
+        <BuyTicketsWindow affiche={affiche} />
+      </ModalWindow>
+      </>
   );
 };
 
