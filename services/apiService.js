@@ -51,6 +51,16 @@ class ApiService {
       .then((res) => res.data)
       .catch((error) => error);
   };
+
+  getEventsByDate = (date, price) => {
+    const url = `${this.baseUrl}/events?date=${date}${
+      price === 0 ? `&price=0` : price === 1 ? `&price=9999` : ""
+    }`;
+    return axios
+      .get(url)
+      .then((res) => res.data)
+      .catch((error) => error);
+  };
 }
 
 export default new ApiService();

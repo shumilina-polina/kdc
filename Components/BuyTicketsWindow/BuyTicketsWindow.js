@@ -13,7 +13,6 @@ const BuyTicketsWindow = (props) => {
     adress,
     content,
     date,
-    id,
     limits,
     price,
     thumbnail,
@@ -38,7 +37,9 @@ const BuyTicketsWindow = (props) => {
         </div>
       </div>
       <div className={s.header}>
-        <span className={s.subtitle}>{htmlDecode(subtitle)} </span>
+        <span className={s.subtitle}>
+          {subtitle ? htmlDecode(subtitle) : ""}{" "}
+        </span>
         <span className={s.title}>{`${title} `}</span>
       </div>
       <div className={s.details}>

@@ -22,7 +22,6 @@ const AfficheCard = (props) => {
   const { title, thumbnail, date } = affiche;
 
   const dataDate = new Date(date);
-  const day = dataDate.getDate();
 
   return (
     <>

@@ -202,6 +202,10 @@ const AfficheComponent = () => {
                   <Skeleton className={s.skeletonAffiche} />
                   <Skeleton className={s.skeletonAffiche} />
                 </>
+              ) : affiches.length === 0 ? (
+                <span className={s.noAfficheTitle}>
+                  В данном периоде ничего не найдено.
+                </span>
               ) : (
                 affiches.map((affiche) => (
                   <AfficheCard
