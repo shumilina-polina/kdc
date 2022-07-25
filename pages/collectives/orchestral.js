@@ -16,6 +16,7 @@ import Button from "UI/Button/Button";
 
 import "react-loading-skeleton/dist/skeleton.css";
 import s from "styles/pages/Collectives.module.scss";
+import Wrapper from "UI/Wrapper/Wrapper";
 
 export default function CollectivesVocalPage() {
   const dispatch = useDispatch();
