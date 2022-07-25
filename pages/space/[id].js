@@ -18,11 +18,7 @@ import ModalWindow from "UI/Modal/ModalWindow";
 
 import s from "styles/pages/SingleSpace.module.scss";
 import ReserveSpaceWindow from "Components/ReserveSpaceWindow/ReserveSpaceWindow";
-
-function htmlDecode(input) {
-  const doc = new DOMParser().parseFromString(input, "text/html");
-  return doc.documentElement.textContent;
-}
+import Wrapper from "UI/Wrapper/Wrapper";
 
 const SingleColectivePage = (props) => {
   const {
@@ -47,29 +43,22 @@ const SingleColectivePage = (props) => {
     <>
       <Header />
 
-      <div className={cn(s.borderBottom)}>
-        <div className={s.padding}>
-          <Container
-            className={cn(s.borderLeftRight, s.container, s.space)}
-          ></Container>
-        </div>
-      </div>
-      <div className={cn(s.borderBottom)}>
-        <div className={s.padding}>
-          <Container className={cn(s.borderLeftRight, s.container, s.header)}>
-            <ButtonArrow
-              direction="back"
-              color="red"
-              hasLink
-              href={routes.spaces}
-            />
-            <span className={s.headerText}>Все пространства</span>
-          </Container>
-        </div>
-      </div>
+      <Wrapper space borderBottom />
 
-      <div className={s.padding}>
-        <Container className={cn(s.container, s.borderLeftRight, s.main)}>
+      <Wrapper borderBottom>
+        <div className={s.header}>
+          <ButtonArrow
+            direction="back"
+            color="red"
+            hasLink
+            href={routes.spaces}
+          />
+          <span className={s.headerText}>Все пространства</span>
+        </div>
+      </Wrapper>
+
+      <Wrapper>
+        <div className={s.main}>
           <div>
             {loading ? (
               <Skeleton className={s.skeleton} />
@@ -77,7 +66,7 @@ const SingleColectivePage = (props) => {
               <img className={s.thumbnail} src={space.thumbnail} />
             )}
           </div>
-          <div className={cn(s.info)}>
+          <div className={s.info}>
             <div className={cn(s.cardHeader, s.borderBottom)}>
               {loading ? (
                 <Skeleton className={s.skeleton} />
@@ -167,8 +156,8 @@ const SingleColectivePage = (props) => {
               )}
             </div>
           </div>
-        </Container>
-      </div>
+        </div>
+      </Wrapper>
 
       <ModalWindow
         isOpen={isOpen}

@@ -4,71 +4,12 @@
   font-family: $font-gravity;
 }
 
-.padding {
-  padding: 30px 15px;
-
-  @include mobile {
-    padding: 15px !important;
-  }
-}
-
-.container {
-  padding: 0;
-}
-
-.wrapper {
-  padding: 0 20px;
-  height: 100%;
-
-  @include mobile-tablet {
-    padding: 0;
-  }
-}
-
-.space {
-  height: 40px;
-}
-
-.padding {
-  padding: 30px 15px;
-}
-
-.bold {
-  font-weight: $fw-bold;
-}
-
 .oswald {
   font-family: $font-oswald;
 }
 
-.borderBottom {
-  border-bottom: 1px solid $color-black;
-
-  @include mobile {
-    border: none;
-  }
-}
-
-.borderLeftRight {
-  height: 100%;
-  border-left: 1px solid $color-black;
-  border-right: 1px solid $color-black;
-
-  @include mobile {
-    border: none;
-  }
-}
-
-.borderRight {
-  border-right: 1px solid $color-black;
-
-  @include mobile {
-    border: none;
-  }
-}
-
 .header {
-  padding: 30px 0;
+  padding: 30px;
 
   @include mobile {
     padding: 0;
@@ -84,10 +25,6 @@
   }
 }
 
-.title {
-  font-size: $fs-large;
-}
-
 .info {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -98,19 +35,33 @@
   }
 }
 
-.description > p:first-child {
-  font-weight: $fw-semibold;
+.padding {
+  padding: 20px;
+}
+
+.description > p {
+  padding: 20px;
+
+  &:first-child {
+    font-weight: $fw-semibold;
+    border-bottom: 1px solid $color-black;
+  }
 }
 
 .thumbnail {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
+.title {
+  font-size: $fs-large;
+}
+
 .subtitle {
   padding-top: 30px;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
   display: flex;
   justify-content: center;
   font-size: $fs-large;
@@ -121,7 +72,6 @@
 }
 
 .collectivesCards {
-  margin-bottom: 40px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
@@ -178,6 +128,11 @@
   @include mobile {
     grid-template-columns: 1fr;
   }
+}
+
+.about {
+  padding: 30px;
+  border-bottom: 1px solid $color-black;
 }
 
 .contacts {

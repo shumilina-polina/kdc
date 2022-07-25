@@ -13,7 +13,6 @@
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 1fr 1fr;
-  border: 1px solid;
 }
 
 .adress {
@@ -23,9 +22,14 @@
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-  border-left: 1px solid;
+  border-left: 1px solid $color-black;
   font-family: $font-gravity;
   font-weight: $fw-semibold;
+  cursor: pointer;
+
+  &:first-child {
+    border-left: 1px solid $color-black;
+  }
 }
 
 .red {
@@ -36,13 +40,12 @@
 .footer {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  border: 1px solid $color-dark-blue;
-  border-top: none;
 
   & > div > span {
     width: 100% !important;
   }
   & img {
+    display: block;
     width: 100%;
     object-fit: cover;
   }
@@ -51,7 +54,6 @@
 .info {
   display: flex;
   flex-direction: column;
-  border-right: 1px solid $color-dark-blue;
 }
 
 .access {
@@ -64,6 +66,10 @@
   font-family: $font-gravity;
   font-weight: $fw-medium;
   color: $color-dark-blue;
+}
+
+.poster {
+  display: block;
 }
 
 .link {
@@ -124,10 +130,6 @@
     width: 100%;
     object-fit: cover;
   }
-}
-
-.titleMobile {
-  margin-bottom: 30px;
 }
 
 .mapMobile {

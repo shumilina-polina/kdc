@@ -6,30 +6,45 @@ import Title from "UI/Title/Title";
 import Container from "UI/Container/Container";
 
 import s from "./contacts.module.scss";
+import Wrapper from "UI/Wrapper/Wrapper";
+import { useState } from "react";
 
 const Contacts = (props) => {
   const {
     data: { title, adressTitle, adressMain, adressSecondary, phone, email },
   } = props;
 
+  const [isMainAdress, setAdress] = useState(false);
+
   return (
     <>
-      <Container className={s.contaoner}>
+      <Wrapper>
         <div className={s.contacts}>
           <div className={s.header}>
             <Title>{title}</Title>
-            <div className={cn(s.adress, s.red)}>
+            <div
+              className={cn(s.adress, isMainAdress ? s.red : null)}
+              onClick={() => setAdress((prev) => !prev)}
+            >
               <span>{adressTitle}</span>
               <span>{adressMain}</span>
             </div>
-            <div className={s.adress}>
+            <div
+              className={cn(s.adress, !isMainAdress ? s.red : null)}
+              onClick={() => setAdress((prev) => !prev)}
+            >
               <span>{adressTitle}</span>
               <span>{adressSecondary}</span>
             </div>
           </div>
           <div className={s.footer}>
             <div className={s.info}>
-              <Image src="/assets/images/phone.svg" width={345} height={236} />
+              <img
+                className={s.poster}
+                src="/assets/images/phone.svg"
+                width={345}
+                height={236}
+              />
               <div className={cn(s.access, s.phone)}>
                 <Image src="/assets/icons/handy.svg" width={40} height={40} />
                 <Link href={`tel:${phone}`}>
@@ -43,16 +58,21 @@ const Contacts = (props) => {
                 </Link>
               </div>
             </div>
+
             <div className={s.mapContainer}>
               <iframe
-                src="https://yandex.ru/map-widget/v1/?um=constructor%3A9f741aba777413724574c83e342dc21bcd2ab21036e2ac2a9b93b4a09c1394dd&amp;source=constructor"
+                src={
+                  isMainAdress
+                    ? "https://yandex.ru/map-widget/v1/?um=constructor%3A9f741aba777413724574c83e342dc21bcd2ab21036e2ac2a9b93b4a09c1394dd&amp;source=constructor"
+                    : "https://yandex.ru/map-widget/v1/?um=constructor%3A04a0db7da35f364309d245a1e3994d9487378e536de1b066d115fb3ead1acb93&amp;source=constructor"
+                }
                 className={s.map}
                 frameBorder="0"
               ></iframe>
             </div>
           </div>
         </div>
-      </Container>
+      </Wrapper>
 
       <div className={s.contactsMobile}>
         <Container>
@@ -77,11 +97,14 @@ const Contacts = (props) => {
           </div>
         </Container>
         <div className={s.posterMobile}>
-          <Image src="/assets/images/phone.svg" width={345} height={236} />
+          <img
+            className={s.poster}
+            src="/assets/images/phone.svg"
+            width={345}
+            height={236}
+          />
         </div>
-        <Container className={s.titleMobile}>
-          <Title>{adressTitle}</Title>
-        </Container>
+        <Title>{adressTitle}</Title>
         <div className={s.mapContainer}>
           <iframe
             src="https://yandex.ru/map-widget/v1/?um=constructor%3A9f741aba777413724574c83e342dc21bcd2ab21036e2ac2a9b93b4a09c1394dd&amp;source=constructor"

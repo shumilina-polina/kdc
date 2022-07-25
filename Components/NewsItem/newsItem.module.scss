@@ -1,7 +1,9 @@
 @import "/styles/styles.scss";
 
-.newsItem {
-  border-bottom: 1px solid $color-dark-blue;
+.item {
+  @include mobile-tablet {
+    border-bottom: 1px solid $color-black;
+  }
 }
 
 .posterBlock {

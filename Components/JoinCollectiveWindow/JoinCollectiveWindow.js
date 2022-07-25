@@ -1,14 +1,10 @@
 import cn from "classnames";
+import useHtmlDecode from "shared/hooks/useHtmlDecode";
 
 import Button from "UI/Button/Button";
 import CustomInput from "UI/CustomInput/CustomInput";
 
 import s from "./joinCollectiveWindow.module.scss";
-
-function htmlDecode(input) {
-  const doc = new DOMParser().parseFromString(input, "text/html");
-  return doc.documentElement.textContent;
-}
 
 const JoinCollectiveWindow = (props) => {
   const {
@@ -20,8 +16,8 @@ const JoinCollectiveWindow = (props) => {
       <div className={s.info}>
         <img src={thumbnail} className={s.poster} />
         <div className={s.table}>
-          <p className={cn(s.bold, s.title)}>{htmlDecode(title)}</p>
-          <p className={cn(s.category, s.secondary)}>{htmlDecode(title)}</p>
+          <p className={cn(s.bold, s.title)}>{useHtmlDecode(title)}</p>
+          <p className={cn(s.category, s.secondary)}>{useHtmlDecode(title)}</p>
           <div className={s.details}>
             <span className={s.role}>
               <p className={s.secondary}>Направление:</p>
@@ -40,14 +36,14 @@ const JoinCollectiveWindow = (props) => {
           <div className={cn(s.bold, s.titleMobile)}>
             <img src={thumbnail} className={s.mobilePoster} />
             <div className={s.mobileContain}>
-              <p>{htmlDecode(title)}</p>
-              <p className={s.secondary}>{htmlDecode(title)}</p>
+              <p>{useHtmlDecode(title)}</p>
+              <p className={s.secondary}>{useHtmlDecode(title)}</p>
             </div>
           </div>
           <div className={s.details}>
             <span className={s.role}>
               <p className={s.secondary}>Направление:</p>
-              <p className={s.bold}>{htmlDecode(trend)}</p>
+              <p className={s.bold}>{useHtmlDecode(trend)}</p>
             </span>
             <span className={s.price}>
               <p className={s.secondary}>Стоимость:</p>

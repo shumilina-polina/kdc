@@ -7,6 +7,7 @@ import { FooterConst } from "shared/constants/FooterConst";
 import Button from "UI/Button/Button";
 import Container from "UI/Container/Container";
 import ModalWindow from "UI/Modal/ModalWindow";
+import Wrapper from "UI/Wrapper/Wrapper";
 
 import s from "./footer.module.scss";
 
@@ -37,10 +38,11 @@ const Footer = () => {
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <footer className={s.footerTag}>
-      <div className={s.decorationTop}>
+    <footer>
+      <Wrapper className={s.decoration} borderTop>
         <div className={s.square} />
-      </div>
+      </Wrapper>
+
       <div className={s.footer}>
         <Container className={s.container}>
           <div className={s.topFooter}>
@@ -106,12 +108,14 @@ const Footer = () => {
           </div>
         </Container>
       </div>
-      <div className={s.decoration}>
+
+      <Wrapper className={s.decoration} borderBottom>
         <div className={s.triangle} />
-      </div>
-      <div className={s.copyright}>
-        <span className={s.copyrightWrapper}>{copyright}</span>
-      </div>
+      </Wrapper>
+
+      <Wrapper>
+        <span className={s.copyrightText}>{copyright}</span>
+      </Wrapper>
     </footer>
   );
 };

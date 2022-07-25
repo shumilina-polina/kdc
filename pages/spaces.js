@@ -14,6 +14,7 @@ import Button from "UI/Button/Button";
 import { SPACES_PER_PAGE } from "services/config";
 
 import s from "styles/pages/Spaces.module.scss";
+import Wrapper from "UI/Wrapper/Wrapper";
 
 export default function Home() {
   const [spaces, setSpaces] = useState([]);
@@ -44,75 +45,55 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Страница Пространства</title>
+        <title>Пространства</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header />
 
       <main>
-        <div className={s.borderBottom}>
-          <div className={s.padding}>
-            <Container className={cn(s.container, s.borderLeftRight, s.title)}>
-              <span className={cn(s.oswald)}>Карта КДЦ “Московский”</span>
-            </Container>
+        <Wrapper borderBottom>
+          <div className={cn(s.padding, s.title)}>
+            <span className={cn(s.oswald)}>Карта КДЦ “Московский”</span>
           </div>
-        </div>
+        </Wrapper>
 
-        <div className={s.borderBottom}>
-          <div className={s.padding}>
-            <Container
-              className={cn(s.container, s.borderLeftRight, s.map)}
-            ></Container>
+        <Wrapper borderBottom>
+          <div className={s.map} />
+        </Wrapper>
+
+        <Wrapper borderBottom>
+          <div className={cn(s.padding, s.title)}>
+            <span className={s.oswald}>Пространства </span>
+            {loading ? (
+              <Skeleton />
+            ) : (
+              <span className={cn(s.oswald, s.counter)}>
+                {Number(totalSpaces)}
+              </span>
+            )}
           </div>
-        </div>
+        </Wrapper>
 
-        <div className={s.borderBottom}>
-          <div className={s.padding}>
-            <Container
-              className={cn(
-                s.container,
-                s.borderLeftRight,
-                s.title,
-                s.spacesTitle
-              )}
-            >
-              <span className={cn(s.oswald)}>Пространства</span>
-              {loading ? (
-                <Skeleton />
-              ) : (
-                <span className={cn(s.oswald, s.counter)}>
-                  {Number(totalSpaces)}
-                </span>
-              )}
-            </Container>
-          </div>
-        </div>
-
-        <Container>
-          <div className={s.borderLeftRight}>
-            <Container className={cn(s.container, s.cards)}>
-              {loading
-                ? [...Array(spaces.length + SPACES_PER_PAGE)].map(
-                    (skkeleton, i) => (
-                      <Skeleton key={`skeleton${i}`} className={s.skeleton} />
-                    )
+        <Wrapper>
+          <div className={s.cards}>
+            {loading
+              ? [...Array(spaces.length + SPACES_PER_PAGE)].map(
+                  (skkeleton, i) => (
+                    <Skeleton key={`skeleton${i}`} className={s.skeleton} />
                   )
-                : spaces.map((space) => (
-                    <SpaceCard key={`space${space.id}`} space={space} />
-                  ))}
-            </Container>
-            <div className={s.buttonWrapper}>
-              <Button
-                className={s.button}
-                onClick={onLoadMore}
-                disable={loading}
-              >
-                Показать еще
-              </Button>
-            </div>
+                )
+              : spaces.map((space) => (
+                  <SpaceCard key={`space${space.id}`} space={space} />
+                ))}
           </div>
-        </Container>
+
+          <div className={s.buttonWrapper}>
+            <Button className={s.button} onClick={onLoadMore} disable={loading}>
+              Показать еще
+            </Button>
+          </div>
+        </Wrapper>
       </main>
 
       <Footer />

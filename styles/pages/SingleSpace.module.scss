@@ -1,25 +1,11 @@
 @import "/styles/styles.scss";
 
-.container {
-  padding: 0;
-}
-
-.space {
-  height: 60px;
-  padding: 0;
-}
-
-.wrapper {
-  padding: 0 20px;
+.padding {
+  padding: 20px;
 }
 
 .borderBottom {
   border-bottom: 1px solid $color-black;
-}
-
-.borderLeftRight {
-  border-left: 1px solid $color-black;
-  border-right: 1px solid $color-black;
 }
 
 .secondary {
@@ -71,10 +57,9 @@
 }
 
 .info {
-  border-left: 1px solid $color-black;
-
   @include mobile-tablet {
-    border: none;
+    border-left: 1px solid $color-black;
+    border-right: 1px solid $color-black;
   }
 }
 

@@ -1,3 +1,5 @@
+import moment from "moment";
+import "moment/locale/ru";
 import { routes } from "shared/enums/pages";
 import AffichePerfomance from "Components/AffichePerfomance/AffichePerfomance";
 import ButtonArrow from "UI/ButtonArrow/ButtonArrow";
@@ -6,53 +8,47 @@ import Button from "UI/Button/Button";
 import Title from "UI/Title/Title";
 
 import s from "./affiche.module.scss";
-
-const affiche = [
-  {
-    id: 1,
-    date: "Сегодня",
-    time: "18:00",
-    title: "Спектакль “Мойдодыр”",
-    content: "Мини-опера на стихи Корнея Чуковского — это настоящий...",
-  },
-  {
-    id: 2,
-    date: "Сегодня",
-    time: "18:00",
-    title: "Спектакль “Мойдодыр”",
-    content: "Мини-опера на стихи Корнея Чуковского — это настоящий...",
-  },
-  {
-    id: 3,
-    date: "Сегодня",
-    time: "18:00",
-    title: "Спектакль “Мойдодыр”",
-    content: "Мини-опера на стихи Корнея Чуковского — это настоящий...",
-  },
-];
+import { useEffect, useState } from "react";
+import apiService from "services/apiService";
+import { Skeleton } from "@mui/material";
+import Wrapper from "UI/Wrapper/Wrapper";
 
 const Affiche = (props) => {
   const {
     data: { title, viewAllButtonText },
   } = props;
 
+  const [affiche, setAffiche] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  moment.locale("ru");
+
+  useEffect(() => {
+    apiService
+      .getAffiches()
+      .then((res) => setAffiche(res))
+      .finally(() => setLoading(false));
+  }, []);
+
   return (
-    <div className={s.affiche}>
-      <Container className={s.space} />
-      <div className={s.borderWrapper}>
-        <Container className={s.assicheContainer}>
+    <div>
+      <Wrapper space borderBottom />
+      <Wrapper borderBottom>
+        <div className={s.afficheContainer}>
           <div className={s.mobileCarusel}>
-            <div className={s.titleMobile}>
-              <Title>{title}</Title>
-            </div>
-            <div className={s.wrapper}>
+            <Title>{title}</Title>
+            <div className={s.flex}>
               <div className={s.info}>
-                <span className={s.day}>24</span>
+                <span className={s.day}>{moment().format("DD")}</span>
                 <span className={s.divider} />
-                <span className={s.day}>26</span>
-                <span className={s.month}>февраля</span>
+                <span className={s.day}>
+                  {moment().add(3, "d").format("DD")}
+                </span>
+                <span className={s.month}>
+                  {moment().add(3, "d").format("MMMM")}
+                </span>
               </div>
-              <div className={s.actions}>
+              <div className={s.flex}>
                 <ButtonArrow color="red" direction="back" />
                 <ButtonArrow color="red" direction="forward" />
               </div>
@@ -60,7 +56,7 @@ const Affiche = (props) => {
           </div>
 
           <div className={s.carusel}>
-            <div className={s.header}>
+            <div className={s.flex}>
               <ButtonArrow color="red" direction="back" />
               <ButtonArrow color="red" direction="forward" />
             </div>
@@ -68,13 +64,17 @@ const Affiche = (props) => {
               <span className={s.title}>{title}</span>
               <div className={s.period}>
                 <div className={s.from}>
-                  <span className={s.day}>24</span>
-                  <span className={s.month}>Февраля</span>
+                  <span className={s.day}>{moment().format("DD")}</span>
+                  <span className={s.month}>{moment().format("MMMM")}</span>
                 </div>
                 <span className={s.divider} />
                 <div className={s.to}>
-                  <span className={s.day}>26</span>
-                  <span className={s.month}>Февраля</span>
+                  <span className={s.day}>
+                    {moment().add(3, "d").format("DD")}
+                  </span>
+                  <span className={s.month}>
+                    {moment().add(3, "d").format("MMMM")}
+                  </span>
                 </div>
               </div>
             </div>
@@ -85,15 +85,24 @@ const Affiche = (props) => {
             </div>
           </div>
           <div className={s.perfomances}>
-            {affiche.map((post) => (
-              <AffichePerfomance post={post} key={`affiche${post.id}`} />
-            ))}
+            {loading ? (
+              <>
+                <Skeleton className={s.skeleton} />
+                <Skeleton className={s.skeleton} />
+                <Skeleton className={s.skeleton} />
+              </>
+            ) : (
+              affiche &&
+              affiche.map((post) => (
+                <AffichePerfomance post={post} key={`affiche${post.id}`} />
+              ))
+            )}
           </div>
           <Button className={s.mobileButton} hasLink href={routes.affiche}>
             {viewAllButtonText}
           </Button>
-        </Container>
-      </div>
+        </div>
+      </Wrapper>
     </div>
   );
 };

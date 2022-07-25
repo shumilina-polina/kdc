@@ -1,0 +1,38 @@
+@import "/styles/styles.scss";
+
+.borderTop {
+  border-top: 1px solid $color-black;
+
+  @include mobile-tablet {
+    border: none;
+  }
+}
+
+.borderBottom {
+  border-bottom: 1px solid $color-black;
+
+  @include mobile-tablet {
+    border: none;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1240px;
+  border-left: 1px solid $color-black;
+  border-right: 1px solid $color-black;
+
+  @include mobile-tablet {
+    border: none;
+  }
+}
+
+.padding {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.space {
+  height: 60px;
+}

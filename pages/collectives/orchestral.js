@@ -59,60 +59,51 @@ export default function CollectivesVocalPage() {
 
       <Header />
 
-      <div className={s.borderBottom}>
-        <div className={s.wrapper}>
-          <Container className={s.container}>
-            <div className={s.title}>
-              <span className={s.text}>Коллективы</span>
-              {loading ? (
-                <Skeleton count={3} />
-              ) : (
-                <span className={s.number}>{total}</span>
-              )}
-            </div>
-          </Container>
+      <Wrapper borderBottom>
+        <div className={s.title}>
+          <span className={s.text}>Коллективы</span>
+          {loading ? (
+            <Skeleton count={3} />
+          ) : (
+            <span className={s.number}>{total}</span>
+          )}
         </div>
-      </div>
+      </Wrapper>
 
-      <div className={s.borderBottom}>
+      <Wrapper borderBottom>
         <CollectivesFilters defaultTrend={["Оркестровые"]} />
-      </div>
+      </Wrapper>
 
-      <div className={s.wrapper}>
-        <Container className={s.container}>
-          <div className={s.collectives}>
-            {loading
-              ? [...Array(collectives.length + COLLECTIVES_PER_PAGE)].map(
-                  (e, index) => (
-                    <Skeleton
-                      key={`collectiveCardSkeleton${index}`}
-                      count={15}
-                    />
-                  )
+      <Wrapper>
+        <div className={s.collectives}>
+          {loading
+            ? [...Array(collectives.length + COLLECTIVES_PER_PAGE)].map(
+                (e, index) => (
+                  <Skeleton key={`collectiveCardSkeleton${index}`} count={15} />
                 )
-              : collectives
-              ? collectives.map((collective) => (
-                  <CollectiveCard
-                    key={`list_collective_${collective.id}`}
-                    collective={collective}
-                    className={s.card}
-                  />
-                ))
-              : "Записей не найдено"}
+              )
+            : collectives
+            ? collectives.map((collective) => (
+                <CollectiveCard
+                  key={`list_collective_${collective.id}`}
+                  collective={collective}
+                  className={s.card}
+                />
+              ))
+            : "Записей не найдено"}
+        </div>
+        <div>
+          <div className={s.loadWrapper}>
+            <Button
+              className={s.loadmore}
+              onClick={() => loadMoreCollectives()}
+              disable={loading}
+            >
+              Показать еще
+            </Button>
           </div>
-          <div>
-            <div className={s.loadWrapper}>
-              <Button
-                className={s.loadmore}
-                onClick={() => loadMoreCollectives()}
-                disable={loading}
-              >
-                Показать еще
-              </Button>
-            </div>
-          </div>
-        </Container>
-      </div>
+        </div>
+      </Wrapper>
 
       <Footer />
     </>

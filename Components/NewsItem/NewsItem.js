@@ -9,7 +9,7 @@ const NewsItem = (props) => {
   } = props;
 
   return (
-    <div className={s.newsItem} key={`news${id}`}>
+    <div className={s.item}>
       <div className={s.posterBlock}>
         <span className={s.date}>{date}</span>
         <img className={s.poster} src={poster} />

@@ -1,16 +1,10 @@
-import Link from "next/link";
-
 import moment from "moment";
 
 import s from "./afficheCard.module.scss";
 import { useState } from "react";
 import ModalWindow from "UI/Modal/ModalWindow";
 import BuyTicketsWindow from "Components/BuyTicketsWindow/BuyTicketsWindow";
-
-function htmlDecode(input) {
-  const doc = new DOMParser().parseFromString(input, "text/html");
-  return doc.documentElement.textContent;
-}
+import useHtmlDecode from "shared/hooks/useHtmlDecode";
 
 const AfficheCard = (props) => {
   moment.locale("ru");
@@ -37,7 +31,7 @@ const AfficheCard = (props) => {
           </span>
         </div>
         <div className={s.title}>
-          <span>{htmlDecode(title)}</span>
+          <span>{useHtmlDecode(title)}</span>
         </div>
       </div>
       <ModalWindow isOpen={isOpen} onClose={() => setOpen(false)}>

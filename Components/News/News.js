@@ -7,6 +7,7 @@ import Container from "UI/Container/Container";
 import NewsItem from "Components/NewsItem/NewsItem";
 
 import s from "./news.module.scss";
+import Wrapper from "UI/Wrapper/Wrapper";
 
 const news = [
   {
@@ -51,20 +52,20 @@ const News = (props) => {
 
   return (
     <div className={s.news}>
-      <Container className={s.titleContainer}>
+      <Wrapper borderBottom>
         <Title className>{title}</Title>
-      </Container>
-      <div className={s.newBackground}>
-        <Container className={s.container}>
+      </Wrapper>
+
+      <Wrapper borderBottom className={s.newBackground}>
+        <div className={s.flexGap}>
           {news.map((post) => (
-            <div className={s.wrapper} key={`news${post.id}`}>
-              <NewsItem post={post} />
-            </div>
+            <NewsItem post={post} key={`news${post.id}`} />
           ))}
-        </Container>
-      </div>
-      <div className={s.actions}>
-        <Container className={s.manage}>
+        </div>
+      </Wrapper>
+
+      <Wrapper borderBottom>
+        <div className={s.flexSpaceBetween}>
           <div className={s.tumblers}>
             <ButtonArrow direction="back" color="red" />
             <ButtonArrow direction="forward" color="red" />
@@ -72,8 +73,8 @@ const News = (props) => {
           <Button className={s.offset} href={routes.news} hasLink>
             {viewAllNewsButtonText}
           </Button>
-        </Container>
-      </div>
+        </div>
+      </Wrapper>
     </div>
   );
 };

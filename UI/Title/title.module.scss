@@ -1,6 +1,7 @@
 @import "/styles/styles.scss";
 
 .wrapper {
+  padding: 20px 0;
   width: 100%;
 
   @include mobile-tablet {
@@ -9,7 +10,7 @@
 }
 
 .title {
-  padding-left: 20px;
+  padding: 0 20px;
   font-family: $font-oswald;
   font-size: $fs-extralarge;
   line-height: 38px;

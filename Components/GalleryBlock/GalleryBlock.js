@@ -1,11 +1,11 @@
 import GalleryCard from "Components/GalleryCard/GalleryCard";
-import Container from "UI/Container/Container";
+import Wrapper from "UI/Wrapper/Wrapper";
 
 import s from "./galleryBlock.module.scss";
 
 const GalleryBlock = () => {
   return (
-    <Container>
+    <Wrapper>
       <div className={s.wrapper}>
         <GalleryCard />
         <GalleryCard />
@@ -13,7 +13,7 @@ const GalleryBlock = () => {
         <GalleryCard />
         <GalleryCard />
       </div>
-    </Container>
+    </Wrapper>
   );
 };
 

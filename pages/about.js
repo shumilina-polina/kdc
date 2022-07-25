@@ -12,6 +12,7 @@ import GalleryBlock from "Components/GalleryBlock/GalleryBlock";
 import { AboutData } from "shared/constants/pages/AboutData";
 
 import s from "styles/pages/About.module.scss";
+import Wrapper from "UI/Wrapper/Wrapper";
 
 export default function Home() {
   const {
@@ -21,12 +22,13 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>About Page</title>
+        <title>О нас</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header />
-      <Container className={s.container}>
+
+      <Wrapper>
         <div className={s.decorations}>
           <Image
             src="/assets/images/aboutDecorations.svg"
@@ -34,19 +36,17 @@ export default function Home() {
             height={350}
           />
         </div>
-      </Container>
+      </Wrapper>
 
-      <div className={s.tabsContainer}>
-        <CustomTabs
-          titles={titles}
-          components={[
-            <HistoryBlock key={`historyBlock`} />,
-            <CenterBlock key={`centerBlock`} />,
-            <ProjectsBlock key={`projectsBlock`} />,
-            <GalleryBlock key={`galleryBlock`} />,
-          ]}
-        />
-      </div>
+      <CustomTabs
+        titles={titles}
+        components={[
+          <HistoryBlock key={`historyBlock`} />,
+          <CenterBlock key={`centerBlock`} />,
+          <ProjectsBlock key={`projectsBlock`} />,
+          <GalleryBlock key={`galleryBlock`} />,
+        ]}
+      />
 
       <Footer />
     </>

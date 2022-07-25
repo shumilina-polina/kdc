@@ -2,11 +2,7 @@ import Link from "next/link";
 import moment from "moment";
 import Button from "UI/Button/Button";
 import s from "./eventCard.module.scss";
-
-function htmlDecode(input) {
-  const doc = new DOMParser().parseFromString(input, "text/html");
-  return doc.documentElement.textContent;
-}
+import useHtmlDecode from "shared/hooks/useHtmlDecode";
 
 const EventCard = (props) => {
   const { id, title, date, price, limits } = props.event;
@@ -41,7 +37,7 @@ const EventCard = (props) => {
           <span>Категория: 6+</span>
         </div>
         <div className={s.description}>
-          <span>{htmlDecode(title)}</span>
+          <span>{useHtmlDecode(title)}</span>
         </div>
       </div>
       <div className={s.more}>

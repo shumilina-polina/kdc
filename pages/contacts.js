@@ -5,6 +5,7 @@ import Head from "next/head";
 import { ContactsData } from "shared/constants/pages/ContactsData";
 
 import s from "styles/pages/Contacts.module.scss";
+import Wrapper from "UI/Wrapper/Wrapper";
 
 export default function ContactPage() {
   const { contacts } = ContactsData;
@@ -17,9 +18,8 @@ export default function ContactPage() {
       </Head>
 
       <Header />
-      <div className={s.wrapper}>
-        <Contacts data={contacts} />
-      </div>
+      <Wrapper space borderBottom />
+      <Contacts data={contacts} />
       <Footer />
     </>
   );

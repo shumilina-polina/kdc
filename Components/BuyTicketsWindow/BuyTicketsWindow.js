@@ -1,12 +1,8 @@
 import moment from "moment";
+import useHtmlDecode from "shared/hooks/useHtmlDecode";
 
 import Button from "UI/Button/Button";
 import s from "./buyTicketsWindow.module.scss";
-
-function htmlDecode(input) {
-  const doc = new DOMParser().parseFromString(input, "text/html");
-  return doc.documentElement.textContent;
-}
 
 const BuyTicketsWindow = (props) => {
   const {
@@ -38,9 +34,9 @@ const BuyTicketsWindow = (props) => {
       </div>
       <div className={s.header}>
         <span className={s.subtitle}>
-          {subtitle ? htmlDecode(subtitle) : ""}{" "}
+          {subtitle ? useHtmlDecode(subtitle) : ""}{" "}
         </span>
-        <span className={s.title}>{`${title} `}</span>
+        <span className={s.title}>{`${useHtmlDecode(title)} `}</span>
       </div>
       <div className={s.details}>
         <div className={s.limits}>
@@ -56,7 +52,7 @@ const BuyTicketsWindow = (props) => {
         <img className={s.thumbnail} src={thumbnail} />
       </div>
       <div className={s.description}>
-        <p className={s.content}>{htmlDecode(content)}</p>
+        <p className={s.content}>{useHtmlDecode(content)}</p>
         <div className={s.footer}>
           <Button className={s.button}>Приобрести билет</Button>
         </div>

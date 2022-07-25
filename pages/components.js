@@ -1,68 +1,22 @@
-import CustomInput from "UI/CustomInput/CustomInput";
-import CustomTabs from "UI/CustomTabs/CustomTabs";
-import Acordion from "UI/Acordion/Acordion";
-import SelectInput from "UI/SelectInput/SelectInput";
-
 import s from "styles/pages/Components.module.scss";
+import Wrapper from "UI/Wrapper/Wrapper";
 
 const Components = () => {
   return (
     <>
-      <div className={s.main}>
-        <div>
-          <h2>Input</h2>
-          <CustomInput label="Как к вам обращаться?" />
-        </div>
-
-        <div>
-          <h2>Textarea</h2>
-          <CustomInput
-            label="Как к вам обращаться?"
-            multiline
-            cols={30}
-            rows={10}
-          />
-        </div>
-
-        <div>
-          <h2>Custom Select</h2>
-          <SelectInput
-            label="Категории"
-            variants={[
-              "Все",
-              "Вокальные",
-              "Хореографические",
-              "Хоровые",
-              "Оркестровые",
-              "Театральные",
-              "Оригинального жанра",
-            ]}
-          />
-        </div>
-
-        <div>
-          <h2>Cusom Tabs</h2>
-          <CustomTabs
-            titles={["История", "КДЦ на Варшавской", "Проекты", "Галерея"]}
-            components={[
-              "CusomBlock 1",
-              "CusomBlock 2",
-              "CusomBlock 3",
-              "CusomBlock 4",
-            ]}
-          />
-        </div>
-
-        <div>
-          <h2>Custom Acordion</h2>
-          <Acordion
-            title="Где купить билеты на мероприятия?"
-            content="Билеты вы можете приобрести в кассе Культурно-Досугового Центра или на нашем сайте.
-            Телефон кассы: +7 (932) 343-32-32.
-            График работы кассы: ВТ-ПТ: 12.00 - 19.00 СБ: 12.00 - 16.00"
-          />
-        </div>
-      </div>
+      <Wrapper>
+        Давно выяснено, что при оценке дизайна и композиции читаемый текст
+        мешает сосредоточиться. Lorem Ipsum используют потому, что тот
+        обеспечивает более или менее стандартное заполнение шаблона, а также
+        реальное распределение букв и пробелов в абзацах, которое не получается
+        при простой дубликации "Здесь ваш текст.. Здесь ваш текст.. Здесь ваш
+        текст.." Многие программы электронной вёрстки и редакторы HTML
+        используют Lorem Ipsum в качестве текста по умолчанию, так что поиск по
+        ключевым словам "lorem ipsum" сразу показывает, как много веб-страниц
+        всё ещё дожидаются своего настоящего рождения. За прошедшие годы текст
+        Lorem Ipsum получил много версий. Некоторые версии появились по ошибке,
+        некоторые - намеренно (например, юмористические варианты).
+      </Wrapper>
     </>
   );
 };
