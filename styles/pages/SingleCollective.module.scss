@@ -1,62 +1,19 @@
 @import "/styles/styles.scss";
 
-.container {
-  padding: 0;
-}
-
-.space {
-  height: 60px;
-  padding: 0;
-}
-
-.wrapper {
-  padding: 0 20px;
-}
-
-.borderBottom {
-  border-bottom: 1px solid $color-black;
-
-  @include mobile-tablet {
-    border: none;
-  }
-}
-
-.borderLeftRight {
-  border-left: 1px solid $color-black;
-  border-right: 1px solid $color-black;
-
-  @include mobile-tablet {
-    border: none;
-  }
-}
-
 .header {
   display: flex;
   align-items: center;
-  border: 1px solid $color-black;
-  border-top: none;
 
   & > span {
     padding: 0 20px;
     font-family: $font-oswald;
     font-size: $fs-large;
   }
-
-  @include mobile-tablet {
-    border: none;
-  }
 }
 
 .content {
   display: grid;
   grid-template-columns: 2fr 5fr;
-  border: 1px solid $color-black;
-  border-top: none;
-  border-bottom: none;
-
-  @include mobile-tablet {
-    border: none;
-  }
 
   @include mobile {
     display: block;

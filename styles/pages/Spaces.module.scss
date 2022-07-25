@@ -1,32 +1,7 @@
 @import "/styles/styles.scss";
 
-.container {
-  padding: 0;
-}
-
-.wrapper {
-  padding: 0 20px;
-  height: 100%;
-
-  @include mobile-tablet {
-    padding: 0;
-  }
-}
-
-.space {
-  height: 40px;
-
-  @include mobile {
-    display: none;
-  }
-}
-
 .padding {
-  padding: 0 20px;
-
-  @include mobile {
-    padding: 10px 15px;
-  }
+  padding: 20px;
 }
 
 .bold {
@@ -37,38 +12,14 @@
   font-family: $font-oswald;
 }
 
-.borderBottom {
-  border-bottom: 1px solid $color-black;
-
-  @include mobile {
-    border: none;
-  }
-}
-
 .secondary {
   color: $color-gray;
   font-family: $font-gravity;
   font-size: $fs-normal;
 }
 
-.borderLeftRight {
-  height: 100%;
-  border-left: 1px solid $color-black;
-  border-right: 1px solid $color-black;
-
-  @include mobile {
-    border: none;
-  }
-}
-
 .title {
-  padding-top: 20px;
-  padding-bottom: 20px;
   font-size: $fs-extralarge;
-
-  & > span {
-    padding: 20px;
-  }
 }
 
 .map {
@@ -88,12 +39,14 @@
 }
 
 .cards {
+  padding: 0 20px;
   margin-bottom: 30px;
   display: flex;
   flex-direction: column;
   gap: 20px;
 
   @include mobile-tablet {
+    padding: 0;
     margin-bottom: 40px;
   }
 }

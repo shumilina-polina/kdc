@@ -9,6 +9,7 @@ import BuyTicketsWindow from "Components/BuyTicketsWindow/BuyTicketsWindow";
 
 import s from "./carusel.module.scss";
 import Container from "UI/Container/Container";
+import Wrapper from "UI/Wrapper/Wrapper";
 
 const slides = [
   {
@@ -53,8 +54,8 @@ const Carusel = (props) => {
   };
 
   return (
-    <div className={s.carusel}>
-      <Container noPaddingMobile>
+    <div>
+      <Container>
         <div className={s.content}>
           {slides.map((slide) => (
             <div
@@ -95,9 +96,8 @@ const Carusel = (props) => {
         </div>
       </Container>
 
-      <div className={s.grid}>
-        <div className={s.leftDecoration} />
-        <Container className={s.actions} noPaddingMobile>
+      <Wrapper borderTop>
+        <div className={s.actions}>
           <ButtonArrow onClick={prevSlide} direction="back" color="red" />
           <div className={s.breadcrumbs}>
             {slides.map((slide, index) =>
@@ -116,9 +116,8 @@ const Carusel = (props) => {
             )}
           </div>
           <ButtonArrow onClick={nextSlide} direction="forward" color="red" />
-        </Container>
-        <div className={s.rightDecoration} />
-      </div>
+        </div>
+      </Wrapper>
     </div>
   );
 };

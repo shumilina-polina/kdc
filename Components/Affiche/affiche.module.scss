@@ -1,44 +1,10 @@
 @import "/styles/styles.scss";
 
-.affiche {
-  border-bottom: 1px solid $color-black;
-
-  @include mobile-tablet {
-    border: none;
-  }
-}
-
-.borderWrapper {
-  border-top: 1px solid $color-black;
-
-  @include mobile-tablet {
-    border: none;
-  }
-}
-
-.space {
-  padding: 0;
-  height: 60px;
-  border-left: 1px solid $color-black;
-  border-right: 1px solid $color-black;
-
-  @include mobile-tablet {
-    border: none;
-  }
-}
-
-.assicheContainer {
-  padding: 0;
+.afficheContainer {
   display: flex;
-  border-left: 1px solid $color-black;
-  border-right: 1px solid $color-black;
 
   @media screen and (max-width: 800px) {
     flex-direction: column;
-  }
-
-  @include mobile-tablet {
-    border: none;
   }
 }
 
@@ -50,8 +16,7 @@
   }
 }
 
-.wrapper {
-  margin-bottom: 15px;
+.flex {
   display: flex;
 }
 
@@ -66,19 +31,14 @@
   color: $color-white;
 }
 
-.actions {
-  display: flex;
-}
-
 .carusel {
-  border: 1px solid $color-dark-blue;
-
   @media screen and (max-width: 800px) {
     display: none;
   }
 }
 
 .perfomances {
+  width: 100%;
   display: flex;
 
   @media screen and (max-width: 800px) {
@@ -90,7 +50,6 @@
 
 .header {
   display: flex;
-  justify-content: flex-start;
 }
 
 .button {
@@ -119,10 +78,6 @@
 .title {
   font-family: $font-oswald;
   font-size: $fs-extralarge;
-}
-
-.titleMobile {
-  margin-bottom: 20px;
 }
 
 .period {
@@ -164,7 +119,6 @@
 }
 
 .footer {
-  height: 49px;
   background-color: $color-red;
 }
 
@@ -178,4 +132,9 @@
   font-family: $font-gravity;
   font-size: $fs-normal;
   color: $color-white;
+}
+
+.skeleton {
+  width: 100%;
+  height: 100%;
 }

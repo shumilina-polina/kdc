@@ -1,15 +1,7 @@
 @import "/styles/styles.scss";
 
-.container {
-  @include mobile-tablet {
-    padding: 0;
-  }
-}
-
 .decorations {
   padding-bottom: 40px;
-  border-left: 1px solid $color-black;
-  border-right: 1px solid $color-black;
 
   & > span {
     width: 100% !important;
@@ -21,14 +13,5 @@
 
   @include mobile {
     padding-bottom: 0;
-    border: none;
   }
-}
-
-.tabsContainer {
-  width: 100%;
-}
-
-.tabs {
-  width: 100%;
 }

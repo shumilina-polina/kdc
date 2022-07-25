@@ -1,13 +1,5 @@
 @import "/styles/styles.scss";
 
-.footerTag {
-  border-top: 1px solid $color-dark-blue;
-
-  @include mobile-tablet {
-    border: none;
-  }
-}
-
 .footer {
   width: 100%;
   background-color: $color-dark-blue;
@@ -22,6 +14,12 @@
   display: flex;
   justify-content: space-between;
 
+  @include mobile-tablet {
+    display: none;
+  }
+}
+
+.decoration {
   @include mobile-tablet {
     display: none;
   }
@@ -119,28 +117,6 @@
   gap: 10px;
 }
 
-.decoration {
-  max-width: 1240px;
-  margin: 0 auto;
-  border-right: 1px solid $color-dark-blue;
-  border-left: 1px solid $color-dark-blue;
-
-  @include mobile-tablet {
-    display: none;
-  }
-}
-
-.decorationTop {
-  max-width: 1240px;
-  margin: 0 auto;
-  border-left: 1px solid $color-dark-blue;
-  border-right: 1px solid $color-dark-blue;
-
-  @include mobile-tablet {
-    display: none;
-  }
-}
-
 .square {
   position: relative;
   top: 38px;
@@ -162,26 +138,12 @@
   z-index: -1;
 }
 
-.copyright {
-  display: flex;
-  justify-content: center;
-  border-top: 1px solid $color-dark-blue;
-  font-size: $fs-large;
-  font-family: $font-gravity;
-  font-weight: $fw-semibold;
-}
-
-.copyrightWrapper {
-  max-width: 1240px;
-  width: 100%;
+.copyrightText {
   height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-left: 1px solid;
-  border-right: 1px solid;
-
-  @include mobile-tablet {
-    border: none;
-  }
+  font-size: $fs-large;
+  font-family: $font-gravity;
+  font-weight: $fw-semibold;
 }

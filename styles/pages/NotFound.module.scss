@@ -1,19 +1,11 @@
 @import "/styles/styles.scss";
 
 .container {
-  border-left: 1px solid $color-dark-blue;
-  border-right: 1px solid $color-dark-blue;
-
   & > span {
     width: 100% !important;
   }
   & img {
     display: block;
-  }
-
-  @include mobile-tablet {
-    padding: 0;
-    border: none;
   }
 }
 

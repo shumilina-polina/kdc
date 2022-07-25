@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import apiService from "services/apiService";
 import ButtonArrow from "UI/ButtonArrow/ButtonArrow";
 import Container from "UI/Container/Container";
+import Wrapper from "UI/Wrapper/Wrapper";
 
 import s from "./afficheComponent.module.scss";
 
@@ -148,109 +149,85 @@ const AfficheComponent = () => {
 
   return (
     <>
-      <div className={s.borderBottom}>
-        <div className={s.wrapper}>
-          <Container className={cn(s.container, s.borderLeftRight)}>
-            <div className={cn(s.header, s.padding)}>
-              <span className={s.oswald}>{moment().format("YYYY")}</span>
-              <span className={s.oswald}>Афиша</span>
-              <span className={s.oswald}>
-                {moment().add(1, "Y").format("YYYY")}
-              </span>
-            </div>
-          </Container>
+      <Wrapper borderBottom>
+        <div className={s.header}>
+          <span className={s.oswald}>{moment().format("YYYY")}</span>
+          <span className={s.oswald}>Афиша</span>
+          <span className={s.oswald}>
+            {moment().add(1, "Y").format("YYYY")}
+          </span>
         </div>
-      </div>
+      </Wrapper>
 
-      <div className={s.borderBottom}>
-        <div className={s.wrapper}>
-          <Container
-            className={cn(s.container, s.borderLeftRight, s.monthContainer)}
-          >
-            <div className={s.monthClicker}>
-              {[...Array(12)].map((m, index) => (
-                <span
-                  key={`monthSlider_${index}`}
-                  className={cn(
-                    s.month,
-                    month === moment().add(index, "M").format("MMMM")
-                      ? s.active
-                      : null
-                  )}
-                  onClick={() => {
-                    setMonth(moment().add(index, "M").format("MMMM"));
-                    setLoading(true);
-                  }}
-                >
-                  {moment().add(index, "M").format("MMMM")}
-                </span>
-              ))}
-            </div>
-          </Container>
-        </div>
-      </div>
-
-      <div className={s.borderBottom}>
-        <div className={s.wrapper}>
-          <Container className={cn(s.container, s.borderLeftRight)}>
-            <div className={cn(s.cards)}>
-              {loading ? (
-                <>
-                  <Skeleton className={s.skeletonAffiche} />
-                  <Skeleton className={s.skeletonAffiche} />
-                  <Skeleton className={s.skeletonAffiche} />
-                  <Skeleton className={s.skeletonAffiche} />
-                  <Skeleton className={s.skeletonAffiche} />
-                </>
-              ) : affiches.length === 0 ? (
-                <span className={s.noAfficheTitle}>
-                  В данном периоде ничего не найдено.
-                </span>
-              ) : (
-                affiches.map((affiche) => (
-                  <AfficheCard
-                    key={`affiche_${affiche.id}`}
-                    affiche={affiche}
-                  />
-                ))
+      <Wrapper className={s.monthContainer} borderBottom>
+        <div className={s.monthClicker}>
+          {[...Array(12)].map((m, index) => (
+            <span
+              key={`monthSlider_${index}`}
+              className={cn(
+                s.month,
+                month === moment().add(index, "M").format("MMMM")
+                  ? s.active
+                  : null
               )}
-            </div>
-          </Container>
+              onClick={() => {
+                setMonth(moment().add(index, "M").format("MMMM"));
+                setLoading(true);
+              }}
+            >
+              {moment().add(index, "M").format("MMMM")}
+            </span>
+          ))}
         </div>
-      </div>
+      </Wrapper>
 
-      <div className={s.borderBottom}>
-        <div className={s.wrapper}>
-          <Container className={cn(s.container, s.borderLeftRight)}>
-            <div className={s.swiper}>
-              <div className={s.swiperTitle}>
-                <ButtonArrow direction="back" color="red" onClick={prevMonth} />
-                <span>
-                  {loading ? (
-                    <Skeleton sx={{ width: "20px", height: "40px" }} />
-                  ) : (
-                    `1-3 ${month}`
-                  )}
-                </span>
-              </div>
-              <div className={s.swiperTitle}>
-                <span>
-                  {loading ? (
-                    <Skeleton sx={{ width: "20px", height: "40px" }} />
-                  ) : (
-                    `25-28 ${month}`
-                  )}
-                </span>
-                <ButtonArrow
-                  direction="forward"
-                  color="red"
-                  onClick={nextMonth}
+      <Wrapper borderBottom>
+        <div className={s.cards}>
+          {loading ? (
+            <>
+              {[...Array(5)].map((el, index) => (
+                <Skeleton
+                  key={`afficheSkeleton_${index}`}
+                  className={s.skeletonAffiche}
                 />
-              </div>
-            </div>
-          </Container>
+              ))}
+            </>
+          ) : affiches.length === 0 ? (
+            <span className={s.noAfficheTitle}>
+              В данном периоде ничего не найдено.
+            </span>
+          ) : (
+            affiches.map((affiche) => (
+              <AfficheCard key={`affiche_${affiche.id}`} affiche={affiche} />
+            ))
+          )}
         </div>
-      </div>
+      </Wrapper>
+
+      <Wrapper borderBottom>
+        <div className={s.swiper}>
+          <div className={s.swiperTitle}>
+            <ButtonArrow direction="back" color="red" onClick={prevMonth} />
+            <span>
+              {loading ? (
+                <Skeleton sx={{ width: "20px", height: "40px" }} />
+              ) : (
+                `1-3 ${month}`
+              )}
+            </span>
+          </div>
+          <div className={s.swiperTitle}>
+            <span>
+              {loading ? (
+                <Skeleton sx={{ width: "20px", height: "40px" }} />
+              ) : (
+                `25-28 ${month}`
+              )}
+            </span>
+            <ButtonArrow direction="forward" color="red" onClick={nextMonth} />
+          </div>
+        </div>
+      </Wrapper>
     </>
   );
 };

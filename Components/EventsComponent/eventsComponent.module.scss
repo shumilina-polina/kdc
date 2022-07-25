@@ -1,68 +1,17 @@
 @import "/styles/styles.scss";
 
-.container {
-  padding: 0;
-}
-
-.wrapper {
-  padding: 0 20px;
-  height: 100%;
-
-  @include mobile-tablet {
-    padding: 0;
-  }
-}
-
-.space {
-  height: 40px;
-
-  @include mobile {
-    display: none;
-  }
-}
-
-.padding {
-  padding: 30px 15px;
-  font-family: $font-gravity;
-
-  @include mobile {
-    padding: 10px 15px;
-  }
-}
-
-.bold {
-  font-weight: $fw-bold;
-}
-
 .oswald {
   font-family: $font-oswald;
 }
 
-.borderBottom {
-  border-bottom: 1px solid $color-black;
-
-  @include mobile {
-    border: none;
-  }
+.padding {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
-.secondary {
-  color: $color-gray;
-  font-family: $font-gravity;
-  font-size: $fs-normal;
-}
-
-.borderLeftRight {
-  height: 100%;
-  border-left: 1px solid $color-black;
-  border-right: 1px solid $color-black;
-
-  @include mobile {
-    border: none;
-  }
-}
-
-.calendarTitle {
+.title {
+  padding-left: 20px;
+  padding-right: 20px;
   font-family: $font-oswald;
   font-size: $fs-extralarge;
 

@@ -44,6 +44,14 @@ class ApiService {
       .catch((error) => error);
   };
 
+  getAffiches = () => {
+    const url = `${this.baseUrl}/affiche`;
+    return axios
+      .get(url)
+      .then((res) => res.data)
+      .catch((error) => error);
+  };
+
   getAffichesByMonth = (month) => {
     const url = `${this.baseUrl}/affiche?month=${month}`;
     return axios

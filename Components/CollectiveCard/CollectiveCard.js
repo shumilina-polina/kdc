@@ -2,17 +2,13 @@ import cn from "classnames";
 import JoinCollectiveWindow from "Components/JoinCollectiveWindow/JoinCollectiveWindow";
 import { useState } from "react";
 import { routes } from "shared/enums/pages";
+import useHtmlDecode from "shared/hooks/useHtmlDecode";
 import Button from "UI/Button/Button";
 
 import ButtonArrow from "UI/ButtonArrow/ButtonArrow";
 import ModalWindow from "UI/Modal/ModalWindow";
 
 import s from "./collectivesCard.module.scss";
-
-function htmlDecode(input) {
-  const doc = new DOMParser().parseFromString(input, "text/html");
-  return doc.documentElement.textContent;
-}
 
 const CollectiveCard = (props) => {
   const { collective, className } = props;
@@ -28,7 +24,7 @@ const CollectiveCard = (props) => {
           <img src={thumbnail} className={s.thumbnail} />
         </div>
         <div className={s.header}>
-          <span className={s.title}>{htmlDecode(title)}</span>
+          <span className={s.title}>{useHtmlDecode(title)}</span>
           <ButtonArrow
             hasLink
             href={`${routes.collective}/${id}`}

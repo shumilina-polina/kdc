@@ -31,15 +31,11 @@ export default function HomePage() {
 
       <Header />
 
-      <main className={s.main}>
+      <main>
         <Carusel data={carusel} />
-
         <Collectives data={collectives} />
-
         <Affiche data={affiche} />
-
         <News data={news} />
-
         <Contacts data={contacts} />
       </main>
 

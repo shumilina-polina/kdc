@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 
-import cn from "classnames";
 import moment from "moment";
 import Calendar from "UI/Calendar/Calendar";
-import Container from "UI/Container/Container";
 
 import CustomCheckbox from "UI/CustomCheckbox/CustomCheckbox";
 import EventCard from "Components/EventCard/EventCard";
@@ -11,6 +9,7 @@ import EventCard from "Components/EventCard/EventCard";
 import s from "./eventsComponent.module.scss";
 import apiService from "services/apiService";
 import { Skeleton } from "@mui/material";
+import Wrapper from "UI/Wrapper/Wrapper";
 
 const EventsComponent = () => {
   const [date, setDate] = useState(new Date());
@@ -43,86 +42,76 @@ const EventsComponent = () => {
 
   return (
     <>
-      <div className={s.borderBottom}>
-        <div className={s.wrapper}>
-          <Container className={cn(s.container, s.borderLeftRight)}>
-            <div className={cn(s.calendarTitle, s.padding)}>
-              <span>Календарь</span>
-            </div>
-          </Container>
+      <Wrapper borderBottom>
+        <div className={s.padding}>
+          <span className={s.title}>Календарь</span>
         </div>
-      </div>
+      </Wrapper>
 
-      <div className={s.borderBottom}>
-        <div className={s.wrapper}>
-          <Container className={cn(s.container, s.borderLeftRight)}>
-            <div className={cn(s.calendarFilters)}>
-              <div className={s.description}>
-                Вы можете посмотреть все предстоящие мероприятия запланированые
-                в один день и отсортировать их.
-              </div>
-              <div className={s.checkboxGroup}>
-                <CustomCheckbox
-                  onChange={(value) => {
-                    setLoading(true);
-                    setFree(value);
-                  }}
-                  value={0}
-                  label="Бесплатные"
-                />
-                <CustomCheckbox
-                  onChange={(value) => {
-                    setLoading(true);
-                    setPay(value);
-                  }}
-                  value={9999}
-                  label="Платные"
-                />
-                <CustomCheckbox
-                  onChange={(value) => {
-                    setLoading(true);
-                  }}
-                  value={9999}
-                  label="Все"
-                />
-              </div>
-            </div>
-          </Container>
-        </div>
-      </div>
-
-      <div className={s.wrapper}>
-        <Container className={cn(s.container, s.borderLeftRight)}>
-          <div className={s.footer}>
-            <div className={s.calendar}>
-              <Calendar
-                date={date}
-                setDate={setDate}
-                setLoading={() => setLoading(true)}
-              />
-            </div>
-            <div className={s.eventsCards}>
-              {loading ? (
-                <>
-                  <Skeleton className={s.skeleton} />
-                  <Skeleton className={s.skeleton} />
-                  <Skeleton className={s.skeleton} />
-                  <Skeleton className={s.skeleton} />
-                  <Skeleton className={s.skeleton} />
-                </>
-              ) : events.length === 0 ? (
-                <span className={s.noEventsTitle}>
-                  В данном периоде ничего не найдено.
-                </span>
-              ) : (
-                events.map((event) => (
-                  <EventCard key={`eventcard_${event.id}`} event={event} />
-                ))
-              )}
-            </div>
+      <Wrapper borderBottom>
+        <div className={s.calendarFilters}>
+          <div className={s.description}>
+            Вы можете посмотреть все предстоящие мероприятия запланированые в
+            один день и отсортировать их.
           </div>
-        </Container>
-      </div>
+          <div className={s.checkboxGroup}>
+            <CustomCheckbox
+              onChange={(value) => {
+                setLoading(true);
+                setFree(value);
+              }}
+              value={0}
+              label="Бесплатные"
+            />
+            <CustomCheckbox
+              onChange={(value) => {
+                setLoading(true);
+                setPay(value);
+              }}
+              value={9999}
+              label="Платные"
+            />
+            <CustomCheckbox
+              onChange={(value) => {
+                setLoading(true);
+              }}
+              value={9999}
+              label="Все"
+            />
+          </div>
+        </div>
+      </Wrapper>
+
+      <Wrapper>
+        <div className={s.footer}>
+          <div className={s.calendar}>
+            <Calendar
+              date={date}
+              setDate={setDate}
+              setLoading={() => setLoading(true)}
+            />
+          </div>
+          <div className={s.eventsCards}>
+            {loading ? (
+              <>
+                <Skeleton className={s.skeleton} />
+                <Skeleton className={s.skeleton} />
+                <Skeleton className={s.skeleton} />
+                <Skeleton className={s.skeleton} />
+                <Skeleton className={s.skeleton} />
+              </>
+            ) : events.length === 0 ? (
+              <span className={s.noEventsTitle}>
+                В данном периоде ничего не найдено.
+              </span>
+            ) : (
+              events.map((event) => (
+                <EventCard key={`eventcard_${event.id}`} event={event} />
+              ))
+            )}
+          </div>
+        </div>
+      </Wrapper>
     </>
   );
 };

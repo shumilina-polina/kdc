@@ -17,6 +17,7 @@ import s from "styles/pages/SingleCollective.module.scss";
 import { routes } from "shared/enums/pages";
 import ModalWindow from "UI/Modal/ModalWindow";
 import JoinCollectiveWindow from "Components/JoinCollectiveWindow/JoinCollectiveWindow";
+import Wrapper from "UI/Wrapper/Wrapper";
 
 function htmlDecode(input) {
   const doc = new DOMParser().parseFromString(input, "text/html");
@@ -45,14 +46,10 @@ const SingleColectivePage = () => {
     <>
       <Header />
 
-      <div className={s.borderBottom}>
-        <div className={s.wrapper}>
-          <Container className={cn(s.borderLeftRight, s.space)} />
-        </div>
-      </div>
+      <Wrapper space borderBottom />
 
       <div className={s.main}>
-        <Container>
+        <Wrapper>
           <div className={s.header}>
             <ButtonArrow
               direction="back"
@@ -217,7 +214,7 @@ const SingleColectivePage = () => {
               </div>
             </div>
           </div>
-        </Container>
+        </Wrapper>
       </div>
 
       <ModalWindow

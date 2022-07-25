@@ -6,6 +6,7 @@ import { CollectivesActionTypes } from "store/actionTypes/CollectivesActionTypes
 import Button from "UI/Button/Button";
 import Container from "UI/Container/Container";
 import SelectInput from "UI/SelectInput/SelectInput";
+import Wrapper from "UI/Wrapper/Wrapper";
 
 import s from "./collectivesFilters.module.scss";
 
@@ -54,8 +55,8 @@ const CollectivesFilters = (props) => {
   };
 
   return (
-    <div className={s.wrapper}>
-      <Container className={cn(s.container, s.filters)}>
+    <Wrapper>
+      <div className={s.filters}>
         <SelectInput
           label="Категории"
           variants={[
@@ -87,8 +88,8 @@ const CollectivesFilters = (props) => {
         <Button className={s.button} onClick={resetFilters}>
           Сбросить выбор
         </Button>
-      </Container>
-    </div>
+      </div>
+    </Wrapper>
   );
 };
 
