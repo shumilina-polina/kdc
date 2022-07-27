@@ -21,8 +21,8 @@ const CenterBlock = () => {
 
   useEffect(() => {
     apiService
-      .getCollectives()
-      .then((res) => setCollectives(res.collectives))
+      .getCollectives(0, 4)
+      .then((res) => setCollectives(res.data))
       .finally(setLoading(false));
   }, []);
 

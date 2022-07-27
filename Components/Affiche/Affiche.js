@@ -3,7 +3,6 @@ import "moment/locale/ru";
 import { routes } from "shared/enums/pages";
 import AffichePerfomance from "Components/AffichePerfomance/AffichePerfomance";
 import ButtonArrow from "UI/ButtonArrow/ButtonArrow";
-import Container from "UI/Container/Container";
 import Button from "UI/Button/Button";
 import Title from "UI/Title/Title";
 
@@ -12,23 +11,49 @@ import { useEffect, useState } from "react";
 import apiService from "services/apiService";
 import { Skeleton } from "@mui/material";
 import Wrapper from "UI/Wrapper/Wrapper";
+import { months } from "shared/constants/Month";
 
 const Affiche = (props) => {
   const {
     data: { title, viewAllButtonText },
   } = props;
 
+  const AFFICHES_ON_PAGE = 3;
+
   const [affiche, setAffiche] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [offset, setOffset] = useState(0);
+  const [total, setTotal] = useState(null);
+
+  const monthsRU = months.split(",");
 
   moment.locale("ru");
 
   useEffect(() => {
-    apiService
-      .getAffiches()
-      .then((res) => setAffiche(res))
-      .finally(() => setLoading(false));
-  }, []);
+    if (loading) {
+      apiService
+        .getAffiches(offset, AFFICHES_ON_PAGE)
+        .then((res) => {
+          setTotal(res.total);
+          setAffiche(res.data);
+        })
+        .finally(() => setLoading(false));
+    }
+  }, [loading]);
+
+  const onLoadNext = () => {
+    if (offset + AFFICHES_ON_PAGE < total) {
+      setOffset(offset + AFFICHES_ON_PAGE);
+      setLoading(true);
+    }
+  };
+
+  const onLoadPrev = () => {
+    if (offset >= AFFICHES_ON_PAGE) {
+      setOffset(offset - AFFICHES_ON_PAGE);
+      setLoading(true);
+    }
+  };
 
   return (
     <div>
@@ -39,41 +64,113 @@ const Affiche = (props) => {
             <Title>{title}</Title>
             <div className={s.flex}>
               <div className={s.info}>
-                <span className={s.day}>{moment().format("DD")}</span>
+                <span className={s.day}>
+                  {loading
+                    ? "--"
+                    : moment(`${affiche[0].date} ${affiche[0].time}`).format(
+                        "D"
+                      )}
+                </span>
                 <span className={s.divider} />
                 <span className={s.day}>
-                  {moment().add(3, "d").format("DD")}
+                  {loading ? (
+                    <Skeleton />
+                  ) : (
+                    moment(
+                      `${affiche[affiche.length - 1].date} ${
+                        affiche[affiche.length - 1].time
+                      }`
+                    ).format("D")
+                  )}
                 </span>
                 <span className={s.month}>
-                  {moment().add(3, "d").format("MMMM")}
+                  {loading ? (
+                    <Skeleton />
+                  ) : (
+                    monthsRU[
+                      moment(
+                        `${affiche[affiche.length - 1].date} ${
+                          affiche[affiche.length - 1].time
+                        }`
+                      ).format("M") - 1
+                    ]
+                  )}
                 </span>
               </div>
               <div className={s.flex}>
-                <ButtonArrow color="red" direction="back" />
-                <ButtonArrow color="red" direction="forward" />
+                <ButtonArrow
+                  color="red"
+                  direction="back"
+                  onClick={onLoadPrev}
+                />
+                <ButtonArrow
+                  color="red"
+                  direction="forward"
+                  onClick={onLoadNext}
+                />
               </div>
             </div>
           </div>
 
           <div className={s.carusel}>
             <div className={s.flex}>
-              <ButtonArrow color="red" direction="back" />
-              <ButtonArrow color="red" direction="forward" />
+              <ButtonArrow color="red" direction="back" onClick={onLoadPrev} />
+              <ButtonArrow
+                color="red"
+                direction="forward"
+                onClick={onLoadNext}
+              />
             </div>
             <div className={s.content}>
               <span className={s.title}>{title}</span>
               <div className={s.period}>
                 <div className={s.from}>
-                  <span className={s.day}>{moment().format("DD")}</span>
-                  <span className={s.month}>{moment().format("MMMM")}</span>
+                  <span className={s.day}>
+                    {loading ? (
+                      <Skeleton className={s.daySkeleton} />
+                    ) : (
+                      moment(`${affiche[0].date} ${affiche[0].time}`).format(
+                        "D"
+                      )
+                    )}
+                  </span>
+                  <span className={s.month}>
+                    {loading ? (
+                      <Skeleton className={s.monthSkeleton} />
+                    ) : (
+                      monthsRU[
+                        moment(`${affiche[0].date} ${affiche[0].time}`).format(
+                          "M"
+                        ) - 1
+                      ]
+                    )}
+                  </span>
                 </div>
                 <span className={s.divider} />
                 <div className={s.to}>
                   <span className={s.day}>
-                    {moment().add(3, "d").format("DD")}
+                    {loading ? (
+                      <Skeleton className={s.daySkeleton} />
+                    ) : (
+                      moment(
+                        `${affiche[affiche.length - 1].date} ${
+                          affiche[affiche.length - 1].time
+                        }`
+                      ).format("D")
+                    )}
                   </span>
                   <span className={s.month}>
-                    {moment().add(3, "d").format("MMMM")}
+                    {loading ? (
+                      <Skeleton className={s.monthSkeleton} />
+                    ) : (
+                      monthsRU[
+                        moment(
+                          `${affiche[affiche.length - 1].date} ${
+                            affiche[affiche.length - 1].time
+                          }`
+                        ).format("M") - 1
+                      ]
+                    )}
                   </span>
                 </div>
               </div>
@@ -87,9 +184,12 @@ const Affiche = (props) => {
           <div className={s.perfomances}>
             {loading ? (
               <>
-                <Skeleton className={s.skeleton} />
-                <Skeleton className={s.skeleton} />
-                <Skeleton className={s.skeleton} />
+                {[...Array(AFFICHES_ON_PAGE)].map((el, index) => (
+                  <Skeleton
+                    key={`afficheSkeleton_${index}`}
+                    className={s.skeleton}
+                  />
+                ))}
               </>
             ) : (
               affiche &&

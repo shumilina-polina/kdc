@@ -1,55 +1,58 @@
-import Link from "next/link";
 import moment from "moment";
 import Button from "UI/Button/Button";
-import s from "./eventCard.module.scss";
 import useHtmlDecode from "shared/hooks/useHtmlDecode";
+import { months } from "shared/constants/Month";
+
+import s from "./eventCard.module.scss";
+import ModalWindow from "UI/Modal/ModalWindow";
+import { useState } from "react";
+import BuyTicketsWindow from "Components/BuyTicketsWindow/BuyTicketsWindow";
 
 const EventCard = (props) => {
-  const { id, title, date, price, limits } = props.event;
+  const { event } = props;
+  const { title, date, time, price, limits } = event;
 
-  const day = date.substr(0, 2);
-  const month = date.substr(3, 2);
-  const time = date.substr(-8, 8);
-  const minutes = date.substr(13, 2);
-  let hours;
+  const dataDate = moment(`${date} ${time}`);
+  const monthsRU = months.split(",");
 
-  if (time.indexOf("пп") !== -1) {
-    hours = Number(time.substr(0, 2).trim()) + 12;
-    hours === 24 ? (hours = "00") : null;
-  } else {
-    time.substr(0, 2).trim().length === 2
-      ? (hours = time.substr(0, 2).trim())
-      : `0${time.substr(0, 2).trim()}`;
-  }
+  const [isOpen, setOpen] = useState(false);
 
   return (
-    <div className={s.card}>
-      <div className={s.date}>
-        <span className={s.number}>{day}</span>
-        <span className={s.month}>{moment(month, "M").format("MMMM")}</span>
-      </div>
-      <div className={s.time}>
-        <span>{`${hours}:${minutes}`}</span>
-        <span className={s.price}>Бесплатно</span>
-      </div>
-      <div className={s.about}>
-        <div className={s.limits}>
-          <span>Категория: 6+</span>
+    <>
+      <div className={s.card}>
+        <div className={s.date}>
+          <span className={s.number}>{dataDate.format("DD")}</span>
+          <span className={s.month}>{monthsRU[dataDate.format("M")]}</span>
         </div>
-        <div className={s.description}>
-          <span>{useHtmlDecode(title)}</span>
+        <div className={s.time}>
+          <span>{dataDate.format("HH:mm")}</span>
+          <span className={s.price}>
+            {price === "0" ? "Бесплатно" : `${price} руб.`}
+          </span>
+        </div>
+        <div className={s.about}>
+          <div className={s.limits}>
+            <span>{`Категория: ${limits}+`}</span>
+          </div>
+          <div className={s.description}>
+            <span>{useHtmlDecode(title)}</span>
+          </div>
+        </div>
+        <div className={s.more}>
+          <span className={s.knowmore}>Узнать больше</span>
+          <Button className={s.button} onClick={() => setOpen(true)}>
+            Приобрести билет
+          </Button>
         </div>
       </div>
-      <div className={s.more}>
-        <Link href={"#"}>
-          <a className={s.link}>
-            <span>Узнать больше</span>
-            <img src="/assets/icons/arrow.svg" className={s.arrowRight} />
-          </a>
-        </Link>
-        <Button className={s.button}>Приобрести билет</Button>
-      </div>
-    </div>
+      <ModalWindow
+        isOpen={isOpen}
+        onClose={() => setOpen(false)}
+        title="Приобрести билет"
+      >
+        <BuyTicketsWindow data={event} />
+      </ModalWindow>
+    </>
   );
 };
 

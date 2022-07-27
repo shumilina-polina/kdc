@@ -35,10 +35,10 @@ const SingleColectivePage = () => {
 
   useEffect(() => {
     if (isReady) {
-      apiService.getCollectiveByID(id).then((res) => {
-        setLoading(false);
-        setCollective(res);
-      });
+      apiService
+        .getCollectiveByID(id)
+        .then((res) => setCollective(res))
+        .finally(() => setLoading(false));
     }
   }, [isReady]);
 
@@ -66,26 +66,20 @@ const SingleColectivePage = () => {
               ) : (
                 <img className={s.thumbnail} src={collective.thumbnail} />
               )}
-              {loading ? (
-                <ImageSkeleton className={s.skeleton} />
-              ) : (
-                <img className={s.thumbnail} src={collective.snap1} />
-              )}
-              {loading ? (
-                <ImageSkeleton className={s.skeleton} />
-              ) : (
-                <img className={s.thumbnail} src={collective.snap2} />
-              )}
-              {loading ? (
-                <ImageSkeleton className={s.skeleton} />
-              ) : (
-                <img className={s.thumbnail} src={collective.snap3} />
-              )}
-              {loading ? (
-                <ImageSkeleton className={s.skeleton} />
-              ) : (
-                <img className={s.thumbnail} src={collective.snap4} />
-              )}
+              {loading
+                ? [...Array(4)].map((el, index) => (
+                    <Skeleton
+                      className={s.imageSkeleton}
+                      key={`snapSkeleton_${index}`}
+                    />
+                  ))
+                : collective.snaps.map((image, index) => (
+                    <img
+                      key={`imageKey_${index}`}
+                      className={s.thumbnail}
+                      src={image}
+                    />
+                  ))}
             </div>
             <div className={s.info}>
               <div className={cn(s.title, s.borderBottom)}>
@@ -189,26 +183,20 @@ const SingleColectivePage = () => {
                 </div>
                 <div>
                   <ul className={s.list}>
-                    <li className={s.item}>
-                      <img src="/assets/icons/listmarker.svg" />
-                      Выявление внутреннего слуха
-                    </li>
-                    <li className={s.item}>
-                      <img src="/assets/icons/listmarker.svg" />
-                      Расширение диапозона певческих голосов{" "}
-                    </li>
-                    <li className={s.item}>
-                      <img src="/assets/icons/listmarker.svg" />
-                      Основы актерского мастерства
-                    </li>
-                    <li className={s.item}>
-                      <img src="/assets/icons/listmarker.svg" />
-                      Сценическое движение{" "}
-                    </li>
-                    <li className={s.item}>
-                      <img src="/assets/icons/listmarker.svg" />
-                      Индивидуальный подход к каждому участнику
-                    </li>
+                    {loading ? (
+                      <>
+                        <Skeleton />
+                        <Skeleton />
+                        <Skeleton />
+                      </>
+                    ) : (
+                      collective.program.map((item) => (
+                        <li className={s.item}>
+                          <img src="/assets/icons/listmarker.svg" />
+                          {item}
+                        </li>
+                      ))
+                    )}
                   </ul>
                 </div>
               </div>

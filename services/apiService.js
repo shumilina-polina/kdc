@@ -5,12 +5,21 @@ class ApiService {
   //global "https://moscenterspb.space/wp-json/project/v2"
   //local "http://localhost/dashboard/wp-json/project/v2"
 
-  getCollectives = (offset = 0, trend = [], price = [], location = []) => {
-    const url = `${this.baseUrl}/collectives?offset=${offset}${
+  getCollectives = (
+    offset = 0,
+    per_page = -1,
+    trend = [],
+    location = [],
+    free = false,
+    paid = false
+  ) => {
+    const url = `${
+      this.baseUrl
+    }/collectives?offset=${offset}&per_page=${per_page}${
       trend.length ? `&trend=${[...trend]}` : ""
-    }${price.length ? `&price=${[...price]}` : ""}${
-      location.length ? `&location=${[...location]}` : ""
-    }`;
+    }${location.length ? `&location=${[...location]}` : ""}${
+      free && !paid ? "&free" : ""
+    }${!free && paid ? "&paid" : ""}`;
     return axios
       .get(url)
       .then((res) => res.data)
@@ -25,14 +34,11 @@ class ApiService {
       .catch((error) => error);
   };
 
-  getSpaces = (offset = 0) => {
-    const url = `${this.baseUrl}/spaces?offset=${offset}`;
+  getSpaces = (offset = 0, per_page = -1) => {
+    const url = `${this.baseUrl}/spaces?offset=${offset}&per_page=${per_page}`;
     return axios
       .get(url)
-      .then((res) => ({
-        total: res.data.total,
-        spaces: res.data.spaces,
-      }))
+      .then((res) => res.data)
       .catch((error) => error);
   };
 
@@ -44,8 +50,8 @@ class ApiService {
       .catch((error) => error);
   };
 
-  getAffiches = () => {
-    const url = `${this.baseUrl}/affiche`;
+  getAffiches = (offset = 0, per_page = -1) => {
+    const url = `${this.baseUrl}/affiche?offset=${offset}&per_page=${per_page}`;
     return axios
       .get(url)
       .then((res) => res.data)
@@ -60,10 +66,27 @@ class ApiService {
       .catch((error) => error);
   };
 
-  getEventsByDate = (date, price) => {
+  getEventsByDate = (date, free = false, paid = false, all = false) => {
     const url = `${this.baseUrl}/events?date=${date}${
-      price === 0 ? `&price=0` : price === 1 ? `&price=9999` : ""
-    }`;
+      free && !all ? `&free=true` : ""
+    }${paid && !all ? `&paid=true` : ""}`;
+
+    return axios
+      .get(url)
+      .then((res) => res.data)
+      .catch((error) => error);
+  };
+
+  getProjects = () => {
+    const url = `${this.baseUrl}/projects`;
+    return axios
+      .get(url)
+      .then((res) => res.data)
+      .catch((error) => error);
+  };
+
+  getNews = (offset = 0, per_page = 5) => {
+    const url = `${this.baseUrl}/news?per_page=${per_page}&offset=${offset}`;
     return axios
       .get(url)
       .then((res) => res.data)

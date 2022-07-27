@@ -1,0 +1,87 @@
+@import "/styles/styles.scss";
+
+.card {
+  max-height: 200px;
+  display: grid;
+  grid-template-columns: 2fr 7fr 10fr;
+  border: 1px solid $color-black;
+
+  @include mobile {
+    grid-template-columns: 1fr 4fr;
+    max-height: 500px;
+  }
+}
+
+.date {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.day {
+  font-family: $font-oswald;
+  font-size: $fs-extralarge;
+}
+
+.month {
+  font-family: $font-gravity;
+}
+
+.year {
+  font-family: $font-gravity;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+
+  @include mobile {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+}
+
+.header {
+  padding: 10px 20px;
+  background-color: $color-dark-blue;
+  font-size: $fs-normal;
+  font-family: $font-oswald;
+  color: $color-white;
+}
+
+.content {
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 auto;
+  font-family: $font-gravity;
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  border-top: 1px solid $color-black;
+}
+
+.category {
+  padding: 0 20px;
+  font-family: $font-gravity;
+  font-size: $fs-normal;
+  color: $color-secondary;
+}

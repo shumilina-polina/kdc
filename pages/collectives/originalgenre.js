@@ -1,60 +1,65 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 import Head from "next/head";
 
 import ApiService from "services/apiService";
-import { CollectivesActionTypes } from "store/actionTypes/CollectivesActionTypes";
 import { COLLECTIVES_PER_PAGE } from "services/config";
-import Skeleton from "react-loading-skeleton";
 
 import CollectivesFilters from "Components/CollectivesFilters/CollectivesFilters";
 import CollectiveCard from "Components/CollectiveCard/CollectiveCard";
 import Footer from "Components/Footer/Footer";
 import Header from "Components/Header/Header";
-import Container from "UI/Container/Container";
 import Button from "UI/Button/Button";
-
-import "react-loading-skeleton/dist/skeleton.css";
-import s from "styles/pages/Collectives.module.scss";
 import Wrapper from "UI/Wrapper/Wrapper";
 
-export default function CollectivesVocalPage() {
-  const dispatch = useDispatch();
+import s from "styles/pages/Collectives.module.scss";
+import { Skeleton } from "@mui/material";
 
-  const {
-    total,
-    loading,
-    collectives,
-    offset,
-    filters: { trend, price, location },
-  } = useSelector((state) => state.collectives);
+const CollectivesPage = () => {
+  const POSTS_PER_PAGE = COLLECTIVES_PER_PAGE;
+
+  const [loading, setLoading] = useState(true);
+  const [collectives, setCollectives] = useState([]);
+  const [total, setTotal] = useState(null);
+  const [offset, setOffset] = useState(0);
+  const [trends, setTrends] = useState(["Оригинального жанра"]);
+  const [locations, setLocations] = useState([]);
+  const [price, setPrice] = useState([]);
+
+  const loadMoreCollectives = () => {
+    if (offset < total) {
+      setLoading(true);
+    }
+  };
 
   useEffect(() => {
     if (loading) {
-      ApiService.getCollectives(offset, trend, price, location).then((res) => {
-        dispatch({
-          type: CollectivesActionTypes.UPDATE_COLLECTIVES,
-          payload: {
-            total: res.total,
-            collectives: [...collectives, ...res.collectives],
-          },
-        });
-      });
+      ApiService.getCollectives(
+        offset,
+        POSTS_PER_PAGE,
+        trends,
+        locations,
+        price.includes("Бесплатные") ? true : false,
+        price.includes("Платные") ? true : false
+      )
+        .then((res) => {
+          setCollectives([...collectives, ...res.data]);
+          setTotal(res.total);
+          setOffset(POSTS_PER_PAGE + offset);
+        })
+        .finally(() => setLoading(false));
     }
   }, [loading]);
 
-  const loadMoreCollectives = () => {
-    if (Number(total) > offset + COLLECTIVES_PER_PAGE) {
-      dispatch({
-        type: CollectivesActionTypes.FETCHING_COLLECTIVES,
-      });
-    }
-  };
+  useEffect(() => {
+    setOffset(0);
+    setCollectives([]);
+    setLoading(true);
+  }, [trends, locations, price]);
 
   return (
     <>
       <Head>
-        <title>Collectives Page</title>
+        <title>Коллективы</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -63,24 +68,27 @@ export default function CollectivesVocalPage() {
       <Wrapper borderBottom>
         <div className={s.title}>
           <span className={s.text}>Коллективы</span>
-          {loading ? (
-            <Skeleton count={3} />
-          ) : (
-            <span className={s.number}>{total}</span>
-          )}
+          {loading ? <Skeleton /> : <span className={s.number}>{total}</span>}
         </div>
       </Wrapper>
 
       <Wrapper borderBottom>
-        <CollectivesFilters defaultTrend={["Оригинального жанра"]} />
+        <CollectivesFilters
+          trends={trends}
+          setTrends={setTrends}
+          locations={locations}
+          setLocations={setLocations}
+          price={price}
+          setPrice={setPrice}
+        />
       </Wrapper>
 
       <Wrapper>
         <div className={s.collectives}>
           {loading
-            ? [...Array(collectives.length + COLLECTIVES_PER_PAGE)].map(
+            ? [...Array(collectives.length + POSTS_PER_PAGE)].map(
                 (e, index) => (
-                  <Skeleton key={`collectiveCardSkeleton${index}`} count={15} />
+                  <Skeleton key={`collectiveCardSkeleton${index}`} />
                 )
               )
             : collectives
@@ -109,4 +117,6 @@ export default function CollectivesVocalPage() {
       <Footer />
     </>
   );
-}
+};
+
+export default CollectivesPage;
