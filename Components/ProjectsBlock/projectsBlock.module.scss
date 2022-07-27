@@ -1,7 +1,7 @@
 @import "/styles/styles.scss";
 
 .wrapper {
-  padding-top: 40px;
+  padding: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
@@ -13,4 +13,8 @@
     grid-template-columns: 1fr;
     border: none;
   }
+}
+
+.skeleton {
+  height: 300px;
 }

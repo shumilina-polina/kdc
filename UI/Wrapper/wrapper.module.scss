@@ -35,4 +35,12 @@
 
 .space {
   height: 60px;
+
+  @include mobile-tablet {
+    height: 40px;
+  }
+
+  @include mobile {
+    height: 20px;
+  }
 }

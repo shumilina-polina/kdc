@@ -1,0 +1,11 @@
+@import "/styles/styles.scss";
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navigation {
+  font-family: $font-oswald;
+}

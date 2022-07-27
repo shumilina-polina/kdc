@@ -3,7 +3,7 @@
 .afficheContainer {
   display: flex;
 
-  @media screen and (max-width: 800px) {
+  @include mobile-tablet {
     flex-direction: column;
   }
 }
@@ -11,7 +11,7 @@
 .mobileCarusel {
   display: none;
 
-  @media screen and (max-width: 800px) {
+  @include mobile-tablet {
     display: block;
   }
 }
@@ -32,8 +32,11 @@
 }
 
 .carusel {
-  @media screen and (max-width: 800px) {
-    display: none;
+  display: flex;
+  flex-direction: column;
+
+  @include mobile-tablet {
+    display: none !important;
   }
 }
 
@@ -41,7 +44,7 @@
   width: 100%;
   display: flex;
 
-  @media screen and (max-width: 800px) {
+  @include mobile-tablet {
     width: 100%;
     flex-direction: column;
     gap: 20px;
@@ -59,7 +62,7 @@
 .mobileButton {
   display: none;
 
-  @media screen and (max-width: 800px) {
+  @include mobile-tablet {
     margin-top: 20px;
     display: block;
   }
@@ -67,6 +70,7 @@
 
 .content {
   padding: 25px 30px;
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -112,7 +116,7 @@
   font-size: $fs-small;
   font-weight: $fw-bold;
 
-  @media screen and (max-width: 800px) {
+  @include mobile-tablet {
     padding-bottom: 12px;
     align-self: flex-end;
   }
@@ -137,4 +141,16 @@
 .skeleton {
   width: 100%;
   height: 100%;
+}
+
+.daySkeleton {
+  width: 40px;
+  height: 30px;
+  background-color: gray;
+}
+
+.monthSkeleton {
+  width: 50px;
+  height: 50px;
+  background-color: gray;
 }

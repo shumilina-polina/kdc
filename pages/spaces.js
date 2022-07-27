@@ -3,8 +3,6 @@ import Header from "Components/Header/Header";
 import Head from "next/head";
 
 import cn from "classnames";
-
-import Container from "UI/Container/Container";
 import SpaceCard from "Components/SpaceCard/SpaceCard";
 
 import { useEffect, useState } from "react";
@@ -17,14 +15,16 @@ import s from "styles/pages/Spaces.module.scss";
 import Wrapper from "UI/Wrapper/Wrapper";
 
 export default function Home() {
+  const POSTS_PER_PAGE = 5;
+
   const [spaces, setSpaces] = useState([]);
   const [loading, setLoading] = useState(true);
   const [offset, setOffset] = useState(0);
-  const [totalSpaces, setTotalSpaces] = useState(null);
+  const [total, setTotal] = useState(null);
 
   const onLoadMore = () => {
-    if (totalSpaces > spaces.length) {
-      setOffset((prevState) => prevState + SPACES_PER_PAGE);
+    if (offset + POSTS_PER_PAGE < total) {
+      setOffset(offset + POSTS_PER_PAGE);
       setLoading(true);
     }
   };
@@ -32,11 +32,10 @@ export default function Home() {
   useEffect(() => {
     if (loading) {
       apiService
-        .getSpaces(offset)
+        .getSpaces(offset, POSTS_PER_PAGE)
         .then((res) => {
-          console.log(res);
-          setTotalSpaces(Number(res.total));
-          setSpaces([...spaces, ...res.spaces]);
+          setSpaces([...spaces, ...res.data]);
+          setTotal(res.total);
         })
         .finally(() => setLoading(false));
     }
@@ -65,13 +64,9 @@ export default function Home() {
         <Wrapper borderBottom>
           <div className={cn(s.padding, s.title)}>
             <span className={s.oswald}>Пространства </span>
-            {loading ? (
-              <Skeleton />
-            ) : (
-              <span className={cn(s.oswald, s.counter)}>
-                {Number(totalSpaces)}
-              </span>
-            )}
+            <span className={cn(s.oswald, s.counter)}>
+              {loading ? <Skeleton /> : total}
+            </span>
           </div>
         </Wrapper>
 

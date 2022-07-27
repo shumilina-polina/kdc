@@ -12,7 +12,7 @@ import s from "./collectivesCard.module.scss";
 
 const CollectiveCard = (props) => {
   const { collective, className } = props;
-  const { id, title, trend, price, kit, thumbnail } = collective;
+  const { id, title, thumbnail, trend, kit, price } = collective;
 
   const [isOpen, setOpen] = useState(false);
 

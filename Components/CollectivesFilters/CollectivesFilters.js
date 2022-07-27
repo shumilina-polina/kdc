@@ -1,57 +1,16 @@
-import cn from "classnames";
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { CollectivesActionTypes } from "store/actionTypes/CollectivesActionTypes";
-
 import Button from "UI/Button/Button";
-import Container from "UI/Container/Container";
 import SelectInput from "UI/SelectInput/SelectInput";
 import Wrapper from "UI/Wrapper/Wrapper";
 
 import s from "./collectivesFilters.module.scss";
 
 const CollectivesFilters = (props) => {
-  const { defaultTrend = [] } = props;
-
-  const [trendFilter, setTrendFilter] = useState(defaultTrend);
-  const [priceFilter, setPriceFilter] = useState([]);
-  const [locationFilter, setLocationFilter] = useState([]);
-
-  const dispatch = useDispatch();
-
-  useEffect(
-    () => updateCollectives(),
-    [trendFilter, priceFilter, locationFilter]
-  );
-
-  const updateCollectives = () => {
-    const priceFiltersNumbered = [];
-
-    if (priceFilter.includes("Бесплатные")) priceFiltersNumbered.push(0);
-    if (priceFilter.includes("Платные")) priceFiltersNumbered.push(99999);
-
-    dispatch({
-      type: CollectivesActionTypes.UPDATE_FILTERS,
-      payload: {
-        trend: trendFilter,
-        price: priceFiltersNumbered,
-        location: locationFilter,
-      },
-    });
-  };
+  const { trends, setTrends, locations, setLocations, price, setPrice } = props;
 
   const resetFilters = () => {
-    dispatch({
-      type: CollectivesActionTypes.UPDATE_FILTERS,
-      payload: {
-        trend: [],
-        price: [],
-        location: [],
-      },
-    });
-    setTrendFilter([]);
-    setPriceFilter([]);
-    setLocationFilter([]);
+    setTrends([]);
+    setLocations([]);
+    setPrice([]);
   };
 
   return (
@@ -68,22 +27,22 @@ const CollectivesFilters = (props) => {
             "Оригинального жанра",
           ]}
           className={s.select}
-          data={trendFilter}
-          setData={setTrendFilter}
+          data={trends}
+          setData={setTrends}
         />
         <SelectInput
           label="Стоимость"
           variants={["Платные", "Бесплатные"]}
           className={s.select}
-          data={priceFilter}
-          setData={setPriceFilter}
+          data={price}
+          setData={setPrice}
         />
         <SelectInput
           label="Адрес"
           variants={["Московский пр. 152", "Ул. Варшавская, 98"]}
-          data={locationFilter}
           className={s.select}
-          setData={setLocationFilter}
+          data={locations}
+          setData={setLocations}
         />
         <Button className={s.button} onClick={resetFilters}>
           Сбросить выбор

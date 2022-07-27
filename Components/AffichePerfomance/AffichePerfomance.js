@@ -11,24 +11,24 @@ import s from "./affichePerfomance.module.scss";
 const AffichePerfomance = (props) => {
   const { post } = props;
 
-  const { date, title, content } = post;
-  const dataDate = new Date(date);
+  const { date, time, title, content } = post;
+  const dataDate = moment(`${date} ${time}`);
+
   const [isOpen, setOpen] = useState(false);
+
   moment.locale("ru");
 
   return (
     <>
       <div className={s.perfomance}>
         <div className={s.header}>
-          <span className={s.date}>{`${dataDate.getDate()} ${moment(
-            date
-          ).format("MMMM")}`}</span>
-          <span
-            className={s.time}
-          >{`${dataDate.getHours()}:${dataDate.getMinutes()}`}</span>
+          <span className={s.date}>{dataDate.format("D MMMM")}</span>
+          <span className={s.time}>{`${dataDate.format("HH")}:${dataDate.format(
+            "MM"
+          )}`}</span>
         </div>
         <div className={s.main}>
-          <span className={s.title}>{htmlDecode(title)}</span>
+          <span className={s.title}>{useHtmlDecode(title)}</span>
           <p className={s.content}>
             {useHtmlDecode(content).substr(0, 200) + "..."}
           </p>

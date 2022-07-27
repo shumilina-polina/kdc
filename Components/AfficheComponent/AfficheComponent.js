@@ -6,7 +6,6 @@ import "moment/locale/ru";
 import { useEffect, useState } from "react";
 import apiService from "services/apiService";
 import ButtonArrow from "UI/ButtonArrow/ButtonArrow";
-import Container from "UI/Container/Container";
 import Wrapper from "UI/Wrapper/Wrapper";
 
 import s from "./afficheComponent.module.scss";
@@ -14,138 +13,16 @@ import s from "./afficheComponent.module.scss";
 const AfficheComponent = () => {
   moment.locale("ru");
 
-  const [month, setMonth] = useState(moment().format("MMMM"));
+  const [date, setDate] = useState(moment().format("YYYY-MM-DD"));
   const [affiches, setAffiches] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const prevMonth = () => {
-    setLoading(true);
-    switch (month) {
-      case "август":
-        setMonth("июль");
-        break;
-      case "сентябрь":
-        setMonth("август");
-        break;
-      case "октябрь":
-        setMonth("сентябрь");
-        break;
-      case "ноябрь":
-        setMonth("октябрь");
-        break;
-      case "декабрь":
-        setMonth("ноябрь");
-        break;
-      case "январь":
-        setMonth("декабрь");
-        break;
-      case "февраль":
-        setMonth("январь");
-        break;
-      case "март":
-        setMonth("февраль");
-        break;
-      case "апрель":
-        setMonth("март");
-        break;
-      case "май":
-        setMonth("апрель");
-        break;
-      case "июнь":
-        setMonth("май");
-        break;
-      case "июль":
-        setMonth("июнь");
-        break;
-    }
-  };
-
-  const nextMonth = () => {
-    setLoading(true);
-    switch (month) {
-      case "июль":
-        setMonth("август");
-        break;
-      case "август":
-        setMonth("сентябрь");
-        break;
-      case "сентябрь":
-        setMonth("октябрь");
-        break;
-      case "октябрь":
-        setMonth("ноябрь");
-        break;
-      case "ноябрь":
-        setMonth("декабрь");
-        break;
-      case "декабрь":
-        setMonth("январь");
-        break;
-      case "январь":
-        setMonth("февраль");
-        break;
-      case "февраль":
-        setMonth("март");
-        break;
-      case "март":
-        setMonth("апрель");
-        break;
-      case "апрель":
-        setMonth("май");
-        break;
-      case "май":
-        setMonth("июнь");
-        break;
-      case "июнь":
-        setMonth("июль");
-        break;
-    }
-  };
-
   useEffect(() => {
-    switch (month) {
-      case "июль":
-        month = "july";
-        break;
-      case "август":
-        month = "august";
-        break;
-      case "сентябрь":
-        month = "september";
-        break;
-      case "октябрь":
-        month = "october";
-        break;
-      case "ноябрь":
-        month = "november";
-        break;
-      case "декабрь":
-        month = "december";
-        break;
-      case "январь":
-        month = "january";
-        break;
-      case "февраль":
-        month = "february";
-        break;
-      case "март":
-        month = "march";
-        break;
-      case "апрель":
-        month = "april";
-        break;
-      case "май":
-        month = "may";
-        break;
-      case "июнь":
-        month = "june";
-        break;
-    }
     apiService
-      .getAffichesByMonth(month)
-      .then((res) => setAffiches(res))
+      .getAffichesByMonth(moment(`${date} 00:00:00`).format("MM"))
+      .then((res) => setAffiches(res.data))
       .finally(() => setLoading(false));
-  }, [month]);
+  }, [loading]);
 
   return (
     <>
@@ -166,12 +43,13 @@ const AfficheComponent = () => {
               key={`monthSlider_${index}`}
               className={cn(
                 s.month,
-                month === moment().add(index, "M").format("MMMM")
+                moment().add(index, "M").format("MM") ==
+                  moment(`${date} 00:00:00`).format("MM")
                   ? s.active
                   : null
               )}
               onClick={() => {
-                setMonth(moment().add(index, "M").format("MMMM"));
+                setDate(moment().add(index, "M").format("YYYY-MM-DD"));
                 setLoading(true);
               }}
             >
@@ -207,12 +85,12 @@ const AfficheComponent = () => {
       <Wrapper borderBottom>
         <div className={s.swiper}>
           <div className={s.swiperTitle}>
-            <ButtonArrow direction="back" color="red" onClick={prevMonth} />
+            <ButtonArrow direction="back" color="red" />
             <span>
               {loading ? (
                 <Skeleton sx={{ width: "20px", height: "40px" }} />
               ) : (
-                `1-3 ${month}`
+                `${moment(`${date} 00:00:00`).add(-1, "M").format("MMMM")}`
               )}
             </span>
           </div>
@@ -221,10 +99,10 @@ const AfficheComponent = () => {
               {loading ? (
                 <Skeleton sx={{ width: "20px", height: "40px" }} />
               ) : (
-                `25-28 ${month}`
+                `${moment(`${date} 00:00:00`).add(1, "M").format("MMMM")}`
               )}
             </span>
-            <ButtonArrow direction="forward" color="red" onClick={nextMonth} />
+            <ButtonArrow direction="forward" color="red" />
           </div>
         </div>
       </Wrapper>

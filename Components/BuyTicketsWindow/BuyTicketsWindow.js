@@ -1,7 +1,9 @@
 import moment from "moment";
 import useHtmlDecode from "shared/hooks/useHtmlDecode";
-
 import Button from "UI/Button/Button";
+
+import { months } from "shared/constants/Month";
+
 import s from "./buyTicketsWindow.module.scss";
 
 const BuyTicketsWindow = (props) => {
@@ -9,27 +11,27 @@ const BuyTicketsWindow = (props) => {
     adress,
     content,
     date,
+    time,
     limits,
     price,
     thumbnail,
     title,
     subtitle = "",
-  } = props.affiche;
+  } = props.data;
 
-  const dataDate = new Date(date);
+  const dataDate = moment(`${date} ${time}`);
+  const monthsRU = months.split(",");
 
   return (
     <div className={s.wrapper}>
       <div className={s.datetime}>
         <div className={s.date}>
-          <span>{dataDate.getDate()}</span>
-          <span>
-            {moment(dataDate.getMonth(), "M").add(1, "M").format("MMMM")}
-          </span>
+          <span>{dataDate.format("D")}</span>
+          <span>{monthsRU[dataDate.format("M") - 1]}</span>
         </div>
         <div className={s.time}>
-          <span>{moment(dataDate.getDate(), "D").format("dd")}</span>
-          <span>{`${dataDate.getHours()}:${dataDate.getMinutes()}`}</span>
+          <span>{``}</span>
+          <span>{``}</span>
         </div>
       </div>
       <div className={s.header}>

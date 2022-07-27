@@ -11,6 +11,7 @@ import Contacts from "Components/Contacts/Contacts";
 import { IndexData } from "shared/constants/pages/IndexData";
 
 import s from "../styles/pages/Home.module.scss";
+import Wrapper from "UI/Wrapper/Wrapper";
 
 export default function HomePage() {
   const {
@@ -36,6 +37,7 @@ export default function HomePage() {
         <Collectives data={collectives} />
         <Affiche data={affiche} />
         <News data={news} />
+        <Wrapper space borderBottom />
         <Contacts data={contacts} />
       </main>
 

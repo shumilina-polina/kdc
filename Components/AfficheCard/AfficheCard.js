@@ -5,6 +5,7 @@ import { useState } from "react";
 import ModalWindow from "UI/Modal/ModalWindow";
 import BuyTicketsWindow from "Components/BuyTicketsWindow/BuyTicketsWindow";
 import useHtmlDecode from "shared/hooks/useHtmlDecode";
+import { months } from "shared/constants/Month";
 
 const AfficheCard = (props) => {
   moment.locale("ru");
@@ -12,30 +13,30 @@ const AfficheCard = (props) => {
   const [isOpen, setOpen] = useState(false);
 
   const { affiche } = props;
+  const { title, thumbnail, date, time } = affiche;
 
-  const { title, thumbnail, date } = affiche;
-
-  const dataDate = new Date(date);
+  const dataDate = moment(`${date} ${time}`);
+  const monthsRU = months.split(",");
 
   return (
     <>
       <div className={s.card} onClick={() => setOpen(true)}>
         <img src={thumbnail} className={s.thumbnail} />
         <div className={s.date}>
-          <span className={s.number}>{dataDate.getDate()}</span>
-          <span className={s.dtaeMonth}>
-            {moment(dataDate.getMonth(), "M").add(1, "M").format("MMMM")}
-          </span>
-          <span className={s.narrow}>
-            {moment(dataDate.getDate(), "D").format("dddd")}
-          </span>
+          <span className={s.number}>{dataDate.format("DD")}</span>
+          <span className={s.dtaeMonth}>{monthsRU[dataDate.format("M")]}</span>
+          <span className={s.narrow}>{dataDate.format("dddd")}</span>
         </div>
         <div className={s.title}>
           <span>{useHtmlDecode(title)}</span>
         </div>
       </div>
-      <ModalWindow isOpen={isOpen} onClose={() => setOpen(false)}>
-        <BuyTicketsWindow affiche={affiche} />
+      <ModalWindow
+        isOpen={isOpen}
+        onClose={() => setOpen(false)}
+        title="Приобрести билет"
+      >
+        <BuyTicketsWindow data={affiche} />
       </ModalWindow>
     </>
   );

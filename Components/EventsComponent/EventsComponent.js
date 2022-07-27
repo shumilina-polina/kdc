@@ -12,31 +12,21 @@ import { Skeleton } from "@mui/material";
 import Wrapper from "UI/Wrapper/Wrapper";
 
 const EventsComponent = () => {
-  const [date, setDate] = useState(new Date());
+  const POST_ON_PAGE = 5;
+
+  const [date, setDate] = useState(moment().format("YYYY-MM-DD"));
   const [free, setFree] = useState(false);
-  const [pay, setPay] = useState(false);
+  const [paid, setPaid] = useState(false);
+  const [all, setAll] = useState(false);
   const [loading, setLoading] = useState(true);
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
     if (loading) {
-      const requestDate = moment(date).format("DD/MM/YYYY");
-      if (free & !pay) {
-        apiService
-          .getEventsByDate(requestDate, 0)
-          .then((res) => setEvents(res))
-          .finally(() => setLoading(false));
-      } else if (!free & pay) {
-        apiService
-          .getEventsByDate(requestDate, 1)
-          .then((res) => setEvents(res))
-          .finally(() => setLoading(false));
-      } else {
-        apiService
-          .getEventsByDate(requestDate)
-          .then((res) => setEvents(res))
-          .finally(() => setLoading(false));
-      }
+      apiService
+        .getEventsByDate(date, (free = free), (paid = paid), (all = all))
+        .then((res) => setEvents(res.data))
+        .finally(() => setLoading(false));
     }
   }, [loading]);
 
@@ -56,26 +46,27 @@ const EventsComponent = () => {
           </div>
           <div className={s.checkboxGroup}>
             <CustomCheckbox
-              onChange={(value) => {
+              onChange={() => {
                 setLoading(true);
-                setFree(value);
+                setFree((prev) => !prev);
               }}
-              value={0}
+              value={free}
               label="Бесплатные"
             />
             <CustomCheckbox
-              onChange={(value) => {
+              onChange={() => {
                 setLoading(true);
-                setPay(value);
+                setPaid((prev) => !prev);
               }}
-              value={9999}
+              value={paid}
               label="Платные"
             />
             <CustomCheckbox
-              onChange={(value) => {
+              onChange={() => {
                 setLoading(true);
+                setAll((prev) => !prev);
               }}
-              value={9999}
+              value={all}
               label="Все"
             />
           </div>
@@ -85,20 +76,17 @@ const EventsComponent = () => {
       <Wrapper>
         <div className={s.footer}>
           <div className={s.calendar}>
-            <Calendar
-              date={date}
-              setDate={setDate}
-              setLoading={() => setLoading(true)}
-            />
+            <Calendar setDate={setDate} setLoading={() => setLoading(true)} />
           </div>
           <div className={s.eventsCards}>
             {loading ? (
               <>
-                <Skeleton className={s.skeleton} />
-                <Skeleton className={s.skeleton} />
-                <Skeleton className={s.skeleton} />
-                <Skeleton className={s.skeleton} />
-                <Skeleton className={s.skeleton} />
+                {[...Array(POST_ON_PAGE)].map((el, index) => (
+                  <Skeleton
+                    key={`eventSkeleton_${index}`}
+                    className={s.skeleton}
+                  />
+                ))}
               </>
             ) : events.length === 0 ? (
               <span className={s.noEventsTitle}>
@@ -106,7 +94,7 @@ const EventsComponent = () => {
               </span>
             ) : (
               events.map((event) => (
-                <EventCard key={`eventcard_${event.id}`} event={event} />
+                <EventCard key={`eventCard_${event.id}`} event={event} />
               ))
             )}
           </div>
