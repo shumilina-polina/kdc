@@ -5,7 +5,6 @@ import cn from "classnames";
 
 import Header from "Components/Header/Header";
 import Footer from "Components/Footer/Footer";
-import Container from "UI/Container/Container";
 import ButtonArrow from "UI/ButtonArrow/ButtonArrow";
 import Button from "UI/Button/Button";
 
