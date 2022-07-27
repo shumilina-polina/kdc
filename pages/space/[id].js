@@ -34,7 +34,7 @@ const SingleColectivePage = (props) => {
     if (isReady) {
       apiService.getSpaceByID(id).then((res) => {
         setLoading(false);
-        setSpace(res);
+        setSpace(res.data[0]);
       });
     }
   }, [isReady]);

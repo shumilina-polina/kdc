@@ -62,7 +62,7 @@ const CenterBlock = () => {
       </Wrapper>
 
       <Wrapper borderBottom>
-        <div className>
+        <div>
           <span className={cn(s.oswald, s.title, s.subtitle)}>
             Ждут на занятия новых участников кружки художественной
             самодеятельности:
@@ -73,11 +73,11 @@ const CenterBlock = () => {
       <Wrapper borderBottom>
         <div className={s.collectivesCards}>
           {loading
-            ? [...Array(collectives.length)].map((s, i) => (
-                <Skeleton key={`skeleton${{ i }}`} />
+            ? [...Array(collectives.length)].map((el,index) => (
+                <Skeleton key={`collectiveCardSkeleton${{index}}`} />
               ))
-            : collectives.map((collective) => (
-                <CollectiveCard collective={collective} />
+            : collectives.map(collective => (
+                <CollectiveCard key={`collectiveCard${collective.id}`} collective={collective} />
               ))}
         </div>
       </Wrapper>

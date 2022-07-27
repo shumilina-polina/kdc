@@ -190,8 +190,8 @@ const SingleColectivePage = () => {
                         <Skeleton />
                       </>
                     ) : (
-                      collective.program.map((item) => (
-                        <li className={s.item}>
+                      collective.program.map((item,index) => (
+                        <li key={`listItem_${index}`} className={s.item}>
                           <img src="/assets/icons/listmarker.svg" />
                           {item}
                         </li>

@@ -55,7 +55,6 @@ const SelectInput = (props) => {
           MenuProps={MenuProps}
           className={s.select}
           classes={{ icon: s.icon }}
-          z
         >
           {variants.map((name) => (
             <MenuItem key={name} value={name} className={s.item}>

@@ -17,7 +17,7 @@ const ProjectsBlock = () => {
   useEffect(() => {
     apiService
       .getProjects()
-      .then((res) => setProjects(res))
+      .then(res => setProjects(res))
       .finally(() => setLoading(false));
   }, []);
 
