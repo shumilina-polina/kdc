@@ -82,7 +82,7 @@ const SingleColectivePage = () => {
                 {loading ? (
                   <Skeleton />
                 ) : (
-                  <h2>{useHtmlDecode(collective.title)}</h2>
+                  <h2>{collective.title}</h2>
                 )}
               </div>
               <div className={s.table}>
