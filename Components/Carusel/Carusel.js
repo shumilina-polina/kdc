@@ -67,8 +67,8 @@ const Carusel = (props) => {
           {loading ? (
             <Skeleton sx={{ width: "100%", height: "500px" }} />
           ) : (
-            slides.map((slide) => (
-              <>
+            slides.map(slide => (
+              <React.Fragment key={`slide_${slide.id}`}>
                 <div
                   className={s.slide}
                   onTouchStart={() => onSwipeSart(event)}
@@ -76,7 +76,6 @@ const Carusel = (props) => {
                   style={{
                     transform: `translateX(-${slideNumber * 100}%)`,
                   }}
-                  key={`slide_${slide.id}`}
                 >
                   <div className={s.slideContent}>
                     <div className={s.wrapper}>
@@ -109,7 +108,7 @@ const Carusel = (props) => {
                 >
                   <BuyTicketsWindow data={slide} />
                 </ModalWindow>
-              </>
+              </React.Fragment>
             ))
           )}
         </div>
