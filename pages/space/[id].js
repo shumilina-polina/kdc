@@ -33,7 +33,7 @@ const SingleColectivePage = (props) => {
     if (isReady) {
       apiService.getSpaceByID(id).then((res) => {
         setLoading(false);
-        setSpace(res.data[0]);
+        setSpace(res);
       });
     }
   }, [isReady]);
@@ -124,12 +124,19 @@ const SingleColectivePage = (props) => {
               <span className={s.oswald}>
                 Организационно-техническое обеспечение мероприятия
               </span>
-              <Link href="">
-                <span className={s.link}>
-                  <a>Смотреть PDF-файл</a>
-                  <img className={s.icon} src="/assets/icons/arrowRight.svg" />
-                </span>
-              </Link>
+              {loading ? (
+                <Skeleton sx={{ width: "50px" }} />
+              ) : (
+                <Link href={space.file}>
+                  <span className={s.link}>
+                    <a>Смотреть PDF-файл</a>
+                    <img
+                      className={s.icon}
+                      src="/assets/icons/arrowRight.svg"
+                    />
+                  </span>
+                </Link>
+              )}
             </div>
             <div className={cn(s.snaps, loading ? s.loading : null)}>
               {loading ? (

@@ -18,11 +18,7 @@ import { routes } from "shared/enums/pages";
 import ModalWindow from "UI/Modal/ModalWindow";
 import JoinCollectiveWindow from "Components/JoinCollectiveWindow/JoinCollectiveWindow";
 import Wrapper from "UI/Wrapper/Wrapper";
-
-function htmlDecode(input) {
-  const doc = new DOMParser().parseFromString(input, "text/html");
-  return doc.documentElement.textContent;
-}
+import useHtmlDecode from "shared/hooks/useHtmlDecode";
 
 const SingleColectivePage = () => {
   const {
@@ -86,7 +82,7 @@ const SingleColectivePage = () => {
                 {loading ? (
                   <Skeleton />
                 ) : (
-                  <h2>{htmlDecode(collective.title)}</h2>
+                  <h2>{collective.title}</h2>
                 )}
               </div>
               <div className={s.table}>
@@ -190,7 +186,7 @@ const SingleColectivePage = () => {
                         <Skeleton />
                       </>
                     ) : (
-                      collective.program.map((item,index) => (
+                      collective.program.map((item, index) => (
                         <li key={`listItem_${index}`} className={s.item}>
                           <img src="/assets/icons/listmarker.svg" />
                           {item}

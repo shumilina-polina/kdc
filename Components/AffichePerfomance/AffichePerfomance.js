@@ -46,7 +46,7 @@ const AffichePerfomance = (props) => {
         onClose={() => setOpen(false)}
         title="Приобрести билет"
       >
-        <BuyTicketsWindow affiche={post} />
+        <BuyTicketsWindow data={post} />
       </ModalWindow>
     </>
   );

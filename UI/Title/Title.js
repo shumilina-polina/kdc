@@ -6,9 +6,9 @@ const Title = (props) => {
   const { className, children } = props;
 
   return (
-    <div className={s.wrapper}>
+    <div className={cn(s.wrapper, className)}>
       <h2>
-        <span className={cn(s.title, className)}>{children}</span>
+        <span className={s.title}>{children}</span>
       </h2>
     </div>
   );

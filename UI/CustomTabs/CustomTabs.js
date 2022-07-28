@@ -67,7 +67,12 @@ const CustomTabs = (props) => {
       </Box>
 
       {components.map((component, index) => (
-        <TabPanel className={s.tabpanel} value={value} index={index} key={`tabPanel_${index}`}>
+        <TabPanel
+          className={s.tabpanel}
+          value={value}
+          index={index}
+          key={`tabPanel_${index}`}
+        >
           {component}
         </TabPanel>
       ))}

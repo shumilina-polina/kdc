@@ -24,7 +24,9 @@ const AfficheCard = (props) => {
         <img src={thumbnail} className={s.thumbnail} />
         <div className={s.date}>
           <span className={s.number}>{dataDate.format("DD")}</span>
-          <span className={s.dtaeMonth}>{monthsRU[dataDate.format("M")]}</span>
+          <span className={s.dtaeMonth}>
+            {monthsRU[dataDate.format("M") - 1]}
+          </span>
           <span className={s.narrow}>{dataDate.format("dddd")}</span>
         </div>
         <div className={s.title}>

@@ -73,11 +73,14 @@ const CenterBlock = () => {
       <Wrapper borderBottom>
         <div className={s.collectivesCards}>
           {loading
-            ? [...Array(collectives.length)].map((el,index) => (
-                <Skeleton key={`collectiveCardSkeleton${{index}}`} />
+            ? [...Array(collectives.length)].map((el, index) => (
+                <Skeleton key={`collectiveCardSkeleton${{ index }}`} />
               ))
-            : collectives.map(collective => (
-                <CollectiveCard key={`collectiveCard${collective.id}`} collective={collective} />
+            : collectives.map((collective) => (
+                <CollectiveCard
+                  key={`collectiveCard${collective.id}`}
+                  collective={collective}
+                />
               ))}
         </div>
       </Wrapper>

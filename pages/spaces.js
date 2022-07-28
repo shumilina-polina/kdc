@@ -62,7 +62,7 @@ export default function Home() {
         </Wrapper>
 
         <Wrapper borderBottom>
-          <div className={cn(s.padding, s.title)}>
+          <div className={cn(s.padding, s.title, s.spacesTitle)}>
             <span className={s.oswald}>Пространства </span>
             <span className={cn(s.oswald, s.counter)}>
               {loading ? <Skeleton /> : total}
