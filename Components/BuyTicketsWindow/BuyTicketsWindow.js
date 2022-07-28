@@ -35,9 +35,7 @@ const BuyTicketsWindow = (props) => {
         </div>
       </div>
       <div className={s.header}>
-        <span className={s.subtitle}>
-          {subtitle ? useHtmlDecode(subtitle) : ""}{" "}
-        </span>
+        <span className={s.subtitle}>{`${useHtmlDecode(subtitle)} `}</span>
         <span className={s.title}>{`${useHtmlDecode(title)} `}</span>
       </div>
       <div className={s.details}>

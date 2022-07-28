@@ -42,7 +42,7 @@ const SingleColectivePage = () => {
           <div className={s.slide}>
             <div className={s.wrapper}>
               <div className={s.info}>
-                <span className={s.title}>{useHtmlDecode(gallery.title)}</span>
+                <span className={s.title}>{gallery.title}</span>
                 <span className={s.date}>{gallery.date}</span>
                 <div className={s.shadow} />
               </div>
@@ -60,7 +60,7 @@ const SingleColectivePage = () => {
           <div className={s.header}>
             <ButtonArrow color="red" href={routes.gallery} hasLink />
             <Title className={s.headerTitle}>
-              {useHtmlDecode(gallery.title)}
+              {gallery.title}
             </Title>
           </div>
         )}
