@@ -5,6 +5,7 @@ import moment from "moment";
 import "moment/locale/ru";
 import { useEffect, useState } from "react";
 import apiService from "services/apiService";
+import { AFFICHES_PER_PAGE } from "services/config";
 import ButtonArrow from "UI/ButtonArrow/ButtonArrow";
 import Wrapper from "UI/Wrapper/Wrapper";
 
@@ -12,16 +13,44 @@ import s from "./afficheComponent.module.scss";
 
 const AfficheComponent = () => {
   moment.locale("ru");
+  const POSTS_PER_PAGE = AFFICHES_PER_PAGE;
 
   const [date, setDate] = useState(moment().format("YYYY-MM-DD"));
   const [affiches, setAffiches] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [offset, setOffset] = useState(0);
+  const [total, setTotal] = useState(null);
+
+  const onLoadPrev = () => {
+    if (offset - POSTS_PER_PAGE >= 0) {
+      setOffset(offset - POSTS_PER_PAGE);
+      setLoading(true);
+    }
+  };
+
+  const onLoadNext = () => {
+    console.log(total);
+    console.log(offset);
+    if (offset + POSTS_PER_PAGE < total) {
+      setOffset(offset + POSTS_PER_PAGE);
+      setLoading(true);
+    }
+  };
 
   useEffect(() => {
-    apiService
-      .getAffichesByMonth(moment(`${date} 00:00:00`).format("MM"))
-      .then((res) => setAffiches(res.data))
-      .finally(() => setLoading(false));
+    if (loading) {
+      const requestDate =
+        moment(`${date} 00:00:00`).format("MM") === moment().format("MM")
+          ? moment(`${date} 00:00:00`).format("YYYY-MM-DD")
+          : moment(`${date} 00:00:00`).format("YYYY-MM-01");
+      apiService
+        .getAffichesByMonth(requestDate, offset)
+        .then((res) => {
+          setAffiches([...res.data]);
+          setTotal(res.total);
+        })
+        .finally(() => setLoading(false));
+    }
   }, [loading]);
 
   return (
@@ -51,6 +80,7 @@ const AfficheComponent = () => {
               onClick={() => {
                 setDate(moment().add(index, "M").format("YYYY-MM-DD"));
                 setLoading(true);
+                setOffset(0);
               }}
             >
               {moment().add(index, "M").format("MMMM")}
@@ -85,7 +115,7 @@ const AfficheComponent = () => {
       <Wrapper borderBottom>
         <div className={s.swiper}>
           <div className={s.swiperTitle}>
-            <ButtonArrow direction="back" color="red" />
+            <ButtonArrow direction="back" color="red" onClick={onLoadPrev} />
             <span>
               {loading ? (
                 <Skeleton sx={{ width: "20px", height: "40px" }} />
@@ -102,7 +132,7 @@ const AfficheComponent = () => {
                 `${moment(`${date} 00:00:00`).add(1, "M").format("MMMM")}`
               )}
             </span>
-            <ButtonArrow direction="forward" color="red" />
+            <ButtonArrow direction="forward" color="red" onClick={onLoadNext} />
           </div>
         </div>
       </Wrapper>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import cn from "classnames";
 
 import ButtonArrow from "UI/ButtonArrow/ButtonArrow";
@@ -8,32 +8,14 @@ import ModalWindow from "UI/Modal/ModalWindow";
 import BuyTicketsWindow from "Components/BuyTicketsWindow/BuyTicketsWindow";
 
 import s from "./carusel.module.scss";
-import Container from "UI/Container/Container";
 import Wrapper from "UI/Wrapper/Wrapper";
-
-const slides = [
-  {
-    id: 1,
-    title: "Спектакль “Мойдодыр”",
-    image: "https://musicaltheatre.by/d/komediya-glavnaya.jpg",
-    date: "Cегодня в 12:00",
-  },
-  {
-    id: 2,
-    title: "Спектакль “Мойдодыр”",
-    image: "https://amurteatr.ru/uploads/articles/tartyuf-ili-obmanshhik.jpg",
-    date: "Cегодня в 12:00",
-  },
-  {
-    id: 3,
-    title: "Спектакль “Мойдодыр”",
-    image:
-      "https://net-volgograd.ru/wp-content/uploads/2021/12/kzilejpfnuk.jpg",
-    date: "Cегодня в 12:00",
-  },
-];
+import apiService from "services/apiService";
+import moment from "moment";
+import { Skeleton } from "@mui/material";
 
 const Carusel = (props) => {
+  const [loading, setLoading] = useState(true);
+  const [slides, setSlides] = useState([]);
   const [slideNumber, setSlideNumber] = useState(0);
   const [isOpen, setOpen] = useState(false);
 
@@ -53,48 +35,85 @@ const Carusel = (props) => {
     }
   };
 
+  const [startCoordsX, setStartCoordsX] = useState(null);
+
+  const onSwipeSart = (e) => {
+    setStartCoordsX(e.changedTouches[0].clientX);
+  };
+
+  const onSwipeEnd = (e) => {
+    if (startCoordsX - e.changedTouches[0].clientX > 0) {
+      if (slideNumber < slides.length - 1) {
+        setSlideNumber((prev) => prev + 1);
+      }
+    } else {
+      if (slideNumber > 0) {
+        setSlideNumber((prev) => prev - 1);
+      }
+    }
+  };
+
+  useEffect(() => {
+    apiService
+      .getAffiches(0, 5)
+      .then((res) => setSlides(res.data))
+      .finally(() => setLoading(false));
+  }, [loading]);
+
   return (
     <div>
-      <Container>
+      <Wrapper>
         <div className={s.content}>
-          {slides.map((slide) => (
-            <div
-              className={s.slide}
-              style={{
-                transform: `translateX(-${slideNumber * 100}%)`,
-              }}
-              key={`slide_${slide.id}`}
-            >
-              <div className={s.slideContent}>
-                <div className={s.wrapper}>
-                  <div className={s.concertActions}>
-                    <span className={s.slideTitle}>{slide.title}</span>
+          {loading ? (
+            <Skeleton sx={{ width: "100%", height: "500px" }} />
+          ) : (
+            slides.map((slide) => (
+              <>
+                <div
+                  className={s.slide}
+                  onTouchStart={() => onSwipeSart(event)}
+                  onTouchEnd={() => onSwipeEnd(event)}
+                  style={{
+                    transform: `translateX(-${slideNumber * 100}%)`,
+                  }}
+                  key={`slide_${slide.id}`}
+                >
+                  <div className={s.slideContent}>
+                    <div className={s.wrapper}>
+                      <div className={s.concertActions}>
+                        <span className={s.slideTitle}>{slide.title}</span>
+                      </div>
+                      <div className={s.concertDate}>
+                        <span>
+                          {moment(`${slide.date} 12:00:00`).format(
+                            "D MMMM в hh:mm"
+                          )}
+                        </span>
+                      </div>
+                    </div>
+                    <div className={s.container}>
+                      <Button
+                        className={s.slideButton}
+                        onClick={() => setOpen(true)}
+                      >
+                        {getTicketButtonText}
+                      </Button>
+                    </div>
                   </div>
-                  <div className={s.concertDate}>
-                    <span>{slide.date}</span>
-                  </div>
+                  <img src={slide.thumbnail} className={s.poster} />
                 </div>
-                <div className={s.container}>
-                  <Button
-                    className={s.slideButton}
-                    onClick={() => setOpen(true)}
-                  >
-                    {getTicketButtonText}
-                  </Button>
-                </div>
-              </div>
-              <img src={slide.image} className={s.poster} />
-            </div>
-          ))}
-          <ModalWindow
-            isOpen={isOpen}
-            onClose={() => setOpen(false)}
-            title={getTicketButtonText}
-          >
-            <BuyTicketsWindow />
-          </ModalWindow>
+                <ModalWindow
+                  isOpen={isOpen}
+                  onClose={() => setOpen(false)}
+                  title={getTicketButtonText}
+                >
+                  <BuyTicketsWindow data={slide} />
+                </ModalWindow>
+              </>
+            ))
+          )}
         </div>
-      </Container>
+      </Wrapper>
 
       <Wrapper borderTop>
         <div className={s.actions}>

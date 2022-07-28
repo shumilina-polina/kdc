@@ -30,8 +30,8 @@ const BuyTicketsWindow = (props) => {
           <span>{monthsRU[dataDate.format("M") - 1]}</span>
         </div>
         <div className={s.time}>
-          <span>{``}</span>
-          <span>{``}</span>
+          <span>{dataDate.format("dd")}</span>
+          <span>{dataDate.format("hh:mm")}</span>
         </div>
       </div>
       <div className={s.header}>

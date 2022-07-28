@@ -58,8 +58,9 @@ class ApiService {
       .catch((error) => error);
   };
 
-  getAffichesByMonth = (month) => {
-    const url = `${this.baseUrl}/affiche?month=${month}`;
+  getAffichesByMonth = (date, offset = 0, per_page = 5) => {
+    const url = `${this.baseUrl}/affiche?date=${date}&offset=${offset}&per_page=5`;
+    console.log(url);
     return axios
       .get(url)
       .then((res) => res.data)
@@ -87,6 +88,22 @@ class ApiService {
 
   getNews = (offset = 0, per_page = 5) => {
     const url = `${this.baseUrl}/news?per_page=${per_page}&offset=${offset}`;
+    return axios
+      .get(url)
+      .then((res) => res.data)
+      .catch((error) => error);
+  };
+
+  getGalleries = (offset = 0, per_page = 5) => {
+    const url = `${this.baseUrl}/galleries?per_page=${per_page}&offset=${offset}`;
+    return axios
+      .get(url)
+      .then((res) => res.data)
+      .catch((error) => error);
+  };
+
+  getGalleryById = (id) => {
+    const url = `${this.baseUrl}/galleries?id=${id}`;
     return axios
       .get(url)
       .then((res) => res.data)

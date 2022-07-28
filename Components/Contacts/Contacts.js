@@ -14,7 +14,7 @@ const Contacts = (props) => {
     data: { title, adressTitle, adressMain, adressSecondary, phone, email },
   } = props;
 
-  const [isMainAdress, setAdress] = useState(false);
+  const [isMainAdress, setAdress] = useState(true);
 
   return (
     <>

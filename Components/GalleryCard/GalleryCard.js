@@ -1,17 +1,32 @@
+import { routes } from "shared/enums/pages";
+import useHtmlDecode from "shared/hooks/useHtmlDecode";
 import ButtonArrow from "UI/ButtonArrow/ButtonArrow";
+import moment from "moment";
+import "moment/locale/ru";
 import s from "./galleryCard.module.scss";
 
-const GalleryCard = () => {
+const GalleryCard = (props) => {
+  const {
+    gallery: { id, title, thumbnail, date },
+  } = props;
+
   return (
     <div className={s.card}>
       <div className={s.shadow} />
-      <img src="/assets/images/galleryposter.jpg" className={s.thumbnail} />
+      <img src={thumbnail} className={s.thumbnail} />
       <div className={s.content}>
         <div>
-          <span className={s.title}>ПРАЗДНИЧНЫЙ КОНЦЕРТ "ДРУЖИЩЕ ПИТЕР!"</span>
-          <ButtonArrow hasLink href={"#"} direction="forward" color="red" />
+          <span className={s.title}>{useHtmlDecode(title)}</span>
+          <ButtonArrow
+            hasLink
+            href={`${routes.gallery}/${id}`}
+            direction="forward"
+            color="red"
+          />
         </div>
-        <span className={s.date}>май 2021 г.</span>
+        <span className={s.date}>
+          {moment(`${date} 12:00:00`).format("MMMM YYYY г.")}
+        </span>
       </div>
     </div>
   );
