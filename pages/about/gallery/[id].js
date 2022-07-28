@@ -75,8 +75,8 @@ const SingleColectivePage = () => {
                   sx={{ height: "200px" }}
                 />
               ))
-            : gallery.images.map((image) => (
-                <div className={s.image}>
+            : gallery.images.map((image, index) => (
+                <div key={`image_key_${index}`} className={s.image}>
                   <Link href={image}>
                     <a className={s.link}>
                       <img src={image} />
