@@ -11,7 +11,13 @@ import apiService from "services/apiService";
 import { Skeleton } from "@mui/material";
 import Wrapper from "UI/Wrapper/Wrapper";
 
-const EventsComponent = () => {
+const EventsComponent = (props) => {
+  const {
+    title = "Календарь",
+    disableFilters = false,
+    abilityPast = false
+  } = props;
+
   const POST_ON_PAGE = 5;
 
   const [date, setDate] = useState(moment().format("YYYY-MM-DD"));
@@ -34,11 +40,12 @@ const EventsComponent = () => {
     <>
       <Wrapper borderBottom>
         <div className={s.padding}>
-          <span className={s.title}>Календарь</span>
+          <span className={s.title}>{title}</span>
         </div>
       </Wrapper>
 
-      <Wrapper borderBottom>
+      {!disableFilters ? (
+        <Wrapper borderBottom>
         <div className={s.calendarFilters}>
           <div className={s.description}>
             Вы можете посмотреть все предстоящие мероприятия запланированые в
@@ -72,6 +79,8 @@ const EventsComponent = () => {
           </div>
         </div>
       </Wrapper>
+      ) : null}
+      
 
       <Wrapper>
         <div className={s.footer}>

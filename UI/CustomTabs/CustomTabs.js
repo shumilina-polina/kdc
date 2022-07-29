@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import { useState } from "react";
 
 import s from "./tabs.module.scss";
-import Container from "UI/Container/Container";
+import Wrapper from "UI/Wrapper/Wrapper";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -47,7 +47,7 @@ const CustomTabs = (props) => {
       <Box className={s.main}>
         <div className={s.wrapper}>
           <div className={s.divider} />
-          <Container>
+          <Wrapper borderBottom borderTop>
             <Tabs value={value} onChange={handleChange}>
               {titles.map((title, index) => (
                 <Tab
@@ -62,7 +62,7 @@ const CustomTabs = (props) => {
                 />
               ))}
             </Tabs>
-          </Container>
+          </Wrapper>
         </div>
       </Box>
 
