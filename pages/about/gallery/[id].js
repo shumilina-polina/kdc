@@ -21,7 +21,7 @@ const SingleColectivePage = () => {
   } = useRouter();
   const [loading, setLoading] = useState(true);
   const [gallery, setGallery] = useState(null);
-  const htmlDecode = useHtmlDecode();
+  const htmlDecode = useHtmlDecode;
 
   useEffect(() => {
     if (isReady) {
