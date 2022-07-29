@@ -1,40 +1,40 @@
 @import "/styles/styles.scss";
 
 .nav {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
 }
 
 .navItem {
-    width: 100%;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-left: 1px solid $color-black;
-    transition: .2s;
-    text-align: center;
-    font-family: $font-gravity;
-    font-weight: $fw-medium;
-    cursor: pointer;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid $color-black;
+  transition: 0.2s;
+  text-align: center;
+  font-family: $font-gravity;
+  font-weight: $fw-medium;
+  cursor: pointer;
 
-    &.active {
-        background-color: $color-red;
-        color: $color-white;
-    }
-    
+  &.active {
+    background-color: $color-red;
+    color: $color-white;
+  }
+
+  &:first-child {
+    border-left: none;
+  }
+
+  @include mobile-tablet {
+    border: 1px solid $color-black;
+    font-size: $fs-normal;
+
     &:first-child {
-        border-left: none;
+      border-left: 1px solid $color-black;
+      border-right: none;
     }
-
-    @include mobile-tablet {
-        border: 1px solid $color-black;
-        font-size: $fs-normal;
-        
-        &:first-child {
-            border-left: 1px solid $color-black;
-            border-right: none;
-        }
-    }
+  }
 }

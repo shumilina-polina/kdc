@@ -82,11 +82,7 @@ const SingleColectivePage = () => {
             </div>
             <div className={s.info}>
               <div className={cn(s.title, s.borderBottom)}>
-                {loading ? (
-                  <Skeleton />
-                ) : (
-                  <h2>{collective.title}</h2>
-                )}
+                {loading ? <Skeleton /> : <h2>{collective.title}</h2>}
               </div>
               <div className={s.table}>
                 <div className={s.column}>

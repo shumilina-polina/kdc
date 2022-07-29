@@ -36,84 +36,99 @@ const Header = () => {
   };
 
   return (
-    <header className={s.header}>
-      <Container className={s.container}>
-        <div className={s.logo}>
-          <Link href={routes.home}>
-            <a>
-              <Image
-                src="/assets/images/logo.svg"
-                alt={logotypeTitle}
-                width={187}
-                height={42}
-              />
-            </a>
-          </Link>
-        </div>
-        <div className={s.nav}>
-          <ul className={s.navList}>
-            {pages.map(({ id, value, url }) => (
-              <li key={`pages${id}`} className={s.item}>
-                <Link href={url}>
-                  <a className={s.link}>{value}</a>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className={s.contact}>
-          <Image src="/assets/icons/phone.svg" width={20} height={20} />
-          <Link href={`tel:${phone}`}>
-            <a className={s.link}>{phone}</a>
-          </Link>
-        </div>
-        <div className={s.menuIcon}>
-          <MenuIcon onClick={() => setOpen(true)} />
-        </div>
-      </Container>
-
-      <div className={cn(s.mobileMenu, open ? s.show : null)}>
-        <div className={s.top}>
-          <Link href="/">
-            <a>
-              <Image src="/assets/images/logo.svg" width={187} height={42} />
-            </a>
-          </Link>
-          <CloseIcon className={s.closeIcon} onClick={() => setOpen(false)} />
-        </div>
-
-        {nextOpen ? (
-          <>
-            <button
-              className={s.backMenuButton}
-              onClick={() => setNextOpen(false)}
-            >
-              <ArrowBackIosNewIcon />
-            </button>
-            <ul className={s.mobileList}>
-              {nestedMenu.map(({ id, value, url }) => (
-                <li key={`nestedMenu${id}`} className={s.item}>
+    <>
+      <iframe
+        className={s.widget}
+        src="https://moscenterspb.space/widget.html"
+      ></iframe>
+      <header className={s.header}>
+        <Container className={s.container}>
+          <div className={s.logo}>
+            <Link href={routes.home}>
+              <a>
+                <Image
+                  src="/assets/images/logo.svg"
+                  alt={logotypeTitle}
+                  width={187}
+                  height={42}
+                />
+              </a>
+            </Link>
+          </div>
+          <div className={s.nav}>
+            <ul className={s.navList}>
+              {pages.map(({ id, value, url }) => (
+                <li key={`pages${id}`} className={s.item}>
                   <Link href={url}>
-                    <a className={s.link}>
-                      {value}
-                      <Image
-                        src="/assets/icons/arrow.svg"
-                        width={24}
-                        height={10}
-                      />
-                    </a>
+                    <a className={s.link}>{value}</a>
                   </Link>
                 </li>
               ))}
             </ul>
-          </>
-        ) : (
-          <ul className={s.mobileList}>
-            {mobilePages.map(({ id, value, url, nested, nextPages }) => (
-              <li key={`headerMenu${id}`} className={s.item}>
-                {!nested ? (
-                  <Link href={url}>
-                    <a className={s.link}>
+          </div>
+          <div className={s.contact}>
+            <Image src="/assets/icons/phone.svg" width={20} height={20} />
+            <Link href={`tel:${phone}`}>
+              <a className={s.link}>{phone}</a>
+            </Link>
+          </div>
+          <div className={s.menuIcon}>
+            <MenuIcon onClick={() => setOpen(true)} />
+          </div>
+        </Container>
+
+        <div className={cn(s.mobileMenu, open ? s.show : null)}>
+          <div className={s.top}>
+            <Link href="/">
+              <a>
+                <Image src="/assets/images/logo.svg" width={187} height={42} />
+              </a>
+            </Link>
+            <CloseIcon className={s.closeIcon} onClick={() => setOpen(false)} />
+          </div>
+
+          {nextOpen ? (
+            <>
+              <button
+                className={s.backMenuButton}
+                onClick={() => setNextOpen(false)}
+              >
+                <ArrowBackIosNewIcon />
+              </button>
+              <ul className={s.mobileList}>
+                {nestedMenu.map(({ id, value, url }) => (
+                  <li key={`nestedMenu${id}`} className={s.item}>
+                    <Link href={url}>
+                      <a className={s.link}>
+                        {value}
+                        <Image
+                          src="/assets/icons/arrow.svg"
+                          width={24}
+                          height={10}
+                        />
+                      </a>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <ul className={s.mobileList}>
+              {mobilePages.map(({ id, value, url, nested, nextPages }) => (
+                <li key={`headerMenu${id}`} className={s.item}>
+                  {!nested ? (
+                    <Link href={url}>
+                      <a className={s.link}>
+                        {value}
+                        <Image
+                          src="/assets/icons/arrow.svg"
+                          width={24}
+                          height={10}
+                        />
+                      </a>
+                    </Link>
+                  ) : (
+                    <a className={s.link} onClick={() => nextLayer(nextPages)}>
                       {value}
                       <Image
                         src="/assets/icons/arrow.svg"
@@ -121,45 +136,36 @@ const Header = () => {
                         height={10}
                       />
                     </a>
-                  </Link>
-                ) : (
-                  <a className={s.link} onClick={() => nextLayer(nextPages)}>
-                    {value}
-                    <Image
-                      src="/assets/icons/arrow.svg"
-                      width={24}
-                      height={10}
-                    />
-                  </a>
-                )}
-              </li>
-            ))}
-          </ul>
-        )}
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
 
-        <div className={s.details}>
-          <div className={s.working}>
-            <span>{workingMode.value}</span>
-            <div className={s.workingMode}>
-              <Image src="/assets/icons/clock.svg" width={18} height={18} />
-              <span>{workingMode.mode}</span>
+          <div className={s.details}>
+            <div className={s.working}>
+              <span>{workingMode.value}</span>
+              <div className={s.workingMode}>
+                <Image src="/assets/icons/clock.svg" width={18} height={18} />
+                <span>{workingMode.mode}</span>
+              </div>
             </div>
+            <div className={s.adress}>
+              <span>{adress}</span>
+            </div>
+            <div className={s.contactInfo}>
+              <Link href={`tel:${phone}`}>
+                <a className={s.contactLink}>{phone}</a>
+              </Link>
+              <Link href={`mailto:${email}`}>
+                <a className={s.contactLink}>{email}</a>
+              </Link>
+            </div>
+            <Button className={s.abilityButton}>{buttonText}</Button>
           </div>
-          <div className={s.adress}>
-            <span>{adress}</span>
-          </div>
-          <div className={s.contactInfo}>
-            <Link href={`tel:${phone}`}>
-              <a className={s.contactLink}>{phone}</a>
-            </Link>
-            <Link href={`mailto:${email}`}>
-              <a className={s.contactLink}>{email}</a>
-            </Link>
-          </div>
-          <Button className={s.abilityButton}>{buttonText}</Button>
         </div>
-      </div>
-    </header>
+      </header>
+    </>
   );
 };
 export default Header;

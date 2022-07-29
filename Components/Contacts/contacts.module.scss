@@ -86,6 +86,7 @@
   display: none;
 
   @include mobile-tablet {
+    margin-bottom: 60px;
     display: block;
   }
 }
