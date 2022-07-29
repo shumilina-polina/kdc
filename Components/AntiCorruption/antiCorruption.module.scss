@@ -1,13 +1,13 @@
 @import "/styles/styles.scss";
 
 .main {
-    padding: 40px 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
-    grid-gap: 20px;
+  padding: 40px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  grid-gap: 20px;
 
-    @include mobile {
-        grid-template-columns: 1fr;
-    }
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
 }

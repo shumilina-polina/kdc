@@ -62,9 +62,7 @@ const SingleColectivePage = () => {
         ) : (
           <div className={s.header}>
             <ButtonArrow color="red" href={routes.gallery} hasLink />
-            <Title className={s.headerTitle}>
-              {htmlDecode(gallery.title)}
-            </Title>
+            <Title className={s.headerTitle}>{htmlDecode(gallery.title)}</Title>
           </div>
         )}
       </Wrapper>

@@ -74,8 +74,8 @@ const Contacts = (props) => {
         </div>
       </Wrapper>
 
-      <div className={s.contactsMobile}>
-        <Container>
+      <Wrapper>
+        <div className={s.contactsMobile}>
           <Title>{title}</Title>
           <div className={s.wrapperMobile}>
             <div className={s.infoMobile}>
@@ -95,24 +95,24 @@ const Contacts = (props) => {
               </div>
             </div>
           </div>
-        </Container>
-        <div className={s.posterMobile}>
-          <img
-            className={s.poster}
-            src="/assets/images/phone.svg"
-            width={345}
-            height={236}
-          />
+          <div className={s.posterMobile}>
+            <img
+              className={s.poster}
+              src="/assets/images/phone.svg"
+              width={345}
+              height={236}
+            />
+          </div>
+          <Title>{adressTitle}</Title>
+          <div className={s.mapContainer}>
+            <iframe
+              src="https://yandex.ru/map-widget/v1/?um=constructor%3A9f741aba777413724574c83e342dc21bcd2ab21036e2ac2a9b93b4a09c1394dd&amp;source=constructor"
+              className={s.mapMobile}
+              frameBorder="0"
+            ></iframe>
+          </div>
         </div>
-        <Title>{adressTitle}</Title>
-        <div className={s.mapContainer}>
-          <iframe
-            src="https://yandex.ru/map-widget/v1/?um=constructor%3A9f741aba777413724574c83e342dc21bcd2ab21036e2ac2a9b93b4a09c1394dd&amp;source=constructor"
-            className={s.mapMobile}
-            frameBorder="0"
-          ></iframe>
-        </div>
-      </div>
+      </Wrapper>
     </>
   );
 };

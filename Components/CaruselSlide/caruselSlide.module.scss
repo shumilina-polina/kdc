@@ -1,0 +1,118 @@
+@import "/styles/styles.scss";
+
+.content {
+  width: 100%;
+  display: flex;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+.slide {
+  min-width: 100%;
+  transition: 0.3s;
+}
+
+.poster {
+  width: 100%;
+  height: 500px;
+  display: block;
+  object-position: center;
+  object-fit: cover;
+
+  @include tablet {
+    height: 400px;
+  }
+
+  @include mobile {
+    height: 300px;
+  }
+}
+
+.grid {
+  position: relative;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+}
+
+.breadcrumb {
+  width: 16px;
+  height: 16px;
+  display: block;
+  border: 1px solid $color-black;
+  border-radius: 100%;
+  cursor: pointer;
+  user-select: none;
+}
+
+.breadcrumb.active {
+  background-color: $color-black;
+  cursor: auto;
+}
+
+.slideContent {
+  position: absolute;
+  width: 100%;
+
+  @include mobile-tablet {
+    width: 100%;
+    bottom: 0;
+  }
+}
+
+.wrapper {
+  max-width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+
+  @include mobile-tablet {
+    flex-direction: column;
+  }
+}
+
+.concertActions {
+  display: flex;
+  flex-direction: column;
+}
+
+.concertDate {
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 1);
+  color: $color-white;
+  font-family: $font-oswald;
+  font-weight: $fw-medium;
+  font-size: $fs-extralarge;
+
+  @include mobile-tablet {
+    font-size: $fs-large;
+  }
+}
+
+.slideTitle {
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 1);
+  color: $color-white;
+  font-family: $font-oswald;
+  font-size: $fs-extralarge;
+
+  @include mobile-tablet {
+    font-size: $fs-large;
+  }
+}
+
+.container {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.slideButton {
+  margin-bottom: 20px;
+}

@@ -9,7 +9,7 @@ import s from "./calendar.module.scss";
 //Picker background style locates in globals.scss
 
 const Calendar = (props) => {
-  const { setDate, setLoading, abilityPast } = props;
+  const { setDate, setLoading, disablePast } = props;
 
   return (
     <LocalizationProvider locale={ru} dateAdapter={AdapterDateFns}>
@@ -18,7 +18,7 @@ const Calendar = (props) => {
           setDate(moment(newDate).format("YYYY-MM-DD"));
           setLoading(true);
         }}
-        disablePast={abilityPast}
+        disablePast={disablePast}
       />
     </LocalizationProvider>
   );

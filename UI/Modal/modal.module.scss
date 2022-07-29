@@ -59,8 +59,7 @@ $containerWidth: 625px;
 }
 
 .title {
-  @include mobile-tablet {
-    padding: 0 !important;
+  @include mobile {
     font-size: 22px;
   }
 }

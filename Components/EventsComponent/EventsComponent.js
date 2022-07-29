@@ -15,7 +15,7 @@ const EventsComponent = (props) => {
   const {
     title = "Календарь",
     disableFilters = false,
-    abilityPast = false
+    disablePast = true,
   } = props;
 
   const POST_ON_PAGE = 5;
@@ -46,46 +46,49 @@ const EventsComponent = (props) => {
 
       {!disableFilters ? (
         <Wrapper borderBottom>
-        <div className={s.calendarFilters}>
-          <div className={s.description}>
-            Вы можете посмотреть все предстоящие мероприятия запланированые в
-            один день и отсортировать их.
+          <div className={s.calendarFilters}>
+            <div className={s.description}>
+              Вы можете посмотреть все предстоящие мероприятия запланированые в
+              один день и отсортировать их.
+            </div>
+            <div className={s.checkboxGroup}>
+              <CustomCheckbox
+                onChange={() => {
+                  setLoading(true);
+                  setFree((prev) => !prev);
+                }}
+                value={free}
+                label="Бесплатные"
+              />
+              <CustomCheckbox
+                onChange={() => {
+                  setLoading(true);
+                  setPaid((prev) => !prev);
+                }}
+                value={paid}
+                label="Платные"
+              />
+              <CustomCheckbox
+                onChange={() => {
+                  setLoading(true);
+                  setAll((prev) => !prev);
+                }}
+                value={all}
+                label="Все"
+              />
+            </div>
           </div>
-          <div className={s.checkboxGroup}>
-            <CustomCheckbox
-              onChange={() => {
-                setLoading(true);
-                setFree((prev) => !prev);
-              }}
-              value={free}
-              label="Бесплатные"
-            />
-            <CustomCheckbox
-              onChange={() => {
-                setLoading(true);
-                setPaid((prev) => !prev);
-              }}
-              value={paid}
-              label="Платные"
-            />
-            <CustomCheckbox
-              onChange={() => {
-                setLoading(true);
-                setAll((prev) => !prev);
-              }}
-              value={all}
-              label="Все"
-            />
-          </div>
-        </div>
-      </Wrapper>
+        </Wrapper>
       ) : null}
-      
 
       <Wrapper>
         <div className={s.footer}>
           <div className={s.calendar}>
-            <Calendar setDate={setDate} setLoading={() => setLoading(true)} />
+            <Calendar
+              setDate={setDate}
+              setLoading={() => setLoading(true)}
+              disablePast={disablePast}
+            />
           </div>
           <div className={s.eventsCards}>
             {loading ? (
