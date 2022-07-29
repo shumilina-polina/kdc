@@ -156,7 +156,7 @@ const SingleColectivePage = () => {
                     <Skeleton />
                   ) : (
                     <span className={s.secondary}>
-                      {htmlDecode(collective.title)}
+                      {useHtmlDecode(collective.title)}
                     </span>
                   )}
                 </div>
@@ -165,7 +165,7 @@ const SingleColectivePage = () => {
                     <Skeleton count={10} />
                   ) : (
                     <p className={s.padding}>
-                      {htmlDecode(collective.content)}
+                      {useHtmlDecode(collective.content)}
                     </p>
                   )}
                 </div>
