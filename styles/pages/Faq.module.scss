@@ -10,9 +10,13 @@
 
 .questions {
   margin-bottom: 40px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
 }
 
 .decorations {
