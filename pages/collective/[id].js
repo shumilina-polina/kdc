@@ -17,7 +17,11 @@ import { routes } from "shared/enums/pages";
 import ModalWindow from "UI/Modal/ModalWindow";
 import JoinCollectiveWindow from "Components/JoinCollectiveWindow/JoinCollectiveWindow";
 import Wrapper from "UI/Wrapper/Wrapper";
-import useHtmlDecode from "shared/hooks/useHtmlDecode";
+
+const htmlDecode = (content) => {
+  const doc = new DOMParser().parseFromString(content, "text/html");
+  return doc.documentElement.textContent;
+};
 
 const SingleColectivePage = () => {
   const {
@@ -27,7 +31,6 @@ const SingleColectivePage = () => {
   const [loading, setLoading] = useState(true);
   const [collective, setCollective] = useState(null);
   const [isOpne, setOpen] = useState(false);
-  const htmlDecode = useHtmlDecode();
 
   useEffect(() => {
     if (isReady) {

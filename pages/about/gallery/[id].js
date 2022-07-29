@@ -9,10 +9,14 @@ import Wrapper from "UI/Wrapper/Wrapper";
 import s from "styles/pages/SingleGallery.module.scss";
 import Title from "UI/Title/Title";
 import { Skeleton } from "@mui/material";
-import useHtmlDecode from "shared/hooks/useHtmlDecode";
 import Link from "next/link";
 import ButtonArrow from "UI/ButtonArrow/ButtonArrow";
 import { routes } from "shared/enums/pages";
+
+const htmlDecode = (content) => {
+  const doc = new DOMParser().parseFromString(content, "text/html");
+  return doc.documentElement.textContent;
+};
 
 const SingleColectivePage = () => {
   const {
@@ -21,7 +25,6 @@ const SingleColectivePage = () => {
   } = useRouter();
   const [loading, setLoading] = useState(true);
   const [gallery, setGallery] = useState(null);
-  const htmlDecode = useHtmlDecode;
 
   useEffect(() => {
     if (isReady) {
