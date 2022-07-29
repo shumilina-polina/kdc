@@ -9,10 +9,14 @@ import Wrapper from "UI/Wrapper/Wrapper";
 import s from "styles/pages/SingleGallery.module.scss";
 import Title from "UI/Title/Title";
 import { Skeleton } from "@mui/material";
-import useHtmlDecode from "shared/hooks/useHtmlDecode";
 import Link from "next/link";
 import ButtonArrow from "UI/ButtonArrow/ButtonArrow";
 import { routes } from "shared/enums/pages";
+
+const htmlDecode = (content) => {
+  const doc = new DOMParser().parseFromString(content, "text/html");
+  return doc.documentElement.textContent;
+};
 
 const SingleColectivePage = () => {
   const {
@@ -42,12 +46,11 @@ const SingleColectivePage = () => {
           <div className={s.slide}>
             <div className={s.wrapper}>
               <div className={s.info}>
-                <span className={s.title}>{gallery.title}</span>
+                <span className={s.title}>{htmlDecode(gallery.title)}</span>
                 <span className={s.date}>{gallery.date}</span>
                 <div className={s.shadow} />
               </div>
             </div>
-
             <img className={s.poster} src={gallery.thumbnail} />
           </div>
         )}
@@ -60,7 +63,7 @@ const SingleColectivePage = () => {
           <div className={s.header}>
             <ButtonArrow color="red" href={routes.gallery} hasLink />
             <Title className={s.headerTitle}>
-              {gallery.title}
+              {htmlDecode(gallery.title)}
             </Title>
           </div>
         )}
