@@ -21,6 +21,7 @@ const SingleColectivePage = () => {
   } = useRouter();
   const [loading, setLoading] = useState(true);
   const [gallery, setGallery] = useState(null);
+  const htmlDecode = useHtmlDecode();
 
   useEffect(() => {
     if (isReady) {
@@ -42,7 +43,7 @@ const SingleColectivePage = () => {
           <div className={s.slide}>
             <div className={s.wrapper}>
               <div className={s.info}>
-                <span className={s.title}>{useHtmlDecode(gallery.title)}</span>
+                <span className={s.title}>{htmlDecode(gallery.title)}</span>
                 <span className={s.date}>{gallery.date}</span>
                 <div className={s.shadow} />
               </div>
@@ -59,7 +60,7 @@ const SingleColectivePage = () => {
           <div className={s.header}>
             <ButtonArrow color="red" href={routes.gallery} hasLink />
             <Title className={s.headerTitle}>
-              {useHtmlDecode(gallery.title)}
+              {htmlDecode(gallery.title)}
             </Title>
           </div>
         )}

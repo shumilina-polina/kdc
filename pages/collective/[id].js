@@ -27,6 +27,7 @@ const SingleColectivePage = () => {
   const [loading, setLoading] = useState(true);
   const [collective, setCollective] = useState(null);
   const [isOpne, setOpen] = useState(false);
+  const htmlDecode = useHtmlDecode();
 
   useEffect(() => {
     if (isReady) {
@@ -156,7 +157,7 @@ const SingleColectivePage = () => {
                     <Skeleton />
                   ) : (
                     <span className={s.secondary}>
-                      {useHtmlDecode(collective.title)}
+                      {htmlDecode(collective.title)}
                     </span>
                   )}
                 </div>
@@ -165,7 +166,7 @@ const SingleColectivePage = () => {
                     <Skeleton count={10} />
                   ) : (
                     <p className={s.padding}>
-                      {useHtmlDecode(collective.content)}
+                      {htmlDecode(collective.content)}
                     </p>
                   )}
                 </div>
