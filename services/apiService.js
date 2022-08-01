@@ -1,7 +1,7 @@
 import axios from "axios";
 
 class ApiService {
-  baseUrl = "https://moscenterspb.space/wp-json/project/v2";
+  baseUrl = "http://localhost/dashboard/wp-json/project/v2";
   //global "https://moscenterspb.space/wp-json/project/v2"
   //local "http://localhost/dashboard/wp-json/project/v2"
 
@@ -106,6 +106,17 @@ class ApiService {
     const url = `${this.baseUrl}/galleries?id=${id}`;
     return axios
       .get(url)
+      .then((res) => res.data)
+      .catch((error) => error);
+  };
+
+  postEmailJoinCollective = (name, email, phone) => {
+    const url = `${this.baseUrl}/join`;
+    return axios.post(url, {
+        name: name,
+        email: email,
+        phone: phone
+      })
       .then((res) => res.data)
       .catch((error) => error);
   };
