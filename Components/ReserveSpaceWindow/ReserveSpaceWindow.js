@@ -1,4 +1,7 @@
 import cn from "classnames";
+import SuccessWindow from "Components/SuccessWindow/SuccessWindow";
+import { useState } from "react";
+import apiService from "services/apiService";
 import Button from "UI/Button/Button";
 import CustomInput from "UI/CustomInput/CustomInput";
 
@@ -7,8 +10,19 @@ import s from "./reserveSpaceWindow.module.scss";
 const ReserveSpaceWindow = (props) => {
   const { title, thumbnail, adress, capacity, price } = props.space;
 
+  const [request, setRequest] = useState(false)
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("")
+
+  const buttonClickHandler = () => {
+    apiService.postEmailReserveSpace(name, email, phone).then(() => setRequest(true))
+  }
+
   return (
-    <div className={s.container}>
+    <>
+    {!request ? (
+      <div className={s.container}>
       <div className={s.info}>
         <img src={thumbnail} className={s.poster} />
         <div className={s.table}>
@@ -48,13 +62,17 @@ const ReserveSpaceWindow = (props) => {
       </div>
       <div className={s.fields}>
         <div className={s.fieldsWrapper}>
-          <CustomInput className={s.input} label="Как к вам обращаться?" />
-          <CustomInput className={s.input} label="Ваша почта" />
-          <CustomInput className={s.input} label="Номер телефона" />
-          <Button className={s.button}>Оставить заявку</Button>
+          <CustomInput className={s.input} onChange={(e) => setName(e.target.value)} label="Как к вам обращаться?" />
+          <CustomInput className={s.input} onChange={(e) => setEmail(e.target.value)} label="Ваша почта" />
+          <CustomInput className={s.input} onChange={(e) => setPhone(e.target.value)} label="Номер телефона" />
+          <Button className={s.button} onClick={buttonClickHandler}>Оставить заявку</Button>
         </div>
       </div>
     </div>
+    ) : (
+      <SuccessWindow />
+    )}
+    </>
   );
 };
 

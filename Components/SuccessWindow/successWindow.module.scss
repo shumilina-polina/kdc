@@ -1,0 +1,27 @@
+@import "/styles/styles.scss";
+
+.wrapper {
+    padding: 100px 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+}
+
+.thx {
+    font-size: $fs-large;
+    font-family: $font-oswald;
+}
+
+.feedback {
+    font-family: $font-gravity;
+    font-size: $fs-normal;
+}

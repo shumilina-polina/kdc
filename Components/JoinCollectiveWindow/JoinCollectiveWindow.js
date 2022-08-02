@@ -1,4 +1,5 @@
 import cn from "classnames";
+import SuccessWindow from "Components/SuccessWindow/SuccessWindow";
 import { useState } from "react";
 import apiService from "services/apiService";
 import useHtmlDecode from "shared/hooks/useHtmlDecode";
@@ -76,7 +77,7 @@ const JoinCollectiveWindow = (props) => {
       </div>
         </>
       ) : (
-        <div>Запрос успешно отправлен</div>
+        <SuccessWindow />
       )}
     </div>
   );

@@ -120,6 +120,29 @@ class ApiService {
       .then((res) => res.data)
       .catch((error) => error);
   };
+
+  postEmailAskQuestion = (name, email, phone, message) => {
+    const url = `${this.baseUrl}/ask`;
+    return axios.post(url, {
+        name: name,
+        email: email,
+        phone: phone,
+        message: message,
+      })
+      .then((res) => res.data)
+      .catch((error) => error);
+  };
+
+  postEmailReserveSpace = (name, email, phone) => {
+    const url = `${this.baseUrl}/reserve`;
+    return axios.post(url, {
+        name: name,
+        email: email,
+        phone: phone
+      })
+      .then((res) => res.data)
+      .catch((error) => error);
+  };
 }
 
 export default new ApiService();
