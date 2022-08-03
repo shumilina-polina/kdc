@@ -19,7 +19,11 @@ const GalleryCard = (props) => {
           <span className={s.title}>{useHtmlDecode(title)}</span>
           <ButtonArrow
             hasLink
-            href={`${routes.gallery}/${id}`}
+            href={{
+              pathname: "/about/gallery/[id]",
+              query: { id: id },
+            }}
+            as={`/about/gallery/${id}`}
             direction="forward"
             color="red"
           />

@@ -2,8 +2,6 @@ import axios from "axios";
 
 class ApiService {
   baseUrl = "https://moscenterspb.space/wp-json/project/v2";
-  //global "https://moscenterspb.space/wp-json/project/v2"
-  //local "http://localhost/dashboard/wp-json/project/v2"
 
   getCollectives = (
     offset = 0,
@@ -60,7 +58,6 @@ class ApiService {
 
   getAffichesByMonth = (date, offset = 0, per_page = 5) => {
     const url = `${this.baseUrl}/affiche?date=${date}&offset=${offset}&per_page=5`;
-    console.log(url);
     return axios
       .get(url)
       .then((res) => res.data)
@@ -112,10 +109,11 @@ class ApiService {
 
   postEmailJoinCollective = (name, email, phone) => {
     const url = `${this.baseUrl}/join`;
-    return axios.post(url, {
+    return axios
+      .post(url, {
         name: name,
         email: email,
-        phone: phone
+        phone: phone,
       })
       .then((res) => res.data)
       .catch((error) => error);
@@ -123,7 +121,8 @@ class ApiService {
 
   postEmailAskQuestion = (name, email, phone, message) => {
     const url = `${this.baseUrl}/ask`;
-    return axios.post(url, {
+    return axios
+      .post(url, {
         name: name,
         email: email,
         phone: phone,
@@ -135,10 +134,11 @@ class ApiService {
 
   postEmailReserveSpace = (name, email, phone) => {
     const url = `${this.baseUrl}/reserve`;
-    return axios.post(url, {
+    return axios
+      .post(url, {
         name: name,
         email: email,
-        phone: phone
+        phone: phone,
       })
       .then((res) => res.data)
       .catch((error) => error);

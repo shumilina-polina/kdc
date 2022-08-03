@@ -15,6 +15,8 @@ const EventCard = (props) => {
   const dataDate = moment(`${date} ${time}`);
   const monthsRU = months.split(",");
 
+  console.log(event);
+
   const [isOpen, setOpen] = useState(false);
 
   return (
@@ -22,7 +24,9 @@ const EventCard = (props) => {
       <div className={s.card}>
         <div className={s.date}>
           <span className={s.number}>{dataDate.format("DD")}</span>
-          <span className={s.month}>{monthsRU[dataDate.format("M")]}</span>
+          <span className={s.month}>
+            {monthsRU[dataDate.add(-1, "M").format("M")]}
+          </span>
         </div>
         <div className={s.time}>
           <span>{dataDate.format("HH:mm")}</span>
