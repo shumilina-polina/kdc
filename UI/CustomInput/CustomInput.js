@@ -35,7 +35,7 @@ const CustomInput = (props) => {
           root: s.input,
           notchedOutline: s.inputBorder,
         }}
-        sx={{outline: "none"}}
+        sx={{ outline: "none" }}
         className={error ? s.error : null}
       />
     </div>

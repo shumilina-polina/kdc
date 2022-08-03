@@ -127,15 +127,14 @@ const SingleColectivePage = (props) => {
               {loading ? (
                 <Skeleton sx={{ width: "50px" }} />
               ) : (
-                <Link href={space.file}>
-                  <span className={s.link}>
-                    <a>Смотреть PDF-файл</a>
-                    <img
-                      className={s.icon}
-                      src="/assets/icons/arrowRight.svg"
-                    />
-                  </span>
-                </Link>
+                <span className={s.link}>
+                  <Link href={space.file}>
+                    <a target="_blank" className={s.link}>
+                      Смотреть PDF-файл
+                    </a>
+                  </Link>
+                  <img className={s.icon} src="/assets/icons/arrowRight.svg" />
+                </span>
               )}
             </div>
             <div className={cn(s.snaps, loading ? s.loading : null)}>
