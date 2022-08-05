@@ -6,9 +6,7 @@ const HistoryPage = () => {
   return (
     <>
       <Header />
-
       <HistoryBlock />
-
       <Footer />
     </>
   );

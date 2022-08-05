@@ -75,6 +75,11 @@
 .link {
   text-decoration: none;
   color: $color-dark-blue;
+
+  &.ability {
+    font-size: $fs-ability-normal;
+    font-weight: $fw-bold;
+  }
 }
 
 .map {
@@ -140,4 +145,9 @@
 
 .mapContainer {
   filter: grayscale(100%);
+}
+
+.ability {
+  font-size: $fs-ability-normal;
+  font-weight: $fw-bold;
 }

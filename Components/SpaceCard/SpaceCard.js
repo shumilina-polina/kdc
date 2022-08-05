@@ -8,6 +8,7 @@ import Button from "UI/Button/Button";
 import s from "./spaceCard.module.scss";
 import ModalWindow from "UI/Modal/ModalWindow";
 import ReserveSpaceWindow from "Components/ReserveSpaceWindow/ReserveSpaceWindow";
+import { useSelector } from "react-redux";
 
 export default function SpaceCard(props) {
   const { space } = props;
@@ -15,6 +16,7 @@ export default function SpaceCard(props) {
   const { id, adress, capacity, footage, price, thumbnail, title, working } =
     space;
 
+  const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);
   const [isOpen, setOpen] = useState(false);
 
   return (
@@ -25,7 +27,7 @@ export default function SpaceCard(props) {
         </div>
         <div className={cn(s.info, s.borderLeftRight, s.borderBottom)}>
           <div className={s.header}>
-            <span className={s.oswald}>{title}</span>
+            <span className={cn(s.oswald, v ? s.ability : null)}>{title}</span>
             <ButtonArrow
               direction="forward"
               color="red"
@@ -35,27 +37,43 @@ export default function SpaceCard(props) {
           </div>
           <div className={cn(s.section, s.borderBottom)}>
             <div className={s.block}>
-              <span className={s.secondary}>Вместимость:</span>
-              <span className={s.oswald}>
+              <span className={cn(s.secondary, v ? s.ability : null)}>
+                Вместимость:
+              </span>
+              <span className={cn(s.oswald, v ? s.ability : null)}>
                 <span className={s.bold}>{capacity} </span>
-                <span>человек</span>
+                <span className={v ? s.ability : null}>человек</span>
               </span>
             </div>
             <div className={s.block}>
-              <span className={s.secondary}>Режим работы:</span>
-              <span className={s.oswald}>{working}</span>
+              <span className={cn(s.secondary, v ? s.ability : null)}>
+                Режим работы:
+              </span>
+              <span className={cn(s.oswald, v ? s.ability : null)}>
+                {working}
+              </span>
             </div>
             <div className={s.block}>
-              <span className={s.secondary}>Стоимость аренды:</span>
-              <span className={s.oswald}>{price}</span>
+              <span className={cn(s.secondary, v ? s.ability : null)}>
+                Стоимость аренды:
+              </span>
+              <span className={cn(s.oswald, v ? s.ability : null)}>
+                {price}
+              </span>
             </div>
           </div>
           <div className={cn(s.square, s.borderBottom)}>
-            <span className={s.secondary}>Метраж:</span>
-            <span className={s.oswald}>{`${footage} м2`}</span>
+            <span className={cn(s.secondary, v ? s.ability : null)}>
+              Метраж:
+            </span>
+            <span
+              className={cn(s.oswald, v ? s.ability : null)}
+            >{`${footage} м2`}</span>
           </div>
           <div className={s.footer}>
-            <span className={cn(s.oswald, s.adress)}>{adress}</span>
+            <span className={cn(s.oswald, s.adress, v ? s.ability : null)}>
+              {adress}
+            </span>
             <Button onClick={() => setOpen(true)}>Забронировать</Button>
           </div>
         </div>

@@ -6,9 +6,7 @@ const ProjectPage = () => {
   return (
     <>
       <Header />
-
       <ProjectsBlock />
-
       <Footer />
     </>
   );

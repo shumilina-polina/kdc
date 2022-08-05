@@ -53,6 +53,10 @@
   font-family: $font-gravity;
   font-weight: $fw-medium;
 
+  &.ability {
+    font-size: $fs-ability-normal !important;
+  }
+
   @include mobile-tablet {
     width: 100%;
     text-align: left;
@@ -160,6 +164,10 @@
   font-size: $fs-normal;
   font-weight: $fw-light;
   color: $color-white;
+
+  &.ability {
+    font-size: $fs-ability-small;
+  }
 }
 
 .backMenuButton {
@@ -178,4 +186,8 @@
 
 .abilityButton {
   margin-bottom: 30px;
+}
+
+.ability {
+  font-size: $fs-ability-normal;
 }

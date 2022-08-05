@@ -20,6 +20,10 @@
   font-weight: $fw-semibold;
   font-size: $fs-normal;
   color: $color-white;
+
+  &.ability {
+    font-size: $fs-ability-normal;
+  }
 }
 
 .poster {
@@ -45,6 +49,10 @@
   font-family: $font-gravity;
   font-size: $fs-normal;
   color: $color-white;
+
+  &.ability {
+    font-size: $fs-ability-normal;
+  }
 }
 
 .content {
@@ -54,6 +62,10 @@
   font-family: $font-gravity;
   font-size: $fs-normal;
   line-height: 21px;
+
+  &.ability {
+    font-size: $fs-ability-small;
+  }
 
   @include mobile-tablet {
     border-left: 1px solid $color-dark-blue;

@@ -17,6 +17,7 @@ import { routes } from "shared/enums/pages";
 import ModalWindow from "UI/Modal/ModalWindow";
 import JoinCollectiveWindow from "Components/JoinCollectiveWindow/JoinCollectiveWindow";
 import Wrapper from "UI/Wrapper/Wrapper";
+import { useSelector } from "react-redux";
 
 const htmlDecode = (content) => {
   const doc = new DOMParser().parseFromString(content, "text/html");
@@ -28,6 +29,8 @@ const SingleColectivePage = () => {
     isReady,
     query: { id },
   } = useRouter();
+
+  const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);
   const [loading, setLoading] = useState(true);
   const [collective, setCollective] = useState(null);
   const [isOpne, setOpen] = useState(false);
@@ -86,19 +89,25 @@ const SingleColectivePage = () => {
               </div>
               <div className={s.table}>
                 <div className={s.column}>
-                  <span className={s.secondary}>Направление:</span>
+                  <span className={cn(s.secondary, v ? s.ability : null)}>
+                    Направление:
+                  </span>
                   {loading ? (
                     <Skeleton />
                   ) : (
-                    <span className={s.bold}>{collective.trend}</span>
+                    <span className={cn(s.bold, v ? s.ability : null)}>
+                      {collective.trend}
+                    </span>
                   )}
                 </div>
                 <div className={s.column}>
-                  <span className={s.secondary}>Стоимость:</span>
+                  <span className={cn(s.secondary, v ? s.ability : null)}>
+                    Стоимость:
+                  </span>
                   {loading ? (
                     <Skeleton />
                   ) : (
-                    <span className={s.bold}>
+                    <span className={cn(s.bold, v ? s.ability : null)}>
                       {collective.price == 0
                         ? "Бесплатно"
                         : `${collective.price} руб.`}
@@ -106,42 +115,64 @@ const SingleColectivePage = () => {
                   )}
                 </div>
                 <div className={s.column}>
-                  <span className={s.secondary}>Групповые занятия:</span>
+                  <span className={cn(s.secondary, v ? s.ability : null)}>
+                    Групповые занятия:
+                  </span>
                   {loading ? (
                     <Skeleton />
                   ) : (
-                    <span className={s.bold}>{collective.timetable}</span>
+                    <span className={cn(s.bold, v ? s.ability : null)}>
+                      {collective.timetable}
+                    </span>
                   )}
                 </div>
                 <div>
-                  <span className={s.secondary}>Контакты:</span>
+                  <span className={cn(s.secondary, v ? s.ability : null)}>
+                    Контакты:
+                  </span>
                   {loading ? (
                     <Skeleton />
                   ) : (
-                    <span className={s.bold}>{collective.phone}</span>
+                    <span className={cn(s.bold, v ? s.ability : null)}>
+                      {collective.phone}
+                    </span>
                   )}
                 </div>
                 <div>
-                  <span className={s.secondary}>Категория:</span>
+                  <span className={cn(s.secondary, v ? s.ability : null)}>
+                    Категория:
+                  </span>
                   {loading ? (
                     <Skeleton />
                   ) : (
-                    <span className={s.bold}>{collective.limits}</span>
+                    <span className={cn(s.bold, v ? s.ability : null)}>
+                      {collective.limits}
+                    </span>
                   )}
                 </div>
                 <div className={s.button}>
                   <Button onClick={() => setOpen(true)}>Записаться</Button>
                 </div>
                 <div>
-                  <span className={s.secondary}>Адрес:</span>
+                  <span className={cn(s.secondary, v ? s.ability : null)}>
+                    Адрес:
+                  </span>
                   {loading ? (
                     <Skeleton />
                   ) : (
-                    <span className={s.bold}>{collective.location}</span>
+                    <span className={cn(s.bold, v ? s.ability : null)}>
+                      {collective.location}
+                    </span>
                   )}
                 </div>
                 <div className={s.location}>
-                  {loading ? <Skeleton /> : <span>{collective.classroom}</span>}
+                  {loading ? (
+                    <Skeleton />
+                  ) : (
+                    <span className={v ? s.ability : null}>
+                      {collective.classroom}
+                    </span>
+                  )}
                   <span className={s.icon}>
                     <img src="/assets/icons/location.svg" />
                   </span>
@@ -155,7 +186,7 @@ const SingleColectivePage = () => {
                   {loading ? (
                     <Skeleton />
                   ) : (
-                    <span className={s.secondary}>
+                    <span className={cn(s.secondary, v ? s.ability : null)}>
                       {htmlDecode(collective.title)}
                     </span>
                   )}
@@ -164,7 +195,7 @@ const SingleColectivePage = () => {
                   {loading ? (
                     <Skeleton count={10} />
                   ) : (
-                    <p className={s.padding}>
+                    <p className={cn(s.padding, s.about, v ? s.ability : null)}>
                       {htmlDecode(collective.content)}
                     </p>
                   )}
@@ -186,7 +217,10 @@ const SingleColectivePage = () => {
                       </>
                     ) : (
                       collective.program.map((item, index) => (
-                        <li key={`listItem_${index}`} className={s.item}>
+                        <li
+                          key={`listItem_${index}`}
+                          className={cn(s.item, v ? s.ability : null)}
+                        >
                           <img src="/assets/icons/listmarker.svg" />
                           {item}
                         </li>

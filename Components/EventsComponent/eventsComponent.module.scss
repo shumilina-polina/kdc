@@ -37,6 +37,14 @@
   font-family: $font-gravity;
   font-weight: $fw-medium;
 
+  &.ability {
+    font-size: $fs-large;
+  }
+
+  @include mobile-tablet {
+    border: none;
+  }
+
   @include mobile {
     border: none;
   }

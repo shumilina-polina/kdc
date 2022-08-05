@@ -26,7 +26,6 @@ const Affiche = (props) => {
   const [total, setTotal] = useState(null);
 
   const monthsRU = months.split(",");
-
   moment.locale("ru");
 
   useEffect(() => {

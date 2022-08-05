@@ -1,9 +1,12 @@
 import cn from "classnames";
+import { useSelector } from "react-redux";
 import Wrapper from "UI/Wrapper/Wrapper";
 
 import s from "./historyBlock.module.scss";
 
 const HistoryBlock = () => {
+  const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);
+
   return (
     <div className={s.main}>
       <div className={s.wrapper}>
@@ -16,12 +19,12 @@ const HistoryBlock = () => {
         <Wrapper borderBottom>
           <div className={s.bio}>
             <div>
-              <p className={s.padding}>
+              <p className={cn(s.padding, v ? s.ability : null)}>
                 Дом культуры имени Ильича был построен по проекту архитектора
                 Н.Ф.Демкова и открыт{" "}
                 <span className={s.bold}>2 мая 1931 года.</span>
               </p>
-              <p className={s.padding}>
+              <p className={cn(s.padding, v ? s.ability : null)}>
                 Его помнят несколько поколений жителей Московского района. Сюда
                 приходили работники объединения «Электросилы», профкому которого
                 принадлежал Дом культуры, а также жители всего Московского
@@ -39,7 +42,7 @@ const HistoryBlock = () => {
       </div>
 
       <Wrapper borderBottom>
-        <p className={cn(s.padding, s.oswald)}>
+        <p className={cn(s.padding, s.oswald, v ? s.ability : null)}>
           Проводились концерты, театральные постановки, демонстрировались
           художественные кинофильмы, шли занятия в детских и взрослых
           самодеятельных коллективах, которые много раз становились лауреатами
@@ -52,11 +55,11 @@ const HistoryBlock = () => {
       <Wrapper borderBottom>
         <div className={s.house}>
           <div className={s.descroption}>
-            <p className={cn(s.padding, s.oswald)}>
+            <p className={cn(s.padding, s.oswald, v ? s.ability : null)}>
               История Дома культуры имени Ильича неразрывно связана с историей
               Московского района.
             </p>
-            <p className={s.padding}>
+            <p className={cn(s.padding, v ? s.ability : null)}>
               Именно у нас были проведены первые ночные шоу, на которые
               перенимать опыт приезжали специалисты со всего города. Несколько
               лет подряд в наших помещениях располагался театральный институт
@@ -77,8 +80,10 @@ const HistoryBlock = () => {
 
       <Wrapper borderBottom>
         <div className={s.famous}>
-          <span className={cn(s.padding, s.oswald)}>Здесь бывали</span>
-          <span className={s.padding}>
+          <span className={cn(s.padding, s.oswald, v ? s.ability : null)}>
+            Здесь бывали
+          </span>
+          <span className={cn(s.padding, v ? s.ability : null)}>
             знаменитый композитор И.О.Дунаевский, великий шахматист Анатолий
             Карпов, популярный артист Евгений Евстигнеев. Кинорежиссер Лузгин
             снимал эпизоды к фильму «Облако в штанах» в фойе Большого зала.

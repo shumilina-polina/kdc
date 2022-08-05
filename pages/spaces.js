@@ -82,7 +82,6 @@ export default function Home() {
                   <SpaceCard key={`space${space.id}`} space={space} />
                 ))}
           </div>
-
           <div className={s.buttonWrapper}>
             <Button className={s.button} onClick={onLoadMore} disable={loading}>
               Показать еще

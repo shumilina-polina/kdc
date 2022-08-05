@@ -29,6 +29,10 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
+
+  &.ability {
+    font-size: $fs-ability-normal !important;
+  }
 }
 
 .item {
@@ -76,6 +80,10 @@
   }
 }
 
+.ability {
+  font-size: $fs-ability-normal;
+}
+
 .workingMode {
   display: flex;
   align-items: center;
@@ -90,6 +98,10 @@
   gap: 15px;
   font-family: $font-gravity;
   color: $color-white;
+
+  &.ability {
+    font-size: $fs-ability-normal;
+  }
 
   @include mobile-tablet {
     display: flex;
@@ -146,4 +158,8 @@
   font-size: $fs-large;
   font-family: $font-gravity;
   font-weight: $fw-semibold;
+
+  &.ability {
+    font-size: $fs-ability-large;
+  }
 }

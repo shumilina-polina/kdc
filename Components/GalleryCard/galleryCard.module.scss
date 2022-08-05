@@ -44,8 +44,16 @@
 .title {
   font-family: $font-oswald;
   font-size: $fs-large;
+
+  &.ability {
+    font-size: $fs-ability-large;
+  }
 }
 
 .date {
   font-family: $font-oswald;
+
+  &.ability {
+    font-size: $fs-ability-normal;
+  }
 }

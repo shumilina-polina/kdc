@@ -3,10 +3,13 @@ import Button from "UI/Button/Button";
 import useHtmlDecode from "shared/hooks/useHtmlDecode";
 import { months } from "shared/constants/Month";
 
-import s from "./eventCard.module.scss";
+import cn from "classnames";
 import ModalWindow from "UI/Modal/ModalWindow";
 import { useState } from "react";
 import BuyTicketsWindow from "Components/BuyTicketsWindow/BuyTicketsWindow";
+import { useSelector } from "react-redux";
+
+import s from "./eventCard.module.scss";
 
 const EventCard = (props) => {
   const { event } = props;
@@ -15,8 +18,7 @@ const EventCard = (props) => {
   const dataDate = moment(`${date} ${time}`);
   const monthsRU = months.split(",");
 
-  console.log(event);
-
+  const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);
   const [isOpen, setOpen] = useState(false);
 
   return (
@@ -24,26 +26,30 @@ const EventCard = (props) => {
       <div className={s.card}>
         <div className={s.date}>
           <span className={s.number}>{dataDate.format("DD")}</span>
-          <span className={s.month}>
+          <span className={cn(s.month, v ? s.ability : null)}>
             {monthsRU[dataDate.add(-1, "M").format("M")]}
           </span>
         </div>
         <div className={s.time}>
-          <span>{dataDate.format("HH:mm")}</span>
-          <span className={s.price}>
+          <span className={v ? s.ability : null}>
+            {dataDate.format("HH:mm")}
+          </span>
+          <span className={cn(s.price, v ? s.ability : null)}>
             {price === "0" ? "Бесплатно" : `${price} руб.`}
           </span>
         </div>
         <div className={s.about}>
-          <div className={s.limits}>
+          <div className={cn(s.limits, v ? s.ability : null)}>
             <span>{`Категория: ${limits}+`}</span>
           </div>
-          <div className={s.description}>
+          <div className={cn(s.description, v ? s.ability : null)}>
             <span>{useHtmlDecode(title)}</span>
           </div>
         </div>
         <div className={s.more}>
-          <span className={s.knowmore}>Узнать больше</span>
+          <span className={cn(s.knowmore, v ? s.ability : null)}>
+            Узнать больше
+          </span>
           <Button className={s.button} onClick={() => setOpen(true)}>
             Приобрести билет
           </Button>

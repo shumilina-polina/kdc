@@ -1,5 +1,6 @@
 import cn from "classnames";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 import s from "./button.module.scss";
 
@@ -13,9 +14,11 @@ const Button = (props) => {
     disabled = false,
   } = props;
 
+  const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);
+
   return (
     <button
-      className={cn(s.button, className)}
+      className={cn(s.button, className, v ? s.ability : null)}
       onClick={onClick}
       disabled={disabled}
     >
