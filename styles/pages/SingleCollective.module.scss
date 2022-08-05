@@ -100,10 +100,18 @@
 
 .secondary {
   color: $color-gray;
+
+  &.ability {
+    font-size: $fs-ability-normal;
+  }
 }
 
 .bold {
   font-family: $font-oswald;
+
+  &.ability {
+    font-size: $fs-ability-normal;
+  }
 }
 
 .column {
@@ -155,6 +163,10 @@
   }
 }
 
+.about.ability {
+  font-size: $fs-ability-normal;
+}
+
 .text {
   padding: 20px;
   border-left: 1px solid $color-black;
@@ -189,4 +201,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
+
+  &.ability {
+    font-size: $fs-ability-normal;
+  }
 }

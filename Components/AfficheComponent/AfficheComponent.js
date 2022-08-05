@@ -29,8 +29,6 @@ const AfficheComponent = () => {
   };
 
   const onLoadNext = () => {
-    console.log(total);
-    console.log(offset);
     if (offset + POSTS_PER_PAGE < total) {
       setOffset(offset + POSTS_PER_PAGE);
       setLoading(true);
@@ -101,7 +99,7 @@ const AfficheComponent = () => {
               ))}
             </>
           ) : affiches.length === 0 ? (
-            <span className={s.noAfficheTitle}>
+            <span className={cn(s.noAfficheTitle, s.ability)}>
               В данном периоде ничего не найдено.
             </span>
           ) : (

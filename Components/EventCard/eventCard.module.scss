@@ -38,6 +38,10 @@
 .month {
   font-family: $font-gravity;
   font-size: $fs-normal;
+
+  &.ability {
+    font-size: $fs-ability-normal;
+  }
 }
 
 .time {
@@ -131,4 +135,8 @@
   @include mobile {
     padding: 10px 0;
   }
+}
+
+.ability {
+  font-size: $fs-ability-normal;
 }

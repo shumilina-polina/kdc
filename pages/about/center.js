@@ -6,9 +6,7 @@ const CenterPage = () => {
   return (
     <>
       <Header />
-
       <CenterBlock />
-
       <Footer />
     </>
   );

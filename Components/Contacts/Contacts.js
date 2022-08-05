@@ -3,17 +3,18 @@ import Image from "next/image";
 import cn from "classnames";
 
 import Title from "UI/Title/Title";
-import Container from "UI/Container/Container";
 
 import s from "./contacts.module.scss";
 import Wrapper from "UI/Wrapper/Wrapper";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const Contacts = (props) => {
   const {
     data: { title, adressTitle, adressMain, adressSecondary, phone, email },
   } = props;
 
+  const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);
   const [isMainAdress, setAdress] = useState(true);
 
   return (
@@ -48,13 +49,13 @@ const Contacts = (props) => {
               <div className={cn(s.access, s.phone)}>
                 <Image src="/assets/icons/handy.svg" width={40} height={40} />
                 <Link href={`tel:${phone}`}>
-                  <a className={s.link}>{phone}</a>
+                  <a className={cn(s.link, v ? s.ability : null)}>{phone}</a>
                 </Link>
               </div>
               <div className={cn(s.access, s.email)}>
                 <Image src="/assets/icons/email.svg" width={40} height={40} />
                 <Link href={`mailto:${email}`}>
-                  <a className={s.link}>{email}</a>
+                  <a className={cn(s.link, v ? s.ability : null)}>{email}</a>
                 </Link>
               </div>
             </div>
@@ -82,7 +83,7 @@ const Contacts = (props) => {
               <div className={s.contentWrapperMobile}>
                 <Image src="/assets/icons/handy.svg" width={40} height={40} />
                 <Link href={`tel:${phone}`}>
-                  <a className={s.link}>{phone}</a>
+                  <a className={cn(s.link, v ? s.ability : null)}>{phone}</a>
                 </Link>
               </div>
             </div>
@@ -90,7 +91,7 @@ const Contacts = (props) => {
               <div className={s.contentWrapperMobile}>
                 <Image src="/assets/icons/email.svg" width={40} height={40} />
                 <Link href={`mailto:${email}`}>
-                  <a className={s.link}>{email}</a>
+                  <a className={cn(s.link, v ? s.ability : null)}>{email}</a>
                 </Link>
               </div>
             </div>

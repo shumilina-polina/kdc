@@ -14,10 +14,13 @@ import "react-loading-skeleton/dist/skeleton.css";
 import s from "./centerBlock.module.scss";
 import apiService from "services/apiService";
 import Wrapper from "UI/Wrapper/Wrapper";
+import { useSelector } from "react-redux";
 
 const CenterBlock = () => {
   const [loading, setLoading] = useState(true);
   const [collectives, setCollectives] = useState([]);
+
+  const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);
 
   useEffect(() => {
     apiService
@@ -39,12 +42,12 @@ const CenterBlock = () => {
       <Wrapper borderBottom>
         <div className={s.info}>
           <div className={s.description}>
-            <p>
+            <p className={v ? s.ability : null}>
               С 2014 г. для жителей Московского района открыта ещё одна площадка
               Культурно-досугового центра «Московский», находящаяся по адресу{" "}
               <span className={s.oswald}>Варшавская улица дом 98.</span>
             </p>
-            <p className={s.padding}>
+            <p className={cn(s.padding, v ? s.ability : null)}>
               Теперь творчество живёт и здесь, на территории жилого массива,
               приблизив жителей района <br />к культуре шаговой доступности. На
               «Варшавской» регулярно проходят различные концерты, тематические
@@ -97,7 +100,7 @@ const CenterBlock = () => {
       </Wrapper>
 
       <Wrapper>
-        <p className={s.about}>
+        <p className={cn(s.about, v ? s.ability : null)}>
           Новая площадка оснащена самыми современными техническими
           возможностями. Уютная обстановка, комфортные условия для занятий,
           молодые сотрудники, современные направления деятельности,
@@ -110,12 +113,12 @@ const CenterBlock = () => {
             Следите за нашими новостями!
           </p>
           <div className={cn(s.padding)}>
-            <p>
+            <p className={v ? s.ability : null}>
               «КДЦ на Варшавской» ждёт в гости всех, кто хочет прикоснуться к
               творчеству и сделать свою жизнь интересней. Малыши и их родители,
               школьники, молодёжь, бабушки и дедушки! Мы рады всем!
             </p>
-            <p className={cn(s.oswald)}>
+            <p className={cn(s.oswald, v ? s.ability : null)}>
               Ждём Вас по адресу: Варшавская улица д. 98, вход со двора.
             </p>
             <div className={s.contacts}>
@@ -126,19 +129,25 @@ const CenterBlock = () => {
                   height={30}
                 />
                 <Link href={`tel:${ContactConst.phone}`}>
-                  <a className={cn(s.link, s.oswald)}>{ContactConst.phone}</a>
+                  <a className={cn(s.link, s.oswald, v ? s.ability : null)}>
+                    {ContactConst.phone}
+                  </a>
                 </Link>
               </div>
               <div>
                 <Image src="/assets/icons/email.svg" width={30} height={30} />
                 <Link href={`mailto:${ContactConst.email}`}>
-                  <a className={cn(s.link, s.oswald)}>{ContactConst.email}</a>
+                  <a className={cn(s.link, s.oswald, v ? s.ability : null)}>
+                    {ContactConst.email}
+                  </a>
                 </Link>
               </div>
               <div>
                 <Image src="/assets/icons/vk.svg" width={30} height={30} />
                 <Link href={ContactConst.vk}>
-                  <a className={cn(s.link, s.oswald)}>{ContactConst.vk}</a>
+                  <a className={cn(s.link, s.oswald, v ? s.ability : null)}>
+                    {ContactConst.vk}
+                  </a>
                 </Link>
               </div>
             </div>

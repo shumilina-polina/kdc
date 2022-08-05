@@ -58,9 +58,17 @@
   font-size: $fs-large;
   color: $color-white;
 
+  &.ability {
+    font-size: $fs-ability-large;
+  }
+
   @include mobile {
     left: 10px;
     writing-mode: horizontal-tb;
     transform: rotate(0deg);
   }
+}
+
+.ability {
+  font-size: $fs-ability-normal;
 }

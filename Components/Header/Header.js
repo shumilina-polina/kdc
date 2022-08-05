@@ -13,6 +13,8 @@ import Button from "UI/Button/Button";
 import { HeaderConst } from "shared/constants/HeaderConst";
 
 import s from "./header.module.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { VISUALLY_IMPAIRED_VERSION_SWITCH } from "store/actionTypes/AbilityActionType";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -29,6 +31,16 @@ const Header = () => {
     buttonText,
     logotypeTitle,
   } = HeaderConst;
+
+  const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);
+
+  const dispatch = useDispatch();
+  const handleAbilityButton = () => {
+    dispatch({
+      type: VISUALLY_IMPAIRED_VERSION_SWITCH,
+      payload: !v,
+    });
+  };
 
   const nextLayer = (pages) => {
     setNestedMenu(pages);
@@ -60,7 +72,7 @@ const Header = () => {
               {pages.map(({ id, value, url }) => (
                 <li key={`pages${id}`} className={s.item}>
                   <Link href={url}>
-                    <a className={s.link}>{value}</a>
+                    <a className={cn(s.link, v ? s.ability : null)}>{value}</a>
                   </Link>
                 </li>
               ))}
@@ -69,7 +81,7 @@ const Header = () => {
           <div className={s.contact}>
             <Image src="/assets/icons/phone.svg" width={20} height={20} />
             <Link href={`tel:${phone}`}>
-              <a className={s.link}>{phone}</a>
+              <a className={cn(s.link, v ? s.ability : null)}>{phone}</a>
             </Link>
           </div>
           <div className={s.menuIcon}>
@@ -99,7 +111,7 @@ const Header = () => {
                 {nestedMenu.map(({ id, value, url }) => (
                   <li key={`nestedMenu${id}`} className={s.item}>
                     <Link href={url}>
-                      <a className={s.link}>
+                      <a className={cn(s.link, v ? s.ability : null)}>
                         {value}
                         <Image
                           src="/assets/icons/arrow.svg"
@@ -118,7 +130,7 @@ const Header = () => {
                 <li key={`headerMenu${id}`} className={s.item}>
                   {!nested ? (
                     <Link href={url}>
-                      <a className={s.link}>
+                      <a className={cn(s.link, v ? s.ability : null)}>
                         {value}
                         <Image
                           src="/assets/icons/arrow.svg"
@@ -128,7 +140,10 @@ const Header = () => {
                       </a>
                     </Link>
                   ) : (
-                    <a className={s.link} onClick={() => nextLayer(nextPages)}>
+                    <a
+                      className={cn(s.link, v ? s.ability : null)}
+                      onClick={() => nextLayer(nextPages)}
+                    >
                       {value}
                       <Image
                         src="/assets/icons/arrow.svg"
@@ -144,24 +159,30 @@ const Header = () => {
 
           <div className={s.details}>
             <div className={s.working}>
-              <span>{workingMode.value}</span>
+              <span className={v ? s.ability : null}>{workingMode.value}</span>
               <div className={s.workingMode}>
                 <Image src="/assets/icons/clock.svg" width={18} height={18} />
-                <span>{workingMode.mode}</span>
+                <span className={v ? s.ability : null}>{workingMode.mode}</span>
               </div>
             </div>
             <div className={s.adress}>
-              <span>{adress}</span>
+              <span className={v ? s.ability : null}>{adress}</span>
             </div>
             <div className={s.contactInfo}>
               <Link href={`tel:${phone}`}>
-                <a className={s.contactLink}>{phone}</a>
+                <a className={cn(s.contactLink, v ? s.ability : null)}>
+                  {phone}
+                </a>
               </Link>
               <Link href={`mailto:${email}`}>
-                <a className={s.contactLink}>{email}</a>
+                <a className={cn(s.contactLink, v ? s.ability : null)}>
+                  {email}
+                </a>
               </Link>
             </div>
-            <Button className={s.abilityButton}>{buttonText}</Button>
+            <Button className={s.abilityButton} onClick={handleAbilityButton}>
+              {buttonText}
+            </Button>
           </div>
         </div>
       </header>

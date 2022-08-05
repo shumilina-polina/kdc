@@ -19,6 +19,10 @@ $padding: 0 20px;
   font-family: $font-oswald;
   font-size: $fs-normal;
   color: $color-white;
+
+  &.ability {
+    font-size: $fs-ability-small;
+  }
 }
 
 .thumbnail {
@@ -39,6 +43,10 @@ $padding: 0 20px;
 .title {
   padding: $padding;
   font-family: $font-oswald;
+
+  &.ability {
+    font-size: $fs-ability-normal;
+  }
 }
 
 .content {
@@ -54,10 +62,18 @@ $padding: 0 20px;
 
 .text {
   font-family: $font-gravity;
+
+  &.ability {
+    font-size: $fs-ability-normal;
+  }
 }
 
 .price {
   font-family: $font-oswald;
+
+  &.ability {
+    font-size: $fs-ability-normal;
+  }
 }
 
 .button {

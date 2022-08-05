@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import moment from "moment";
 import Calendar from "UI/Calendar/Calendar";
+import cn from "classnames";
 
 import CustomCheckbox from "UI/CustomCheckbox/CustomCheckbox";
 import EventCard from "Components/EventCard/EventCard";
@@ -10,6 +11,7 @@ import s from "./eventsComponent.module.scss";
 import apiService from "services/apiService";
 import { Skeleton } from "@mui/material";
 import Wrapper from "UI/Wrapper/Wrapper";
+import { useSelector } from "react-redux";
 
 const EventsComponent = (props) => {
   const {
@@ -20,6 +22,7 @@ const EventsComponent = (props) => {
 
   const POST_ON_PAGE = 5;
 
+  const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);
   const [date, setDate] = useState(moment().format("YYYY-MM-DD"));
   const [free, setFree] = useState(false);
   const [paid, setPaid] = useState(false);
@@ -47,7 +50,7 @@ const EventsComponent = (props) => {
       {!disableFilters ? (
         <Wrapper borderBottom>
           <div className={s.calendarFilters}>
-            <div className={s.description}>
+            <div className={cn(s.description, v ? s.ability : null)}>
               Вы можете посмотреть все предстоящие мероприятия запланированые в
               один день и отсортировать их.
             </div>

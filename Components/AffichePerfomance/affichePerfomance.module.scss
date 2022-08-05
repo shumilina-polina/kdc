@@ -44,6 +44,10 @@
   padding-right: 10px;
   font-family: $font-gravity;
   font-size: $fs-normal;
+
+  &.ability {
+    font-size: $fs-ability-small;
+  }
 }
 
 .footer {
@@ -63,4 +67,8 @@
   background-color: $color-red;
   color: $color-white;
   cursor: pointer;
+}
+
+.ability {
+  font-size: $fs-ability-normal;
 }

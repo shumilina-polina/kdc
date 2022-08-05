@@ -14,11 +14,8 @@ export default function AffichePage() {
       </Head>
 
       <Header />
-
       <AfficheComponent />
-
       <EventsComponent />
-
       <Footer />
     </>
   );

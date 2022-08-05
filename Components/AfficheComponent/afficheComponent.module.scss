@@ -94,4 +94,8 @@
   justify-self: center;
   font-size: $fs-large;
   font-family: $font-oswald;
+
+  &.ability {
+    font-size: $fs-ability-large;
+  }
 }

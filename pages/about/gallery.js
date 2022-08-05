@@ -6,9 +6,7 @@ const GalleryPage = () => {
   return (
     <>
       <Header />
-
       <GalleryBlock />
-
       <Footer />
     </>
   );

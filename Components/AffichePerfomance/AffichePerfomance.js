@@ -2,9 +2,11 @@ import BuyTicketsWindow from "Components/BuyTicketsWindow/BuyTicketsWindow";
 import moment from "moment";
 import "moment/locale/ru";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import useHtmlDecode from "shared/hooks/useHtmlDecode";
 import ButtonArrow from "UI/ButtonArrow/ButtonArrow";
 import ModalWindow from "UI/Modal/ModalWindow";
+import cn from "classnames";
 
 import s from "./affichePerfomance.module.scss";
 
@@ -15,6 +17,7 @@ const AffichePerfomance = (props) => {
   const dataDate = moment(`${date} ${time}`);
 
   const [isOpen, setOpen] = useState(false);
+  const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);
 
   moment.locale("ru");
 
@@ -22,14 +25,16 @@ const AffichePerfomance = (props) => {
     <>
       <div className={s.perfomance}>
         <div className={s.header}>
-          <span className={s.date}>{dataDate.format("D MMMM")}</span>
-          <span className={s.time}>{`${dataDate.format("HH")}:${dataDate.format(
-            "MM"
-          )}`}</span>
+          <span className={v ? s.ability : null}>
+            {dataDate.format("D MMMM")}
+          </span>
+          <span
+            className={cn(s.time, v ? s.ability : null)}
+          >{`${dataDate.format("HH")}:${dataDate.format("MM")}`}</span>
         </div>
         <div className={s.main}>
           <span className={s.title}>{useHtmlDecode(title)}</span>
-          <p className={s.content}>
+          <p className={cn(s.content, v ? s.ability : null)}>
             {useHtmlDecode(content).substr(0, 200) + "..."}
           </p>
         </div>

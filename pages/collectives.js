@@ -116,7 +116,6 @@ const CollectivesPage = () => {
           </div>
         </div>
       </Wrapper>
-
       <Footer />
     </>
   );

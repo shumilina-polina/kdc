@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import s from "./tabs.module.scss";
 import Wrapper from "UI/Wrapper/Wrapper";
+import { useSelector } from "react-redux";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -37,6 +38,7 @@ const CustomTabs = (props) => {
   const { titles = [], components = [] } = props;
 
   const [value, setValue] = useState(0);
+  const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -48,7 +50,11 @@ const CustomTabs = (props) => {
         <div className={s.wrapper}>
           <div className={s.divider} />
           <Wrapper borderBottom borderTop>
-            <Tabs value={value} onChange={handleChange}>
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              className={v ? s.ability : null}
+            >
               {titles.map((title, index) => (
                 <Tab
                   key={`singleTab_${index}`}

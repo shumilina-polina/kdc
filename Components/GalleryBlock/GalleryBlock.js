@@ -9,7 +9,6 @@ import s from "./galleryBlock.module.scss";
 
 const GalleryBlock = () => {
   const POSTS_PER_PAGE = GALLERIES_PER_PAGE;
-
   const [loading, setLoading] = useState(true);
   const [galleries, setGalleries] = useState([]);
   const [offset, setOffset] = useState(0);

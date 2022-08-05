@@ -2,8 +2,11 @@ import QuestionWindow from "Components/QuestionWindow/QuestionWindow";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import cn from "classnames";
 
 import { FooterConst } from "shared/constants/FooterConst";
+import { VISUALLY_IMPAIRED_VERSION_SWITCH } from "store/actionTypes/AbilityActionType";
 import Button from "UI/Button/Button";
 import Container from "UI/Container/Container";
 import ModalWindow from "UI/Modal/ModalWindow";
@@ -33,9 +36,18 @@ const Footer = () => {
     copyright,
   } = FooterConst;
 
+  const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);
   const array = sliceIntoChunks(list, 3);
 
   const [isOpen, setOpen] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleAbilityButton = () => {
+    dispatch({
+      type: VISUALLY_IMPAIRED_VERSION_SWITCH,
+      payload: !v,
+    });
+  };
 
   return (
     <footer>
@@ -47,7 +59,10 @@ const Footer = () => {
         <Container className={s.container}>
           <div className={s.topFooter}>
             {array.map((list, index) => (
-              <ul className={s.list} key={`footerList${index}`}>
+              <ul
+                className={cn(s.list, v ? s.ability : null)}
+                key={`footerList${index}`}
+              >
                 {list.map(({ id, value, url }) => (
                   <li className={s.item} key={`footerItem${id}`}>
                     {url ? (
@@ -72,13 +87,13 @@ const Footer = () => {
           </div>
           <div className={s.botFooter}>
             <div className={s.working}>
-              <span className={s.workingTitle}>{workingTitle}</span>
+              <span className={v ? s.ability : null}>{workingTitle}</span>
               <div className={s.workingMode}>
                 <Image src="/assets/icons/clock.svg" width={18} height={18} />
-                <span className={s.workingTime}>{workingTime}</span>
+                <span className={v ? s.ability : null}>{workingTime}</span>
               </div>
             </div>
-            <div className={s.contactMobile}>
+            <div className={cn(s.contactMobile, v ? s.ability : null)}>
               <span className={s.adress}>{adress}</span>
               <Link href={`tel:${phone}`}>
                 <a className={s.link}>{phone}</a>
@@ -100,7 +115,7 @@ const Footer = () => {
                 <QuestionWindow />
               </ModalWindow>
 
-              <Button className={s.abilityButton}>
+              <Button className={s.abilityButton} onClick={handleAbilityButton}>
                 <Image src="/assets/icons/eye.svg" width={22} height={15} />
                 {abilityButtonText}
               </Button>
@@ -114,7 +129,9 @@ const Footer = () => {
       </Wrapper>
 
       <Wrapper>
-        <span className={s.copyrightText}>{copyright}</span>
+        <span className={cn(s.copyrightText, v ? s.ability : null)}>
+          {copyright}
+        </span>
       </Wrapper>
     </footer>
   );

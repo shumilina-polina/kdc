@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
-import { CollectivesReducer } from "./CollectivesReducer";
+import AbilityReducer from "./AbilityReducer";
 
-export const RootReducer = combineReducers({
-  collectives: CollectivesReducer,
+const RootReducer = combineReducers({
+  ability: AbilityReducer,
 });
+
+export default RootReducer;
