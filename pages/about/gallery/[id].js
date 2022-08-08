@@ -9,9 +9,9 @@ import Wrapper from "UI/Wrapper/Wrapper";
 import s from "styles/pages/SingleGallery.module.scss";
 import Title from "UI/Title/Title";
 import { Skeleton } from "@mui/material";
-import Link from "next/link";
 import ButtonArrow from "UI/ButtonArrow/ButtonArrow";
 import { routes } from "shared/enums/pages";
+import CustomGallery from "Components/CustomGallery/CustomGallery";
 
 const htmlDecode = (content) => {
   const doc = new DOMParser().parseFromString(content, "text/html");
@@ -25,6 +25,12 @@ const SingleColectivePage = () => {
   } = useRouter();
   const [loading, setLoading] = useState(true);
   const [gallery, setGallery] = useState(null);
+
+  const setPhotosArray = () => {
+    return gallery.images.map(image => (
+      { src: image, width: 4, height: 3 }
+    ))
+  }
 
   useEffect(() => {
     if (isReady) {
@@ -76,15 +82,7 @@ const SingleColectivePage = () => {
                   sx={{ height: "200px" }}
                 />
               ))
-            : gallery.images.map((image, index) => (
-                <div key={`image_key_${index}`} className={s.image}>
-                  <Link href={image}>
-                    <a className={s.link}>
-                      <img src={image} />
-                    </a>
-                  </Link>
-                </div>
-              ))}
+            : <CustomGallery photos={setPhotosArray()} />  }
         </div>
       </Wrapper>
 
