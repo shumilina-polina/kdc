@@ -1,7 +1,7 @@
 import axios from "axios";
 
 class ApiService {
-  baseUrl = "https://moscenterspb.space/wp-json/project/v2";
+  baseUrl = "http://localhost/dashboard/wp-json/project/v2";  //https://moscenterspb.space
 
   getCollectives = (
     offset = 0,
