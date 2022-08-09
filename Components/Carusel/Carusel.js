@@ -37,6 +37,23 @@ const Carusel = (props) => {
       .finally(() => setLoading(false));
   }, [loading]);
 
+  useEffect(() => {
+    let slideIndex = slideNumber;
+    const autoPlay = setInterval(() => {
+      if (slideIndex < slides.length - 1) {
+        setSlideNumber((prev) => prev + 1);
+        slideIndex = slideIndex + 1;
+      } else {
+        setSlideNumber((prev) => 0);
+        slideIndex = 0;
+      }
+    }, 5000);
+
+    return () => {
+      clearInterval(autoPlay)
+    }
+  }, [slides])
+
   return (
     <div>
       <Wrapper>

@@ -10,11 +10,12 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { routes } from "shared/enums/pages";
 import Container from "UI/Container/Container";
 import Button from "UI/Button/Button";
-import { HeaderConst } from "shared/constants/HeaderConst";
+import { HeaderConst, HOME_PAGE_STATE } from "shared/constants/HeaderConst";
 
 import s from "./header.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { VISUALLY_IMPAIRED_VERSION_SWITCH } from "store/actionTypes/AbilityActionType";
+import { UPDATE_ACTIVE_MENU } from "store/actionTypes/HeaderActionTypes";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -33,6 +34,7 @@ const Header = () => {
   } = HeaderConst;
 
   const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);
+  const { active } = useSelector((state) => state.header)
 
   const dispatch = useDispatch();
   const handleAbilityButton = () => {
@@ -69,10 +71,13 @@ const Header = () => {
           </div>
           <div className={s.nav}>
             <ul className={s.navList}>
-              {pages.map(({ id, value, url }) => (
+              {pages.map(({ id, value, url, state }) => (
                 <li key={`pages${id}`} className={s.item}>
                   <Link href={url}>
-                    <a className={cn(s.link, v ? s.ability : null)}>{value}</a>
+                    <a className={cn(s.link, v ? s.ability : null, active === state ? s.active : null)} onClick={() => dispatch({
+                      type: UPDATE_ACTIVE_MENU,
+                      payload: state
+                    })}>{value}</a>
                   </Link>
                 </li>
               ))}

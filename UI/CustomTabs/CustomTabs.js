@@ -54,6 +54,7 @@ const CustomTabs = (props) => {
               value={value}
               onChange={handleChange}
               className={v ? s.ability : null}
+              indicatorColor={""}
             >
               {titles.map((title, index) => (
                 <Tab
