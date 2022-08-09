@@ -57,6 +57,10 @@
     font-size: $fs-ability-normal !important;
   }
 
+  &.active {
+    color: $color-gray;
+  }
+
   @include mobile-tablet {
     width: 100%;
     text-align: left;
