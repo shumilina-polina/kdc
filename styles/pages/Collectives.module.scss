@@ -23,6 +23,14 @@
   color: $color-red;
 }
 
+.borderBottom {
+  border-bottom: 1px solid $color-black;
+
+  @include mobile-tablet {
+    border-bottom: none;
+  }
+}
+
 .collectives {
   padding: 20px;
   display: grid;

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import FloorOne from "./Floors/FloorOne";
 
 import s from "./buildingMap.module.scss";
 import { ReactSVGPanZoom, TOOL_NONE } from "react-svg-pan-zoom";
@@ -16,11 +15,14 @@ const BuildingMap = () => {
             <div className={s.slides}>
                 { ( floor === 1 || 2 || 3 ) ? (
                     <ReactSVGPanZoom
+                        scaleFactorOnWheel={1.2}
                         className={s.svg}
                         tool={tool}
                         onChangeTool={tool => setTool(tool)}
                         value={value}
                         onChangeValue={value => setValue(value)}
+                        miniatureProps={{position: "none"}}
+                        toolbarProps={{position: "bottom"}}
                     >
                         <svg className={s.svg}>
             <defs>

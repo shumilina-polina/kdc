@@ -72,7 +72,7 @@ const CollectivesPage = () => {
         </div>
       </Wrapper>
 
-      <Wrapper borderBottom>
+      <div className={s.borderBottom}>
         <CollectivesFilters
           trends={trends}
           setTrends={setTrends}
@@ -81,7 +81,7 @@ const CollectivesPage = () => {
           price={price}
           setPrice={setPrice}
         />
-      </Wrapper>
+      </div>
 
       <Wrapper>
         <div className={s.collectives}>

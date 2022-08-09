@@ -70,6 +70,14 @@
   text-align: center;
 }
 
+.borderRight {
+  border-right: 1px solid $color-black;
+
+  @include mobile-tablet {
+    border: none;
+  }
+}
+
 .collectivesCards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
