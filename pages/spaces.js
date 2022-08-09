@@ -13,6 +13,7 @@ import { SPACES_PER_PAGE } from "services/config";
 
 import s from "styles/pages/Spaces.module.scss";
 import Wrapper from "UI/Wrapper/Wrapper";
+import BuildingMap from "Components/BuildingMap/BuildingMap";
 
 export default function Home() {
   const POSTS_PER_PAGE = 5;
@@ -58,7 +59,7 @@ export default function Home() {
         </Wrapper>
 
         <Wrapper borderBottom>
-          <div className={s.map} />
+          <BuildingMap />
         </Wrapper>
 
         <Wrapper borderBottom>

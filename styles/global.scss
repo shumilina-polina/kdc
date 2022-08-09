@@ -1,9 +1,23 @@
 @import "/styles/styles.scss";
 
-button.css-bkrceb-MuiButtonBase-root-MuiPickersDay-root.Mui-selected {
-  background-color: $color-red !important;
-}
 
 button.css-195y93z-MuiButtonBase-root-MuiPickersDay-root.Mui-selected {
   background-color: $color-red !important;
+}
+
+button.MuiButtonBase-root {
+  border-radius: 0 !important;
+}
+
+button.MuiPickersDay-today {
+  border: none !important;
+  border-radius: 0 !important;
+  background-color: $color-red;
+  color: $color-white;
+}
+
+button.MuiPickersDay-today:hover {
+  border: none !important;
+  border-radius: 0 !important;
+  background-color: $color-red
 }
