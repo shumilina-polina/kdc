@@ -59,7 +59,10 @@ const Header = () => {
         <Container className={s.container}>
           <div className={s.logo}>
             <Link href={routes.home}>
-              <a>
+              <a onClick={() => dispatch({
+                      type: UPDATE_ACTIVE_MENU,
+                      payload: HOME_PAGE_STATE
+              })}>
                 <Image
                   src="/assets/images/logo.svg"
                   alt={logotypeTitle}

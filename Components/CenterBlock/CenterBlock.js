@@ -109,7 +109,7 @@ const CenterBlock = () => {
           излюбленным местом проведения досуга для жителей Московского района.
         </p>
         <div className={s.footer}>
-          <p className={cn(s.padding, s.oswald, s.title)}>
+          <p className={cn(s.padding, s.oswald, s.title, s.borderRight)}>
             Следите за нашими новостями!
           </p>
           <div className={cn(s.padding)}>

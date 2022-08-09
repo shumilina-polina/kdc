@@ -176,6 +176,16 @@
   }
 }
 
+.border {
+  border: 1px solid $color-black;
+  border-top: none;
+  border-right: none;
+
+  @include mobile-tablet {
+    border: none;
+  }
+}
+
 .text > p {
   font-size: $fs-normal;
   line-height: 20px;

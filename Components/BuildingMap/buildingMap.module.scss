@@ -3,11 +3,10 @@
 .map {
     height: 500px;
     display: grid;
-    grid-template-columns: 4fr 1fr;
 }
 
 .slides {
-    max-height: 500px;
+    height: 500px;
 }
 
 .svg {
@@ -17,5 +16,9 @@
     & > svg {
         width: 100% !important;
         height: 100% !important;
+    }
+
+    & > svg > g {
+        transform: translateY(-90px);
     }
 }
