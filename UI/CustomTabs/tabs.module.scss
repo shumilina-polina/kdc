@@ -23,10 +23,10 @@
 .root {
   text-transform: capitalize;
   flex: auto;
-  border-right: 1px solid $color-black;
+  border-right: 1px solid $color-black !important;
 
   &:last-child {
-    border: none;
+    border: none !important;
   }
 }
 
