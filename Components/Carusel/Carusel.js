@@ -13,6 +13,7 @@ const Carusel = (props) => {
   const [loading, setLoading] = useState(true);
   const [slides, setSlides] = useState([]);
   const [slideNumber, setSlideNumber] = useState(0);
+  const [isStopAutoPlay, setStopAutoPlay] = useState(false);
 
   const {
     data: { getTicketButtonText },
@@ -22,12 +23,14 @@ const Carusel = (props) => {
     if (slideNumber > 0) {
       setSlideNumber((prev) => prev - 1);
     }
+    setStopAutoPlay(true);
   };
 
   const nextSlide = () => {
     if (slideNumber < slides.length - 1) {
       setSlideNumber((prev) => prev + 1);
     }
+    setStopAutoPlay(true);
   };
 
   useEffect(() => {
@@ -49,10 +52,14 @@ const Carusel = (props) => {
       }
     }, 5000);
 
+    if (isStopAutoPlay) {
+      clearInterval(autoPlay);
+    }
+
     return () => {
       clearInterval(autoPlay)
     }
-  }, [slides])
+  }, [slides, isStopAutoPlay])
 
   return (
     <div>
