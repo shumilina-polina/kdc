@@ -81,7 +81,11 @@ const HistoryBlock = () => {
       <Wrapper borderBottom>
         <div className={s.famous}>
           <span className={cn(s.padding, s.oswald, v ? s.ability : null)}>
-            Здесь бывали
+            <div>Здесь бывали</div>
+            <div className={s.famousDecor}>
+              <div className={s.quadrat} />
+              <div className={s.round} />
+            </div>
           </span>
           <span className={cn(s.padding, v ? s.ability : null)}>
             знаменитый композитор И.О.Дунаевский, великий шахматист Анатолий
