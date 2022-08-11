@@ -1,12 +1,10 @@
 @import "/styles/styles.scss";
 
 .wrapper {
-  padding: 20px;
+  padding: 20px 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
-  border-left: 1px solid $color-black;
-  border-right: 1px solid $color-black;
 
   @include mobile-tablet {
     padding: 20px;

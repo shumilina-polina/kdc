@@ -122,6 +122,10 @@
   font-weight: $fw-semibold;
 }
 
+.icon {
+  object-fit: contain !important;
+}
+
 .posterMobile {
   margin-bottom: 30px;
   width: 100%;

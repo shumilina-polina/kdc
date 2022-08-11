@@ -13,7 +13,7 @@ import s from "./collectivesCard.module.scss";
 
 const CollectiveCard = (props) => {
   const { collective, className } = props;
-  const { id, title, thumbnail, trend, kit, price } = collective;
+  const { id, title, thumbnail, trend, kit, price, location } = collective;
 
   const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);
   const [isOpen, setOpen] = useState(false);
@@ -45,6 +45,7 @@ const CollectiveCard = (props) => {
           <span className={cn(s.price, v ? s.ability : null)}>
             {price < 1 ? "Бесплатно" : `${price} р/мес`}
           </span>
+          <span className={s.secondary}>{location}</span>
         </div>
         <div className={s.footer}>
           <Button

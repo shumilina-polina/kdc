@@ -76,7 +76,7 @@ const SingleColectivePage = (props) => {
                 Забронировать
               </Button>
             </div>
-            <div className={cn(s.other, s.borderBottom, s.padding)}>
+            <div className={cn(s.other, s.borderBottom)}>
               <div className={s.block}>
                 <span className={s.secondary}>Вместимость:</span>
                 {loading ? (

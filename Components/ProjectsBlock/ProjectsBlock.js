@@ -1,9 +1,8 @@
 import { Skeleton } from "@mui/material";
 import ProjectCard from "Components/ProjectCard/ProjectCard";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import apiService from "services/apiService";
-import Container from "UI/Container/Container";
+import Wrapper from "UI/Wrapper/Wrapper";
 
 import s from "./projectsBlock.module.scss";
 
@@ -23,7 +22,7 @@ const ProjectsBlock = () => {
   }, []);
 
   return (
-    <Container className={s.container} noPaddingMobile>
+    <Wrapper>
       <div className={s.wrapper}>
         {loading
           ? [...Array(4)].map((el, index) => (
@@ -40,7 +39,7 @@ const ProjectsBlock = () => {
               />
             ))}
       </div>
-    </Container>
+    </Wrapper>
   );
 };
 
