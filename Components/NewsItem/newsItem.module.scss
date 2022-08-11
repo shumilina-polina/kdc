@@ -1,6 +1,9 @@
 @import "/styles/styles.scss";
 
 .item {
+  display: grid;
+  grid-template-rows: auto 1fr;
+
   @include mobile-tablet {
     border-bottom: 1px solid $color-black;
   }

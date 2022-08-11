@@ -58,14 +58,16 @@
 
 .info {
   @include mobile-tablet {
+    border-top: 1px solid $color-black;
     border-left: 1px solid $color-black;
     border-right: 1px solid $color-black;
   }
 }
 
 .cardHeader {
-  padding: 0 20px;
-  display: flex;
+  padding-left: 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
   justify-content: space-between;
   align-items: center;
 }
@@ -76,17 +78,21 @@
 }
 
 .other {
+  padding-left: 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   font-family: $font-gravity;
 }
 
 .block {
-  padding: 10px;
+  padding: 5px 0;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 10px;
   border-left: 1px solid $color-black;
+  text-align: center;
 
   &:first-child {
     border: none;
@@ -123,8 +129,10 @@
 .coordsIcon {
   justify-self: end;
   align-self: center;
+  height: 100%;
 
   & > img {
+    height: 100%;
     display: block;
   }
 

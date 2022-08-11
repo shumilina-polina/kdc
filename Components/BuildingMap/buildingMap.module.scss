@@ -1,11 +1,14 @@
 @import "/styles/styles.scss";
 
 .map {
+    position: relative;
     height: 500px;
     display: grid;
 }
 
 .slides {
+    max-width: 1240px;
+    overflow: hidden;
     height: 500px;
 }
 
@@ -17,4 +20,22 @@
         width: 100% !important;
         height: 100% !important;
     }
+}
+
+.switchers {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.controls {
+    position: absolute;
+    bottom: 30px;
+    right: 50px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
 }
