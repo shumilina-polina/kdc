@@ -8,7 +8,7 @@ import s from "./caruselSlide.module.scss";
 import { useState } from "react";
 
 const CaruselSlide = (props) => {
-  const { setSlideNumber, slideNumber, slides, slide } = props;
+  const { setSlideNumber, setStopAutoPlay, slideNumber, slides, slide } = props;
 
   const [isOpen, setOpen] = useState(false);
   const [startCoordsX, setStartCoordsX] = useState(0);
@@ -18,9 +18,9 @@ const CaruselSlide = (props) => {
   };
 
   const onSwipeEnd = (e) => {
+    setStopAutoPlay(true);
     if (startCoordsX - e.changedTouches[0].clientX > 100) {
       if (slideNumber < slides.length - 1) {
-        console.log(1);
         setSlideNumber((prev) => prev + 1);
       }
     } else {

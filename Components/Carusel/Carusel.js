@@ -73,6 +73,7 @@ const Carusel = (props) => {
                 key={`slide_${slide.id}`}
                 slideNumber={slideNumber}
                 setSlideNumber={setSlideNumber}
+                setStopAutoPlay={setStopAutoPlay}
                 slides={slides}
                 slide={slide}
               />
