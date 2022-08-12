@@ -119,9 +119,9 @@ const SingleColectivePage = (props) => {
               <div className={s.coordsIcon}>
                 {space?.panorama ? (
                   <Link href={space.panorama}>
-                      <a target="_blank">
-                        <img src="/assets/icons/location.svg" />
-                      </a>
+                    <a target="_blank">
+                      <img src="/assets/icons/location.svg" />
+                    </a>
                   </Link>
                 ) : (
                   <img src="/assets/icons/location.svg" />

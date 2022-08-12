@@ -34,7 +34,7 @@ const Header = () => {
   } = HeaderConst;
 
   const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);
-  const { active } = useSelector((state) => state.header)
+  const { active } = useSelector((state) => state.header);
 
   const dispatch = useDispatch();
   const handleAbilityButton = () => {
@@ -59,10 +59,14 @@ const Header = () => {
         <Container className={s.container}>
           <div className={s.logo}>
             <Link href={routes.home}>
-              <a onClick={() => dispatch({
-                      type: UPDATE_ACTIVE_MENU,
-                      payload: HOME_PAGE_STATE
-              })}>
+              <a
+                onClick={() =>
+                  dispatch({
+                    type: UPDATE_ACTIVE_MENU,
+                    payload: HOME_PAGE_STATE,
+                  })
+                }
+              >
                 <Image
                   src="/assets/images/logo.svg"
                   alt={logotypeTitle}
@@ -77,10 +81,21 @@ const Header = () => {
               {pages.map(({ id, value, url, state }) => (
                 <li key={`pages${id}`} className={s.item}>
                   <Link href={url}>
-                    <a className={cn(s.link, v ? s.ability : null, active === state ? s.active : null)} onClick={() => dispatch({
-                      type: UPDATE_ACTIVE_MENU,
-                      payload: state
-                    })}>{value}</a>
+                    <a
+                      className={cn(
+                        s.link,
+                        v ? s.ability : null,
+                        active === state ? s.active : null
+                      )}
+                      onClick={() =>
+                        dispatch({
+                          type: UPDATE_ACTIVE_MENU,
+                          payload: state,
+                        })
+                      }
+                    >
+                      {value}
+                    </a>
                   </Link>
                 </li>
               ))}
