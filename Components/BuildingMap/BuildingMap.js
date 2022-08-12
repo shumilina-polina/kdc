@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 
-import { ReactSVGPanZoom, TOOL_NONE, zoom } from "react-svg-pan-zoom";
+import { ReactSVGPanZoom, TOOL_NONE, TOOL_PAN, zoom } from "react-svg-pan-zoom";
 import MapButton from "UI/MapButton/MapButton";
 import FloorOne from "./Floors/FloorOne";
 import FloorTwo from "./Floors/FloorTwo";
@@ -8,11 +8,15 @@ import FloorThree from "./Floors/FloorThree";
 import MapControlButton from "UI/MapControlButton/MapControlButton";
 
 import s from "./buildingMap.module.scss";
+import { useRouter } from "next/router";
 
 const BuildingMap = () => {
+  const {
+    isReady,
+  } = useRouter();
+
   const [floor, setFloor] = useState(1);
   const [value, setValue] = useState({});
-  const [tool, setTool] = useState(TOOL_NONE);
   const customMap = useRef(null);
 
   const handleIncrease = (e) => {
@@ -26,18 +30,18 @@ const BuildingMap = () => {
   return (
     <div className={s.map}>
       <div className={s.slides}>
-        <ReactSVGPanZoom
+        { isReady ? ( <ReactSVGPanZoom
           width={1500}
           height={500}
           scaleFactorOnWheel={1}
           scaleFactor={1.1}
           className={s.svg}
-          tool={tool}
+          tool={TOOL_PAN}
           onChangeTool={(tool) => setTool(tool)}
           value={value}
           onChangeValue={(value) => setValue(value)}
           miniatureProps={{ position: "none" }}
-          toolbarProps={{ position: "bottom" }}
+          toolbarProps={{ position: "none" }}
           background="#fff"
           ref={customMap}
         >
@@ -52,7 +56,8 @@ const BuildingMap = () => {
               setFloor(1)
             )}
           </svg>
-        </ReactSVGPanZoom>
+        </ReactSVGPanZoom> ) : null }
+        
       </div>
       <div className={s.switchers}>
         <MapButton
