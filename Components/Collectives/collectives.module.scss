@@ -65,6 +65,10 @@
   color: $color-white;
 }
 
+.abilityLink {
+  font-size: $fs-large;
+}
+
 .wrapper {
   position: absolute;
   right: 0;
@@ -76,14 +80,21 @@
 }
 
 .theatre {
+  position: relative;
+  z-index: 9;
+  border-left: 1px solid $color-black;
+
+  & > img {
+    height: 333px;
+    object-fit: cover;
+  }
+
   @include mobile {
     width: 100%;
-
-    & > span {
-      width: 100% !important;
-    }
+    border: none;
 
     & img {
+      width: 100%;
       object-fit: cover;
       object-position: center;
     }
@@ -92,9 +103,12 @@
 
 .harp {
   position: absolute;
-  left: -240px;
-  top: 132px;
+  left: -260px;
+  bottom: 0;
   z-index: 2;
+  width: 300px;
+  height: 180px;
+  object-fit: cover;
 
   @include mobile-tablet {
     display: none;
@@ -103,9 +117,10 @@
 
 .decorations {
   position: absolute;
-  left: -300px;
+  left: -320px;
 
-  & img {
+  & > img {
+    height: 386px;
     object-fit: cover;
   }
 

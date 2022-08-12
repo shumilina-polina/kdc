@@ -57,9 +57,9 @@ const Carusel = (props) => {
     }
 
     return () => {
-      clearInterval(autoPlay)
-    }
-  }, [slides, isStopAutoPlay])
+      clearInterval(autoPlay);
+    };
+  }, [slides, isStopAutoPlay]);
 
   return (
     <div>
@@ -95,7 +95,10 @@ const Carusel = (props) => {
                 <span
                   className={s.breadcrumb}
                   key={slide.id}
-                  onClick={() => setSlideNumber(index)}
+                  onClick={() => {
+                    setSlideNumber(index);
+                    setStopAutoPlay(true);
+                  }}
                 />
               )
             )}

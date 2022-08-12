@@ -1,12 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import cn from "classnames";
 import { routes } from "shared/enums/pages";
 import Button from "UI/Button/Button";
 import Title from "UI/Title/Title";
 
 import s from "./collectives.module.scss";
 import Wrapper from "UI/Wrapper/Wrapper";
+import { useSelector } from "react-redux";
 
 const collectives = [
   {
@@ -41,6 +43,8 @@ const Collectives = (props) => {
     data: { title, obsoreButtonText, joinButtonText, decoration },
   } = props;
 
+  const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);
+
   return (
     <section>
       <Wrapper borderTop borderBottom>
@@ -54,7 +58,7 @@ const Collectives = (props) => {
                 {collectives.map(({ id, value, url }) => (
                   <li className={s.item} key={`collectiveAbout${id}`}>
                     <Link href={url}>
-                      <a className={s.link}>
+                      <a className={cn(s.link, v ? s.abilityLink : null)}>
                         <Image
                           src="/assets/icons/listMark.svg"
                           width={22}
@@ -78,28 +82,16 @@ const Collectives = (props) => {
             </div>
             <div className={s.wrapper}>
               <div className={s.harp}>
-                <Image
-                  src="/assets/images/harp.svg"
-                  alt={decoration.harp}
-                  width={300}
-                  height={202}
-                />
+                <img src="/assets/images/harp.svg" alt={decoration.harp} />
               </div>
               <div className={s.decorations}>
-                <Image
+                <img
                   src="/assets/images/decorations.svg"
                   alt={decoration.decoration}
-                  width={400}
-                  height={382}
                 />
               </div>
               <div className={s.theatre}>
-                <Image
-                  src="/assets/images/theatre.svg"
-                  alt={decoration.center}
-                  width={400}
-                  height={332}
-                />
+                <img src="/assets/images/theatre.svg" alt={decoration.center} />
               </div>
             </div>
           </div>

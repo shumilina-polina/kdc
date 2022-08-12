@@ -1,7 +1,7 @@
 import axios from "axios";
 
 class ApiService {
-  baseUrl = "https://moscenterspb.space/wp-json/project/v2";  //https://moscenterspb.space
+  baseUrl = "https://moscenterspb.space/wp-json/project/v2";
 
   getCollectives = (
     offset = 0,
@@ -18,6 +18,7 @@ class ApiService {
     }${location.length ? `&location=${[...location]}` : ""}${
       free && !paid ? "&free" : ""
     }${!free && paid ? "&paid" : ""}`;
+    console.log(url);
     return axios
       .get(url)
       .then((res) => res.data)

@@ -47,13 +47,23 @@ const Contacts = (props) => {
                 height={236}
               />
               <div className={cn(s.access, s.phone)}>
-                <Image className={s.icon} src="/assets/icons/handy.svg" width={40} height={40} />
+                <Image
+                  className={s.icon}
+                  src="/assets/icons/handy.svg"
+                  width={40}
+                  height={40}
+                />
                 <Link href={`tel:${phone}`}>
                   <a className={cn(s.link, v ? s.ability : null)}>{phone}</a>
                 </Link>
               </div>
               <div className={cn(s.access, s.email)}>
-                <Image className={s.icon} src="/assets/icons/email.svg" width={40} height={40} />
+                <Image
+                  className={s.icon}
+                  src="/assets/icons/email.svg"
+                  width={40}
+                  height={40}
+                />
                 <Link href={`mailto:${email}`}>
                   <a className={cn(s.link, v ? s.ability : null)}>{email}</a>
                 </Link>

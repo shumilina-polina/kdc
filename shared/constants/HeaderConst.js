@@ -12,9 +12,24 @@ export const HeaderConst = {
   pages: [
     { id: 1, value: "О нас", state: ABOUT_PAGE_STATE, url: routes.about },
     { id: 2, value: "Афиша", state: AFFICH_PAGE_STATE, url: routes.affiche },
-    { id: 3, value: "Коллективы", state: COLLECTIVES_PAGE_STATE, url: routes.collectives },
-    { id: 4, value: "Пространства", state: SPACES_PAGE_STATE, url: routes.spaces },
-    { id: 5, value: "Контакты", state: CONTACTS_PAGE_STATE, url: routes.contacts },
+    {
+      id: 3,
+      value: "Коллективы",
+      state: COLLECTIVES_PAGE_STATE,
+      url: routes.collectives,
+    },
+    {
+      id: 4,
+      value: "Пространства",
+      state: SPACES_PAGE_STATE,
+      url: routes.spaces,
+    },
+    {
+      id: 5,
+      value: "Контакты",
+      state: CONTACTS_PAGE_STATE,
+      url: routes.contacts,
+    },
   ],
   mobilePages: [
     {

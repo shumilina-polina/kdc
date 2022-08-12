@@ -27,10 +27,8 @@ const SingleColectivePage = () => {
   const [gallery, setGallery] = useState(null);
 
   const setPhotosArray = () => {
-    return gallery.images.map(image => (
-      { src: image, width: 4, height: 3 }
-    ))
-  }
+    return gallery.images.map((image) => ({ src: image, width: 4, height: 3 }));
+  };
 
   useEffect(() => {
     if (isReady) {
@@ -75,14 +73,16 @@ const SingleColectivePage = () => {
 
       <Wrapper>
         <div className={s.images}>
-          {loading
-            ? [...Array(8)].map((el, index) => (
-                <Skeleton
-                  key={`imageSkeleton_${index}`}
-                  sx={{ height: "200px" }}
-                />
-              ))
-            : <CustomGallery photos={setPhotosArray()} />  }
+          {loading ? (
+            [...Array(8)].map((el, index) => (
+              <Skeleton
+                key={`imageSkeleton_${index}`}
+                sx={{ height: "200px" }}
+              />
+            ))
+          ) : (
+            <CustomGallery photos={setPhotosArray()} />
+          )}
         </div>
       </Wrapper>
 

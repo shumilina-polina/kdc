@@ -16,16 +16,14 @@ import Wrapper from "UI/Wrapper/Wrapper";
 import BuildingMap from "Components/BuildingMap/BuildingMap";
 
 export default function Home() {
-  const POSTS_PER_PAGE = 5;
-
   const [spaces, setSpaces] = useState([]);
   const [loading, setLoading] = useState(true);
   const [offset, setOffset] = useState(0);
   const [total, setTotal] = useState(null);
 
   const onLoadMore = () => {
-    if (offset + POSTS_PER_PAGE < total) {
-      setOffset(offset + POSTS_PER_PAGE);
+    if (offset + SPACES_PER_PAGE < total) {
+      setOffset(offset + SPACES_PER_PAGE);
       setLoading(true);
     }
   };
@@ -33,7 +31,7 @@ export default function Home() {
   useEffect(() => {
     if (loading) {
       apiService
-        .getSpaces(offset, POSTS_PER_PAGE)
+        .getSpaces(offset, SPACES_PER_PAGE)
         .then((res) => {
           setSpaces([...spaces, ...res.data]);
           setTotal(res.total);

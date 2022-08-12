@@ -3,11 +3,8 @@ import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
 
 const CustomGallery = (props) => {
-  const {
-    className,
-    photos,
-  } = props;
-  
+  const { className, photos } = props;
+
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
 
@@ -28,10 +25,10 @@ const CustomGallery = (props) => {
           <Modal onClose={closeLightbox}>
             <Carousel
               currentIndex={currentImage}
-              views={photos.map(x => ({
+              views={photos.map((x) => ({
                 ...x,
                 srcset: x.srcSet,
-                caption: x.title
+                caption: x.title,
               }))}
             />
           </Modal>
@@ -39,6 +36,6 @@ const CustomGallery = (props) => {
       </ModalGateway>
     </div>
   );
-}
+};
 
-export default CustomGallery
+export default CustomGallery;
