@@ -78,9 +78,8 @@ const SingleColectivePage = () => {
                     />
                   ))
                 : collective.snaps.map((image, index) => (
-                    <div>
+                    <div key={`imageKey_${index}`}>
                       <img
-                        key={`imageKey_${index}`}
                         className={s.thumbnail}
                         src={image}
                       />
