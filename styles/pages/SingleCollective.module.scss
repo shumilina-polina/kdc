@@ -30,7 +30,9 @@
 }
 
 .gallery > div {
+  max-height: 200px;
   &:first-child {
+    max-height: 180px;
     grid-column-start: 1;
     grid-column-end: 3;
   }
