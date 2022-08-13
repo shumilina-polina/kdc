@@ -66,7 +66,9 @@ const SingleColectivePage = () => {
               {loading ? (
                 <ImageSkeleton className={s.imageSkeleton} />
               ) : (
-                <img className={s.thumbnail} src={collective.thumbnail} />
+                <div>
+                  <img className={s.thumbnail} src={collective.thumbnail} />
+                </div>
               )}
               {loading
                 ? [...Array(4)].map((el, index) => (
@@ -76,11 +78,13 @@ const SingleColectivePage = () => {
                     />
                   ))
                 : collective.snaps.map((image, index) => (
-                    <img
-                      key={`imageKey_${index}`}
-                      className={s.thumbnail}
-                      src={image}
-                    />
+                    <div>
+                      <img
+                        key={`imageKey_${index}`}
+                        className={s.thumbnail}
+                        src={image}
+                      />
+                    </div>
                   ))}
             </div>
             <div className={s.info}>
@@ -130,7 +134,7 @@ const SingleColectivePage = () => {
                     </span>
                   )}
                 </div>
-                <div>
+                <div className={s.column}>
                   <span className={cn(s.secondary, v ? s.ability : null)}>
                     Контакты:
                   </span>
@@ -142,7 +146,7 @@ const SingleColectivePage = () => {
                     </span>
                   )}
                 </div>
-                <div>
+                <div className={s.column}>
                   <span className={cn(s.secondary, v ? s.ability : null)}>
                     Категория:
                   </span>
@@ -157,7 +161,7 @@ const SingleColectivePage = () => {
                 <div className={s.button}>
                   <Button onClick={() => setOpen(true)}>Записаться</Button>
                 </div>
-                <div>
+                <div className={s.column}>
                   <span className={cn(s.secondary, v ? s.ability : null)}>
                     Адрес:
                   </span>
@@ -169,7 +173,7 @@ const SingleColectivePage = () => {
                     </span>
                   )}
                 </div>
-                <div className={s.location}>
+                <div className={cn(s.location)}>
                   {loading ? (
                     <Skeleton />
                   ) : (
