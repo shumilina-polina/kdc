@@ -31,10 +31,19 @@
 
 .gallery > div {
   max-height: 200px;
+
+  @include mobile-tablet {
+    max-height: 400px;
+  }
+
   &:first-child {
     max-height: 180px;
     grid-column-start: 1;
     grid-column-end: 3;
+
+    @include mobile-tablet {
+      max-height: 350px;
+    }
   }
 }
 
@@ -58,42 +67,6 @@
   font-family: $font-gravity;
 }
 
-.title {
-  padding: 10px 20px;
-  border: 1px solid $color-black;
-  border-bottom: 0;
-  font-size: $fs-large;
-  font-family: $font-oswald;
-
-  @include mobile-tablet {
-    text-align: center;
-  }
-}
-
-.table {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  align-items: center;
-  font-family: $font-gravity;
-
-  @include mobile-tablet {
-    display: block;
-  }
-}
-
-.table > div {
-  padding: 10px;
-  height: fill-available;
-  display: flex;
-  align-items: center;
-  gap: 5px 10px;
-  border: 1px solid $color-black;
-
-  @include mobile-tablet {
-    justify-content: center;
-  }
-}
-
 .main div > span:last-child {
   width: 100%;
 }
@@ -115,39 +88,6 @@
 
   &.ability {
     font-size: $fs-ability-normal;
-  }
-}
-
-.column {
-  flex-direction: column;
-  align-items: flex-start !important;
-
-  @include mobile-tablet {
-    align-items: center !important;
-    text-align: center;
-  }
-}
-
-.button {
-  padding: 0 !important;
-
-  & > button {
-    width: 100%;
-    height: 100%;
-  }
-}
-
-.location {
-  grid-column-start: 2;
-  grid-column-end: 4;
-  justify-content: space-between;
-
-  & > span:first-child {
-    width: 100%;
-  }
-
-  & > span:last-child {
-    width: auto !important;
   }
 }
 
@@ -221,4 +161,52 @@
   &.ability {
     font-size: $fs-ability-normal;
   }
+}
+
+
+.title {
+  padding: 10px 20px !important;
+  border-top: 0.1px solid !important;
+  text-align: left !important;
+  font-size: $fs-large;
+  font-family: $font-oswald;
+
+  @include mobile-tablet {
+    text-align: center;
+  }
+}
+
+.table {
+  width: 100%;
+}
+
+.table > tr > td {
+  padding: 10px;
+  border: 1px solid $color-black;
+  border-right: none;
+  border-left: .5px solid;
+  text-align: center;
+}
+
+.button {
+  position: relative;
+  padding: 0 !important;
+
+  & > button {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.space {
+  border: .5px solid !important;
+  border-right: none;
+  height: 35px;
 }
