@@ -86,105 +86,71 @@ const SingleColectivePage = () => {
                     </div>
                   ))}
             </div>
-            <div className={s.info}>
-              <div className={cn(s.title)}>
-                {loading ? (
-                  <Skeleton />
-                ) : (
-                  <h2>{htmlDecode(collective.title)}</h2>
-                )}
-              </div>
-              <div className={s.table}>
-                <div className={s.column}>
-                  <span className={cn(s.secondary, v ? s.ability : null)}>
-                    Направление:
-                  </span>
-                  {loading ? (
-                    <Skeleton />
-                  ) : (
+            <div className={s.info}>              
+              <table className={s.table}>
+                <tr>
+                  <td className={s.title} colSpan={3}>Ясные ночи</td>
+                </tr>
+                <tr>
+                  <td>
+                    <span className={s.secondary}>Направление:</span>
+                    <p className={cn(s.bold, v ? s.ability : null)}>
+                      Вокальные
+                    </p>
+                  </td>
+                  
+                  <td>
+                    <span className={s.secondary}>Стоимость:</span>
+                    <p className={cn(s.bold, v ? s.ability : null)}>
+                      Бесплатно 
+                    </p>
+                  </td>
+
+                  <td>
+                    <span className={s.secondary}>Групповые занятия:</span>
+                    <p className={cn(s.bold, v ? s.ability : null)}>
+                      11.00- 14.00 (вт, ср, пт) 
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <span className={s.secondary}>Контакты:</span>
+                    <p className={cn(s.bold, v ? s.ability : null)}>
+                      241-54-81
+                    </p>
+                  </td>
+
+                  <td>
+                    <span className={s.secondary}>Категория:</span>
+                    <p className={cn(s.bold, v ? s.ability : null)}>
+                      16 – 35 лет
+                    </p>
+                  </td>
+
+                  <td className={s.button}>
+                    <Button onClick={() => setOpen(true)}>Записаться</Button>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>
+                    <span className={s.secondary}>Адрес:{" "}</span>
                     <span className={cn(s.bold, v ? s.ability : null)}>
-                      {collective.trend}
+                      Московский пр. 152 
                     </span>
-                  )}
-                </div>
-                <div className={s.column}>
-                  <span className={cn(s.secondary, v ? s.ability : null)}>
-                    Стоимость:
-                  </span>
-                  {loading ? (
-                    <Skeleton />
-                  ) : (
-                    <span className={cn(s.bold, v ? s.ability : null)}>
-                      {collective.price == 0
-                        ? "Бесплатно"
-                        : `${collective.price} руб.`}
-                    </span>
-                  )}
-                </div>
-                <div className={s.column}>
-                  <span className={cn(s.secondary, v ? s.ability : null)}>
-                    Групповые занятия:
-                  </span>
-                  {loading ? (
-                    <Skeleton />
-                  ) : (
-                    <span className={cn(s.bold, v ? s.ability : null)}>
-                      {collective.timetable}
-                    </span>
-                  )}
-                </div>
-                <div className={s.column}>
-                  <span className={cn(s.secondary, v ? s.ability : null)}>
-                    Контакты:
-                  </span>
-                  {loading ? (
-                    <Skeleton />
-                  ) : (
-                    <span className={cn(s.bold, v ? s.ability : null)}>
-                      {collective.phone}
-                    </span>
-                  )}
-                </div>
-                <div className={s.column}>
-                  <span className={cn(s.secondary, v ? s.ability : null)}>
-                    Категория:
-                  </span>
-                  {loading ? (
-                    <Skeleton />
-                  ) : (
-                    <span className={cn(s.bold, v ? s.ability : null)}>
-                      {collective.limits}
-                    </span>
-                  )}
-                </div>
-                <div className={s.button}>
-                  <Button onClick={() => setOpen(true)}>Записаться</Button>
-                </div>
-                <div className={s.column}>
-                  <span className={cn(s.secondary, v ? s.ability : null)}>
-                    Адрес:
-                  </span>
-                  {loading ? (
-                    <Skeleton />
-                  ) : (
-                    <span className={cn(s.bold, v ? s.ability : null)}>
-                      {collective.location}
-                    </span>
-                  )}
-                </div>
-                <div className={cn(s.location)}>
-                  {loading ? (
-                    <Skeleton />
-                  ) : (
-                    <span className={v ? s.ability : null}>
-                      {collective.classroom}
-                    </span>
-                  )}
-                  <span className={s.icon}>
-                    <img src="/assets/icons/location.svg" />
-                  </span>
-                </div>
-              </div>
+                  </td>
+
+                  <td colSpan={2}>
+                    <div className={s.location}>
+                      <span>25 кл., Малый зал, Большой зал, Арт-пространство</span>
+                      <img src="/assets/icons/location.svg" />
+                    </div>
+                  </td>
+                </tr>
+              </table>
+
               <div className={cn(s.description, s.borderBottom)}>
                 <div className={cn(s.descTitle, s.border)}>
                   <span className={s.bold}>Описание</span>
