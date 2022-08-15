@@ -74,7 +74,7 @@ export default function SpaceCard(props) {
             <span className={cn(s.oswald, s.adress, v ? s.ability : null)}>
               {adress}
             </span>
-            <Button onClick={() => setOpen(true)}>Забронировать</Button>
+            <Button className={s.button} onClick={() => setOpen(true)}>Забронировать</Button>
           </div>
         </div>
       </div>

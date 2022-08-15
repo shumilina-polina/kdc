@@ -140,6 +140,12 @@
   }
 }
 
+.button {
+  position: relative;
+  border: none;
+  right: -.5px;
+}
+
 .ability {
   font-size: $fs-ability-normal;
 }
