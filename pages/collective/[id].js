@@ -49,7 +49,7 @@ const SingleColectivePage = () => {
       <Header />
 
       <Wrapper space borderBottom />
-
+      {console.log(collective)}
       <div className={s.main}>
         <Wrapper>
           <div className={s.header}>
@@ -79,37 +79,42 @@ const SingleColectivePage = () => {
                   ))
                 : collective.snaps.map((image, index) => (
                     <div key={`imageKey_${index}`}>
-                      <img
-                        className={s.thumbnail}
-                        src={image}
-                      />
+                      <img className={s.thumbnail} src={image} />
                     </div>
                   ))}
             </div>
-            <div className={s.info}>              
+            <div className={s.info}>
               <table className={s.table}>
                 <tr>
-                  <td className={s.title} colSpan={3}>Ясные ночи</td>
+                  <td className={s.title} colSpan={3}>
+                    {loading ? <Skeleton /> : htmlDecode(collective.title)}
+                  </td>
                 </tr>
                 <tr>
                   <td>
                     <span className={s.secondary}>Направление:</span>
                     <p className={cn(s.bold, v ? s.ability : null)}>
-                      Вокальные
+                      {loading ? <Skeleton /> : collective.trend}
                     </p>
                   </td>
-                  
+
                   <td>
                     <span className={s.secondary}>Стоимость:</span>
                     <p className={cn(s.bold, v ? s.ability : null)}>
-                      Бесплатно 
+                      {loading ? (
+                        <Skeleton />
+                      ) : collective.price == 0 ? (
+                        "Бесплатно"
+                      ) : (
+                        `${collective.price} руб.`
+                      )}
                     </p>
                   </td>
 
                   <td>
                     <span className={s.secondary}>Групповые занятия:</span>
                     <p className={cn(s.bold, v ? s.ability : null)}>
-                      11.00- 14.00 (вт, ср, пт) 
+                      {loading ? <Skeleton /> : collective.timetable}
                     </p>
                   </td>
                 </tr>
@@ -118,14 +123,14 @@ const SingleColectivePage = () => {
                   <td>
                     <span className={s.secondary}>Контакты:</span>
                     <p className={cn(s.bold, v ? s.ability : null)}>
-                      241-54-81
+                      {loading ? <Skeleton /> : collective.phone}
                     </p>
                   </td>
 
                   <td>
                     <span className={s.secondary}>Категория:</span>
                     <p className={cn(s.bold, v ? s.ability : null)}>
-                      16 – 35 лет
+                      {loading ? <Skeleton /> : collective.limits}
                     </p>
                   </td>
 
@@ -133,18 +138,20 @@ const SingleColectivePage = () => {
                     <Button onClick={() => setOpen(true)}>Записаться</Button>
                   </td>
                 </tr>
-                
+
                 <tr>
                   <td>
-                    <span className={s.secondary}>Адрес:{" "}</span>
+                    <span className={s.secondary}>Адрес: </span>
                     <span className={cn(s.bold, v ? s.ability : null)}>
-                      Московский пр. 152 
+                      {loading ? <Skeleton /> : collective.location}
                     </span>
                   </td>
 
                   <td colSpan={2}>
                     <div className={s.location}>
-                      <span>25 кл., Малый зал, Большой зал, Арт-пространство</span>
+                      <span>
+                        {loading ? <Skeleton /> : collective.classroom}
+                      </span>
                       <img src="/assets/icons/location.svg" />
                     </div>
                   </td>

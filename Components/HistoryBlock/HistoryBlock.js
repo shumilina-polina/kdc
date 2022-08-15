@@ -31,12 +31,10 @@ const HistoryBlock = () => {
                 района.{" "}
               </p>
             </div>
-            <img
-              className={s.poster}
-              src="/assets/images/portret.svg"
-              width={300}
-              height={240}
-            />
+            <div className={s.poster}>
+              <img src="/assets/images/fraerDecor.svg" />
+              <img src="/assets/images/fraer.jpg" />
+            </div>
           </div>
         </Wrapper>
       </div>
