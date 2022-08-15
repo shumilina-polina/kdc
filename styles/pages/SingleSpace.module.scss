@@ -171,6 +171,7 @@
 .snaps {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  max-height: 300px;
 
   &.loading {
     padding: 0 10px;
@@ -180,5 +181,9 @@
   & > img {
     width: 100%;
     height: 100%;
+  }
+
+  @include mobile {
+    max-height: 200px;
   }
 }
