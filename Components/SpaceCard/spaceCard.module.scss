@@ -65,6 +65,8 @@
 
   @include mobile-tablet {
     grid-template-columns: 1fr;
+    grid-template-rows: 300px auto;
+    height: fit-content;
   }
 }
 
@@ -77,10 +79,6 @@
     display: block;
     border: 1px solid $color-black;
     border-right: none;
-  }
-
-  @include mobile-tablet {
-    height: 300px;
   }
 }
 
