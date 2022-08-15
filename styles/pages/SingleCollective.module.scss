@@ -24,6 +24,10 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
 
+  @include mobile {
+    display: block;
+  }
+
   &.loading {
     grid-column-gap: 20px;
   }
@@ -43,6 +47,16 @@
 
     @include mobile-tablet {
       height: 350px;
+    }
+  }
+
+  @include mobile {
+    &:nth-child(4) {
+      display: none;
+    }
+
+    &:nth-child(5) {
+      display: none;
     }
   }
 }
