@@ -37,7 +37,6 @@ const SelectInput = (props) => {
   };
 
   return (
-    <div>
       <FormControl className={cn(s.form, className)}>
         {data.length < 1 ? (
           <InputLabel classes={{ root: s.root }} shrink={false}>
@@ -67,7 +66,6 @@ const SelectInput = (props) => {
           ))}
         </Select>
       </FormControl>
-    </div>
   );
 };
 
