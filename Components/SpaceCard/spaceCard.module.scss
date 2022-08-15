@@ -62,12 +62,18 @@
   margin-bottom: 25px;
   display: grid;
   grid-template-columns: 2fr 3fr;
+  grid-template-rows: 300px;
 
   @include mobile-tablet {
     grid-template-columns: 1fr;
     grid-template-rows: 300px auto;
     height: fit-content;
   }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
 }
 
 .thumbnail {
@@ -92,6 +98,7 @@
 }
 
 .section {
+  flex: 1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
@@ -125,7 +132,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-left: 1px solid $color-black;
 
   @include mobile-tablet {
     display: grid;
