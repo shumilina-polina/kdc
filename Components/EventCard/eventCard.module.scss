@@ -2,10 +2,11 @@
 
 .card {
   max-width: 800px;
-  width: 100%;
+  height: 100px;
   display: grid;
   grid-template-columns: 1fr 1fr 4fr 2fr;
   align-items: center;
+  border: 1px solid $color-black;
 
   @include mobile {
     grid-template-columns: 1fr;
@@ -22,7 +23,6 @@
   justify-content: center;
   gap: 5px;
   background-color: $color-dark-blue;
-  border: 1px solid $color-black;
   color: $color-white;
 
   @include mobile {
@@ -50,9 +50,6 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid $color-black;
-  border-bottom: 0;
-  border-right: 0;
   font-family: $font-oswald;
   font-size: $fs-normal;
 
@@ -80,11 +77,13 @@
 }
 
 .about {
-  padding: 10px;
+  padding: 0 10px;
+  height: 100%;
   display: grid;
   grid-template-rows: 1fr 1fr;
   align-items: center;
-  border: 1px solid $color-black;
+  border-left: 1px solid $color-black;
+  border-right: 1px solid $color-black;
 
   @include mobile {
     border: none;
@@ -106,8 +105,6 @@
   display: grid;
   grid-template-rows: 1fr 1fr;
   justify-items: center;
-  border-top: 1px solid $color-black;
-  border-right: 1px solid $color-black;
 
   @include mobile {
     border: none;
