@@ -35,7 +35,7 @@ const ProjectsBlock = () => {
               <ProjectCard
                 key={`project${project.id}`}
                 project={project}
-                variant={getRandomInt(4) + 1}
+                variant={getRandomInt(3) + 1}
               />
             ))}
       </div>

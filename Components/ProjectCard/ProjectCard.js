@@ -1,10 +1,8 @@
 import { useState } from "react";
-import Link from "next/link";
 
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 import cn from "classnames";
-import { routes } from "shared/enums/pages";
 
 import s from "./projectCard.module.scss";
 import useHtmlDecode from "shared/hooks/useHtmlDecode";
