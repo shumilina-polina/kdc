@@ -11,9 +11,7 @@ import s from "./buildingMap.module.scss";
 import { useRouter } from "next/router";
 
 const BuildingMap = () => {
-  const {
-    isReady,
-  } = useRouter();
+  const { isReady } = useRouter();
 
   const [floor, setFloor] = useState(1);
   const [value, setValue] = useState({});
@@ -30,34 +28,35 @@ const BuildingMap = () => {
   return (
     <div className={s.map}>
       <div className={s.slides}>
-        { isReady ? ( <ReactSVGPanZoom
-          width={1500}
-          height={500}
-          scaleFactorOnWheel={1}
-          scaleFactor={1.1}
-          className={s.svg}
-          tool={TOOL_PAN}
-          onChangeTool={(tool) => setTool(tool)}
-          value={value}
-          onChangeValue={(value) => setValue(value)}
-          miniatureProps={{ position: "none" }}
-          toolbarProps={{ position: "none" }}
-          background="#fff"
-          ref={customMap}
-        >
-          <svg className={s.svg} width={1500} height={500}>
-            {floor === 1 ? (
-              <FloorOne />
-            ) : floor === 2 ? (
-              <FloorTwo />
-            ) : floor === 3 ? (
-              <FloorThree />
-            ) : (
-              setFloor(1)
-            )}
-          </svg>
-        </ReactSVGPanZoom> ) : null }
-        
+        {isReady ? (
+          <ReactSVGPanZoom
+            width={1500}
+            height={500}
+            scaleFactorOnWheel={1}
+            scaleFactor={1.1}
+            className={s.svg}
+            tool={TOOL_PAN}
+            onChangeTool={(tool) => setTool(tool)}
+            value={value}
+            onChangeValue={(value) => setValue(value)}
+            miniatureProps={{ position: "none" }}
+            toolbarProps={{ position: "none" }}
+            background="#fff"
+            ref={customMap}
+          >
+            <svg className={s.svg} width={1500} height={500}>
+              {floor === 1 ? (
+                <FloorOne />
+              ) : floor === 2 ? (
+                <FloorTwo />
+              ) : floor === 3 ? (
+                <FloorThree />
+              ) : (
+                setFloor(1)
+              )}
+            </svg>
+          </ReactSVGPanZoom>
+        ) : null}
       </div>
       <div className={s.switchers}>
         <MapButton
