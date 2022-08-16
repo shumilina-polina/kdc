@@ -1,5 +1,4 @@
 import NewsWindow from "Components/NewsWindow/NewsWindow";
-import ProjectWindow from "Components/ProjectWindow/ProjectWindow";
 import moment from "moment";
 import "moment/locale/ru";
 import { useState } from "react";
