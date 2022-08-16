@@ -6,7 +6,7 @@ import s from "./acordion.module.scss";
 import { useSelector } from "react-redux";
 
 const Acordion = (props) => {
-  const { title, content } = props;
+  const { title, content, detailsTitle = true } = props;
   const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);
 
   return (
@@ -21,8 +21,8 @@ const Acordion = (props) => {
         <p className={s.title}>{title}</p>
       </AccordionSummary>
       <AccordionDetails className={s.body}>
-        <p className={cn(s.answer, v ? s.ability : null)}>Ответ</p>
-        <p className={cn(s.content, v ? s.ability : null)}>{content}</p>
+        {detailsTitle ? (<p className={cn(s.answer, v ? s.ability : null)}>Ответ</p>) : null }
+        <p className={cn(s.content, v ? s.ability : null)} style={!detailsTitle ? ({borderLeft: 'none'}) : null}>{content}</p>
       </AccordionDetails>
     </Accordion>
   );

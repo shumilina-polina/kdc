@@ -30,7 +30,7 @@ const NewsItem = (props) => {
         <div className={cn(s.title, v ? s.ability : null)}>
           <h4>{useHtmlDecode(title)}</h4>
         </div>
-        <div className={cn(s.content, s.ability)}>
+        <div className={cn(s.content, v ? s.ability : null)}>
           <p>{`${useHtmlDecode(content).substr(0, 225)}...`}</p>
         </div>
         <div className={s.footer}>
