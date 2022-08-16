@@ -17,7 +17,7 @@ export default function SpaceCard(props) {
     space;
 
   const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false);  
 
   return (
     <>
@@ -35,7 +35,7 @@ export default function SpaceCard(props) {
               hasLink
             />
           </div>
-          <div className={cn(s.section, s.borderBottom)}>
+          <div className={s.section}>
             <div className={s.block}>
               <span className={cn(s.secondary, v ? s.ability : null)}>
                 Вместимость:

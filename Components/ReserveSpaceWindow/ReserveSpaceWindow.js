@@ -14,8 +14,13 @@ const ReserveSpaceWindow = (props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [error, setError] = useState(false);
 
   const buttonClickHandler = () => {
+    if ( name.trim() === "" || email.trim() === "" || phone.trim() === "" ) {
+      setError(true)
+      return
+    }
     apiService
       .postEmailReserveSpace(name, email, phone)
       .then(() => setRequest(true));
@@ -65,18 +70,27 @@ const ReserveSpaceWindow = (props) => {
           <div className={s.fields}>
             <div className={s.fieldsWrapper}>
               <CustomInput
+                error={error && !name.trim()}
                 className={s.input}
+                value={name}
                 onChange={(e) => setName(e.target.value)}
+                type="name"
                 label="Как к вам обращаться?"
               />
               <CustomInput
+                error={( error && !email.trim() )}
                 className={s.input}
+                value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                type="email"
                 label="Ваша почта"
               />
               <CustomInput
+                error={error && !phone.trim()}
                 className={s.input}
+                value={phone}
                 onChange={(e) => setPhone(e.target.value)}
+                type="phone"
                 label="Номер телефона"
               />
               <Button className={s.button} onClick={buttonClickHandler}>

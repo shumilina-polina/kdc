@@ -85,18 +85,24 @@ const JoinCollectiveWindow = (props) => {
             <CustomInput
               error={error && !name.trim()}
               className={s.input}
+              type="name"
+              value={name}
               label="Как к вам обращаться?"
               onChange={(e) => setName(e.target.value)}
             />
             <CustomInput
               error={error && !email.trim()}
               className={s.input}
+              type="email"
+              value={email}
               label="Ваша почта"
               onChange={(e) => setEmail(e.target.value)}
             />
             <CustomInput
               error={error && !phone.trim()}
               className={s.input}
+              type="phone"
+              value={phone}
               label="Номер телефона"
               onChange={(e) => setPhone(e.target.value)}
             />
