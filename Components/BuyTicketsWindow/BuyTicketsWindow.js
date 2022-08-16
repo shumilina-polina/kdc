@@ -74,7 +74,9 @@ const BuyTicketsWindow = (props) => {
             <img className={s.thumbnail} src={thumbnail} />
           </div>
           <div className={s.description}>
-            <p className={s.content}>{useHtmlDecode(content)}</p>
+            <div className={s.contentBlock}>
+              <p className={s.content}>{useHtmlDecode(content)}</p>
+            </div>
             <div className={s.footer}>
               <a onClick={() => setBuy(true)} className={s.button}>
                 Приобрести билет

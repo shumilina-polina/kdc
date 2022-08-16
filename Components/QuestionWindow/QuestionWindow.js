@@ -12,8 +12,13 @@ const QuestionWindow = () => {
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
   const [request, setRequest] = useState(false);
+  const [error, setError] = useState(false)
 
   const buttonClickHandler = () => {
+    if ( name.trim() === "" || email.trim() === "" || phone.trim() === "" || message.trim() === "" ) {
+      setError(true)
+      return
+    }
     apiService
       .postEmailAskQuestion(name, email, phone, message)
       .then(() => setRequest(true));
@@ -25,20 +30,24 @@ const QuestionWindow = () => {
         <div className={s.container}>
           <div className={s.inputGroup}>
             <CustomInput
+              error={error && !name.trim()}
               label={"Как к вам обращаться?"}
               onChange={(e) => setName(e.target.value)}
             />
             <CustomInput
+              error={error && !email.trim()}
               label={"Ваша почта"}
               onChange={(e) => setEmail(e.target.value)}
             />
             <CustomInput
+              error={error && !phone.trim()}
               label={"Номер телефона"}
               onChange={(e) => setPhone(e.target.value)}
             />
           </div>
           <div className={s.textareaGroup}>
             <CustomInput
+              error={error && !message.trim()}
               label={"Сообщение"}
               onChange={(e) => setMessage(e.target.value)}
               cols={1}

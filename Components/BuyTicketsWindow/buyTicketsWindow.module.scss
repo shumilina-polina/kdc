@@ -124,7 +124,12 @@
 .description {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+}
+
+.contentBlock {
+  flex: 1;
+  max-height: 323px;
+  overflow-y: scroll;
 }
 
 .content {
@@ -141,6 +146,7 @@
   display: flex;
   justify-content: flex-end;
   border: 1px solid $color-black;
+  border-bottom: none;
 
   @include mobile-tablet {
     border: none;
@@ -148,14 +154,15 @@
 }
 
 .button {
+  position: relative;
   padding: 15px 20px;
   background-color: $color-red;
   color: $color-white;
-  border-left: 1px solid $color-black;
   text-decoration: none;
   text-align: center;
   font-family: $font-oswald;
   font-size: $fs-normal;
+  cursor: pointer;
 
   @include mobile {
     width: 100%;
