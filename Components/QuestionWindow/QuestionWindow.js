@@ -37,21 +37,29 @@ const QuestionWindow = () => {
             <CustomInput
               error={error && !name.trim()}
               label={"Как к вам обращаться?"}
+              value={name}
+              type="name"
               onChange={(e) => setName(e.target.value)}
             />
             <CustomInput
               error={error && !email.trim()}
               label={"Ваша почта"}
+              value={email}
+              type="email"
               onChange={(e) => setEmail(e.target.value)}
             />
             <CustomInput
               error={error && !phone.trim()}
               label={"Номер телефона"}
+              value={phone}
+              type="phone"
               onChange={(e) => setPhone(e.target.value)}
             />
           </div>
           <div className={s.textareaGroup}>
             <CustomInput
+              type="message"
+              value={message}
               error={error && !message.trim()}
               label={"Сообщение"}
               onChange={(e) => setMessage(e.target.value)}

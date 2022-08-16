@@ -13,8 +13,7 @@ const BuyTicketsWindow = (props) => {
   const {
     adress,
     content,
-    date,
-    time,
+    datetime,
     limits,
     price,
     thumbnail,
@@ -25,7 +24,7 @@ const BuyTicketsWindow = (props) => {
 
   const [isBuy, setBuy] = useState(false);
 
-  const dataDate = moment(`${date} ${time}`);
+  const dataDate = moment(datetime);
   const monthsRU = months.split(",");
 
   console.log(code);
