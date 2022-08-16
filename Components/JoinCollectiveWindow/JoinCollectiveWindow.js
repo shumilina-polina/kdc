@@ -3,6 +3,7 @@ import SuccessWindow from "Components/SuccessWindow/SuccessWindow";
 import { useState } from "react";
 import apiService from "services/apiService";
 import useHtmlDecode from "shared/hooks/useHtmlDecode";
+import { useForm } from "react-hook-form";
 
 import Button from "UI/Button/Button";
 import CustomInput from "UI/CustomInput/CustomInput";
@@ -14,13 +15,20 @@ const JoinCollectiveWindow = (props) => {
     collective: { title, trend, price, thumbnail },
   } = props;
 
+  const { register } = useForm()
   const [request, setRequest] = useState(false);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [error, setError] = useState(false)
 
   const buttonClickHandler = () => {
+    if ( name.trim() === "" || email.trim() === "" || phone.trim() === "" ) {
+      setError(true)
+      return
+    }
+
     apiService
       .postEmailJoinCollective(name, email, phone)
       .then(() => setRequest(true));
@@ -75,16 +83,19 @@ const JoinCollectiveWindow = (props) => {
           </div>
           <div className={s.fields}>
             <CustomInput
+              error={error && !name.trim()}
               className={s.input}
               label="Как к вам обращаться?"
               onChange={(e) => setName(e.target.value)}
             />
             <CustomInput
+              error={error && !email.trim()}
               className={s.input}
               label="Ваша почта"
               onChange={(e) => setEmail(e.target.value)}
             />
             <CustomInput
+              error={error && !phone.trim()}
               className={s.input}
               label="Номер телефона"
               onChange={(e) => setPhone(e.target.value)}
