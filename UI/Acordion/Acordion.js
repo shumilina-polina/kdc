@@ -21,8 +21,15 @@ const Acordion = (props) => {
         <p className={s.title}>{title}</p>
       </AccordionSummary>
       <AccordionDetails className={s.body}>
-        {detailsTitle ? (<p className={cn(s.answer, v ? s.ability : null)}>Ответ</p>) : null }
-        <p className={cn(s.content, v ? s.ability : null)} style={!detailsTitle ? ({borderLeft: 'none'}) : null}>{content}</p>
+        {detailsTitle ? (
+          <p className={cn(s.answer, v ? s.ability : null)}>Ответ</p>
+        ) : null}
+        <p
+          className={cn(s.content, v ? s.ability : null)}
+          style={!detailsTitle ? { borderLeft: "none" } : null}
+        >
+          {content}
+        </p>
       </AccordionDetails>
     </Accordion>
   );

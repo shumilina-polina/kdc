@@ -1,6 +1,8 @@
 @import "/styles/styles.scss";
 
 .perfomance {
+  display: flex;
+  flex-direction: column;
   border: 1px solid $color-black;
   transition: 0.25s;
 
@@ -24,6 +26,7 @@
 }
 
 .main {
+  flex: 1;
   min-height: 155px;
   display: flex;
   flex-direction: column;

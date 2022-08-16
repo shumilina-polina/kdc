@@ -1,7 +1,9 @@
 @import "/styles/styles.scss";
 
 .afficheContainer {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 280px;
 
   @include mobile-tablet {
     flex-direction: column;

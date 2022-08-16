@@ -15,18 +15,18 @@ const JoinCollectiveWindow = (props) => {
     collective: { title, trend, price, thumbnail },
   } = props;
 
-  const { register } = useForm()
+  const { register } = useForm();
   const [request, setRequest] = useState(false);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [error, setError] = useState(false)
+  const [error, setError] = useState(false);
 
   const buttonClickHandler = () => {
-    if ( name.trim() === "" || email.trim() === "" || phone.trim() === "" ) {
-      setError(true)
-      return
+    if (name.trim() === "" || email.trim() === "" || phone.trim() === "") {
+      setError(true);
+      return;
     }
 
     apiService
