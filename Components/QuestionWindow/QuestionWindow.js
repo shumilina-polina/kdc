@@ -12,12 +12,17 @@ const QuestionWindow = () => {
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
   const [request, setRequest] = useState(false);
-  const [error, setError] = useState(false)
+  const [error, setError] = useState(false);
 
   const buttonClickHandler = () => {
-    if ( name.trim() === "" || email.trim() === "" || phone.trim() === "" || message.trim() === "" ) {
-      setError(true)
-      return
+    if (
+      name.trim() === "" ||
+      email.trim() === "" ||
+      phone.trim() === "" ||
+      message.trim() === ""
+    ) {
+      setError(true);
+      return;
     }
     apiService
       .postEmailAskQuestion(name, email, phone, message)

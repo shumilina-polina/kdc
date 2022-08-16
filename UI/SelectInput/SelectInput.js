@@ -37,35 +37,35 @@ const SelectInput = (props) => {
   };
 
   return (
-      <FormControl className={cn(s.form, className)}>
-        {data.length < 1 ? (
-          <InputLabel classes={{ root: s.root }} shrink={false}>
-            {label}
-          </InputLabel>
-        ) : null}
-        <Select
-          labelId="demo-multiple-checkbox-label"
-          id="demo-multiple-checkbox"
-          multiple
-          value={data}
-          onChange={handleChange}
-          input={<OutlinedInput />}
-          renderValue={(selected) => selected.join(", ")}
-          MenuProps={MenuProps}
-          className={s.select}
-          classes={{ icon: s.icon }}
-        >
-          {variants.map((name) => (
-            <MenuItem key={name} value={name} className={s.item}>
-              <Checkbox
-                checked={data.indexOf(name) > -1}
-                checkedIcon={<img src="/assets/icons/checked.svg" />}
-              />
-              <ListItemText primary={name} />
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
+    <FormControl className={cn(s.form, className)}>
+      {data.length < 1 ? (
+        <InputLabel classes={{ root: s.root }} shrink={false}>
+          {label}
+        </InputLabel>
+      ) : null}
+      <Select
+        labelId="demo-multiple-checkbox-label"
+        id="demo-multiple-checkbox"
+        multiple
+        value={data}
+        onChange={handleChange}
+        input={<OutlinedInput />}
+        renderValue={(selected) => selected.join(", ")}
+        MenuProps={MenuProps}
+        className={s.select}
+        classes={{ icon: s.icon }}
+      >
+        {variants.map((name) => (
+          <MenuItem key={name} value={name} className={s.item}>
+            <Checkbox
+              checked={data.indexOf(name) > -1}
+              checkedIcon={<img src="/assets/icons/checked.svg" />}
+            />
+            <ListItemText primary={name} />
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
   );
 };
 

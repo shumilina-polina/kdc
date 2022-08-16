@@ -13,8 +13,8 @@ import s from "./affichePerfomance.module.scss";
 const AffichePerfomance = (props) => {
   const { post } = props;
 
-  const { date, time, title, content } = post;
-  const dataDate = moment(`${date} ${time}`);
+  const { datetime, title, content } = post;
+  const dataDate = moment(datetime);
 
   const [isOpen, setOpen] = useState(false);
   const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);

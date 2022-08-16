@@ -16,10 +16,10 @@ const AfficheCard = (props) => {
   const [isOpen, setOpen] = useState(false);
 
   const { affiche } = props;
-  const { title, thumbnail, date, time } = affiche;
+  const { title, thumbnail, datetime } = affiche;
 
   const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);
-  const dataDate = moment(`${date} ${time}`);
+  const dataDate = moment(datetime);
   const monthsRU = months.split(",");
 
   return (

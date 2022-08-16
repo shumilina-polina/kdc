@@ -64,22 +64,14 @@ const Affiche = (props) => {
             <div className={s.flex}>
               <div className={s.info}>
                 <span className={s.day}>
-                  {loading
-                    ? "--"
-                    : moment(`${affiche[0].date} ${affiche[0].time}`).format(
-                        "D"
-                      )}
+                  {loading ? "--" : moment(affiche[0].datetime).format("D")}
                 </span>
                 <span className={s.divider} />
                 <span className={s.day}>
                   {loading ? (
                     <Skeleton />
                   ) : (
-                    moment(
-                      `${affiche[affiche.length - 1].date} ${
-                        affiche[affiche.length - 1].time
-                      }`
-                    ).format("D")
+                    moment(affiche[affiche.length - 1].datetime).format("D")
                   )}
                 </span>
                 <span className={s.month}>
@@ -87,11 +79,8 @@ const Affiche = (props) => {
                     <Skeleton />
                   ) : (
                     monthsRU[
-                      moment(
-                        `${affiche[affiche.length - 1].date} ${
-                          affiche[affiche.length - 1].time
-                        }`
-                      ).format("M") - 1
+                      moment(affiche[affiche.length - 1].datetime).format("M") -
+                        1
                     ]
                   )}
                 </span>
@@ -128,20 +117,14 @@ const Affiche = (props) => {
                     {loading ? (
                       <Skeleton className={s.daySkeleton} />
                     ) : (
-                      moment(`${affiche[0].date} ${affiche[0].time}`).format(
-                        "D"
-                      )
+                      moment(affiche[0].datetime).format("DD")
                     )}
                   </span>
                   <span className={s.month}>
                     {loading ? (
                       <Skeleton className={s.monthSkeleton} />
                     ) : (
-                      monthsRU[
-                        moment(`${affiche[0].date} ${affiche[0].time}`).format(
-                          "M"
-                        ) - 1
-                      ]
+                      monthsRU[moment(affiche[0].datetime).format("M") - 1]
                     )}
                   </span>
                 </div>
@@ -151,11 +134,7 @@ const Affiche = (props) => {
                     {loading ? (
                       <Skeleton className={s.daySkeleton} />
                     ) : (
-                      moment(
-                        `${affiche[affiche.length - 1].date} ${
-                          affiche[affiche.length - 1].time
-                        }`
-                      ).format("D")
+                      moment(affiche[affiche.length - 1].datetime).format("DD")
                     )}
                   </span>
                   <span className={s.month}>
@@ -163,11 +142,9 @@ const Affiche = (props) => {
                       <Skeleton className={s.monthSkeleton} />
                     ) : (
                       monthsRU[
-                        moment(
-                          `${affiche[affiche.length - 1].date} ${
-                            affiche[affiche.length - 1].time
-                          }`
-                        ).format("M") - 1
+                        moment(affiche[affiche.length - 1].datetime).format(
+                          "M"
+                        ) - 1
                       ]
                     )}
                   </span>
