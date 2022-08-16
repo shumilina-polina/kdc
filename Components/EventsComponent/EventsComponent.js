@@ -85,7 +85,7 @@ const EventsComponent = (props) => {
       ) : null}
 
       <Wrapper>
-        <div className={s.footer}>
+        <div className={s.footer} style={!events.length ? ({alignItems: 'center'}) : null}>
           <div className={s.calendar}>
             <Calendar
               setDate={setDate}
