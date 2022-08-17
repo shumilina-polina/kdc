@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { ReactSVGPanZoom, TOOL_NONE, TOOL_PAN, zoom } from "react-svg-pan-zoom";
 import MapButton from "UI/MapButton/MapButton";
@@ -16,6 +16,10 @@ const BuildingMap = () => {
   const [floor, setFloor] = useState(1);
   const [value, setValue] = useState({});
   const customMap = useRef(null);
+
+  useEffect(() => {
+    customMap.current.setPointOnViewerCenter(800, 330, 1);
+  }, []);
 
   const handleIncrease = (e) => {
     customMap.current.zoomOnViewerCenter(1.1);

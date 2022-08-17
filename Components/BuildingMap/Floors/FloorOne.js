@@ -4,7 +4,7 @@ const FloorOne = () => {
   return (
     <>
       <defs>
-        <style>{`.cls-1{fill:#1d1f31;}.cls-2{fill:#8b9db7;}.cls-3{fill:#8a9cb6;}.cls-4{fill:#fff;}.cls-5{fill:#8c9ab2;}.cls-6{fill:#fff;}.cls-7{fill:#1c1e31;}.cls-8{fill:#1c1f31;}.cls-6:hover{stroke:red; stroke-width:5; cursor:pointer}`}</style>
+        <style>{`.cls-1{fill:#1d1f31;}.cls-2{fill:#8b9db7;}.cls-3{fill:#8a9cb6;}.cls-4{fill:#fff;}.cls-5{fill:#8c9ab2;}.cls-6{fill:#e7edff;}.cls-7{fill:#1c1e31;}.cls-8{fill:#1c1f31;}`}</style>
       </defs>
       <path
         className="cls-1"
