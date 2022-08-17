@@ -2,7 +2,7 @@ import { ContactConst } from "../ContactConst";
 
 export const IndexData = {
   head: {
-    title: "Главная страница",
+    title: "КДЦ Московский - Главная",
   },
 
   carusel: {

@@ -49,10 +49,8 @@
 
 .title {
   position: absolute;
-  right: 10px;
-  bottom: 10px;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
+  bottom: 30px;
+  left: 10px;
   text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.4);
   font-family: $font-oswald;
   font-size: $fs-large;

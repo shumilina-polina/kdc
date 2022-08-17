@@ -17,7 +17,7 @@ const MorePage = () => {
   return (
     <>
       <Head>
-        <title>Дополнительно</title>
+        <title>КДЦ Московский - Дополнительно</title>
       </Head>
 
       <Header />
