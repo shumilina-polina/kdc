@@ -5,7 +5,7 @@ import Wrapper from "UI/Wrapper/Wrapper";
 import s from "./collectivesFilters.module.scss";
 
 const CollectivesFilters = (props) => {
-  const { trends, setTrends, locations, setLocations, price, setPrice } = props;
+  const { trends, setTrends, locations, setLocations, price, setPrice, loading } = props;
 
   const resetFilters = () => {
     setTrends([]);
@@ -29,6 +29,7 @@ const CollectivesFilters = (props) => {
           className={s.select}
           data={trends}
           setData={setTrends}
+          disabled={loading}
         />
         <SelectInput
           label="Стоимость"
@@ -36,6 +37,7 @@ const CollectivesFilters = (props) => {
           className={s.select}
           data={price}
           setData={setPrice}
+          disabled={loading}
         />
         <SelectInput
           label="Адрес"
@@ -43,6 +45,7 @@ const CollectivesFilters = (props) => {
           className={s.select}
           data={locations}
           setData={setLocations}
+          disabled={loading}
         />
         <Button className={s.button} onClick={resetFilters}>
           Сбросить выбор

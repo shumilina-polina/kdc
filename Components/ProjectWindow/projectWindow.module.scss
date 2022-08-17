@@ -3,9 +3,11 @@
 .project {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 360px;
 
   @include mobile {
     grid-template-columns: 1fr;
+    grid-template-rows: auto;
     margin-bottom: 20px;
   }
 }
