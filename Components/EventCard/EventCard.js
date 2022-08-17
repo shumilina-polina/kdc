@@ -13,9 +13,10 @@ import s from "./eventCard.module.scss";
 
 const EventCard = (props) => {
   const { event } = props;
-  const { title, date, time, price, limits } = event;
+  console.log(event);
+  const { title, content, datetime, price, limits } = event;
 
-  const dataDate = moment(`${date} ${time}`);
+  const dataDate = moment(datetime);
   const monthsRU = months.split(",");
 
   const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);
@@ -42,8 +43,11 @@ const EventCard = (props) => {
           <div className={cn(s.limits, v ? s.ability : null)}>
             <span>{`Категория: ${limits}+`}</span>
           </div>
+          <div className={cn(s.title, v ? s.ability : null)}>
+            <span>{useHtmlDecode(`${title.substr(0, 110)}`)}</span>
+          </div>
           <div className={cn(s.description, v ? s.ability : null)}>
-            <span>{useHtmlDecode(title)}</span>
+            <span>{useHtmlDecode(`${content.substr(0, 110)}...`)}</span>
           </div>
         </div>
         <div className={s.more}>
