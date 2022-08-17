@@ -95,9 +95,19 @@
 .limits {
   font-size: $fs-small;
   font-family: $font-gravity;
+
+  @include mobile-tablet {
+    padding: 10px 0;
+  }
+}
+
+.title {
+  font-family: $font-oswald;
+  font-size: $fs-normal;
 }
 
 .description {
+  padding-bottom: 8px;
   font-family: $font-gravity;
   font-size: $fs-normal;
 }
