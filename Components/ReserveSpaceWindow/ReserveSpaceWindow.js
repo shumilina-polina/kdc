@@ -17,9 +17,9 @@ const ReserveSpaceWindow = (props) => {
   const [error, setError] = useState(false);
 
   const buttonClickHandler = () => {
-    if ( name.trim() === "" || email.trim() === "" || phone.trim() === "" ) {
-      setError(true)
-      return
+    if (name.trim() === "" || email.trim() === "" || phone.trim() === "") {
+      setError(true);
+      return;
     }
     apiService
       .postEmailReserveSpace(name, email, phone)
@@ -78,7 +78,7 @@ const ReserveSpaceWindow = (props) => {
                 label="Как к вам обращаться?"
               />
               <CustomInput
-                error={( error && !email.trim() )}
+                error={error && !email.trim()}
                 className={s.input}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}

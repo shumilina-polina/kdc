@@ -17,7 +17,7 @@ export default function SpaceCard(props) {
     space;
 
   const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);
-  const [isOpen, setOpen] = useState(false);  
+  const [isOpen, setOpen] = useState(false);
 
   return (
     <>
@@ -68,8 +68,11 @@ export default function SpaceCard(props) {
             </span>
             <span
               className={cn(s.oswald, v ? s.ability : null)}
-              style={{position: "relative"}}
-            >{footage}{" "}м<sup style={{fontSize: "10px", position: "absolute"}}>2</sup></span>
+              style={{ position: "relative" }}
+            >
+              {footage} м
+              <sup style={{ fontSize: "10px", position: "absolute" }}>2</sup>
+            </span>
           </div>
           <div className={s.footer}>
             <span className={cn(s.oswald, s.adress, v ? s.ability : null)}>
