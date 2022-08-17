@@ -74,6 +74,7 @@ const CollectivesPage = () => {
 
       <div className={s.borderBottom}>
         <CollectivesFilters
+          loading={loading}
           trends={trends}
           setTrends={setTrends}
           locations={locations}
