@@ -43,7 +43,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Пространства</title>
+        <title>КДЦ Московский - Пространства</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

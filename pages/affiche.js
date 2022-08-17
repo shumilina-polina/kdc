@@ -9,7 +9,7 @@ export default function AffichePage() {
   return (
     <>
       <Head>
-        <title>Affiche Page</title>
+        <title>КДЦ Московский - Афиша</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

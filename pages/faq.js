@@ -11,6 +11,7 @@ import ModalWindow from "UI/Modal/ModalWindow";
 import QuestionWindow from "Components/QuestionWindow/QuestionWindow";
 
 import s from "styles/pages/Faq.module.scss";
+import Head from "next/head";
 
 const FaqPage = () => {
   const { title, questions, footerTitle, footerSubTitle, buttonText } = FaqData;
@@ -19,8 +20,11 @@ const FaqPage = () => {
 
   return (
     <>
-      <Header />
+      <Head>
+        <title>КДЦ Московский - FAQ</title>
+      </Head>
 
+      <Header />
       <Container className={s.container}>
         <h2 className={s.title}>{title}</h2>
         <div className={s.questions}>

@@ -13,6 +13,7 @@
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 1fr 1fr;
+  border-bottom: 1px solid $color-black;
 }
 
 .adress {

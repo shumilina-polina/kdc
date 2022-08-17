@@ -18,6 +18,7 @@ import ModalWindow from "UI/Modal/ModalWindow";
 import JoinCollectiveWindow from "Components/JoinCollectiveWindow/JoinCollectiveWindow";
 import Wrapper from "UI/Wrapper/Wrapper";
 import { useSelector } from "react-redux";
+import Head from "next/head";
 
 const htmlDecode = (content) => {
   const doc = new DOMParser().parseFromString(content, "text/html");
@@ -46,8 +47,11 @@ const SingleColectivePage = () => {
 
   return (
     <>
-      <Header />
+      <Head>
+        <title>{`КДЦ Московский - ${collective?.title || ""}`}</title>
+      </Head>
 
+      <Header />
       <Wrapper space borderBottom />
       {console.log(collective)}
       <div className={s.main}>

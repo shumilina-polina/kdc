@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>О нас</title>
+        <title>КДЦ Московский - О нас</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

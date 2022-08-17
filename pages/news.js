@@ -2,6 +2,7 @@ import Footer from "Components/Footer/Footer";
 import Header from "Components/Header/Header";
 import NewsCard from "Components/NewsCard/NewsCard";
 import NewsList from "Components/NewsList/NewsList";
+import Head from "next/head";
 
 import s from "styles/pages/News.module.scss";
 import ButtonArrow from "UI/ButtonArrow/ButtonArrow";
@@ -11,8 +12,11 @@ import Wrapper from "UI/Wrapper/Wrapper";
 const FaqPage = () => {
   return (
     <>
-      <Header />
+      <Head>
+        <title>КДЦ Московский - Дополнительно</title>
+      </Head>
 
+      <Header />
       <Wrapper space borderBottom />
 
       <Wrapper>

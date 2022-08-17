@@ -18,6 +18,7 @@ import ModalWindow from "UI/Modal/ModalWindow";
 import s from "styles/pages/SingleSpace.module.scss";
 import ReserveSpaceWindow from "Components/ReserveSpaceWindow/ReserveSpaceWindow";
 import Wrapper from "UI/Wrapper/Wrapper";
+import Head from "next/head";
 
 const SingleColectivePage = (props) => {
   const {
@@ -40,6 +41,10 @@ const SingleColectivePage = (props) => {
 
   return (
     <>
+      <Head>
+        <title>{`КДЦ Московский - ${space?.title || ""}`}</title>
+      </Head>
+
       <Header />
 
       <Wrapper space borderBottom />

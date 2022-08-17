@@ -13,7 +13,7 @@ export default function ContactPage() {
   return (
     <>
       <Head>
-        <title>Contacts Page</title>
+        <title>КДЦ Московский - Контакты</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

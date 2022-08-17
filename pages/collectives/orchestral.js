@@ -59,7 +59,7 @@ const CollectivesPage = () => {
   return (
     <>
       <Head>
-        <title>Коллективы</title>
+        <title>КДЦ Московский - Коллективы</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
