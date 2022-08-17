@@ -68,7 +68,8 @@ export default function SpaceCard(props) {
             </span>
             <span
               className={cn(s.oswald, v ? s.ability : null)}
-            >{`${footage} м2`}</span>
+              style={{position: "relative"}}
+            >{footage}{" "}м<sup style={{fontSize: "10px", position: "absolute"}}>2</sup></span>
           </div>
           <div className={s.footer}>
             <span className={cn(s.oswald, s.adress, v ? s.ability : null)}>
