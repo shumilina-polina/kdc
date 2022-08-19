@@ -156,7 +156,6 @@ const SingleColectivePage = () => {
                       <span>
                         {loading ? <Skeleton /> : collective.classroom}
                       </span>
-                      <img src="/assets/icons/location.svg" />
                     </div>
                   </td>
                 </tr>
@@ -164,22 +163,23 @@ const SingleColectivePage = () => {
 
               <div className={cn(s.description, s.borderBottom)}>
                 <div className={cn(s.descTitle, s.border)}>
-                  <span className={s.bold}>Описание</span>
+                  <span className={s.bold}>Руководитель</span>
                   {loading ? (
                     <Skeleton />
                   ) : (
                     <span className={cn(s.secondary, v ? s.ability : null)}>
-                      {htmlDecode(collective.title)}
+                      {htmlDecode(collective.classroom)}
                     </span>
                   )}
                 </div>
                 <div className={cn(s.text, s.border)}>
+                <span className={cn(s.bold, s.ticher)}>Описание</span>
                   {loading ? (
                     <Skeleton count={10} />
                   ) : (
-                    <p className={cn(s.padding, s.about, v ? s.ability : null)}>
+                    <span className={cn(s.padding, s.about, v ? s.ability : null)}>
                       {htmlDecode(collective.content)}
-                    </p>
+                    </span>
                   )}
                 </div>
               </div>

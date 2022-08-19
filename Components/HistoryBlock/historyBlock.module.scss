@@ -77,6 +77,25 @@
   }
 }
 
+.fraerName {
+  position: absolute;
+  top: 100px;
+  left: 210px;
+  font-family: $font-oswald;
+  font-size: $fs-extralarge;
+  transform: rotate(-90deg);
+
+  @media screen and (max-width:1264px) {
+    left: 190px;
+  }
+  @include mobile-tablet {
+    left: 210px;
+  }
+  @include mobile {
+    display: none;
+  }
+}
+
 .bio > div {
   display: flex;
   flex-direction: column;
