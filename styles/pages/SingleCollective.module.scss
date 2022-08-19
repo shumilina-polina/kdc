@@ -137,6 +137,12 @@
   }
 }
 
+.ticher {
+  padding-right: 8px;
+  font-family: $font-oswald;
+  font-size: $fs-large;
+}
+
 .border {
   border: 1px solid $color-black;
   border-top: none;
@@ -195,6 +201,7 @@
 }
 
 .table > tr > td {
+  max-width: 100px;
   padding: 10px;
   border: 1px solid $color-black;
   border-left: 0.5px solid;
@@ -207,6 +214,7 @@
   }
 
   @include mobile {
+    max-width: 100%;
     display: block;
   }
 }
