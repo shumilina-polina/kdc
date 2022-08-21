@@ -3,7 +3,7 @@
 .afficheContainer {
   display: grid;
   grid-template-columns: 1fr 4fr;
-  grid-template-rows: 280px;
+  grid-template-rows: max-content;
 
   @include mobile-tablet {
     grid-template-columns: 1fr;

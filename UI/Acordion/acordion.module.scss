@@ -16,7 +16,7 @@
   padding-right: 0;
 
   &.ability {
-    font-size: $fs-ability-normal !important;
+    font-size: $fs-ability-small !important;
   }
 
   & > div:first-child {
@@ -62,7 +62,7 @@
   font-weight: $fw-bold;
 
   &.ability {
-    font-size: $fs-ability-normal;
+    font-size: $fs-ability-small;
   }
 }
 
@@ -72,6 +72,6 @@
   font-size: $fs-normal;
 
   &.ability {
-    font-size: $fs-ability-normal;
+    font-size: $fs-ability-small;
   }
 }

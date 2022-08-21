@@ -8,6 +8,10 @@
   align-items: center;
   border: 1px solid $color-black;
 
+  &.ability {
+    height: 200px;
+  }
+
   @include mobile {
     margin-bottom: 40px;
     grid-template-columns: 1fr;
@@ -26,6 +30,10 @@
   gap: 5px;
   background-color: $color-dark-blue;
   color: $color-white;
+
+  &.ability {
+    max-height: 200px;
+  }
 
   @include mobile {
     border: none;

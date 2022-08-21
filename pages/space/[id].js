@@ -133,9 +133,7 @@ const SingleColectivePage = (props) => {
                       </a>
                     </Link>
                   </span>
-                ) : (
-                  <span className={s.noPanaram}>Панарама отсутствует</span>
-                )}
+                ) : null}
               </div>
             </div>
             <div className={cn(s.facility, s.borderBottom)}>
