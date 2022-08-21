@@ -13,7 +13,6 @@ import s from "./eventCard.module.scss";
 
 const EventCard = (props) => {
   const { event } = props;
-  console.log(event);
   const { title, content, datetime, price, limits } = event;
 
   const dataDate = moment(datetime);
@@ -24,8 +23,8 @@ const EventCard = (props) => {
 
   return (
     <>
-      <div className={s.card}>
-        <div className={s.date}>
+      <div className={cn(s.card, s.ability)}>
+        <div className={cn(s.date, s.ability)}>
           <span className={s.number}>{dataDate.format("DD")}</span>
           <span className={cn(s.month, v ? s.ability : null)}>
             {monthsRU[dataDate.add(-1, "M").format("M")]}

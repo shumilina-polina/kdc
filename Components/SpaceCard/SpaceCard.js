@@ -55,7 +55,7 @@ export default function SpaceCard(props) {
             </div>
             <div className={s.block}>
               <span className={cn(s.secondary, v ? s.ability : null)}>
-                Стоимость аренды:
+                Организационно-техническое обеспечение мероприятия:
               </span>
               <span className={cn(s.oswald, v ? s.ability : null)}>
                 {price}
