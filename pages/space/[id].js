@@ -102,7 +102,9 @@ const SingleColectivePage = (props) => {
                 )}
               </div>
               <div className={s.block}>
-                <span className={s.secondary}>Стоимость аренды:</span>
+                <span className={s.secondary}>
+                  Организационно-техническое обеспечение мероприятия:
+                </span>
                 {loading ? (
                   <Skeleton className={s.skeleton} />
                 ) : (
@@ -123,13 +125,16 @@ const SingleColectivePage = (props) => {
               </div>
               <div className={s.coordsIcon}>
                 {space?.panorama ? (
-                  <Link href={space.panorama}>
-                    <a target="_blank">
-                      <img src="/assets/icons/location.svg" />
-                    </a>
-                  </Link>
+                  <span className={s.panoramaText}>
+                    3d-панорама
+                    <Link href={space.panorama}>
+                      <a target="_blank">
+                        <img src="/assets/icons/location.svg" />
+                      </a>
+                    </Link>
+                  </span>
                 ) : (
-                  <img src="/assets/icons/location.svg" />
+                  <span className={s.noPanaram}>Панарама отсутствует</span>
                 )}
               </div>
             </div>
@@ -143,7 +148,7 @@ const SingleColectivePage = (props) => {
                 <span className={s.link}>
                   <Link href={space.file}>
                     <a target="_blank" className={s.link}>
-                      Смотреть PDF-файл
+                      Подробнее
                     </a>
                   </Link>
                   <img className={s.icon} src="/assets/icons/arrowRight.svg" />

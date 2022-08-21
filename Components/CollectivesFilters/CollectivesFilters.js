@@ -5,7 +5,15 @@ import Wrapper from "UI/Wrapper/Wrapper";
 import s from "./collectivesFilters.module.scss";
 
 const CollectivesFilters = (props) => {
-  const { trends, setTrends, locations, setLocations, price, setPrice, loading } = props;
+  const {
+    trends,
+    setTrends,
+    locations,
+    setLocations,
+    price,
+    setPrice,
+    loading,
+  } = props;
 
   const resetFilters = () => {
     setTrends([]);

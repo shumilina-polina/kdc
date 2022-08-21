@@ -11,7 +11,15 @@ import { useSelector } from "react-redux";
 
 const Contacts = (props) => {
   const {
-    data: { title, adressTitle, adressMain, adressSecondary, phone, email },
+    data: {
+      title,
+      adressTitle,
+      adressMain,
+      adressSecondary,
+      phone,
+      secondPhone,
+      email,
+    },
   } = props;
 
   const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);
@@ -53,8 +61,10 @@ const Contacts = (props) => {
                   width={40}
                   height={40}
                 />
-                <Link href={`tel:${phone}`}>
-                  <a className={cn(s.link, v ? s.ability : null)}>{phone}</a>
+                <Link href={`tel:${isMainAdress ? phone : secondPhone}`}>
+                  <a className={cn(s.link, v ? s.ability : null)}>
+                    {isMainAdress ? phone : secondPhone}
+                  </a>
                 </Link>
               </div>
               <div className={cn(s.access, s.email)}>
@@ -92,8 +102,10 @@ const Contacts = (props) => {
             <div className={s.infoMobile}>
               <div className={s.contentWrapperMobile}>
                 <Image src="/assets/icons/handy.svg" width={40} height={40} />
-                <Link href={`tel:${phone}`}>
-                  <a className={cn(s.link, v ? s.ability : null)}>{phone}</a>
+                <Link href={`tel:${isMainAdress ? phone : secondPhone}`}>
+                  <a className={cn(s.link, v ? s.ability : null)}>
+                    {isMainAdress ? phone : secondPhone}
+                  </a>
                 </Link>
               </div>
             </div>

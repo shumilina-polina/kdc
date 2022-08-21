@@ -173,11 +173,13 @@ const SingleColectivePage = () => {
                   )}
                 </div>
                 <div className={cn(s.text, s.border)}>
-                <span className={cn(s.bold, s.ticher)}>Описание</span>
+                  <span className={cn(s.bold, s.ticher)}>Описание</span>
                   {loading ? (
                     <Skeleton count={10} />
                   ) : (
-                    <span className={cn(s.padding, s.about, v ? s.ability : null)}>
+                    <span
+                      className={cn(s.padding, s.about, v ? s.ability : null)}
+                    >
                       {htmlDecode(collective.content)}
                     </span>
                   )}

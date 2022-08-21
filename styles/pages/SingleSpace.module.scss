@@ -189,3 +189,21 @@
     max-height: 200px;
   }
 }
+
+.panoramaText {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-family: $font-oswald;
+  font-size: $fs-normal;
+}
+
+.noPanaram {
+  margin-right: 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-family: $font-oswald;
+  font-size: $fs-normal;
+}

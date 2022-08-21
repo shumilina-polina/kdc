@@ -15,6 +15,7 @@ const QuestionWindow = () => {
   const [error, setError] = useState(false);
 
   const buttonClickHandler = () => {
+    console.log(123);
     if (
       name.trim() === "" ||
       email.trim() === "" ||

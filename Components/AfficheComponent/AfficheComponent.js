@@ -118,7 +118,7 @@ const AfficheComponent = () => {
               {loading ? (
                 <Skeleton sx={{ width: "20px", height: "40px" }} />
               ) : (
-                `${moment(`${date} 00:00:00`).add(-1, "M").format("MMMM")}`
+                `Предыдущий`
               )}
             </span>
           </div>
@@ -127,7 +127,7 @@ const AfficheComponent = () => {
               {loading ? (
                 <Skeleton sx={{ width: "20px", height: "40px" }} />
               ) : (
-                `${moment(`${date} 00:00:00`).add(1, "M").format("MMMM")}`
+                `Следующий`
               )}
             </span>
             <ButtonArrow direction="forward" color="red" onClick={onLoadNext} />

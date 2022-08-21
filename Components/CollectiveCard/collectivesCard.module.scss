@@ -4,8 +4,8 @@ $padding: 0 20px;
 
 .card {
   max-width: 300px;
-  display: grid;
-  grid-template-rows: 3fr 1fr;
+  display: flex;
+  flex-direction: column;
 }
 
 .poster {
@@ -51,6 +51,7 @@ $padding: 0 20px;
 }
 
 .content {
+  flex: 1;
   padding: $padding;
   padding-top: 20px;
   padding-bottom: 20px;
