@@ -7,6 +7,7 @@ export const ContactsData = {
     adressMain: data.adressMain,
     adressSecondary: data.adressSecondary,
     phone: data.phone,
+    secondPhone: data.secondPhone,
     email: data.email,
   },
 };

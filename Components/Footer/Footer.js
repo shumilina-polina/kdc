@@ -109,7 +109,6 @@ const Footer = () => {
                 title={askButtonText}
                 isOpen={isOpen}
                 onClose={() => setOpen(false)}
-                buttonText={"Оставить заявку"}
                 copyright
               >
                 <QuestionWindow />

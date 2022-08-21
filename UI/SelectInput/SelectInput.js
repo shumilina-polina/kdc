@@ -56,7 +56,12 @@ const SelectInput = (props) => {
         classes={{ icon: s.icon }}
       >
         {variants.map((name) => (
-          <MenuItem key={name} value={name} className={s.item} disabled={disabled}>
+          <MenuItem
+            key={name}
+            value={name}
+            className={s.item}
+            disabled={disabled}
+          >
             <Checkbox
               checked={data.indexOf(name) > -1}
               checkedIcon={<img src="/assets/icons/checked.svg" />}

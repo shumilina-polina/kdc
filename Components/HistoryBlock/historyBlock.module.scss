@@ -85,7 +85,7 @@
   font-size: $fs-extralarge;
   transform: rotate(-90deg);
 
-  @media screen and (max-width:1264px) {
+  @media screen and (max-width: 1264px) {
     left: 190px;
   }
   @include mobile-tablet {
