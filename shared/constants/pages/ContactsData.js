@@ -9,5 +9,6 @@ export const ContactsData = {
     phone: data.phone,
     secondPhone: data.secondPhone,
     email: data.email,
+    secondEmail: data.secondEmail
   },
 };

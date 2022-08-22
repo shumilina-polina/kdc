@@ -60,6 +60,17 @@
   grid-template-columns: 2fr 3fr;
   grid-template-rows: 300px;
 
+  &.ability {
+    grid-template-rows: 500px;
+
+    @include mobile-tablet {
+      grid-template-columns: 1fr;
+      grid-template-rows: 500px auto;
+      border-bottom: 1px solid $color-black;
+      height: fit-content;
+    }
+  }
+
   @include mobile-tablet {
     grid-template-columns: 1fr;
     grid-template-rows: 300px auto;

@@ -21,7 +21,7 @@ export default function SpaceCard(props) {
 
   return (
     <>
-      <div className={s.card}>
+      <div className={cn(s.card, v ? s.ability : null)}>
         <div className={s.thumbnail}>
           <img src={thumbnail} />
         </div>
