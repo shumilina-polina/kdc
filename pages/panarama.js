@@ -5,20 +5,22 @@ import "photo-sphere-viewer/dist/photo-sphere-viewer.css";
 import { useRouter } from "next/router";
 
 const Panarama = () => {
-  const { query } = useRouter()
+  const { query, isReady } = useRouter()
 
   const sphereElementRef = React.createRef();
 
   useEffect(() => {
-    const shperePlayerInstance = new Viewer({
-      container: sphereElementRef.current,
-      panorama: "https://pandia.ru/text/80/655/images/img5_51.jpg",
-    });
+    if (isReady) {
+      const shperePlayerInstance = new Viewer({
+        container: sphereElementRef.current,
+        panorama: encodeURI(query?.url),
+      });
+      return () => {
+        shperePlayerInstance.destroy();
+      };
+    }
+  }, [isReady]);
 
-    return () => {
-      shperePlayerInstance.destroy();
-    };
-  }, []);
   return <div ref={sphereElementRef} style={{
         position: "fixed",
         top: "0",
