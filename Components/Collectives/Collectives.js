@@ -81,16 +81,16 @@ const Collectives = (props) => {
               </div>
             </div>
             <div className={s.wrapper}>
-              <div className={s.harp}>
+              <div className={cn(s.harp, v ? s.ability : null)}>
                 <img src="/assets/images/harp.svg" alt={decoration.harp} />
               </div>
-              <div className={s.decorations}>
+              <div className={cn(s.decorations, v ? s.ability : null)}>
                 <img
                   src="/assets/images/decorations.svg"
                   alt={decoration.decoration}
                 />
               </div>
-              <div className={s.theatre}>
+              <div className={cn(s.theatre, v ? s.ability : null)}>
                 <img src="/assets/images/theatre.svg" alt={decoration.center} />
               </div>
             </div>

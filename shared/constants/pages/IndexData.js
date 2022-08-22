@@ -36,6 +36,8 @@ export const IndexData = {
     adressMain: ContactConst.adressMain,
     adressSecondary: ContactConst.adressSecondary,
     phone: ContactConst.phone,
+    secondPhone: ContactConst.secondPhone,
     email: ContactConst.email,
+    secondEmail: ContactConst.secondEmail,
   },
 };

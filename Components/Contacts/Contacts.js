@@ -19,6 +19,7 @@ const Contacts = (props) => {
       phone,
       secondPhone,
       email,
+      secondEmail,
     },
   } = props;
 
@@ -74,8 +75,8 @@ const Contacts = (props) => {
                   width={40}
                   height={40}
                 />
-                <Link href={`mailto:${email}`}>
-                  <a className={cn(s.link, v ? s.ability : null)}>{email}</a>
+                <Link href={`mailto:${isMainAdress ? email : secondEmail}`}>
+                  <a className={cn(s.link, v ? s.ability : null)}>{isMainAdress ? email : secondEmail}</a>
                 </Link>
               </div>
             </div>
@@ -112,8 +113,8 @@ const Contacts = (props) => {
             <div className={s.infoMobile}>
               <div className={s.contentWrapperMobile}>
                 <Image src="/assets/icons/email.svg" width={40} height={40} />
-                <Link href={`mailto:${email}`}>
-                  <a className={cn(s.link, v ? s.ability : null)}>{email}</a>
+                <Link href={`mailto:${isMainAdress ? email : secondEmail}`}>
+                  <a className={cn(s.link, v ? s.ability : null)}>{isMainAdress ? email : secondEmail}</a>
                 </Link>
               </div>
             </div>
