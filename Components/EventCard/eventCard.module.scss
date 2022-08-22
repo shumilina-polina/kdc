@@ -9,7 +9,7 @@
   border: 1px solid $color-black;
 
   &.ability {
-    height: 200px;
+    min-height: 200px;
   }
 
   @include mobile {
