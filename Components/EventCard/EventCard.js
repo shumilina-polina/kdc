@@ -23,8 +23,8 @@ const EventCard = (props) => {
 
   return (
     <>
-      <div className={cn(s.card, s.ability)}>
-        <div className={cn(s.date, s.ability)}>
+      <div className={cn(s.card, v ? s.ability : null)}>
+        <div className={cn(s.date, v ? s.ability : null)}>
           <span className={s.number}>{dataDate.format("DD")}</span>
           <span className={cn(s.month, v ? s.ability : null)}>
             {monthsRU[dataDate.add(-1, "M").format("M")]}
@@ -43,7 +43,7 @@ const EventCard = (props) => {
             <span>{`Категория: ${limits}+`}</span>
           </div>
           <div className={cn(s.title, v ? s.ability : null)}>
-            <span>{useHtmlDecode(`${title.substr(0, 110)}`)}</span>
+            <span>{useHtmlDecode(`${title.substr(0, 80)}`)}</span>
           </div>
           <div className={cn(s.description, v ? s.ability : null)}>
             <span>{useHtmlDecode(`${content.substr(0, 110)}...`)}</span>
