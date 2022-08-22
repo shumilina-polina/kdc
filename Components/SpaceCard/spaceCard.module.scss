@@ -62,13 +62,6 @@
 
   &.ability {
     grid-template-rows: 500px;
-
-    @include mobile-tablet {
-      grid-template-columns: 1fr;
-      grid-template-rows: 500px auto;
-      border-bottom: 1px solid $color-black;
-      height: fit-content;
-    }
   }
 
   @include mobile-tablet {
@@ -76,10 +69,6 @@
     grid-template-rows: 300px auto;
     border-bottom: 1px solid $color-black;
     height: fit-content;
-  }
-
-  @media screen and (max-width: 400px) {
-    grid-template-columns: 340px;
   }
 }
 
@@ -114,6 +103,12 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   border-bottom: 1px solid $color-black;
+
+  @include mobile {
+    &.ability {
+      grid-template-columns: 1fr;
+    }
+  }
 }
 
 .block {
@@ -125,6 +120,12 @@
 
   &:first-child {
     border: none;
+  }
+
+  @include mobile {
+    &.ability {
+      border: none;
+    }
   }
 
   @include mobile-tablet {

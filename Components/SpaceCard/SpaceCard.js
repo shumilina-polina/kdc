@@ -35,7 +35,7 @@ export default function SpaceCard(props) {
               hasLink
             />
           </div>
-          <div className={s.section}>
+          <div className={cn(s.section, v ? s.ability : null)}>
             <div className={s.block}>
               <span className={cn(s.secondary, v ? s.ability : null)}>
                 Вместимость:
@@ -45,7 +45,7 @@ export default function SpaceCard(props) {
                 <span className={v ? s.ability : null}>человек</span>
               </span>
             </div>
-            <div className={s.block}>
+            <div className={cn(s.block, v ? s.ability : null)}>
               <span className={cn(s.secondary, v ? s.ability : null)}>
                 Режим работы:
               </span>
@@ -53,7 +53,7 @@ export default function SpaceCard(props) {
                 {working}
               </span>
             </div>
-            <div className={s.block}>
+            <div className={cn(s.block, v ? s.ability : null)}>
               <span className={cn(s.secondary, v ? s.ability : null)}>
                 Организационно-техническое обеспечение мероприятия:
               </span>
