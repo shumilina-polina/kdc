@@ -141,6 +141,8 @@
   text-decoration: none;
   font-family: $font-gravity;
   font-size: $fs-normal;
+  font-weight: 400;
+  background-color: $color-white;
   color: $color-black;
 
   @include mobile {

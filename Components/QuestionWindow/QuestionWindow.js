@@ -14,13 +14,17 @@ const QuestionWindow = () => {
   const [request, setRequest] = useState(false);
   const [error, setError] = useState(false);
 
+  const [isValidName, setValidName] = useState(false);
+  const [isValidEmail, setValidEmail] = useState(false);
+  const [isValidPhone, setValidPhone] = useState(false);
+  const [isValidMessage, setValidMessage] = useState(false);
+
   const buttonClickHandler = () => {
-    console.log(123);
     if (
-      name.trim() === "" ||
-      email.trim() === "" ||
-      phone.trim() === "" ||
-      message.trim() === ""
+      !isValidName ||
+      !isValidEmail ||
+      !isValidPhone ||
+      !message.trim().length
     ) {
       setError(true);
       return;
@@ -41,6 +45,8 @@ const QuestionWindow = () => {
               value={name}
               type="name"
               onChange={(e) => setName(e.target.value)}
+              isValid={isValidName}
+              setValid={setValidName}
             />
             <CustomInput
               error={error && !email.trim()}
@@ -48,6 +54,8 @@ const QuestionWindow = () => {
               value={email}
               type="email"
               onChange={(e) => setEmail(e.target.value)}
+              isValid={isValidEmail}
+              setValid={setValidEmail}
             />
             <CustomInput
               error={error && !phone.trim()}
@@ -55,6 +63,8 @@ const QuestionWindow = () => {
               value={phone}
               type="phone"
               onChange={(e) => setPhone(e.target.value)}
+              isValid={isValidPhone}
+              setValid={setValidPhone}
             />
           </div>
           <div className={s.textareaGroup}>
@@ -67,6 +77,8 @@ const QuestionWindow = () => {
               cols={1}
               rows={5.5}
               multiline
+              isValid={isValidMessage}
+              setValid={setValidMessage}
             />
             <Button className={s.button} onClick={buttonClickHandler}>
               Оставить заявку

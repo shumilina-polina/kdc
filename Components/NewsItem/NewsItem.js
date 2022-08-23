@@ -18,6 +18,18 @@ const NewsItem = (props) => {
   const [isOpen, setOpen] = useState(false);
   const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);
 
+  String.prototype.trunc = function (n, useWordBoundary) {
+    if (this.length <= n) {
+      return this;
+    }
+    var subString = this.substr(0, n - 1);
+    return (
+      (useWordBoundary
+        ? subString.substr(0, subString.lastIndexOf(" "))
+        : subString) + "&hellip;"
+    );
+  };
+
   return (
     <>
       <div className={s.item}>
@@ -31,7 +43,7 @@ const NewsItem = (props) => {
           <h4>{useHtmlDecode(title)}</h4>
         </div>
         <div className={cn(s.content, v ? s.ability : null)}>
-          <p>{`${useHtmlDecode(content).substr(0, 225)}...`}</p>
+          <p>{useHtmlDecode(content.trunc(220, true))}</p>
         </div>
         <div className={s.footer}>
           <div className={s.category}>

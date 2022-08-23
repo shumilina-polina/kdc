@@ -12,7 +12,7 @@ const HistoryBlock = () => {
       <div className={s.wrapper}>
         <Wrapper borderBottom>
           <div className={cn(s.title, s.padding)}>
-            <span>СПБ ГБ "КДЦ "МОСКОВСКИЙ" - Здесь царит творчество!</span>
+            <span>СПБ ГБУ "КДЦ "МОСКОВСКИЙ" - Здесь царит творчество!</span>
           </div>
         </Wrapper>
 

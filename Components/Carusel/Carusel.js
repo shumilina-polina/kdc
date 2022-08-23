@@ -22,6 +22,8 @@ const Carusel = (props) => {
   const prevSlide = () => {
     if (slideNumber > 0) {
       setSlideNumber((prev) => prev - 1);
+    } else {
+      setSlideNumber((prev) => 4);
     }
     setStopAutoPlay(true);
   };
@@ -29,6 +31,8 @@ const Carusel = (props) => {
   const nextSlide = () => {
     if (slideNumber < slides.length - 1) {
       setSlideNumber((prev) => prev + 1);
+    } else {
+      setSlideNumber((prev) => 0);
     }
     setStopAutoPlay(true);
   };

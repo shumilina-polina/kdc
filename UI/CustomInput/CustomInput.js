@@ -18,9 +18,9 @@ const CustomInput = (props) => {
     multiline = false,
     cols,
     rows,
+    isValid,
+    setValid,
   } = props;
-
-  const [isValid, setValid] = useState(false);
 
   useEffect(() => {
     let reg;

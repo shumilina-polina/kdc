@@ -21,6 +21,18 @@ const AffichePerfomance = (props) => {
 
   moment.locale("ru");
 
+  String.prototype.trunc = function (n, useWordBoundary) {
+    if (this.length <= n) {
+      return this;
+    }
+    var subString = this.substr(0, n - 1);
+    return (
+      (useWordBoundary
+        ? subString.substr(0, subString.lastIndexOf(" "))
+        : subString) + "&hellip;"
+    );
+  };
+
   return (
     <>
       <div className={s.perfomance}>
@@ -35,7 +47,7 @@ const AffichePerfomance = (props) => {
         <div className={s.main}>
           <span className={s.title}>{useHtmlDecode(title)}</span>
           <p className={cn(s.content, v ? s.ability : null)}>
-            {useHtmlDecode(content).substr(0, 200) + "..."}
+            {useHtmlDecode(content.trunc(185, true))}
           </p>
         </div>
         <div className={s.footer}>

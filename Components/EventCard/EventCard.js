@@ -20,6 +20,19 @@ const EventCard = (props) => {
 
   const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);
   const [isOpen, setOpen] = useState(false);
+  const [isBuy, setBuy] = useState(false);
+
+  String.prototype.trunc = function (n, useWordBoundary) {
+    if (this.length <= n) {
+      return this;
+    }
+    var subString = this.substr(0, n - 1);
+    return (
+      (useWordBoundary
+        ? subString.substr(0, subString.lastIndexOf(" "))
+        : subString) + "&hellip;"
+    );
+  };
 
   return (
     <>
@@ -43,17 +56,20 @@ const EventCard = (props) => {
             <span>{`Категория: ${limits}+`}</span>
           </div>
           <div className={cn(s.title, v ? s.ability : null)}>
-            <span>{useHtmlDecode(`${title.substr(0, 80)}`)}</span>
+            <span>{useHtmlDecode(title.trunc(80, true))}</span>
           </div>
           <div className={cn(s.description, v ? s.ability : null)}>
-            <span>{useHtmlDecode(`${content.substr(0, 110)}...`)}</span>
+            <span>{useHtmlDecode(content.trunc(115, true))}</span>
           </div>
         </div>
         <div className={s.more}>
-          <span className={cn(s.knowmore, v ? s.ability : null)}>
+          <Button
+            className={cn(s.knowmore, v ? s.ability : null)}
+            onClick={() => setOpen(true)}
+          >
             Узнать больше
-          </span>
-          <Button className={s.button} onClick={() => setOpen(true)}>
+          </Button>
+          <Button className={s.button} onClick={() => setBuy(true)}>
             Приобрести билет
           </Button>
         </div>
@@ -64,6 +80,13 @@ const EventCard = (props) => {
         title="Приобрести билет"
       >
         <BuyTicketsWindow data={event} />
+      </ModalWindow>
+      <ModalWindow
+        isOpen={isBuy}
+        onClose={() => setBuy(false)}
+        title="Приобрести билет"
+      >
+        <BuyTicketsWindow defaultBuy={true} data={event} />
       </ModalWindow>
     </>
   );

@@ -21,4 +21,4 @@ const Panarama = ({ src }) => {
   return <div ref={sphereElementRef} className={s.panarama} />;
 };
 
-export default Panarama
+export default Panarama;

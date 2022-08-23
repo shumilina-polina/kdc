@@ -17,6 +17,18 @@ const NewsCard = (props) => {
   const dataDate = Number(date + "000");
   moment.locale("ru");
 
+  String.prototype.trunc = function (n, useWordBoundary) {
+    if (this.length <= n) {
+      return this;
+    }
+    var subString = this.substr(0, n - 1);
+    return (
+      (useWordBoundary
+        ? subString.substr(0, subString.lastIndexOf(" "))
+        : subString) + "&hellip;"
+    );
+  };
+
   return (
     <>
       <div className={s.card}>
@@ -39,7 +51,7 @@ const NewsCard = (props) => {
             )}`}</span>
           </div>
           <div className={s.content}>
-            <p>{`${useHtmlDecode(content).substr(0, 225)}...`}</p>
+            <p>{useHtmlDecode(content.trunc(220, true))}</p>
           </div>
           <div className={s.footer}>
             <span className={s.category}>{useHtmlDecode(category)}</span>

@@ -22,12 +22,12 @@ const BuyTicketsWindow = (props) => {
     code,
   } = props.data;
 
-  const [isBuy, setBuy] = useState(false);
+  const { defaultBuy = false } = props;
+
+  const [isBuy, setBuy] = useState(defaultBuy);
 
   const dataDate = moment(datetime);
   const monthsRU = months.split(",");
-
-  console.log(code);
 
   useEffect(() => {
     if (isBuy) {

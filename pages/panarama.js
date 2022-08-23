@@ -5,7 +5,7 @@ import "photo-sphere-viewer/dist/photo-sphere-viewer.css";
 import { useRouter } from "next/router";
 
 const Panarama = () => {
-  const { query, isReady } = useRouter()
+  const { query, isReady } = useRouter();
 
   const sphereElementRef = React.createRef();
 
@@ -21,13 +21,18 @@ const Panarama = () => {
     }
   }, [isReady]);
 
-  return <div ref={sphereElementRef} style={{
+  return (
+    <div
+      ref={sphereElementRef}
+      style={{
         position: "fixed",
         top: "0",
         width: "100%",
         height: "100%",
         zIndex: "999",
-  }} />;
+      }}
+    />
+  );
 };
 
-export default Panarama
+export default Panarama;

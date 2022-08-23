@@ -204,7 +204,7 @@ const Header = () => {
               </Link>
             </div>
             <Button className={s.abilityButton} onClick={handleAbilityButton}>
-              {buttonText}
+              {v ? "Обычная версия" : buttonText}
             </Button>
           </div>
         </div>
