@@ -1,6 +1,7 @@
 import cn from "classnames";
 import SuccessWindow from "Components/SuccessWindow/SuccessWindow";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import apiService from "services/apiService";
 import Button from "UI/Button/Button";
 import CustomInput from "UI/CustomInput/CustomInput";
@@ -10,6 +11,7 @@ import s from "./reserveSpaceWindow.module.scss";
 const ReserveSpaceWindow = (props) => {
   const { title, thumbnail, adress, capacity, price } = props.space;
 
+  const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);
   const [request, setRequest] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -36,37 +38,37 @@ const ReserveSpaceWindow = (props) => {
         <div className={s.container}>
           <div className={s.info}>
             <img src={thumbnail} className={s.poster} />
-            <div className={s.table}>
-              <p className={cn(s.bold, s.title)}>{title}</p>
-              <p className={cn(s.category, s.secondary)}>{adress}</p>
+            <div className={cn(s.table, v ? s.ability : null)}>
+              <p className={cn(s.bold, s.title, v ? s.ability : null)}>{title}</p>
+              <p className={cn(s.category, s.secondary, v ? s.ability : null)}>{adress}</p>
               <div className={s.details}>
-                <span className={s.role}>
-                  <p className={s.secondary}>Вместимость:</p>
-                  <p className={s.bold}>{`${capacity} человек`}</p>
+                <span className={cn(s.role, v ? s.ability : null)}>
+                  <p className={cn(s.secondary, v ? s.ability : null)}>Вместимость:</p>
+                  <p className={cn(s.bold, v ? s.ability : null)}>{`${capacity} человек`}</p>
                 </span>
                 <span className={s.price}>
-                  <p className={s.secondary}>Стоимость:</p>
-                  <p className={s.bold}>{price}</p>
+                  <p className={cn(s.secondary, v ? s.ability : null)}>Стоимость:</p>
+                  <p className={cn(s.bold, v ? s.ability : null)}>{price}</p>
                 </span>
               </div>
             </div>
 
-            <div className={s.tableMobile}>
-              <div className={cn(s.bold, s.titleMobile)}>
+            <div className={cn(s.tableMobile, v ? s.ability : null)}>
+              <div className={cn(s.bold, s.titleMobile, v ? s.ability : null)}>
                 <img src={thumbnail} className={s.mobilePoster} />
                 <div className={s.mobileContain}>
-                  <p>{title}</p>
-                  <p className={s.secondary}>{adress}</p>
+                  <p className={v ? s.ability : null}>{title}</p>
+                  <p className={cn(s.secondary, v ? s.ability : null)}>{adress}</p>
                 </div>
               </div>
-              <div className={s.details}>
-                <span className={s.role}>
-                  <p className={s.secondary}>Вместимость:</p>
-                  <p className={s.bold}>{`${capacity} человек`}</p>
+              <div className={cn(s.details, v ? s.ability : null)}>
+                <span className={cn(s.role, v ? s.ability : null)}>
+                  <p className={cn(s.secondary, v ? s.ability : null)}>Вместимость:</p>
+                  <p className={cn(s.bold, v ? s.ability : null)}>{`${capacity} человек`}</p>
                 </span>
                 <span className={s.price}>
-                  <p className={s.secondary}>Стоимость:</p>
-                  <p className={s.bold}>{price}</p>
+                  <p className={cn(s.secondary, v ? s.ability : null)}>Стоимость:</p>
+                  <p className={cn(s.bold, v ? s.ability : null)}>{price}</p>
                 </span>
               </div>
             </div>

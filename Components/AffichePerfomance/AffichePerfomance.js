@@ -55,6 +55,7 @@ const AffichePerfomance = (props) => {
             onClick={() => setOpen(true)}
             direction="forward"
             color="red"
+            className={s.buttonArrow}
           />
         </div>
       </div>

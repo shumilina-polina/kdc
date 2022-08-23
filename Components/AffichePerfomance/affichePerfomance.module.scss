@@ -4,7 +4,14 @@
   display: flex;
   flex-direction: column;
   border: 1px solid $color-black;
+  border-bottom: none;
+  border-right: none;
   transition: 0.25s;
+
+  @include mobile-tablet {
+    border-bottom: 1px solid $color-black;
+    border-right: 1px solid $color-black;
+  }
 
   &:hover {
     background-color: $color-blue;
@@ -36,14 +43,14 @@
 }
 
 .title {
+  padding: 20px 10px 0 10px;
   font-size: $fs-large;
   font-weight: $fw-bold;
   font-family: $font-oswald;
 }
 
 .content {
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 10px;
   font-family: $font-gravity;
   font-size: $fs-normal;
 
@@ -73,4 +80,9 @@
 
 .ability {
   font-size: $fs-ability-normal;
+}
+
+.buttonArrow {
+  position: relative;
+  top: .5px;
 }

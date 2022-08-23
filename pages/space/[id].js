@@ -19,6 +19,7 @@ import s from "styles/pages/SingleSpace.module.scss";
 import ReserveSpaceWindow from "Components/ReserveSpaceWindow/ReserveSpaceWindow";
 import Wrapper from "UI/Wrapper/Wrapper";
 import Head from "next/head";
+import { useSelector } from "react-redux";
 
 const SingleColectivePage = (props) => {
   const {
@@ -29,6 +30,8 @@ const SingleColectivePage = (props) => {
   const [loading, setLoading] = useState(true);
   const [space, setSpace] = useState(null);
   const [isOpen, setOpen] = useState(false);
+
+  const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);
 
   useEffect(() => {
     if (isReady) {
@@ -57,7 +60,7 @@ const SingleColectivePage = (props) => {
             hasLink
             href={routes.spaces}
           />
-          <span className={s.headerText}>Все пространства</span>
+          <span className={cn(s.headerText, v ? s.ability : null)}>Все пространства</span>
         </div>
       </Wrapper>
 
@@ -75,15 +78,15 @@ const SingleColectivePage = (props) => {
               {loading ? (
                 <Skeleton className={s.skeleton} />
               ) : (
-                <span className={s.cardTitle}>{space.title}</span>
+                <span className={cn(s.cardTitle, v ? s.ability : null)}>{space.title}</span>
               )}
               <Button onClick={() => setOpen(true)} className={s.button}>
                 Забронировать
               </Button>
             </div>
-            <div className={cn(s.other, s.borderBottom)}>
+            <div className={cn(s.other, s.borderBottom, v ? s.ability : null)}>
               <div className={s.block}>
-                <span className={s.secondary}>Вместимость:</span>
+                <span className={cn(s.secondary, v ? s.ability : null)}>Вместимость:</span>
                 {loading ? (
                   <Skeleton className={s.skeleton} />
                 ) : (
@@ -94,7 +97,7 @@ const SingleColectivePage = (props) => {
                 )}
               </div>
               <div className={s.block}>
-                <span className={s.secondary}>Режим работы:</span>
+                <span className={cn(s.secondary, v ? s.ability : null)}>Режим работы:</span>
                 {loading ? (
                   <Skeleton className={s.skeleton} />
                 ) : (
@@ -102,7 +105,7 @@ const SingleColectivePage = (props) => {
                 )}
               </div>
               <div className={s.block}>
-                <span className={s.secondary}>
+                <span className={cn(s.secondary, v ? s.ability : null)}>
                   Организационно-техническое обеспечение мероприятия:
                 </span>
                 {loading ? (
@@ -112,20 +115,20 @@ const SingleColectivePage = (props) => {
                 )}
               </div>
             </div>
-            <div className={cn(s.location, s.borderBottom)}>
+            <div className={cn(s.location, s.borderBottom, v ? s.ability : null)}>
               <div className={s.adress}>
                 {loading ? (
                   <Skeleton className={s.skeleton} />
                 ) : (
                   <>
-                    <span className={s.secondary}>Адрес:</span>
+                    <span className={cn(s.secondary, v ? s.ability : null)}>Адрес:</span>
                     <span className={s.oswald}>{space.adress}</span>
                   </>
                 )}
               </div>
               <div className={s.coordsIcon}>
                 {space?.panorama ? (
-                  <span className={s.panoramaText}>
+                  <span className={cn(s.panoramaText, v ? s.ability : null)}>
                     3d-панорама
                     <Link
                       href={{
@@ -144,7 +147,7 @@ const SingleColectivePage = (props) => {
               </div>
             </div>
             <div className={cn(s.facility, s.borderBottom)}>
-              <span className={s.oswald}>
+              <span className={cn(s.oswald, v ? s.ability : null)}>
                 Организационно-техническое обеспечение мероприятия
               </span>
               {loading ? (
@@ -152,7 +155,7 @@ const SingleColectivePage = (props) => {
               ) : (
                 <span className={s.link}>
                   <Link href={space.file}>
-                    <a target="_blank" className={s.link}>
+                    <a target="_blank" className={cn(s.link, v ? s.ability : null)}>
                       Подробнее
                     </a>
                   </Link>
