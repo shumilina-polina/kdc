@@ -52,7 +52,7 @@ const SingleColectivePage = (props) => {
 
       <Wrapper space borderBottom />
 
-      <Wrapper borderBottom>
+      <Wrapper borderBottom className={cn(s.singleSpace, v ? s.ability : null)}>
         <div className={s.header}>
           <ButtonArrow
             direction="back"
@@ -66,7 +66,7 @@ const SingleColectivePage = (props) => {
         </div>
       </Wrapper>
 
-      <Wrapper>
+      <Wrapper className={cn(s.singleSpace, v ? s.ability : null)}>
         <div className={s.main}>
           <div>
             {loading ? (
