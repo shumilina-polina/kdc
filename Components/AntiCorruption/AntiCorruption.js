@@ -1,59 +1,26 @@
+import { useEffect, useState } from "react";
+import apiService from "services/apiService";
+import useHtmlDecode from "shared/hooks/useHtmlDecode";
 import Acordion from "UI/Acordion/Acordion";
 import s from "./antiCorruption.module.scss";
 
 const AntiCorruption = () => {
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+    apiService.getMore().then(res => setPosts(res))
+  }, [])
+
   return (
     <div className={s.main}>
-      <Acordion
-        title="Указ президента Российской Федерации от 16.08.2021 № 478 «О национальном плане противодействия коррупции на 2021–2024 годы»"
-        content=""
-        detailsTitle={false}
-      />
-      <Acordion
-        title="Указ президента Российской Федерации от 16.08.2021 № 478 «О национальном плане противодействия коррупции на 2021–2024 годы»"
-        content=""
-        detailsTitle={false}
-      />
-      <Acordion
-        title="Указ президента Российской Федерации от 16.08.2021 № 478 «О национальном плане противодействия коррупции на 2021–2024 годы»"
-        content=""
-        detailsTitle={false}
-      />
-      <Acordion
-        title="Указ президента Российской Федерации от 16.08.2021 № 478 «О национальном плане противодействия коррупции на 2021–2024 годы»"
-        content=""
-        detailsTitle={false}
-      />
-      <Acordion
-        title="Указ президента Российской Федерации от 16.08.2021 № 478 «О национальном плане противодействия коррупции на 2021–2024 годы»"
-        content=""
-        detailsTitle={false}
-      />
-      <Acordion
-        title="Указ президента Российской Федерации от 16.08.2021 № 478 «О национальном плане противодействия коррупции на 2021–2024 годы»"
-        content=""
-        detailsTitle={false}
-      />
-      <Acordion
-        title="Указ президента Российской Федерации от 16.08.2021 № 478 «О национальном плане противодействия коррупции на 2021–2024 годы»"
-        content=""
-        detailsTitle={false}
-      />
-      <Acordion
-        title="Указ президента Российской Федерации от 16.08.2021 № 478 «О национальном плане противодействия коррупции на 2021–2024 годы»"
-        content=""
-        detailsTitle={false}
-      />
-      <Acordion
-        title="Указ президента Российской Федерации от 16.08.2021 № 478 «О национальном плане противодействия коррупции на 2021–2024 годы»"
-        content=""
-        detailsTitle={false}
-      />
-      <Acordion
-        title="Указ президента Российской Федерации от 16.08.2021 № 478 «О национальном плане противодействия коррупции на 2021–2024 годы»"
-        content=""
-        detailsTitle={false}
-      />
+      {posts.map(post => (
+        <Acordion
+          title={useHtmlDecode(post.title)}
+          content={useHtmlDecode(post.content)}
+          detailsTitle={false}
+        />
+      ))}
+      
     </div>
   );
 };
