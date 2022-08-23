@@ -97,7 +97,7 @@ const SingleColectivePage = (props) => {
                   <Skeleton className={s.skeleton} />
                 ) : (
                   <span className={s.value}>
-                    <span className={s.oswald}>{space.capacity}</span>
+                    <span className={s.oswald}>{space.capacity}{" "}</span>
                     <span>человек</span>
                   </span>
                 )}

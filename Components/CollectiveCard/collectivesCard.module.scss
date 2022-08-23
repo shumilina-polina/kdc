@@ -4,8 +4,15 @@ $padding: 0 20px;
 
 .card {
   max-width: 300px;
-  display: flex;
-  flex-direction: column;
+  max-height: 400px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 3fr 2fr 2fr 1fr;
+
+  &.ability {
+    grid-template-rows: 3fr 2fr 2fr 1fr;
+    max-height: 600px;
+  }
 }
 
 .poster {
@@ -34,7 +41,6 @@ $padding: 0 20px;
 }
 
 .header {
-  flex: 2;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -43,6 +49,7 @@ $padding: 0 20px;
 }
 
 .title {
+  margin: 10px 0;
   padding: $padding;
   font-family: $font-oswald;
 
@@ -52,7 +59,6 @@ $padding: 0 20px;
 }
 
 .content {
-  flex: 3;
   padding: $padding;
   padding-top: 20px;
   padding-bottom: 20px;

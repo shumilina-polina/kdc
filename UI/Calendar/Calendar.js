@@ -15,7 +15,7 @@ const Calendar = (props) => {
   const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);
 
   const maxDate = new Date(moment().add(11, "M").format("YYYY-MM-DD"));
-  const minDate = new Date(moment().format("YYYY-MM-DD"));
+  const minDate = new Date( !disablePast ? (moment().format("2022-01-01")) : ( moment().format("YYYY-MM-DD") ));
 
   return (
     <div className={v ? s.ability : null}>

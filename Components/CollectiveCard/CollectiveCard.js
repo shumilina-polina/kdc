@@ -20,7 +20,7 @@ const CollectiveCard = (props) => {
 
   return (
     <>
-      <div className={cn(s.card, className)}>
+      <div className={cn(s.card, className, v ? s.ability : null)}>
         <div className={s.poster}>
           {kit ? (
             <div className={cn(s.label, v ? s.ability : null)}>
