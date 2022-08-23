@@ -49,6 +49,12 @@
   display: flex;
   gap: 20px;
 
+  &.ability {
+    @media screen and (max-width: 980px) {
+      flex-direction: column;
+    }
+  }
+
   @include mobile {
     flex-direction: column;
   }
@@ -89,8 +95,10 @@
     object-fit: cover;
   }
 
-  &.ability {
-    display: none;
+  &.ability > img {
+    @media screen and (max-width: 980px) {
+      height: 398px;
+    }
   }
 
   @include mobile {
@@ -114,8 +122,10 @@
   height: 180px;
   object-fit: cover;
 
-  &.ability {
-    display: none;
+  @media screen and (max-width: 1220px) {
+    &.ability {
+      display: none;
+    }
   }
 
   @include mobile-tablet {
@@ -132,8 +142,10 @@
     object-fit: cover;
   }
 
-  &.ability {
-    display: none;
+  @media screen and (max-width: 1220px) {
+    &.ability {
+      display: none;
+    }
   }
 
   @include mobile-tablet {
