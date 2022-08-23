@@ -23,8 +23,12 @@ const JoinCollectiveWindow = (props) => {
   const [phone, setPhone] = useState("");
   const [error, setError] = useState(false);
 
+  const [isValidName, setValidName] = useState(false);
+  const [isValidEmail, setValidEmail] = useState(false);
+  const [isValidPhone, setValidPhone] = useState(false);
+
   const buttonClickHandler = () => {
-    if (name.trim() === "" || email.trim() === "" || phone.trim() === "") {
+    if (!isValidName || !isValidEmail || !isValidPhone) {
       setError(true);
       return;
     }
@@ -89,6 +93,8 @@ const JoinCollectiveWindow = (props) => {
               value={name}
               label="Как к вам обращаться?"
               onChange={(e) => setName(e.target.value)}
+              isValid={isValidName}
+              setValid={setValidName}
             />
             <CustomInput
               error={error && !email.trim()}
@@ -97,6 +103,8 @@ const JoinCollectiveWindow = (props) => {
               value={email}
               label="Ваша почта"
               onChange={(e) => setEmail(e.target.value)}
+              isValid={isValidEmail}
+              setValid={setValidEmail}
             />
             <CustomInput
               error={error && !phone.trim()}
@@ -105,6 +113,8 @@ const JoinCollectiveWindow = (props) => {
               value={phone}
               label="Номер телефона"
               onChange={(e) => setPhone(e.target.value)}
+              isValid={isValidPhone}
+              setValid={setValidPhone}
             />
             <Button className={s.button} onClick={buttonClickHandler}>
               Оставить заявку

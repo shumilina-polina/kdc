@@ -3,6 +3,7 @@
 .footer {
   width: 100%;
   background-color: $color-dark-blue;
+  user-select: none;
 }
 
 .container {
@@ -158,6 +159,7 @@
   font-size: $fs-large;
   font-family: $font-gravity;
   font-weight: $fw-semibold;
+  user-select: none;
 
   &.ability {
     font-size: $fs-ability-large;

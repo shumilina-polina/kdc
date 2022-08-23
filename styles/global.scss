@@ -8,17 +8,23 @@ button.MuiButtonBase-root {
   border-radius: 0 !important;
 }
 
+.css-m1gykc.Mui-selected {
+  background-color: $color-red !important;
+  color: $color-white !important;
+  border-radius: 0 !important;
+}
+
 button.MuiPickersDay-today {
   border: none !important;
   border-radius: 0 !important;
-  background-color: $color-red;
-  color: $color-white;
+  background-color: $color-red !important;
+  color: $color-white !important;
 }
 
 button.MuiPickersDay-today:hover {
   border: none !important;
   border-radius: 0 !important;
-  background-color: $color-red;
+  background-color: $color-red !important;
 }
 
 .css-1dozdou * {

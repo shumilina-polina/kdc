@@ -13,6 +13,7 @@ import ModalWindow from "UI/Modal/ModalWindow";
 import Wrapper from "UI/Wrapper/Wrapper";
 
 import s from "./footer.module.scss";
+import { UPDATE_ACTIVE_MENU } from "store/actionTypes/HeaderActionTypes";
 
 function sliceIntoChunks(arr, chunkSize) {
   const res = [];
@@ -63,11 +64,19 @@ const Footer = () => {
                 className={cn(s.list, v ? s.ability : null)}
                 key={`footerList${index}`}
               >
-                {list.map(({ id, value, url }) => (
+                {list.map(({ id, value, url, payload }) => (
                   <li className={s.item} key={`footerItem${id}`}>
                     {url ? (
                       <Link href={url}>
-                        <a className={s.link}>
+                        <a
+                          className={s.link}
+                          onClick={() =>
+                            dispatch({
+                              type: UPDATE_ACTIVE_MENU,
+                              payload: payload,
+                            })
+                          }
+                        >
                           {value}
                           <Image
                             className={s.icon}
@@ -116,7 +125,7 @@ const Footer = () => {
 
               <Button className={s.abilityButton} onClick={handleAbilityButton}>
                 <Image src="/assets/icons/eye.svg" width={22} height={15} />
-                {abilityButtonText}
+                {v ? "Обычная версия" : abilityButtonText}
               </Button>
             </div>
           </div>

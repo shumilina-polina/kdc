@@ -127,14 +127,16 @@ const SingleColectivePage = (props) => {
                 {space?.panorama ? (
                   <span className={s.panoramaText}>
                     3d-панорама
-                    <Link href={{
-                      pathname: "/panarama",
-                      query: {
-                        url: space?.panorama
-                      }
-                    }}>
-                      <a target="_blank">
-                        <img src="/assets/icons/location.svg" />
+                    <Link
+                      href={{
+                        pathname: "/panarama",
+                        query: {
+                          url: space?.panorama,
+                        },
+                      }}
+                    >
+                      <a target="_blank" className={s.iconPanorama}>
+                        <img src="/assets/icons/panorama.svg" />
                       </a>
                     </Link>
                   </span>

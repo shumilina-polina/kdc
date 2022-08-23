@@ -49,7 +49,7 @@ const CollectivesFilters = (props) => {
         />
         <SelectInput
           label="Адрес"
-          variants={["Московский пр. 152", "Ул. Варшавская, 98"]}
+          variants={["Московский пр. 152", "Ул. Варшавская 98"]}
           className={s.select}
           data={locations}
           setData={setLocations}

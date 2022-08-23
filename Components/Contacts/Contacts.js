@@ -76,7 +76,9 @@ const Contacts = (props) => {
                   height={40}
                 />
                 <Link href={`mailto:${isMainAdress ? email : secondEmail}`}>
-                  <a className={cn(s.link, v ? s.ability : null)}>{isMainAdress ? email : secondEmail}</a>
+                  <a className={cn(s.link, v ? s.ability : null)}>
+                    {isMainAdress ? email : secondEmail}
+                  </a>
                 </Link>
               </div>
             </div>
@@ -114,7 +116,9 @@ const Contacts = (props) => {
               <div className={s.contentWrapperMobile}>
                 <Image src="/assets/icons/email.svg" width={40} height={40} />
                 <Link href={`mailto:${isMainAdress ? email : secondEmail}`}>
-                  <a className={cn(s.link, v ? s.ability : null)}>{isMainAdress ? email : secondEmail}</a>
+                  <a className={cn(s.link, v ? s.ability : null)}>
+                    {isMainAdress ? email : secondEmail}
+                  </a>
                 </Link>
               </div>
             </div>
