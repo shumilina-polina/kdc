@@ -37,6 +37,7 @@
 
 .offset {
   height: auto;
+  min-height: 45px;
 
   @include mobile-tablet {
     margin-top: 30px;
