@@ -70,7 +70,7 @@ const Collectives = (props) => {
                   </li>
                 ))}
               </ul>
-              <div className={s.actions}>
+              <div className={cn(s.actions, v ? s.ability : null)}>
                 <Button className={s.button} hasLink href={routes.collectives}>
                   {obsoreButtonText}
                 </Button>
