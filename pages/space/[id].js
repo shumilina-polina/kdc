@@ -60,7 +60,9 @@ const SingleColectivePage = (props) => {
             hasLink
             href={routes.spaces}
           />
-          <span className={cn(s.headerText, v ? s.ability : null)}>Все пространства</span>
+          <span className={cn(s.headerText, v ? s.ability : null)}>
+            Все пространства
+          </span>
         </div>
       </Wrapper>
 
@@ -78,7 +80,9 @@ const SingleColectivePage = (props) => {
               {loading ? (
                 <Skeleton className={s.skeleton} />
               ) : (
-                <span className={cn(s.cardTitle, v ? s.ability : null)}>{space.title}</span>
+                <span className={cn(s.cardTitle, v ? s.ability : null)}>
+                  {space.title}
+                </span>
               )}
               <Button onClick={() => setOpen(true)} className={s.button}>
                 Забронировать
@@ -86,7 +90,9 @@ const SingleColectivePage = (props) => {
             </div>
             <div className={cn(s.other, s.borderBottom, v ? s.ability : null)}>
               <div className={s.block}>
-                <span className={cn(s.secondary, v ? s.ability : null)}>Вместимость:</span>
+                <span className={cn(s.secondary, v ? s.ability : null)}>
+                  Вместимость:
+                </span>
                 {loading ? (
                   <Skeleton className={s.skeleton} />
                 ) : (
@@ -97,7 +103,9 @@ const SingleColectivePage = (props) => {
                 )}
               </div>
               <div className={s.block}>
-                <span className={cn(s.secondary, v ? s.ability : null)}>Режим работы:</span>
+                <span className={cn(s.secondary, v ? s.ability : null)}>
+                  Режим работы:
+                </span>
                 {loading ? (
                   <Skeleton className={s.skeleton} />
                 ) : (
@@ -115,13 +123,17 @@ const SingleColectivePage = (props) => {
                 )}
               </div>
             </div>
-            <div className={cn(s.location, s.borderBottom, v ? s.ability : null)}>
+            <div
+              className={cn(s.location, s.borderBottom, v ? s.ability : null)}
+            >
               <div className={s.adress}>
                 {loading ? (
                   <Skeleton className={s.skeleton} />
                 ) : (
                   <>
-                    <span className={cn(s.secondary, v ? s.ability : null)}>Адрес:</span>
+                    <span className={cn(s.secondary, v ? s.ability : null)}>
+                      Адрес:
+                    </span>
                     <span className={s.oswald}>{space.adress}</span>
                   </>
                 )}
@@ -142,6 +154,19 @@ const SingleColectivePage = (props) => {
                         <img src="/assets/icons/panorama.svg" />
                       </a>
                     </Link>
+                    <ButtonArrow
+                      direction="forward"
+                      color="red"
+                      className={s.arrowButtonPanoram}
+                      blank
+                      hasLink
+                      href={{
+                        pathname: "/panarama",
+                        query: {
+                          url: space?.panorama,
+                        },
+                      }}
+                    />
                   </span>
                 ) : null}
               </div>
@@ -155,7 +180,10 @@ const SingleColectivePage = (props) => {
               ) : (
                 <span className={s.link}>
                   <Link href={space.file}>
-                    <a target="_blank" className={cn(s.link, v ? s.ability : null)}>
+                    <a
+                      target="_blank"
+                      className={cn(s.link, v ? s.ability : null)}
+                    >
                       Подробнее
                     </a>
                   </Link>

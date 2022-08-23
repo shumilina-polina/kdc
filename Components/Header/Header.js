@@ -181,7 +181,10 @@ const Header = () => {
           )}
 
           <div className={s.details}>
-            <div className={s.working} style={v ? {flexDirection: "column", gap: "5px"} : null}>
+            <div
+              className={s.working}
+              style={v ? { flexDirection: "column", gap: "5px" } : null}
+            >
               <span className={v ? s.ability : null}>{workingMode.value}</span>
               <div className={s.workingMode}>
                 <Image src="/assets/icons/clock.svg" width={18} height={18} />
@@ -191,7 +194,10 @@ const Header = () => {
             <div className={s.adress}>
               <span className={v ? s.ability : null}>{adress}</span>
             </div>
-            <div className={s.contactInfo} style={v ? {flexDirection: "column"} : null}>
+            <div
+              className={s.contactInfo}
+              style={v ? { flexDirection: "column" } : null}
+            >
               <Link href={`tel:${phone}`}>
                 <a className={cn(s.contactLink, v ? s.ability : null)}>
                   {phone}

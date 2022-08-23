@@ -23,6 +23,7 @@ const EventsComponent = (props) => {
   const POST_ON_PAGE = 5;
 
   const { visuallyImpairedVersion: v } = useSelector((state) => state.ability);
+
   const [date, setDate] = useState(moment().format("YYYY-MM-DD"));
   const [free, setFree] = useState(false);
   const [paid, setPaid] = useState(false);

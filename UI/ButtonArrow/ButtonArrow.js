@@ -13,6 +13,7 @@ const ButtonArrow = (props) => {
     hasLink = false,
     href,
     className,
+    blank = false,
     onClick,
   } = props;
 
@@ -23,7 +24,7 @@ const ButtonArrow = (props) => {
     >
       {hasLink ? (
         <Link href={href}>
-          <a className={s.link}>
+          <a className={s.link} target={blank ? "_blank" : null}>
             {direction === "forward" ? (
               <ArrowForwardIosIcon />
             ) : (

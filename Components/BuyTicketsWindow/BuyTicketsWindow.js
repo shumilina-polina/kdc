@@ -8,7 +8,7 @@ import s from "./buyTicketsWindow.module.scss";
 import Link from "next/link";
 import React, { useEffect, useState, Fragment, useRef } from "react";
 import Script from "next/script";
-import cn from "classnames"
+import cn from "classnames";
 import { useSelector } from "react-redux";
 
 const BuyTicketsWindow = (props) => {
@@ -60,8 +60,12 @@ const BuyTicketsWindow = (props) => {
             </div>
           </div>
           <div className={s.header}>
-            <span className={cn(s.subtitle, v ? s.ability : null)}>{`${useHtmlDecode(subtitle)} `}</span>
-            <span className={cn(s.title, v ? s.ability : null)}>{`${useHtmlDecode(title)} `}</span>
+            <span
+              className={cn(s.subtitle, v ? s.ability : null)}
+            >{`${useHtmlDecode(subtitle)} `}</span>
+            <span
+              className={cn(s.title, v ? s.ability : null)}
+            >{`${useHtmlDecode(title)} `}</span>
           </div>
           <div className={cn(s.details, v ? s.ability : null)}>
             <div className={s.limits}>
@@ -74,14 +78,23 @@ const BuyTicketsWindow = (props) => {
               <span>Место проведения:</span>
               <span>{adress}</span>
             </div>
-            <img className={s.thumbnail} src={thumbnail} style={v ? { display: "none" } : null} />
+            <img
+              className={s.thumbnail}
+              src={thumbnail}
+              style={v ? { display: "none" } : null}
+            />
           </div>
           <div className={s.description}>
             <div className={s.contentBlock}>
-              <p className={cn(s.content, v ? s.ability : null)}>{useHtmlDecode(content)}</p>
+              <p className={cn(s.content, v ? s.ability : null)}>
+                {useHtmlDecode(content)}
+              </p>
             </div>
             <div className={s.footer}>
-              <a onClick={() => setBuy(true)} className={cn(s.button, v ? s.ability : null)}>
+              <a
+                onClick={() => setBuy(true)}
+                className={cn(s.button, v ? s.ability : null)}
+              >
                 Приобрести билет
               </a>
             </div>

@@ -12,7 +12,7 @@ import s from "./joinCollectiveWindow.module.scss";
 
 const JoinCollectiveWindow = (props) => {
   const {
-    collective: { title, trend, price, thumbnail },
+    collective: { title, trend, location, price, thumbnail },
   } = props;
 
   const { register } = useForm();
@@ -47,7 +47,7 @@ const JoinCollectiveWindow = (props) => {
             <div className={s.table}>
               <p className={cn(s.bold, s.title)}>{useHtmlDecode(title)}</p>
               <p className={cn(s.category, s.secondary)}>
-                {useHtmlDecode(title)}
+                {useHtmlDecode(location)}
               </p>
               <div className={s.details}>
                 <span className={s.role}>
@@ -68,7 +68,7 @@ const JoinCollectiveWindow = (props) => {
                 <img src={thumbnail} className={s.mobilePoster} />
                 <div className={s.mobileContain}>
                   <p>{useHtmlDecode(title)}</p>
-                  <p className={s.secondary}>{useHtmlDecode(title)}</p>
+                  <p className={s.secondary}>{useHtmlDecode(location)}</p>
                 </div>
               </div>
               <div className={s.details}>
