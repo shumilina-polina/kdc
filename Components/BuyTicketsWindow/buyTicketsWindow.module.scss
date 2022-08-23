@@ -158,7 +158,8 @@
 .ability {
   font-size: $fs-ability-normal;
 }
-.ability *, .ability {
+.ability *,
+.ability {
   border: none !important;
 }
 

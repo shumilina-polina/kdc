@@ -39,9 +39,9 @@ const ProjectCard = (props) => {
         onMouseOut={() => setShow(false)}
       >
         <div className={cn(s.hidden, isShow ? s.show : null)}>
-          <p
-            className={cn(s.description, v ? s.ability : null)}
-          >{useHtmlDecode(content.trunc(v ? 150 : 300, true))}</p>
+          <p className={cn(s.description, v ? s.ability : null)}>
+            {useHtmlDecode(content.trunc(v ? 150 : 300, true))}
+          </p>
           <a className={s.read} onClick={() => setOpen(true)}>
             Продолжить чтение
             <ArrowForwardIcon />

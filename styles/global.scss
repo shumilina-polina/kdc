@@ -14,6 +14,14 @@ button.MuiButtonBase-root {
   border-radius: 0 !important;
 }
 
+.PrivatePickersYear-root > button {
+  border-radius: 0 !important;
+}
+
+.PrivatePickersYear-root > button:hover {
+  border-radius: 0 !important;
+}
+
 button.MuiPickersDay-today {
   border: none !important;
   border-radius: 0 !important;

@@ -1,1 +1,5 @@
 @import "/styles/styles.scss";
+
+.ability * {
+  font-size: $fs-ability-normal !important;
+}

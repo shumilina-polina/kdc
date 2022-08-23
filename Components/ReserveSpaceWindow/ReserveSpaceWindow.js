@@ -39,15 +39,25 @@ const ReserveSpaceWindow = (props) => {
           <div className={s.info}>
             <img src={thumbnail} className={s.poster} />
             <div className={cn(s.table, v ? s.ability : null)}>
-              <p className={cn(s.bold, s.title, v ? s.ability : null)}>{title}</p>
-              <p className={cn(s.category, s.secondary, v ? s.ability : null)}>{adress}</p>
+              <p className={cn(s.bold, s.title, v ? s.ability : null)}>
+                {title}
+              </p>
+              <p className={cn(s.category, s.secondary, v ? s.ability : null)}>
+                {adress}
+              </p>
               <div className={s.details}>
                 <span className={cn(s.role, v ? s.ability : null)}>
-                  <p className={cn(s.secondary, v ? s.ability : null)}>Вместимость:</p>
-                  <p className={cn(s.bold, v ? s.ability : null)}>{`${capacity} человек`}</p>
+                  <p className={cn(s.secondary, v ? s.ability : null)}>
+                    Вместимость:
+                  </p>
+                  <p
+                    className={cn(s.bold, v ? s.ability : null)}
+                  >{`${capacity} человек`}</p>
                 </span>
                 <span className={s.price}>
-                  <p className={cn(s.secondary, v ? s.ability : null)}>Стоимость:</p>
+                  <p className={cn(s.secondary, v ? s.ability : null)}>
+                    Стоимость:
+                  </p>
                   <p className={cn(s.bold, v ? s.ability : null)}>{price}</p>
                 </span>
               </div>
@@ -58,16 +68,24 @@ const ReserveSpaceWindow = (props) => {
                 <img src={thumbnail} className={s.mobilePoster} />
                 <div className={s.mobileContain}>
                   <p className={v ? s.ability : null}>{title}</p>
-                  <p className={cn(s.secondary, v ? s.ability : null)}>{adress}</p>
+                  <p className={cn(s.secondary, v ? s.ability : null)}>
+                    {adress}
+                  </p>
                 </div>
               </div>
               <div className={cn(s.details, v ? s.ability : null)}>
                 <span className={cn(s.role, v ? s.ability : null)}>
-                  <p className={cn(s.secondary, v ? s.ability : null)}>Вместимость:</p>
-                  <p className={cn(s.bold, v ? s.ability : null)}>{`${capacity} человек`}</p>
+                  <p className={cn(s.secondary, v ? s.ability : null)}>
+                    Вместимость:
+                  </p>
+                  <p
+                    className={cn(s.bold, v ? s.ability : null)}
+                  >{`${capacity} человек`}</p>
                 </span>
                 <span className={s.price}>
-                  <p className={cn(s.secondary, v ? s.ability : null)}>Стоимость:</p>
+                  <p className={cn(s.secondary, v ? s.ability : null)}>
+                    Стоимость:
+                  </p>
                   <p className={cn(s.bold, v ? s.ability : null)}>{price}</p>
                 </span>
               </div>
