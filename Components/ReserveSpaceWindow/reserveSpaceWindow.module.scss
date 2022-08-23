@@ -12,6 +12,10 @@ $table-padding: 15px;
   }
 }
 
+.ability {
+  font-size: $fs-ability-normal !important;
+}
+
 .poster {
   width: 320px;
   height: 160px;
@@ -33,6 +37,11 @@ $table-padding: 15px;
 
 .table {
   border: 1px solid $color-black;
+  border-left: none;
+
+  &.ability {
+    border: none;
+  }
 
   @include mobile {
     display: none;
@@ -43,6 +52,10 @@ $table-padding: 15px;
   display: none;
   border: 1px solid $color-black;
 
+  &.ability {
+    border: none;
+  }
+
   @include mobile {
     display: block;
   }
@@ -51,12 +64,21 @@ $table-padding: 15px;
 .title {
   padding: $table-padding;
   border-bottom: 1px solid $color-black;
+
+  &.ability {
+    border: none;
+  }
 }
 
 .titleMobile {
   display: grid;
   grid-template-columns: 1fr 1fr;
   border-bottom: 1px solid $color-black;
+
+  &.ability {
+    grid-template-columns: 1fr;
+    border: none;
+  }
 }
 
 .category {
@@ -75,11 +97,19 @@ $table-padding: 15px;
 .details {
   display: grid;
   grid-template-columns: 1fr 1fr;
+
+  &.ability {
+    grid-template-columns: 1fr;
+  }
 }
 
 .role {
   padding: $table-padding;
   border-right: 1px solid $color-black;
+
+  &.ability {
+    border: none !important;
+  }
 }
 
 .price {
@@ -96,6 +126,10 @@ $table-padding: 15px;
   font-family: $font-gravity;
   font-size: $fs-normal;
   color: $color-gray;
+
+  &.ability {
+    border: none;
+  }
 }
 
 .fields {

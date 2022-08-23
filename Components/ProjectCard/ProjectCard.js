@@ -19,6 +19,18 @@ const ProjectCard = (props) => {
   const [isShow, setShow] = useState(false);
   const [isOpen, setOpen] = useState(false);
 
+  String.prototype.trunc = function (n, useWordBoundary) {
+    if (this.length <= n) {
+      return this;
+    }
+    var subString = this.substr(0, n - 1);
+    return (
+      (useWordBoundary
+        ? subString.substr(0, subString.lastIndexOf(" "))
+        : subString) + "&hellip;"
+    );
+  };
+
   return (
     <>
       <div
@@ -29,7 +41,7 @@ const ProjectCard = (props) => {
         <div className={cn(s.hidden, isShow ? s.show : null)}>
           <p
             className={cn(s.description, v ? s.ability : null)}
-          >{`${useHtmlDecode(content).substr(0, v ? 240 : 300)}...`}</p>
+          >{useHtmlDecode(content.trunc(v ? 150 : 300, true))}</p>
           <a className={s.read} onClick={() => setOpen(true)}>
             Продолжить чтение
             <ArrowForwardIcon />

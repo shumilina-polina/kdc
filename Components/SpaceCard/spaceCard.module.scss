@@ -157,7 +157,8 @@
 }
 
 .button {
-  height: 50px;
+  height: fit-content;
+  min-height: 45px;
   padding: 10px;
   position: relative;
   border: none;

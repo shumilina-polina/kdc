@@ -38,6 +38,7 @@ const CollectiveCard = (props) => {
             href={`${routes.collective}/${id}`}
             direction="forward"
             color="red"
+            className={s.buttonArrow}
           />
         </div>
         <div className={s.content}>

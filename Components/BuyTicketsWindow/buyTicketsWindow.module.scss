@@ -79,7 +79,10 @@
 
   .limits > span {
     padding: 15px;
-    border-right: 1px solid $color-black;
+
+    @include mobile {
+      border-right: 1px solid $color-black;
+    }
   }
 
   .price {
@@ -93,10 +96,10 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    border-right: 1px solid $color-black;
 
     @include mobile {
       border-left: 1px solid $color-black;
+      border-right: 1px solid $color-black;
     }
   }
 
@@ -136,10 +139,27 @@
   padding: 20px;
   font-family: $font-gravity;
   line-height: 20px;
+  border-left: 1px solid $color-black;
+
+  &.ability {
+    border-left: 1px solid $color-black !important;
+
+    @include mobile-tablet {
+      border-left: none !important;
+    }
+  }
 
   @include mobile {
+    border-left: none;
     padding: 20px 0;
   }
+}
+
+.ability {
+  font-size: $fs-ability-normal;
+}
+.ability *, .ability {
+  border: none !important;
 }
 
 .footer {
@@ -147,6 +167,7 @@
   justify-content: flex-end;
   border: 1px solid $color-black;
   border-bottom: none;
+  border-right: none;
 
   @include mobile-tablet {
     border: none;
@@ -155,7 +176,7 @@
 
 .button {
   position: relative;
-  padding: 15px 20px;
+  padding: 16px 21px;
   background-color: $color-red;
   color: $color-white;
   text-decoration: none;
@@ -163,6 +184,10 @@
   font-family: $font-oswald;
   font-size: $fs-normal;
   cursor: pointer;
+
+  &.ability {
+    font-size: 24px;
+  }
 
   @include mobile {
     width: 100%;
