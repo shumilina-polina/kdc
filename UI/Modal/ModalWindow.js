@@ -8,6 +8,7 @@ import Title from "UI/Title/Title";
 import Button from "UI/Button/Button";
 
 import s from "./modal.module.scss";
+import Link from "next/link";
 
 const ModalWindow = (props) => {
   const {
@@ -47,8 +48,10 @@ const ModalWindow = (props) => {
                 <div className={s.footerTop}>
                   <div className={s.footerTopContainer}>
                     <span className={s.secondary}>
-                      Отправляя заявку вы соглашаетесь с политикой
-                      конфиденциальности.
+                      Отправляя заявку вы соглашаетесь с{" "}
+                      <Link href="https://docs.google.com/document/d/1EBRNYnK-V1LIHChnC508tPV9-8Wqj6hEZYxGK9eZ3Z4/edit">
+                        <a style={{color:"black"}} target="_blank">политикой конфиденциальности</a>
+                      </Link>.
                     </span>
                     <span className={s.primary}>
                       Мы Вам перезвоним, чтобы подтвердить вашу запись.

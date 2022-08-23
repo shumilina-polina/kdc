@@ -135,6 +135,14 @@ class ApiService {
       .catch((error) => error);
   };
 
+  getMore = () => {
+    const url = `${this.baseUrl}/more`;
+    return axios
+      .get(url)
+      .then((res) => res.data)
+      .catch((error) => error);
+  }
+
   postEmailReserveSpace = (name, email, phone) => {
     const url = `${this.baseUrl}/reserve`;
     return axios
