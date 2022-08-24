@@ -6,6 +6,10 @@
 
 .ability {
   font-size: $fs-ability-normal !important;
+
+  @include mobile {
+    font-size: 22px !important;
+  }
 }
 
 .secondary {
