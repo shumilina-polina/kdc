@@ -214,6 +214,10 @@
   gap: 20px;
   font-family: $font-oswald;
   font-size: $fs-normal;
+
+  @include mobile {
+    gap: 5px
+  }
 }
 
 .noPanaram {
@@ -229,6 +233,10 @@
   position: relative;
   right: 10px;
   top: 2px;
+
+  @include mobile {
+    right: 5px;
+  }
 }
 
 .arrowButtonPanoram {
