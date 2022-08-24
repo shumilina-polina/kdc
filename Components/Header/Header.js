@@ -51,10 +51,6 @@ const Header = () => {
 
   return (
     <>
-      <iframe
-        className={s.widget}
-        src="https://moscenterspb.space/widget.html"
-      ></iframe>
       <header className={s.header}>
         <Container className={s.container}>
           <div className={s.logo}>
