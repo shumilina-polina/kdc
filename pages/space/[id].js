@@ -84,7 +84,7 @@ const SingleColectivePage = (props) => {
                   {space.title}
                 </span>
               )}
-              <Button onClick={() => setOpen(true)} className={s.button}>
+              <Button onClick={() => setOpen(true)} className={cn(s.button, v ? s.ability : null)}>
                 Забронировать
               </Button>
             </div>
