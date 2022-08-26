@@ -8,7 +8,7 @@
   font-size: $fs-ability-normal !important;
 
   @include mobile {
-    font-size: 22px !important;
+    font-size: 20px !important;
   }
 }
 
@@ -167,6 +167,12 @@
   right: -1.5px;
   @include mobile-tablet {
     width: auto;
+  }
+
+  @include mobile {
+    &.ability {
+      font-size: 20px;
+    }
   }
 }
 
