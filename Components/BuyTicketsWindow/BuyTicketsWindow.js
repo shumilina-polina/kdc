@@ -56,7 +56,7 @@ const BuyTicketsWindow = (props) => {
             </div>
             <div className={s.time}>
               <span>{dataDate.format("dd")}</span>
-              <span>{dataDate.format("hh:mm")}</span>
+              <span>{dataDate.format("HH:mm")}</span>
             </div>
           </div>
           <div className={s.header}>

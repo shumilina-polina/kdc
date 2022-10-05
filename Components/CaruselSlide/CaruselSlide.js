@@ -46,7 +46,7 @@ const CaruselSlide = (props) => {
             </div>
             <div className={s.concertDate}>
               <span>
-                {moment(`${slide.datetime}`).format("D MMMM в hh:mm")}
+                {moment(`${slide.datetime}`).format("D MMMM в HH:mm")}
               </span>
             </div>
           </div>

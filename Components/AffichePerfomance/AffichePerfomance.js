@@ -42,7 +42,7 @@ const AffichePerfomance = (props) => {
           </span>
           <span
             className={cn(s.time, v ? s.ability : null)}
-          >{`${dataDate.format("HH")}:${dataDate.format("MM")}`}</span>
+          >{`${dataDate.format("HH")}:${dataDate.format("mm")}`}</span>
         </div>
         <div className={s.main}>
           <span className={s.title}>{useHtmlDecode(title)}</span>
