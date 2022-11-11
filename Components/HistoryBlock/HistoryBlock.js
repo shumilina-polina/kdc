@@ -33,7 +33,7 @@ const HistoryBlock = () => {
             </div>
             <div className={s.poster}>
               <img src="/assets/images/fraerDecor.svg" />
-              <span className={s.fraerName}>Н.Ф. Демиков</span>
+              <span className={s.fraerName}>Н.Ф. Демков</span>
               <img src="/assets/images/fraer.jpg" />
             </div>
           </div>

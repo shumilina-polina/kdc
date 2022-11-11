@@ -92,7 +92,10 @@ const BuyTicketsWindow = (props) => {
             </div>
             <div className={s.footer}>
               <a
-                onClick={() => setBuy(true)}
+                // onClick={() => setBuy(true)}
+                onClick={() => {
+                  Number(code) ? setBuy(true) : window.location.assign(code);
+                }}
                 className={cn(s.button, v ? s.ability : null)}
               >
                 Приобрести билет

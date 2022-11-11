@@ -28,7 +28,7 @@ const GalleryBlock = () => {
           {loading ? (
             <Skeleton sx={{ height: "200px" }} />
           ) : (
-            galleries.map((gallery) => (
+            galleries?.map((gallery) => (
               <GalleryCard
                 key={`galleryCard_${gallery.id}`}
                 gallery={gallery}

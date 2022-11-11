@@ -1,7 +1,7 @@
 import axios from "axios";
 
 class ApiService {
-  baseUrl = "https://moscenterspb.space/wp-json/project/v2";
+  baseUrl = "https://backend.kdcmoskovskiy.ru/wp-json/project/v2";
 
   getCollectives = (
     offset = 0,
@@ -141,7 +141,7 @@ class ApiService {
       .get(url)
       .then((res) => res.data)
       .catch((error) => error);
-  }
+  };
 
   postEmailReserveSpace = (name, email, phone) => {
     const url = `${this.baseUrl}/reserve`;
