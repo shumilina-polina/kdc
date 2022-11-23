@@ -15,6 +15,7 @@ const AntiCorruption = () => {
     <div className={s.main}>
       {posts.map((post) => (
         <Acordion
+          key={post.id}
           title={useHtmlDecode(post.title)}
           content={useHtmlDecode(post.content, true)}
           detailsTitle={false}
