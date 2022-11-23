@@ -13,7 +13,7 @@ import s from "./eventCard.module.scss";
 
 const EventCard = (props) => {
   const { event } = props;
-  const { title, content, datetime, price, limits } = event;
+  const { title, content, datetime, price, limits, code } = event;
 
   const dataDate = moment(datetime);
   const monthsRU = months.split(",");
@@ -72,9 +72,7 @@ const EventCard = (props) => {
           <Button
             className={s.button}
             // onClick={() => setBuy(true)}
-            onClick={() => {
-              Number(code) ? setBuy(true) : window.location.assign(code);
-            }}
+            onClick={() => setOpen(true)}
           >
             Приобрести билет
           </Button>

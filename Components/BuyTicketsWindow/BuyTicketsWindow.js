@@ -37,8 +37,8 @@ const BuyTicketsWindow = (props) => {
     if (isBuy) {
       const script = document.createElement("script");
       const widget = document.getElementById("widget");
-
       script.innerHTML = `radario.Widgets.Event({"params":{},"standalone":true,"createButton":false,"eventId": ${code}})`;
+      console.log("script: ", script);
       widget.appendChild(script);
     }
   }, [isBuy]);
@@ -87,10 +87,11 @@ const BuyTicketsWindow = (props) => {
           <div className={s.description}>
             <div className={s.contentBlock}>
               <p
-                dangerouslySetInnerHTML={{ __html: useHtmlDecode(content, true) }}
+                dangerouslySetInnerHTML={{
+                  __html: useHtmlDecode(content, true),
+                }}
                 className={cn(s.content, v ? s.ability : null)}
-              >
-              </p>
+              ></p>
             </div>
             <div className={s.footer}>
               <a
