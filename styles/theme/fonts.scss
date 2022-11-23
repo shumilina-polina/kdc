@@ -21,14 +21,14 @@ $fs-ability-extralarge: 30px;
   font-family: "Gravity";
   font-style: normal;
   font-weight: $fw-regular;
-  src: local("Gravity Regular"), url("Gravity-Regular.otf");
+  src: local("Gravity Regular"), url("GRAVITY-REGULAR.OTF");
 }
 
 @font-face {
   font-family: "Gravity";
   font-style: normal;
   font-weight: $fw-bold;
-  src: local("Gravity Bold"), url("Gravity-Bold.otf");
+  src: local("Gravity Bold"), url("GRAVITY-BOLD.OTF");
 }
 
 $font-gravity: "Gravity", sans-serif;
