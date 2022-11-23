@@ -69,7 +69,13 @@ const EventCard = (props) => {
           >
             Узнать больше
           </Button>
-          <Button className={s.button} onClick={() => setBuy(true)}>
+          <Button
+            className={s.button}
+            // onClick={() => setBuy(true)}
+            onClick={() => {
+              Number(code) ? setBuy(true) : window.location.assign(code);
+            }}
+          >
             Приобрести билет
           </Button>
         </div>
