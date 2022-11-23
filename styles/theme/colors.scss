@@ -11,3 +11,15 @@ $color-blue: #e7edff;
 $color-secondary: #bdc2d0;
 
 $color-gray: #73798c;
+
+@mixin scrollbar {
+  scrollbar-color: $color-black transparent;
+  scrollbar-width: thin;
+  &::-webkit-scrollbar {
+    background: transparent;
+    width: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $color-black;
+  }
+}

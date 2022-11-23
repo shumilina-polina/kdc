@@ -1,7 +1,5 @@
 @import "/styles/styles.scss";
 
-@import "/styles/styles.scss";
-
 .project {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -10,6 +8,11 @@
   @include mobile {
     grid-template-columns: 1fr;
   }
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
 }
 
 .header {
@@ -26,17 +29,20 @@
 
 .title {
   font-family: $font-oswald;
+  word-wrap: break-word;
+  max-width: 300px;
 }
 
 .content {
-  max-height: 250px;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding: 10px;
   font-family: $font-gravity;
+  @include scrollbar;
 }
 
 .thumbnail {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  // object-fit: cover;
 }

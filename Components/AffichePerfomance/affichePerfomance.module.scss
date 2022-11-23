@@ -1,16 +1,17 @@
 @import "/styles/styles.scss";
 
 .perfomance {
+  width: calc(100% / 3);
   display: flex;
   flex-direction: column;
-  border: 1px solid $color-black;
   border-bottom: none;
-  border-right: none;
+  border-right: 1px solid $color-black;
   transition: 0.25s;
 
   @include mobile-tablet {
     border-bottom: 1px solid $color-black;
-    border-right: 1px solid $color-black;
+    border-left: 1px solid $color-black;
+    width: 100%;
   }
 
   &:hover {

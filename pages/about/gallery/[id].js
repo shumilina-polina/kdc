@@ -48,13 +48,13 @@ const SingleColectivePage = () => {
           <Skeleton sx={{ height: "300px" }} />
         ) : (
           <div className={s.slide}>
-            <div className={s.wrapper}>
+            {/* <div className={s.wrapper}>
               <div className={s.info}>
                 <span className={s.title}>{htmlDecode(gallery.title)}</span>
                 <span className={s.date}>{gallery.date}</span>
                 <div className={s.shadow} />
               </div>
-            </div>
+            </div> */}
             <img className={s.poster} src={gallery.thumbnail} />
           </div>
         )}

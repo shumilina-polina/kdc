@@ -4,9 +4,17 @@
   padding: 40px 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
   justify-items: center;
   grid-gap: 20px;
+  
 
+  @include laptop {
+    grid-template-columns: 1fr;
+  }
+  @include tablet {
+    grid-template-columns: 1fr;
+  }
   @include mobile {
     grid-template-columns: 1fr;
   }

@@ -2,7 +2,8 @@
 
 .item {
   display: grid;
-  grid-template-rows: auto 1fr;
+  // grid-template-rows: auto 1fr;
+  grid-template-rows: 190px 85px 1fr 46px;
 
   @include mobile-tablet {
     border-bottom: 1px solid $color-black;
@@ -44,6 +45,7 @@
 }
 
 .title {
+  // height: 85px;
   padding: 15px;
   display: flex;
   justify-content: flex-start;

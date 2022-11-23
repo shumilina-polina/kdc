@@ -86,8 +86,10 @@ const BuyTicketsWindow = (props) => {
           </div>
           <div className={s.description}>
             <div className={s.contentBlock}>
-              <p className={cn(s.content, v ? s.ability : null)}>
-                {useHtmlDecode(content)}
+              <p
+                dangerouslySetInnerHTML={{ __html: useHtmlDecode(content, true) }}
+                className={cn(s.content, v ? s.ability : null)}
+              >
               </p>
             </div>
             <div className={s.footer}>

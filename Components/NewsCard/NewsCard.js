@@ -2,6 +2,7 @@ import NewsWindow from "Components/NewsWindow/NewsWindow";
 import moment from "moment";
 import "moment/locale/ru";
 import { useState } from "react";
+import { months } from "shared/constants/Month";
 import useHtmlDecode from "shared/hooks/useHtmlDecode";
 
 import Button from "UI/Button/Button";
@@ -29,13 +30,19 @@ const NewsCard = (props) => {
     );
   };
 
+  const monthsRU = months.split(",");
+
   return (
     <>
       <div className={s.card}>
         <div className={s.date}>
           <div>
             <span className={s.day}>{moment(dataDate).format("DD")}</span>
-            <span className={s.month}>{moment(dataDate).format("MMMM")}</span>
+            <span className={s.month}>
+              {/* {moment(dataDate).format("MMMM")}
+               */}
+              {monthsRU[moment(dataDate).format("M") - 1]}
+            </span>
           </div>
           <span className={s.year}>{moment(dataDate).format("YYYY")}</span>
         </div>
@@ -44,11 +51,9 @@ const NewsCard = (props) => {
         </div>
         <div className={s.main}>
           <div className={s.header}>
-            <span className={s.title}>{`${moment(dataDate).format(
-              "DD"
-            )} ${moment(dataDate).format("MMMM")} / ${useHtmlDecode(
-              title
-            )}`}</span>
+            <span className={s.title}>{`${moment(dataDate).format("DD")} ${
+              monthsRU[moment(dataDate).format("M") - 1]
+            } / ${useHtmlDecode(title)}`}</span>
           </div>
           <div className={s.content}>
             <p>{useHtmlDecode(content.trunc(220, true))}</p>

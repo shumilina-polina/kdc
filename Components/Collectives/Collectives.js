@@ -36,6 +36,11 @@ const collectives = [
     value: "Оригинального жанра",
     url: "/collectives/originalgenre",
   },
+  {
+    id: 6,
+    value: "Хоровые",
+    url: "/collectives/choral",
+  },
 ];
 
 const Collectives = (props) => {

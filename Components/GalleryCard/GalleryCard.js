@@ -33,7 +33,7 @@ const GalleryCard = (props) => {
           />
         </div>
         <span className={cn(s.date, v ? s.ability : null)}>
-          {moment(`${date} 12:00:00`).format("MMMM YYYY г.")}
+          {moment(`${date} 12:00:00`).format("D MMMM YYYY г.")}
         </span>
       </div>
     </div>

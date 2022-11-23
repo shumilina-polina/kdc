@@ -24,7 +24,7 @@ const CenterBlock = () => {
 
   useEffect(() => {
     apiService
-      .getCollectives(0, 4)
+      .getCollectives(0, 4, [], ["Ул. Варшавская 98"])
       .then((res) => setCollectives(res.data))
       .finally(setLoading(false));
   }, []);
@@ -101,12 +101,12 @@ const CenterBlock = () => {
 
       <Wrapper>
         <p className={cn(s.about, v ? s.ability : null)}>
-          Новая площадка оснащена самыми современными техническими
-          возможностями. Уютная обстановка, комфортные условия для занятий,
-          молодые сотрудники, современные направления деятельности,
-          адаптированные под разновозрастную аудиторию, удобное местоположение –
-          всё это говорит о том, что скоро «КДЦ на Варшавской» станет ещё одним
-          излюбленным местом проведения досуга для жителей Московского района.
+          Площадка оснащена самыми современными техническими возможностями.
+          Уютная обстановка, комфортные условия для занятий, молодые сотрудники,
+          современные направления деятельности, адаптированные под
+          разновозрастную аудиторию, удобное местоположение – всё это говорит о
+          том, что скоро «КДЦ на Варшавской» станет ещё одним излюбленным местом
+          проведения досуга для жителей Московского района.
         </p>
         <div className={s.footer}>
           <p className={cn(s.padding, s.oswald, s.title, s.borderRight)}>
@@ -128,17 +128,17 @@ const CenterBlock = () => {
                   width={30}
                   height={30}
                 />
-                <Link href={`tel:${ContactConst.phone}`}>
+                <Link href={`tel:${ContactConst.secondPhone}`}>
                   <a className={cn(s.link, s.oswald, v ? s.ability : null)}>
-                    {ContactConst.phone}
+                    {ContactConst.secondPhone}
                   </a>
                 </Link>
               </div>
               <div>
                 <Image src="/assets/icons/email.svg" width={30} height={30} />
-                <Link href={`mailto:${ContactConst.email}`}>
+                <Link href={`mailto:${ContactConst.secondEmail}`}>
                   <a className={cn(s.link, s.oswald, v ? s.ability : null)}>
-                    {ContactConst.email}
+                    {ContactConst.secondEmail}
                   </a>
                 </Link>
               </div>

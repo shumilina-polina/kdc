@@ -27,8 +27,9 @@ const Acordion = (props) => {
         <p
           className={cn(s.content, v ? s.ability : null)}
           style={!detailsTitle ? { borderLeft: "none" } : null}
+          dangerouslySetInnerHTML={{ __html: content }}
         >
-          {content}
+          {/* {content} */}
         </p>
       </AccordionDetails>
     </Accordion>

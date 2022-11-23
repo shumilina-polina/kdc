@@ -17,7 +17,22 @@ $fs-ability-normal: 24px;
 $fs-ability-large: 24px;
 $fs-ability-extralarge: 30px;
 
-$font-gravity: "Karla", sans-serif;
+@font-face {
+  font-family: "Gravity";
+  font-style: normal;
+  font-weight: $fw-regular;
+  src: local("Gravity Regular"), url("Gravity-Regular.otf");
+}
+
+@font-face {
+  font-family: "Gravity";
+  font-style: normal;
+  font-weight: $fw-bold;
+  src: local("Gravity Bold"), url("Gravity-Bold.otf");
+}
+
+$font-gravity: "Gravity", sans-serif;
+// $font-gravity: "Karla", sans-serif;
 $font-oswald: "Oswald", sans-serif;
 $font-alegreya: "Alegreya Sans SC", sans-serif;
 $font-alumni: "Alumni Sans", sans-serif;

@@ -3,8 +3,10 @@
 $padding: 0 20px;
 
 .card {
-  max-width: 300px;
-  max-height: 400px;
+  // max-width: 300px;
+  width: 100%;
+  max-height: 450px;
+  height: 100%;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 3fr 2fr 2fr 1fr;
@@ -38,6 +40,7 @@ $padding: 0 20px;
   height: 100%;
   width: 100%;
   max-height: 190px;
+  height: 190px;
 }
 
 .header {
@@ -87,6 +90,12 @@ $padding: 0 20px;
 
   &.ability {
     font-size: $fs-ability-normal;
+  }
+}
+
+.footer{
+  & .button{
+    height: 100%;
   }
 }
 

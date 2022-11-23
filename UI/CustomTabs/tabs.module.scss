@@ -24,6 +24,9 @@
   text-transform: capitalize;
   flex: auto;
   border-right: 1px solid $color-black !important;
+  font-family: $font-gravity;
+  font-weight: $fw-bold;
+  color: #000000;
 
   &:last-child {
     border: none !important;

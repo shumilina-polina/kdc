@@ -3,8 +3,10 @@
 .acordion {
   position: relative;
   margin: 0 !important;
-  min-width: 300px;
+  width: 100%;
+  // min-width: 300px;
   height: fit-content;
+  // height: 100%;
   border: 1px solid $color-black;
   box-shadow: none;
 }
@@ -14,6 +16,7 @@
   display: flex;
   align-items: center;
   padding-right: 0;
+  min-height: 71px;
 
   &.ability {
     font-size: $fs-ability-small !important;
@@ -29,7 +32,6 @@
   display: flex;
   align-items: center;
   border-top: 1px solid $color-black;
-  display: flex;
   font-family: $font-gravity;
 }
 

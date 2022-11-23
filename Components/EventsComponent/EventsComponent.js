@@ -52,7 +52,7 @@ const EventsComponent = (props) => {
         <Wrapper borderBottom>
           <div className={s.calendarFilters}>
             <div className={cn(s.description, v ? s.ability : null)}>
-              Вы можете посмотреть все предстоящие мероприятия, запланированые в
+              Вы можете посмотреть все предстоящие мероприятия, запланированные в
               один день и отсортировать их.
             </div>
             <div className={s.checkboxGroup}>

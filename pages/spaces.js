@@ -33,6 +33,8 @@ export default function Home() {
       apiService
         .getSpaces(offset, SPACES_PER_PAGE)
         .then((res) => {
+          if (res.data.length > 0)
+            [res.data[0], res.data[1]] = [res.data[1], res.data[0]];
           setSpaces([...spaces, ...res.data]);
           setTotal(res.total);
         })
