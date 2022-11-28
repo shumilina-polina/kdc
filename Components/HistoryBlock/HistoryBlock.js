@@ -41,7 +41,7 @@ const HistoryBlock = () => {
       </div>
 
       <Wrapper borderBottom>
-        <p className={cn(s.padding, s.oswald, v ? s.ability : null)}>
+        <p className={cn(s.padding, v ? s.ability : null)}>
           Проводились концерты, театральные постановки, демонстрировались
           художественные кинофильмы, шли занятия в детских <br /> и взрослых
           самодеятельных коллективах, которые много раз становились лауреатами
