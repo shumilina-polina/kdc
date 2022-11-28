@@ -5,9 +5,11 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
+  grid-auto-rows: auto;
   justify-items: center;
   grid-gap: 20px;
-  
+  box-sizing: border-box;
+  overflow-x: hidden;
 
   @include laptop {
     grid-template-columns: 1fr;

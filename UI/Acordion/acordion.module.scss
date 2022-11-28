@@ -4,7 +4,6 @@
   position: relative;
   margin: 0 !important;
   width: 100%;
-  // min-width: 300px;
   height: fit-content;
   // height: 100%;
   border: 1px solid $color-black;
@@ -72,6 +71,10 @@
   padding: 10px;
   border-left: 1px solid $color-black;
   font-size: $fs-normal;
+  word-wrap: break-word;
+  white-space: normal;
+  word-break: break-all;
+  text-overflow: ellipsis;
 
   &.ability {
     font-size: $fs-ability-small;

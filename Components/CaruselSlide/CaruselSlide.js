@@ -25,7 +25,6 @@ const CaruselSlide = (props) => {
       }
     } else {
       if (slideNumber > 0) {
-        console.log(2);
         setSlideNumber((prev) => prev - 1);
       }
     }

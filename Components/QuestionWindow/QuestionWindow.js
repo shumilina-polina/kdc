@@ -29,15 +29,21 @@ const QuestionWindow = () => {
       setError(true);
       return;
     }
-    apiService
-      .postEmailAskQuestion(name, email, phone, message)
-      .then(() => setRequest(true));
+    apiService.postEmailAskQuestion();
+    // .then(() => setRequest(true));
+    setRequest(true);
   };
 
   return (
     <>
       {!request ? (
         <div className={s.container}>
+          <form id="askQuestion" style={{ display: "none" }}>
+            <input readOnly type="text" name="name" value={name} />
+            <input readOnly type="email" name="email" value={email} />
+            <input readOnly type="phone" name="phone" value={phone} />
+            <input readOnly type="text" name="message" value={message} />
+          </form>
           <div className={s.inputGroup}>
             <CustomInput
               error={error && !name.trim()}

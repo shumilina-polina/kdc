@@ -37,8 +37,7 @@ const BuyTicketsWindow = (props) => {
     if (isBuy) {
       const script = document.createElement("script");
       const widget = document.getElementById("widget");
-      script.innerHTML = `radario.Widgets.Event({"params":{},"standalone":true,"createButton":false,"eventId": ${code}})`;
-      console.log("script: ", script);
+      script.innerHTML = `radario.Widgets.Event({"params":{"configuration":18},"standalone":true,"createButton":false,"eventId": ${code}})`;
       widget.appendChild(script);
     }
   }, [isBuy]);
@@ -97,7 +96,9 @@ const BuyTicketsWindow = (props) => {
               <a
                 // onClick={() => setBuy(true)}
                 onClick={() => {
-                  Number(code) ? setBuy(true) : window.location.assign(code);
+                  Number(code)
+                    ? setBuy(true)
+                    : window.open(code);
                 }}
                 className={cn(s.button, v ? s.ability : null)}
               >

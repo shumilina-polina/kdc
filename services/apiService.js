@@ -1,4 +1,5 @@
 import axios from "axios";
+import emailjs from "@emailjs/browser";
 
 class ApiService {
   baseUrl = "https://backend.kdcmoskovskiy.ru/wp-json/project/v2";
@@ -18,7 +19,6 @@ class ApiService {
     }${location.length ? `&location=${[...location]}` : ""}${
       free && !paid ? "&free" : ""
     }${!free && paid ? "&paid" : ""}`;
-    console.log(url);
     return axios
       .get(url)
       .then((res) => res.data)
@@ -70,8 +70,6 @@ class ApiService {
       free && !all ? `&free=true` : ""
     }${paid && !all ? `&paid=true` : ""}`;
 
-    console.log(url);
-
     return axios
       .get(url)
       .then((res) => res.data)
@@ -110,29 +108,59 @@ class ApiService {
       .catch((error) => error);
   };
 
-  postEmailJoinCollective = (name, email, phone) => {
-    const url = `${this.baseUrl}/join`;
-    return axios
-      .post(url, {
-        name: name,
-        email: email,
-        phone: phone,
-      })
-      .then((res) => res.data)
-      .catch((error) => error);
+  postEmailJoinCollective = () => {
+    // const url = `${this.baseUrl}/join`;
+    // return axios
+    //   .post(url, {
+    //     name: name,
+    //     email: email,
+    //     phone: phone,
+    //   })
+    //   .then((res) => res.data)
+    //   .catch((error) => error);
+    emailjs
+      .sendForm(
+        "service_tt7gkec",
+        "template_20g4kfq",
+        "#joinCollective",
+        "5dTH4xF3oz-8z1Uft"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.message);
+        }
+      );
   };
 
-  postEmailAskQuestion = (name, email, phone, message) => {
-    const url = `${this.baseUrl}/ask`;
-    return axios
-      .post(url, {
-        name: name,
-        email: email,
-        phone: phone,
-        message: message,
-      })
-      .then((res) => res.data)
-      .catch((error) => error);
+  postEmailAskQuestion = () => {
+    // const url = `${this.baseUrl}/ask`;
+    // return axios
+    //   .post(url, {
+    //     name: name,
+    //     email: email,
+    //     phone: phone,
+    //     message: message,
+    //   })
+    //   .then((res) => res.data)
+    //   .catch((error) => error);
+    emailjs
+      .sendForm(
+        "service_tt7gkec",
+        "template_rtrtqxc",
+        "#askQuestion",
+        "5dTH4xF3oz-8z1Uft"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.message);
+        }
+      );
   };
 
   getMore = () => {
@@ -143,16 +171,31 @@ class ApiService {
       .catch((error) => error);
   };
 
-  postEmailReserveSpace = (name, email, phone) => {
-    const url = `${this.baseUrl}/reserve`;
-    return axios
-      .post(url, {
-        name: name,
-        email: email,
-        phone: phone,
-      })
-      .then((res) => res.data)
-      .catch((error) => error);
+  postEmailReserveSpace = () => {
+    // const url = `${this.baseUrl}/reserve`;
+    // return axios
+    //   .post(url, {
+    //     name: name,
+    //     email: email,
+    //     phone: phone,
+    //   })
+    //   .then((res) => res.data)
+    //   .catch((error) => error);
+    emailjs
+      .sendForm(
+        "service_tt7gkec",
+        "template_20g4kfq",
+        "#reserveSpace",
+        "5dTH4xF3oz-8z1Uft"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.message);
+        }
+      );
   };
 }
 

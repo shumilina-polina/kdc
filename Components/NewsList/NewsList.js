@@ -13,8 +13,6 @@ const NewsList = () => {
   const [total, setTotal] = useState(null);
 
   const onLoadMore = () => {
-    console.log(total);
-    console.log(offset);
     if (offset + NEWS_PER_PAGE < total) {
       setLoading(true);
       setOffset(offset + NEWS_PER_PAGE);

@@ -53,7 +53,6 @@ const SingleColectivePage = () => {
 
       <Header />
       <Wrapper space borderBottom />
-      {console.log(collective)}
       <div className={s.main}>
         <Wrapper>
           <div className={s.header}>

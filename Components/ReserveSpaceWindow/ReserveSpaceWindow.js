@@ -27,15 +27,20 @@ const ReserveSpaceWindow = (props) => {
       setError(true);
       return;
     }
-    apiService
-      .postEmailReserveSpace(name, email, phone)
-      .then(() => setRequest(true));
+    apiService.postEmailReserveSpace();
+    // .then(() => setRequest(true));
+    setRequest(true);
   };
 
   return (
     <>
       {!request ? (
         <div className={s.container}>
+          <form id="reserveSpace" style={{ display: "none" }}>
+            <input readOnly type="text" name="name" value={name} />
+            <input readOnly type="email" name="email" value={email} />
+            <input readOnly type="phone" name="phone" value={phone} />
+          </form>
           <div className={s.info}>
             <img src={thumbnail} className={s.poster} />
             <div className={cn(s.table, v ? s.ability : null)}>

@@ -33,9 +33,9 @@ const JoinCollectiveWindow = (props) => {
       return;
     }
 
-    apiService
-      .postEmailJoinCollective(name, email, phone)
-      .then(() => setRequest(true));
+    apiService.postEmailJoinCollective();
+    // .then(() => setRequest(true));
+    setRequest(true);
   };
 
   return (
@@ -85,11 +85,17 @@ const JoinCollectiveWindow = (props) => {
               </div>
             </div>
           </div>
+          <form id="joinCollective" style={{ display: "none" }}>
+            <input readOnly type="text" name="name" value={name} />
+            <input readOnly type="email" name="email" value={email} />
+            <input readOnly type="phone" name="phone" value={phone} />
+          </form>
           <div className={s.fields}>
             <CustomInput
               error={error && !name.trim()}
               className={s.input}
               type="name"
+              name="name"
               value={name}
               label="Как к вам обращаться?"
               onChange={(e) => setName(e.target.value)}
@@ -100,6 +106,7 @@ const JoinCollectiveWindow = (props) => {
               error={error && !email.trim()}
               className={s.input}
               type="email"
+              name="email"
               value={email}
               label="Ваша почта"
               onChange={(e) => setEmail(e.target.value)}
@@ -110,6 +117,7 @@ const JoinCollectiveWindow = (props) => {
               error={error && !phone.trim()}
               className={s.input}
               type="phone"
+              name="phone"
               value={phone}
               label="Номер телефона"
               onChange={(e) => setPhone(e.target.value)}
